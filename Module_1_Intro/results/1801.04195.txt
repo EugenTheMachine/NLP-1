@@ -1,0 +1,1178 @@
+1801.04195v1 [math.DS] 12 Jan 2018
+
+arXiv
+
+Periodic points of a Landen transformation
+
+Armengol Gasull™, Mireia Llorens and Victor Maiiosa )
+
+©) Departament de Matematiques, Facultat de Ciéncies,
+Universitat Auténoma de Barcelona,
+08193 Bellaterra, Barcelona, Spain
+millorens@mat.uab.cat, gasull@mat.uab.cat
+
+) Departament de Matematiques
+Universitat Politécnica de Catalunya
+Colom 1, 08222 Terrassa, Spain
+victor. manosa@upc.edu
+
+January 15, 2018
+
+Abstract
+We prove the existence of 3-periodic orbits in a dynamical system associated to a Landen
+transformation previously studied by Boros, Chamberland and Moll, disproving a conjecture
+on the dynamics of this planar map introduced by the latter author. To this end we present
+a systematic methodology to determine and locate analytically isolated periodic points of al-
+gebraic maps. This approach can be useful to study other discrete dynamical systems with
+algebraic nature. Complementary results on the dynamics of the map associated with the
+
+Landen transformation are also presented.
+
+Mathematics Subject Classification 2010: 37C25, 33E05.
+
+Keywords: Landen transformation, Periodic points, Poincaré-Miranda theorem.
+
+1 Introduction
+
+Given a definite integral depending on several parameters, a Landen transformation is a map on
+these parameters that leaves invariant the integral. In [1] 2], G. Boros and V. Moll introduced the
+
+dynamical system given by
+
+a Ban + 5bn + Anbn + 9 b An +bn +6
+met (an thn $2978 7 (a, Foy 22?’
+a dy + €n + €n d= (bn + 8)en + (Gn + 3)en + 2dn eH Cn + €n
+AN Can + bn + 2)2/87 Gn + by +2 MT Ca On + 2/3"
+
+as a Landen transformation associated to the integral
+
+© catt+dr? +e
+I(a,b,c,d,e Ja 1
+(a,b, e,d,e) [ 28 +ax4+be2 +1 * (1)
+
+/n/nthat is, [(an41, bn41, Cn41;dn41;,€nt1) = I(an,bn, en, dn, en). This dynamical system contains a
+2-dimensional uncoupled subsystem. M. Chamberland and V. Moll in [3], related the convergence
+of the integral with the dynamics given by the iteration of the planar, non invertible map
+
+associated to it:
+
+G(a,b) 5a+5b+ab+9 a+b+6
+
+a,b): ; =).
+
+; (a+b42)43 7 (a+b+42)2/3
+
+In particular they proved that the map G has only three fixed points, characterizing their nature,
+
+and they also proved that the region of the (a,b)-plane where the integral converges is the
+
+basin of attraction of the fixed point (3, 3).
+In Section [3] we will give a brief description of the known results about the dynamics of the
+
+map G. In Section [4] we prove our main result,
+Theorem 1. Consider the map G.
+
+(a) It has exactly three fixed points. A super-attracting point in (3,3), an oscillatory saddle in
+
+the boundary of the basin of attraction of (3,3) and an unstable focus.
+(b) It has not periodic points with minimal period 2.
+
+(c) It has exactly twelve periodic points of minimal period 3, that correspond with four 3-periodic
+
+orbits.
+
+For completeness we include in its statement the results about fixed points already proved
+in [3]. In fact, in that paper it is also proved that there are no periodic points with minimal
+period 2 above the line a+ b+ 2=0. Our statement (b) extends their result to the whole plane.
+
+As we will see, item (c) disproves a conjecture about the dynamics of this map, see Conj.
+15.6.3] or Section [3] We will also determine analytically the location of the 3-periodic orbits.
+
+Although it is easy to find 3-periodic points numerically, when trying to prove their existence
+
+there appear important computational obstacles. Thus, to prove the existence of 3-periodic points
+of G, as well as the non-existence of 2-periodic points, we have developed a procedure to determine
+analytically the number of isolated periodic points of discrete dynamical systems of algebraic nature
+
+and locate them with a prescribed precision. This method consists in the following four steps:
+
+e Convert the problem into an algebraic one, characterizing the periodic points as the solutions
+
+of a system of polynomial equations.
+
+e Include these solutions into the ones of an uncoupled system of equations given by one-
+
+variable polynomials.
+
+e Combine an algorithm based on the Sturm’s method for isolating the real roots of a one-
+
+variable polynomial with a discard procedure for systems of polynomial equations in order to
+/n/nefficiently remove those solutions of the later system that do not correspond with the periodic
+
+points.
+
+e The application of the Poincaré-Miranda theorem to prove that the non discarded solutions
+are actual solutions of the first system of polynomial equations and, in consequence, give rise
+
+to periodic points.
+
+This procedure is explained in detail in next section. Recall that the Poincaré-Miranda theorem
+is essentially the extension of Bolzano theorem to higher dimensions. It was stated by H. Poincaré
+in 1883 and 1884, and proved by himself in 1886, [12] [13]. In 1940, C. Miranda re-obtained
+the result as an equivalent formulation of Brouwer fixed point theorem, [10]. Recent proofs are
+presented in [8] [15]. We also recall this theorem in Section [2}
+
+As a complement, in Section [5] we characterize the stable set associated to the fixed point of G
+of saddle type, and we provide an analytic-numeric study that gives evidences of the existence of
+homoclinic trajectories associated to it, as well as of the existence of some points in the intersection
+of the unstable set of this fixed point and the non-definition set of the map, which recall that it is
+
+formed by all the preimages of the straight linea+b+2=0.
+
+2 Determination of periodic points of discrete dynamical systems
+
+We consider a discrete dynamical system defined by a map F : U C R* + U where U is an
+open set. Fix p € N and assume that it has finitely many p-periodic points. These points are
+characterized by the real solutions of the system of k equations given by F'? = Id. Let us suppose
+that the solutions of the above system are in correspondence with the ones of a new system of
+
+n > k non-trivial polynomial equations given by
+
+{ fi) =0, fX) =0, ++. Inxs) =0, (2)
+
+where x = (21,..., 2p) are not necessarily the k-independent variables of F. Suppose also that using
+some algebraic transformations, like for instance successive resultants between the given equations,
+we reach an uncoupled polynomial system whose set of solutions contains all the solutions of
+system (2):
+{ q(#1) = 0, 92(@2) = 0, +++, In(an) = 0. (3)
+
+To clarify with an example the above situation we sketch here the systems involved in the
+
+computation of the 3-periodic points of the map G. The k = 2 equations corresponding to
+
+G3(a,b) = (a,b) can be transformed into a new system of n = 3 polynomial equations (see system
+
+(11)) in the new variables m,n,r given by (ZO). This new system plays the role of system (2), and
+
+its solutions are in correspondence with the periodic points, by forthcoming Lemma [4] Lemma [5]
+/n/nwill show that the solutions of system are included in the set of solutions of the uncoupled
+system {di7(m) = di7(n) = di7z(r) = 0}, where dj7 is a polynomial of degree 371 introduced
+in (22). This system plays the role of system (3).
+
+In this setting, the proposed methodology applies in the cases where we do not know how to
+
+obtain explicitly the solutions of systems or (3) and follows the next steps:
+
+Step 1: By using an algorithm based on the Sturm’s method ({14] Chap. 5.6]) and for each
+polynomial qj, it is possible to isolate and count all its real roots by finding intervals with preset
+
+maximum length and rational ends, each one of them containing only one isolated root. For each
+
+j =1,2,...,n, let kj be the number of real roots of g;, without counting their multiplicities, and
+
+denote by [jm := [Ujms Yjm]; m = 1,2,...,k; the found intervals, such that each one of them
+contains exactly one of these roots. Proceeding in this way we obtain that the set of solutions of
+system is contained in the set formed by ITj- , kj boxes (n-dimensional orthohedrons), of the
+form
+
+Dini yymn = Lim, x Tomo XX Tnamn>
+
+where each mj; € {1,...,kj}, for j =1,...,n.
+
+Step 2: In order to detect those boxes that do not contain any solution of system we apply a
+discard procedure to each box Im,,....m,- This procedure is inspired in a technique used in [4]. To
+prove that a certain polynomial P(x) has no zeros in a given box Zm,,...m,, that for the sake of
+
+simplicity we denote as Z, we proceed as follows:
+
+e We numerically evaluate P at the center of Z. If, compared with the working precision, this
+value is far from zero, we suspect that P restricted to Z has a given sign. According whether
+
+this value is positive or negative we continue with one of next two steps.
+
+e For trying to prove that P(x) > 0 for all x € Z, we search a L such that 0 < L < P(x)
+on Z. Write P(x) = >, Mc(x) where Mp(x) = agra? .--a%, we find M) € R such that
+M, < M;(x) for all x € Z (this can be done using the formulas in forthcoming Lemma 2).
+If the following condition is satisfied: 0 < L := S>,M, < S°, M(x) = P(x), then we can
+
+discard the box T.
+
+e For trying to prove that P(x) < 0 for all x € Z, we look for U € R such that P(x) <U <0
+on Z. To do this, similarly than in the previous situation, we find M@, € R such that Mp(x) <
+M¢ for all x € T. If it holds that P(x) = 7, Mc(x) < 1), Me =: U < 0, then we can discard
+the box Z.
+
+To compute the bounds M, and Mz, we use the following straightforward result, which can
+
+be easily implemented in any computer algebra software.
+/n/nLemma 2. Consider P(x) = )¢,Me(x) where Mp(x) = agra? ---a'", and a bor I = [ur, vi] x
+
+“n>
+
+[u2, v2] X +++ X [Un, Un]. Set OF = {(a1,...,2n), such that x; > 0 for alli =1,..., n}. Then,
+
+(i) IfZ C O* CR", then for all x €Z, )My < P(x) < Sy Me, where
+
+(a) Mp=a ubue tee uln and My = ag vee - ln ifae>0.
+(b) Myp=a vp ug tee ulm and My = a¢ ubue ee ulin ifag <0.
+
+(ii) IfI ¢ OF we can always take a number € > 0, € € Q such that the new bor I = [ur +01 +
+€] x [ug + €,vg + €] X- ++ X [un +€, Un +€] C OF, and then find bounds for P on TZ, using the
+bounds given in item (i) for Pe(a1, 22, 65 Bp) = Play — £09 —€,...,% —€) on.
+
+We try to apply the discard procedure until the number of remaining boxes coincides with our
+hopes. These hopes usually came from a previous numerical study of the problem. We start trying
+to prove that the first function f; does not vanish in the given box. It may happen that it is easier
+to try to prove the same with another f;. Notice also that sometimes to discard a box we must go
+
+to the Step 1 and start with smaller boxes.
+
+Step 3: Once it is achieved an optimized list of non-discarded boxes, we identify those boxes that
+
+correspond to either fixed points or periodic points with a period being a divisor of p, which we
+
+assume that we already know, and we also discard them.
+
+Step 4: From the non-discarded boxes list obtained in the previous step, we try to show that each
+box actually contains a solution by applying the Poincaré-Miranda theorem. For completeness, we
+
+recall it. As usual, B and 0B denote, respectively, the closure and the boundary of a set B C R”.
+Theorem 3 (Poincaré-Miranda). Set ZT = {x = (21,...,2%)) € R° : Li < aj <Uj;,1<i< nt}.
+Suppose that f = (fi, fo,---;fn) : Z + R” is continuous, f(x) 4 0 for all x € OT, and for
+
+l<i<n,
+
+fila, ..., vi-1, Li, Visi,..., Un) + fi(ar,...,vi—1, Vi, Vin, ---,%n) <0,
+Then, there exists s € I such that f(s) = 0.
+
+It is clear that when we define f to try to apply Poincaré-Miranda theorem, the order of the
+
+components matters. So, sometimes to be under the hypotheses of the theorem it is better to
+
+to apply the theorem to A(f(x))', where A is a suitable n x n invertible matrix. When f is
+differentiable, as we will see it is useful to chose A = (Df(s))~!, where § € Q” is a numerical
+approximation of a zero of f in Z.
+
+If we succeed in proving that there is at least a solution in each box, its uniqueness is given
+
+by the fact that each of the intervals Ij, contains only a single solution of each polynomial qj.
+/n/nOtherwise we can refine boxes, taking them with smaller size, and then repeating the computations
+
+in Step 1.
+
+3 An overview of the dynamics of G
+
+In this section we briefly summarize the known results on the dynamics of the map G and we
+characterize their invariant sets. We mainly follow the steps in [3]. The rational integral is
+
+well-defined and convergent if P(2) = 23 + az? + br + 1 has not real positive roots. To study the
+
+number of real roots of P when a and b vary, we consider
+
+R(a,b) := Res(P, P’; x) A, (P) a’b? + 4a3 + 463 — 18 ab + 27,
+
+where A, is the discriminant. The curve R(a,b) = 0 is known as the resolvent one, and after
+
+removing the point (—1,—1) it is invariant by G because
+
+(a6)?
+
+R(G(a,b)) = G+b+D!
+
+R(a, b). (4)
+The curve has two connected components L i La (see Figure 1 (a)). Note that the fixed point
+(3,3) is the cusp of Ly.
+
+10
+
+C3
+
+cr
+
+I2
+
+(a) (b)
+
+Figure 1. (a) Connected components L; and L» of the curve R(a,b) = 0, and regions C), C2 and
+
+C3 of the plane. (b) 10000 iterates of an orbit with initial condition in C3.
+
+The resolvent curve defines three open unbounded sets C1, C2 and C3 depicted in Figure 1 (a).
+By studying the sign of the discriminant of P, and by using the Descartes rule of signs, it is
+
+straightforward to obtain that on L, U C2 U C3, all the real roots of P(x) are negative, so the
+
+/n/nintegral is convergent; and on CU Lz there exists at least one positive real root, so the integral
+diverges.
+
+In [3], the authors proved that G has only three fixed points, namely P; for i = 1,2,3, which
+are described in Theorem [I] and given in Equation (8). One of them, the point P, = (3,3), is a
+super-attracting one, i.e. both eigenvalues of the jacobian matrix are 0. Their main result states
+that the basin of attraction of the fixed point P; for the map G, is the region of the (a,b)-plane
+where the integral converge. As a consequence, the basin of attraction of P; is Ly U C2 UC3.
+
+On the other hand, the connected component Li := Lz \ {(—1,—1)} is positively invariant (as
+we will see, there are points on C; which are mapped into Lz). On Lz there is one fixed point, P,
+which is a saddle. In Proposition [8] we prove that any orbit with initial condition on L4 converges
+to Pp.
+
+In summary, the dynamics of G on the invariant sets A := L,U CU C3 and Lz is known and
+simple. However, there is a poor knowledge of the dynamics of G in the set B := C \ F, where
+F = {(a,b) € R?: in>0: G"(a,b) € {a+b+2 = 0}}, is the forbidden set of G.
+
+In [1] Conj. 15.6.3], V. Moll established the following conjecture about the dynamics of G
+in B: “The orbit of any point below the resolvent curve is dense in the open region below this
+curve.”
+
+Of course one has to exclude from this conjecture the third fixed point P3 which is in the set
+C,, and the points in the forbidden set F. In Theorem |1| we prove the existence of 3-periodic
+points in C, result that disproves the conjecture. In fact it is not difficult to find numerically
+hese orbits as well as other periodic points, however to prove the existence of 3-periodic points is
+far from being trivial, and it is the main objective of this paper.
+
+In Section [5] we present an analytic-numeric study that evidences the existence of points in
+he unstable manifold of P2 which belongs to its stable set, i.e. homoclinic points. In the case of
+diffeomorphisms, by the Smale-Birkhoff homoclinic theorem, the existence of such points implies
+
+he existence of a hyperbolic invariant set on which the dynamics is equivalent to a subshift of
+
+finite type, see [7]. Similar results are developed in in the non-invertible setting. We also
+give evidences of the existence of points in the unstable manifold that also belong to the forbidden
+
+set F.
+
+4 Proof of Theorem
+
+In this section we prove Theorem [I] We split the proof in two subsections. The first one dedicated
+
+to the fixed and 2-periodic points, and the second one to study the 3-periodic points.
+/n/n4.1 Fixed and 2-periodic points
+
+Proof of statements (a) and (b). (a) Following [3] we consider the equations given by G(a,b) =
+
+(a,b), and we introduce the auxiliary variable m? = a + b + 2, obtaining
+
+d,(a,b,m) :=m3—a—b—2=0,
+
+d(a,b,m) := —am! + ab+5a+50+9=0, (5)
+
+d3(a,b,m) :=—bm?+a+b+6=0.
+Isolating a and b from the first and third equations, and substituting the obtained expressions in
+
+the second one we get:
+
+da(m) : (m — 2)(m? — m + 1)(m? +m + 2)(m3 + m? — m — 2)(m3 +m? +m+2)=0. (6)
+The only real roots of the above equation are
+lag 81 ol . 13 41 1
+=2 = - VA+ = = - = ~ 1.20557 =-. YB+ =~ - = ~ -1.35321 7
+m,=2, m2 sats 3 0557, m3 6 ete 3 5321, (7)
+where A = 172+ 12V/177 and B = 188 + 12 249. From these values and we obtain
+P, = (3,3),
+434+ 3V177 15 1 8 13- VIT7 7+ V1T7 4
+Py = (| ——2 2 42/8 t/8 = NE 42/3 4 NTT 1/3 4 — | (—4,20557, 3.95774), 8
+? ( 384 6 3° 48 +48 +g | = (420857, 3.95774) ®)
+Pye (= + VIS pia 4b <8 puss _ it — VB 218 48 + V2 pasa _ ‘) ~ (—5.30914, 0.83118).
+96 :
+
+A straightforward computation of the differential matrix at these points give that the points
+are, respectively, a super-attractor (null eigenvalues), an oscillatory saddle, and an unstable focus.
+
+Moreover P2 is in Lz and P3 is in C}.
+
+(b) Again, following [3], we consider c and d such that G(a,b) = (c,d) and G(c, d) = (a,b). By
+
+introducing the two auxiliary variables m and n such that m? = a+b+2 and n? =c+d+2, we
+get:
+dy m3—a—b—-2=0, dy:=n®—c—d-—2=0,
+dz: cm! +ab+5a+5b4+9 0, da: dm? +a+b+6 0,
+ds: ant4+cd+5c+5d+9=0, de: bn? +ce+d+6=0.
+Solving {d; = 0, dy = 0, d4 = 0, dg = 0} we obtain
+mn? — n3 —2n?—4 ne +4 mn} — m3 — 2m? — 4 mo +4
+o* n2 » b= n2 c~ m? » d= m2 *
+
+By substituting the above result in dz and ds we reach the following system, which plays the role
+
+of system in our methodology:
+
+d7(m,n) : min? + mint + 2m4nt + mn? + 5m3nt + 4m?n4 — n&
+
+t4m'n? — 2n® — n4 — 8n3 — 8n? — 16 = 0, (9)
+
+dg(m,n) := d7(n,m) = 0.
+/n/nNow we consider the polynomial
+
+dg(m) :=Res(d7(m, n), dg(m,n);n)
+m? (m — 2) (m +1)? (m? bm? +m+ 2) (m3 +m —m— 2) P(m),
+
+where P is a polynomial of degree 56, without real roots. This is proved by using the Sturm’s
+method and can also be done, for instance, by using the command realroot of the computer
+algebra system Maple. Similarly, dio(n) := Res(d7(m,n),dg(m,n);m). As a consequence of the
+symmetry we get that djo(n) = —dg(n) and system {do(m) = 0, dg(n) = 0} plays the role of
+system in our methodology. Hence, the only non-zero reals roots of dg are —1,2,m , and
+mz, where these values correspond to the ones associated with the fixed points, because the two
+degree 3 factors coincide with the ones given in (6).
+
+Hence the 2-periodic points are included in the set with 16 elements {—1,2,m, my}. In this
+particular case, because the real solutions of the uncoupled system are explicit, in Steps 3 and 4
+of our approach we have not boxes but points, and the problem is much easier. It is not difficult
+to check that in this set of points the only solutions of are (1,1), (m1,my1) and (mg, mz) which
+correspond to the fixed points of G. In consequence there are not points of minimal period 2
+for G |
+
+4.2 Proof of Theorem [I] (c): 3-periodic points
+
+We need some preliminary results. Proceeding as in the previous cases we look for a, b, c, d, e,
+
+and f € R, such that G(a, b) = (c,d), G(c, d) = (e, f) and G(e, f) = (a,6), that is
+5a+5b+ab+9 a+b+6 5e+5d+cd+9
+——___ =c, ——__,, =d, =e,
+(a+b +4 2)4/3 , (a+b+4+2)2/3 : (c+d+2)4/3
+c+d+6 f Se+5ft+ef+9 e+f+6 1
+—_, = ———______ =a, —____ = b.
+(e+ d+ 2)2/3 ; (e+ f + 2)4/3 (e+ f +2)2/3
+
+We introduce the auxiliary variables m, n and r, such that m? = a+b+2,n? =c+d+2 and
+
+r? =e+f +2. Using this notation we get
+
+d, :=m®—a-—b-2 0, dq: cm! +ab+5a+5b+9=0, ds: dm? +a+b+6=0,
+c-—d-2=0, de: ent+cd+5ce+5d+9=0, dz: fr2-+c+d+6=0,
+dz :=r?-e—f—2=0, dg: ar*+ef+5e+5f+9=0, do: br? +e+f+6=0.
+
+First we solve the system {d = 0, dz = 0,d3 = 0,d5 = 0,d7 = 0, dg = 0} obtaining:
+
+mr? — 73 — 272-4 re4+4 mn? — m3 —2m?—4
+a , oO c
+r2 : re? m2 ;
+m+4 nr —n —2n2—4 nm+a4
+d= e= = . (10)
+m2 n2 , n2
+/n/nSubstituting this result in the expressions d4, dg, and dg, we obtain the equations
+
+dio(m,n,r) = —m4n3r4 + mort + 2m4rt + m3r> + 5 m3 rt + 4m2rt — 76 4 4m 7?
+
+2r°—r4 — 8r3 — 8r?-16=0,
+
+(11)
+
+dii(m,n,r) := dio(n,r,m) = 0,
+dig(m,n,r) := dio(r,m,n) = 0.
+From the equations (ZO), if (m,n,r) is a real solution of (11) such that m-n-r 4 0, there exists
+
+either an orbit with minimal period 3 given by (10) or a fixed point or G. Moreover, if (mo, 70, 70)
+
+is a solution of system (11), then so are (no, 7r9,™mo) and (ro,mo, no). As a consequence, we obtain
+
+Lemma 4. Any 3-periodic orbit of G, {(a,b); (c,d); (e, f)} with associated parameters m,n and r,
+is in correspondence, via with the solutions (m,n,r), (n,r,m) and (r,m,n) of the system (ti).
+
+?
+
+The forthcoming Lemma ]5] gives a first characterization of the locus where the solutions of
+
+system (11) are located. Prior to state this result we introduce the following auxiliary polynomials
+di3(n,r) := Res(dio(m,n,r), di2(m,n,r);m), with degree 37 in n and degree 37 in r,
+dya(n,r) := Res(dii(m, n, 1), di2(m,n,r);m), with degree 47 in n and degree 37 in r.
+
+We apply the resultant once again to obtain the polynomials dj5(n) := Res(di3(n,1r), dya(n,1);1r),
+and dig(r) := Res(di3(n,r), di4(n,1r);n), where deg, (dis(n)) = 2521 and deg,(dig(r)) = 1985.
+
+Finally, we introduce the polynomial
+
+diz(n) = ged (dis(n), dig(m)) /n™°. (12)
+
+This polynomial has degree 371, and using once more Sturm’s method we get that it has exactly
+
+16 different real non-zero roots.
+
+Lemma 5. Let [;, with i = 1,...,16, be disjoint intervals, each one of them containing a unique
+
+real root of diz. Then, any real solution (m,n,r) of system is contained in one of the 16° sets
+Lijp Hix Tx Ip, i,j,k € {1,..., 16}. (13)
+
+Proof. Let (mo,no,70) be a real solution of (11). We want to show that it is also a solution of
+
+{diz(m) = 0,di7(n) = 0,di7(r) = 0}. Observe that by construction, no must be a root of dj5.
+From Lemma [4] we have that (mo,no) must be also a zero of di3 and dj4. Hence no must be also
+a zero of dig, and therefore of gcd (di5(n), dig(n)) which is a polynomial of degree 1087 with the
+factor n7!6, Since we are interested in its non-zero roots, we remove this factor, obtaining that no
+must be a root of d,7. By using an analogous argument and Lemma [J] again, we can see that mo
+and ro are also roots of dj7.
+
+Since d17 has 16 different real roots, any solution (m,n,7r) of system a) must be contained in
+
+a box of the form (13), and each box contains at most one solution. |
+
+10
+/n/nNow we can prove statement (c) of Theorem
+
+We follow the steps explained in Section [2}
+
+Step 1: Recall that di7 has 16 non-zero real roots. Two of them are n = —1, n = 2. Although two
+
+more explicit roots are n; = m;,i = 1,2 given in
+
+, we prefer to take 14 intervals with rational
+ends and length smaller than 10-79, J;,i = 1,2,...,14, each one of them containing a unique root.
+
+We consider:
+
+147573952589676412928 ' 1180591620717411303424
+
+1180591620717411303424 ° — 590295810358705651712
+
+430898884 1618670568853 AT OTSA e SS ASSOES | 34411805733101949308435 eae
+
+9138398)
+
+4416518740855918762195
+
+~ 7180591620717411303424° —590295810358705651712
+
+[
+[
+
+[ 3144313156826151948503 ISTAASSS TS AS07597)
+~ | 1180591620717411303424' —590295810358705651712
+
+1509024508051 SOOO TER AS POSTS | adie
+
+590295810358705651712 '  1180591620717411303424
+
+1180591620717411303424' 295147905179352825856
+
+3977374161031280580629 — 994343540257820145 aaa
+295147905179352825856 1180591620717411303424
+
+I2
+Ia
+Je
+Ig
+
+197879469664271669175 SeSOT IL AC2594 700709]
+73786976294838206464 ' 1180591620717411303424 | ’
+
+~ 4722366482869645213696 590295810358705651712
+
+1 [ 994661336537171251825 Se Seer
+
+399397086201257638833 2SoTESESAAS0509055555 1 [ 10535267695 18098399097 2160086159762 2088ST]
+295147905179352825856 1180591620717411303424 | v0 ,
+
+1064910654630154190265 133113831828769273783 1065572958580542810237 532786479290271405119
+m= [- 9444732965739290427392° rheosoreso7t aos n= [saaarsoee57sos00a77303° ed ,
+__ [ 128535594827653577343 1028284758621228618745 __ [177910645965499912685 1423285167723999301481
+we [ Soosoperaaserennsrss" iTamonienscoeisDiae0e | ue [ irsrtosapenavortanee Transoresorivarraoaaed | :
+
+We also introduce the degenerate intervals Ji5 = [—1, 1] and [yg = [2,2] containing the exact roots
+
+n= -—l1and n= 2. By Lemma)|5} all the real solutions of system (11) are contained in one of the
+
+16° boxes , where we also call boxes the ones with some degenerate interval. Recall that if a
+
+box Zj,;,~ contains a solution of system
+
+, then this solution is unique.
+
+Step 2: We apply the discard procedure to djg and the 4096 boxes of the form
+
+given by
+
+the intervals computed before. In Lemma [2] we use the value € = 30 and consider the polynomial
+
+P(m,n,r) = dig(m — €,n — €,r — €), which has 224 monomials. The procedure implemented in
+Maple v.17 took 5.61s of real time in an Intel i7-3770-3.4GHz CPU to discard 4080 boxes. The
+code is given in [9] Chap. 5]. In short, we obtain that each solution of system must be
+
+contained in one of the following 16 non-discarded boxes
+
+[Dis T2612 | Z3,7,13 | L4,8,10 | Z5,11,1 | Z612,2 | Z7,13,3 | Zs,10,4
+
+| Zoo. Tioas | Li11,5 | L12,2,6 | Z13,3,7 | Zia,14,14 | Zi6,16,15 | Z16,16,16
+
+Observe that the degenerated box Z16,16,15, which corresponds with (m,n,r) = (2,2,—1), must
+also be discarded because di0(2,2,—1) = 0, but di1(2,2,—1) = 2304.
+
+Step 3: Following similar arguments that in the proof of statement (b) we can discard boxes
+
+T6,16,16, L14,14,14 and Zp 9,9 because they correspond to the fixed points P;, P2 and P3, respectively.
+
+Step 4: We have obtained 12 non-discarded boxes that, from Lemma
+
+if they correspond to
+periodic points of minimum period 3, they would contain the parameters (m,n,r) corresponding
+
+to the periodic points according to the following groupings:
+
+11
+/n/nO;, CB 511 UF511,1 UZi1,5, O2 C Tr6,12 U Zo,12,2 U Ti2.2,.6,
+(14)
+
+O3 C 137,13 UT7,13,3 UL13,3,7, Oa C Lagi4 UV Tg,14,4 U Tia.
+We will prove that the above 12 boxes indeed contain a solution of system (4), which will be
+unique as reasoned above. To do this, we will apply the Poincaré-Miranda theorem (Theorem 3).
+
+Again by Lemma|4] we only need to prove that there is a solution of the system (11) in the boxes:
+
+T1511, Z2,6,12, Z3,7,13, and 24,314. For reasons of space we only give details for the first box.
+
+We consider the polynomial map f(m,n,1) := (dio(m,n,7r), dii(m,n,1), dig(m,n,r)). We de-
+note the ends of the intervals [,, I; and Ij; respectively: [m,™] := Nh, [n,7] := Is, [7,7] := Ti.
+Consider also the middle point of Zi 5,11, P = (m,7,7) = ((m+m)/2,(n+7)/2,(r+7)/2).
+
+Figure 2. The surfaces gi(m,n,r) = 0,
+g2(m,n,r) = 0 and g3(m,n,r) = 0 in blue, green
+and red, respectively, in the box [m—e,m-+e] x
+
+[nm -—e,N+e] x [P—e,7 +e], where e = 1071”.
+
+The hypothesis of Poincaré-Miranda theorem for f using the box Z1,5,11 are not satisfied: for
+instance, at the points (m,n,7) and (m,7,7) none of the functions dio, di; and dig changes sign.
+
+So in order to rectify the level 0 surfaces of the components of f, we consider the new function
+g(m,n,r) = (gilm,n,r), go(m,n,r),ga(m,n,r)) = (DFP)*(f(m,n, 7)
+
+We omit here the expressions of (Df(p))~! and g since they involve huge rational numbers with
+numerators and denominators with hundreds of digits. Notice that since det (Df(p)) 4 0 the point
+
+(mo, 70,70) is a zero of g if and only if it is a zero of f.
+
+Observe that g(m,n,r) = g(p) + (m— m,n —fi,r — 7) + O(||(m — m,n —7,r —7F)||?). Since
+g(p) ~ 0, near p it holds that g(m,n,r) ~ (m — m,n —7,r — 7) and so, a small enough box
+centered at p should be under the hypotheses of Poincaré-Miranda theorem, see Figure 2. Now we
+
+will check that, indeed, this is the situation for the function g in the box Z15,11.
+
+12
+/n/nIn order to prove that the components of the function g have no roots, and alternate signs
+at the faces of Z1,5,11 we will apply repeatedly the following technical result, that is a simplified
+
+version adapted to our interests of a result given in [4]:
+
+Lemma 6. Let Go(x) = gn(a)x"+9n—1(a)x"1+---+91(a)x+90(a) be a family of real polynomials
+that depend continuously on a real parameter a € A = [ay,02] CR. Fix J = [a,b] C R and assume
+
+that:
+(i) There exists ag € A such that Gay(«) has no real roots in J.
+
+(ti) For alla € A, Go(a) + Go(b) - Ar (Ga) 4 0, where A; (Gq) is the discriminant of Go with
+
+respect to x.
+Then for alla € A, Ga(x) has no real roots in J.
+
+We will prove that the first component of g has no roots, and alternates signs at the faces
+m =m and m = 7™ of the box Zj5,11. Consider the function G,(r) = gi(m,n,r)- 9i(7,n,r). We
+will prove that G,(r) < 0 for all (n,r) € Is x Ty using Lemma [6] with A=Is and J =I.
+
+By the Sturm’s method it can be seen that the polynomial Ga(r) has only 6 different real roots
+and that none of them is in the interval [,;. Hence the hypothesis (i) is satisfied. Moreover Ga(r)
+restricted to J;; is negative.
+
+Proceeding in an analogous way, we obtain that G,(r) -G,(T) has only 4 different real roots
+and none of them belongs to I;. Hence G(r) - Gn(7) 4 0 for all n € Is. We also check that
+the discriminant A,(G,(r)), which is a polynomial of degree 192 in n, has 37 different real roots.
+Again, we prove that they are not in J; and so, we are under the hypothesis (ii) of Lemma [6
+Hence by this lemma we get that G,(r) < 0 for all (n,r) € I5 x Ii1, as we wanted to prove.
+
+Doing similar arguments and computations, we obtain that the second and third component
+
+of g do not vanish, and alternate signs on the faces n = n and n = 7, and r = r and r =F of
+T1511, respectively. See Chap. 5] for more details. Thus g(m,n,r) verifies the hypothesis of
+the Poincaré-Miranda theorem in Z1,5,11. Hence the function g, and therefore the function f, have
+
+at least one zero in this box, which is unique by construction.
+
+4.3 Analytic location of the 3-periodic points
+
+In this section we use that the parameters m, n and r associated to each periodic point are located
+
+in the 12 boxes given in (14), to obtain an analytic location of them in the (a, b)-plane.
+Lemma 7. Let m€ [m,m] andr € [r,7], and the functions a(m,r) and b(r) given by (io), then:
+
+(i) If0 <4 <7 thena := m? —F-2—4/r? < a(mr) < m—r—2—-4/F =: Z and
+
+b:=rt+4/P < W(r) <F4+4/r? =:b
+
+13
+/n/n(ii) Ifr < F <0 then a := m3 —7F-2- 4/7? < a(m,r) < mM —1r—2—4/r? =: @ and
+b:=rt4/r? < W(r) <F44/F? = b.
+
+Proof. (i) From we get that a(m,r) =m —r—2—4/r? and b(r) =r +4/r?. Notice that if
+O0<r<r<7 then —7 < —r<—r<0 and -4 < -4 < -4 < 0. Moreover, m? < m3 < m?.
+
+By combining all these chains of inequalities we get statement (i). The statement (ii) follows
+
+similarly. |
+
+By using the inequalities in (ii) of Lemma|7| we obtain, for example, that the 3-periodic point
+
+(a,b) of G, associated to the parameters (m,n,r) € Zi 5,11, satisfies a € [a,a] and b € [b, b] where
+
+14356867 15756812113129131753291751212473714621389705932746390847605145815709035232062993533718832495489341
+
+569476095846192784359152362062831837097 140979785060705 1169476345 2312581699417401160811385506316156928
+4704458230191921932309859768201143071943033062098408447 1 1007554 14697990442772197382375529104298060913286874119
+
+1866059270868804515791575090678155019012542140400238364480469557 1937407 12623709418953041434224970065510400
+
+Ip
+
+al
+
+and
+b= 3368785687 756582636 2462635517568 11406295236320753178521304454421527
+a 10710654937528498667637446691242283113536911386660380934878003200 °
+b= 6579659546399575461418490144259606329620802274396204966850496409
+
+20919247924860348960190099800217926294342327605 140376818548736
+
+By using the decimal approximation we get,
+
+a € [a,@] ~ [—25210.658115921519312682, —25210.658115921519312679],
+
+b € [bb] © [314.5265819322469464743, 314.5265819322469464749],
+
+where we observe that max(a@ — a,b — b) ~ 2.8 x 10-8.
+
+Applying Lemma
+
+each periodic point o:
+
+o each of the 12 boxes (14), we obtain rational bounds for the components
+
+minimal period 3, that are summarized in the following tables, where only
+
+co)
+the decimal expression of some significative digits is given. In all the cases t
+t
+
+1e in
+
+erval localizing t
+
+ends of the intervals coincide.
+
+1¢ 3-periodic points is smaller than 10~!’, so the given expression of both
+
+1e maximum length of
+
+1 a b | ©. a 6
+-25210.658115921519313 | 314.52658193224694647 -25080.503857555317449 | 314.36115078061939834
+-11.080089229288244821 | -29.194152462502174029 -11.094342178650567807 | -29.143225143670723223
+1.0164106270635353803 | -3.0178440371837045505 | 1.0179782228602330827 | -3.0165421366176918413
+
+O3 a b O4 a b
+
+-550.35997876621370288
+
+84.5808554734685 10676
+
+-500.969428 15695686889
+
+80.145842594816842809
+
+-13.613164340185764400
+
+-7.6737642167841728949
+
+-13.481597649423988848
+
+-7.4104176831057891201
+
+0.13590789992610542444
+
+-2.1255835876361107899
+
+0.088325991394389446424
+
+-2.0994294342645985249
+
+5 Dynamics associated to the saddle point P,
+
+In this section we study the invariant sets of the saddle point P,. First, Proposition|§] characterizes
+
+the stable set of Py. We will also give numerical evidences of the existence of homoclinic orbits,
+
+14
+/n/nthat is, initial conditions on the local unstable manifold, whose orbit converges to P2. Finally, we
+will provide numerical evidences of the existence of points on the local unstable manifold, whose
+
+orbits end in the non-definition set.
+
+5.1 The stable set of P,
+
+We denote the stable set of the fixed point P, as W*(P2) = {(a,b) € R?: limn +o. G"(a,b) = Po}.
+This set is not necessarily a manifold. For hyperbolic points, like P) there is also the so called
+local stable manifold W§,.(P2) C W*(P2), that is an actual manifold and is only defined in a small
+neighborhood of the fixed point. Our first result characterizes totally the stable set of P) and its
+
+local stable manifold.
+Proposition 8. Jt holds that
+
+W*(Py) = (Lo U {(a,b) € R? : In > 0: G"(a,b) € RU C}) \ {(-1,-D},
+where Ry = {a — b= 0}. Moreover, Wj,.(P2) is contained in Lo.
+
+Proof. Observe that Equation implies that the only initial conditions mapped by G to the resol-
+vent curve are the points of the straight line R,, except (—1,—1). Hence, to prove the proposition
+it suffices to show that L5 = Lz \ {(—1,—-1)} C W*(P2). Let us prove this inclusion.
+
+Recall that Lz C {R(a,b) = 0}. The resolvent curve R(a,b) = 0 is algebraic and has genus 0, so
+it admits rational parametrizations. For instance, if we define P(t) = (P,(t), Po(t)) = (SH, a)
+it holds that R(P;(t), P2(t)) = 0. This parametrization has been already was also used in [3| Thms
+3 and 4]. The component Ly corresponds with t € (—oo,0), and L; with t € (0,00). Some
+computations give P~!(a,b) = ape. Hence, to study the dynamics of G on the component
+LD, we need to study the one-dimensional map
+
+t (< +4)(t + 2)?
+
+(t+ 2)? e
+
+see also [3] Thm 4]. Observe that ¢ = —2 corresponds with (a,b) = (—1,—1) which belongs to the
+
+g(t) =P oGoP(t)h=W4
+
+2/3
+) , for t € Z := (—oo, 0) \ {-2},
+
+non-definition line {a + b + 2 = 0} and is excluded in our statement. The map g(t) has a unique
+
+140 4+ 207 +.827/3
+3 Co VPC +82" ~ 44111, where C = */86 +6VI7.
+
+Our objective is to prove that this fixed point is a global attractor of g(t) in TZ.
+
+fixed point in Z
+
+First we summarize some features of g(t) in Z that we will need (see Figure 3): (i) It has only
+two relative extremes (maximum) in Z given by t = —4 = 23 (t ~ —7.4641 and t ~ —0.5359
+respectively), and such that g(—4 + 23) = —4. We denote m := —4 —2V3. (ii) It holds that
+
+lim g(t) = lim g(t) = —oo. (iii) It also holds that lim g(t) = —oo. (iv) For all t € (—co,p),
+to—2+ t0- t+—00
+
+we have g(t) >t. (v) The map g has not 2-periodic points as a consequence of Theorem []] (b).
+/n/nFigure 3. Graph of the function g(t) in Z.
+
+The proof has three steps, namely (A)—(C): (A) From the properties (i) and (ii), we conclude
+g((—2,0)) = (-00, -4].
+(B) aan i) and (ii) again, we conclude that g((—oo,—2)) = (—oo,—4], hence the interval
+(—00
+
+) is invariant by g. We will study the dynamics in this interval.
+Let £ € (p,—2) be the unique value in this interval such that g(@) = m (¢ ~ —2.6675). By using
+the monotony of g, the interval [m, é] is invariant. Indeed, g([m, 4) = [9(€),9(m)] = [m, —4] c
+[m, €], see again Figure 3. Now we claim that for all t € (—oo,m) U (é,—2) there exists n > 0 such
+that tr = g"(t) € [m, 4.
+Indeed, by the monotonicity of g in (€,—2) we have that g((¢,—2)) = (—oo,m). Since for all
+t € (—o0,m), we have g(t) < —4 < ¢, then g(t) ¢ (¢,—2), hence g(t) € (—oo, £). We only need,
+
+herefore to prove the claim in t € (—oo,m). We proceed by contradiction. Consider ty € (—oo, m)
+
+and suppose that none iterate t, € [m, ¢], so that for all n > 0 we have tn € (—oo,m). From (iv),
+he sequence {t,} is increasing, and as we are assuming that it is bounded from above by m, the
+sequence must have a limit that, by continuity, must be a fixed point, which is a contradiction
+ecause there is no fixed point in (—oo, mJ. Hence the claim is proved, and we only have to study
+
+he dynamics of g in [m, ¢].
+
+C) We study now the dynamics on the interval [m,¢]. We denote mo := m and lp := @, and
+
+consider the sequences
+
+lk = (mp1) = 92(C-1) and me = G(lk) = g2(me-1)- (15)
+Observe that since g is strictly decreasing in [m, {], for k > 1 we obtain
+
+(mp1, Ck] <= g?* 1 ([m, J) and [mg, lg] = g?* ([m, J).
+
+We will prove that {m,} and {¢;,} are increasing and decreasing sequences, respectively, that
+
+converge to the fixed point p, thus proving the result.
+
+16
+/n/nSome computations show that 1 g(m) 4< fo, and that mp = m < m =
+g(€i1) = g(—4). We proceed by induction, assuming that mp_1 < mpg and fl, < €,-1. Using
+
+3
+
+lyri < ly we have mgs = g(le41) > 9(€e) = mg. Therefore, the sequences {m;,} and {¢,} are
+
+, as g is decreasing and mz_1 < mpg, we have l, = g(mp_1) > g(mx) = €e41. Likewise, since
+
+monotonous increasing and decreasing, respectively. Since both sequences are bounded, and using
+the expressions in (15), we have that both converge to a fixed point of g’. But since there are not
+
+2-periodic points, except the fixed point p, we have lim mz, = lim ¢ = p. |
+k-00 k-00
+
+5.2 Local expression of the unstable manifold
+
+In order to search numerically the homoclinic points associated to P2, we compute an approxi-
+mation of the local unstable manifold of the saddle point P, = (a2, bz). We consider the change
+u = a—ag and v = b— be, which brings P2 to the origin (0,0). We also consider the map
+
+G(u,v) = G(u + ag,v + bg) — (a2,b2) which is conjugate with G, and the linear map given by
+
+H(r,s) =L-(r,s)*, where L is the matrix formed by the eigenvectors of DG(P2). Hence
+
+L-!-DG(Py)-L= A 0 ,
+0
+
+where A; and 2 are the eigenvalues of DG(P2), given by
+
+=o ((7vI77 - 111) A234 (8 vI77 — 264) Aus ~ 768) ~ 7.0701,
+
+384
+do = = ((vir7 - 25) As (8 Vi77 -— 136) AMS 4 1280) ~ —0.4470,
+
+where A := 172 + 12 177.
+
+We compute the Taylor development of the unstable manifold associated to the origin of the
+map F(r,s) = H-!0 Go H(r,s) = (Air + O(||(r, 8)||?), A28 + O(||(r, s)||?) . The expression of the
+local unstable manifold W},(0,0) of F is s = w(r) = wor? + w3r3 + wart + wsr? + O(r8), where
+
+w2 ~ —0.00259107002218996975513519324145, w3 ~ —0.00013220529650666650558465802906,
+wa ~ —0.00000889870356674847560384348601, ws ~ —0.00000069374812274441343473691330.
+
+These coefficients have been computed using the formulas in Lemma [9] of the Appendix, by using
+floating-point arithmetic with 60 digits in the mantissa. Observe that we can parametrize Wi. (P2)
+
+using the function s = w(r), by considering
+r —> H(r,w(r)) + Po, forr~0. (16)
+
+We use this parametrization to obtain Figures 4 and 5.
+Finally, from the expression of the local unstable manifold of the origin for the map F’, we
+obtain that the points (a,b) € Wit.(P2) satisfy w(Hy!(a— az,b — bz)) — Hy '(a — az, b — ba) = 0,
+
+17
+/n/nthat can be approximated by
+
+5
+
+Dy (a, b) = 0 wi(Ay (a a2,b by)! Hy'(a— a2,b — be) =0,
+i=2
+
+where Dj(a,b) is a polynomial of degree 5 that we do not explicite for the sake of shortness, see
+
+{9| Chap. 5] for more details.
+
+5.3 Computation of the homoclinic point
+
+Previous to find a homoclinic point we remember that, by Proposition|§| any point (a,b) such that
+there exists k € N verifying G*(a,b) € Ry = {a—b = 0} NC; \ {(—1,—1)} belongs to the stable
+set of Py, since G**1(a,b) € Ly. In this sense, we have graphically observed that, except for the
+point P , there is no intersection of Wit.(P2) with the curve Ly. Also we have observed neither
+intersections of Wi{.(P2) with Ry = {a — b = 0} at the region Cj, nor points (a,b) € Wit.(P2)
+such that G(a,b) € Ry, UC), but we have seen the existence of at least one point such that
+G?(a,b) € Ry UC). See Figure 4.
+
+Imposing Gj(a,b) — Go(a,b) = 0, we find that the points (a,b) such that G(a,b) € R, satisfy:
+
+Do(a,b) = (ab+5a+5b+9)? — (a+b46)? (a+b+ 2) =0.
+
+Hence, the points such that G?(a,b) € Ry are those satisfying Do(G(a,b)) = 0, or equivalently
+D3(a,b) := numer(D2(G(a,b))) = 0, where D3(a,b) is a polynomial of degree 10 in the variable
+m= (a+b+ 2)?/3 with 22 terms, that we omit here.
+
+Therefore, the homoclinic point P must verify the system {Dj(a,b) = 0,D3(a,b) = 0}. We
+
+solve it numerically, using floating-point arithmetic with 60 digits in the mantissa, and we get a
+
+solution in [—6, —5] x [3.5, 5], given by P = (p1, p2) where
+
+Pi & —5.6775014403178943534389 1174392876990152177028290023619512062,
+p2 & 4.10574868714920935493626045239900450809925741194290963919902.
+
+By using the parametrization of Wi'.(P2) given by
+with the parameter r ~ —1.48202152087749433523.
+
+By construction, G3(P) which must lie on Ly. A computation shows that the absolute error
+
+we find that the point P corresponds
+
+when we evaluate R(a,b) on this point, is |R(G(p))| ~ 10~°8. Accordingly, the point P exhibits,
+numerically, a homoclinic behavior.
+As can be seen in Figure 4, there exists another solution of {D,(a,b) = 0, Ds(a,b) = 0} in
+
+[-8, —6] x [3.5, 5], given by P = (pi, H2) where
+
+Pi & —7.32664831286596004531700787733138125161658087249633041273728,
+p2 & 4.26205920129322448141657538934356322617112224124511704493689.
+
+18
+/n/nThe point P corresponds to the parameter value r ~ —3.14702449177907104545.
+
+Figure 4. Location of the points P,G?(P)
+and G?(P) on Wi
+
+L.(P2) (brown), the curve
+
+D3(a,b) = 0 (green), the diagonal R; (blue)
+and the resolvent curve (red), respectively.
+
+The point G(P) is outside the image.
+
+-104
+
+5.4 Computation of points in Wit.(P2)NF
+
+U
+loc
+
+To find a point in Wit.(P2) F, we solve numerically the system {Dj(a,b) =0,a+b+2=0},
+obtaining the point Q = (q1, q2), where
+
+qi & —6.15163017029193114270539883292276699558057876233980350720282, q2=—2-—q,
+
+This point corresponds with the parameter r ~ —1.96025815386161687597.
+
+To find another point with a parameter value closer to zero (hence giving a better evidence of
+really being in W,4.(P2)), we find a point Q_1 such that G(Q_1) = Q. The points (a, b) such that
+G(a,b) € {a+b+2 = 0}, verify
+
+Dy(a,b) :=5a+5b+ab4+9+(at+b4 6) Va +b+2) 4 2%/(a +b+2)4=0.
+
+By solving numerically the system {D1(a,b) = 0, Da(a, b) = 0}, we find Q_1 := (21, z2) where
+
+21 ~ —4.43931733951927306713914976146761550810750048579478327758904,
+22, & 3.98185284365899589972467095578564600569428848801825836848384.
+
+The point Q_; has an associated parameter value r ~ —0.23505956788542861108. The location
+of the above points is shown in Figure 5.
+
+Observe that the parameters of the points @, P and Q_1 are interspersed, so the points are
+also interspersed in Wit.(P2). An analytic proof of this fact would show that arbitrarily near of
+
+P» there are homoclinic points and points in F.
+
+19
+/n/nFigure 5. Location of the points Q and Q_, in
+Wit.(P2) AF; the curve D4(a,b) = 0 (green);
+
+loc
+10 the line a+b+2 =0 (blue); and the resolvent
+
+curve (red), respectively.
+
+D4(a,b)=0
+
+-104
+
+Appendix: Local unstable manifold near a hyperbolic saddle point
+
+Lemma 9. Consider the smooth map, defined in a neighborhood of the origin U:
+
+5 5
+F(a,y) = | A+ SO figa’y? + OMe). wy + SO gi2'y? + OMl\(@, VIII)
+itj=2 itj=2
+
+where
+
+A| > 1> |ul, so that the origin is a hyperbolic saddle. Let y = w(x) = ar wee + O(2®)
+
+be the expression of the local unstable manifold in a neighborhood of the origin. Then:
+
+92,0 d? 93,0 — 2. f2,092,0 — 4.93,0 + 91,192,0 W1
+
+> W3 5 > Ww : - ,
+— U 5 (A? — p) (A3 = p) 4 (d2 = py)? (03 = p) (M4 = p)
+
+we
+
+where
+
+Wa = god" + (3 f2,093,0 — 2 f3,092,0) A° + (5 £3.092,0 = 2 ga of + 92,0921) X”
++ ((6 f2,093,0 + 2 3,092.0 — 94,0) H — 2 fi1.93,9 — 3 f2,091,192,0 + 91,193,0) X*
+
+(94,017 + (—5 3.0920 + 2 f3,092,0 — 92,092,1) 6 — 2 f2,091,192,0 + 90,293.) Ny
+
+((-3 f2,093,0 + 2.940) L? + (£3.092,0 + 3 f2,091,192,0 — 2.91,193,0 — 92,092,1) H
++97,192,0) ” + (—2 f,092,007 + (2 fi193.0 + 2 f2,091,192,0) #)
+
+940? + (—F3092.0 + 91,193,0 + 92,092,1) H? + (—90,293.0 — 97,192,0) H
+
+and :
+Yio Di ay
+(0? = wy? (8 = pn) (4 = 2) 8 = 1)
+
+where p;,i = 1,2,...,13 are polynomials in the other variables of F' that we skip, although we have
+
+Ws =
+
+?
+
+used, for the sake of shortness (they are given in [9, Chapter 5]).
+
+20
+/n/nProof. Due to the particular form of the linear part of F’, the local unstable manifold W,%.(0, 0)
+
+is given by a smooth function of the form y = w(#) = wor? + w3a? + want + w5ax° + O(2%),
+
+that is, a point is on the local stable manifold if it is of the form (x,w(2x)). Imposing that
+F(a,w(x)) = (Fi(x,w(«)), Fo(x,w(x))) is also on this curve we get that the points on the local
+unstable manifold must satisfy F2(x, w(x)) = w(Fi(z, w(x))). The result follows by comparing the
+
+terms in the Taylor development of both members of the last equation. |
+
+Acknowledgements
+
+The authors are supported by Ministry of Economy, Industry and Competitiveness of the Spanish
+Government through grants MINECO/FEDER MTM2016-77278-P (first author) and DP12016-
+77407-P (AEI/FEDER, UE, second and third author). The first author is also supported by the
+grant 2014-SGR-568 from AGAUR, Generalitat de Catalunya. The third author is supported by
+the grant 2014-SGR-859 from AGAUR, Generalitat de Catalunya.
+
+References
+
+1] G. Boros, V. H. Moll. A rational Landen transformation. The case of degree six, in M. Knopp
+et al. eds, Analysis, Geometry, Number Theory: The Mathematics of Leon Ehrenpreis, Con-
+temporary Mathematics 251. AMS, Providence RI 2000, 83-91.
+
+2| G. Boros, V. H. Moll. Landen transformations and the integration of rational functions. Math-
+ematics of Computation 71 (2001), 649-668.
+
+3] M. Chamberland, V. H. Moll. Dynamics of the degree six Landen transformation. Discrete
+and Continuous Dynamical Systems A 15 (2006), 905-919.
+
+4] J. Garcfa-Saldafia, A. Gasull, H. Giacomini. Bifurcation diagram and stability for a one
+parameter family of planar vector fields. J. Math. Anal. Appl. 413 (2014), 321-342.
+
+ot
+
+L. Gardini. Homoclinic bifurcations in n-dimensional endomorphisms, due to expanding pe-
+
+riodic points Nonlinear Analysis: Theory, Methods & Applications 23 (1994), 1039-1089.
+
+6] L. Gardini, I. Sushko, V. Avrutin, M. Schanz. Critical homoclinic orbits lead to snap-back
+repellers. Chaos, Solitons & Fractals 44 (2011), 433-449.
+
+7| J. Guckenheimer, P. Holmes. Nonlinear Oscillations, Dynamical Systems, and Bifurcations of
+Vector Fields, Springer, Berlin 1997.
+
+8] W. Kulpa. The Poincaré-Miranda Theorem. Amer. Math. Month. 104 (1997), 545-550.
+
+21
+/n/not
+
+M. Llorens. Estudi de la dinamica d’algunes aplicacions al pla. Ph.D. The-
+sis. Departament de Matematiques, Universitat Autonoma de Barcelona, 2017.
+http: //www.tdx.cat/handle/10803/457716, Accessed January 10, 2018. (In Catalan).
+
+C. Miranda. Una osservazione su una teorema di Brouwer. Boll. Unione Mat. Ital. 3 (1940),
+527-527.
+
+V. H. Moll. Numbers and functions. From a classical-experimental mathematician’s point
+of view. Student Mathematical Library, 65. American Mathematical Society, Providence RI
+2012.
+
+H. Poincaré. Sur certaines solutions particulieres du probléme des trois corps. C. R. Acad.
+Sci. Paris 97 (1883), 251-252; and Bull. Astronomique 1 (1884), 63-74.
+
+H. Poincaré. Sur les courbes définies par une équation différentielle IV. J. Math. Pures Appl.
+85 (1886), 151-217.
+
+J. Stoer, R. Bulirsch. Introduction to Numerical Analysis. Springer, New York 2002.
+
+M.N. Vrahatis. A short proof and a Generalization of Miranda’s existence Theorem. Proc.
+AMS 107 (1989), 701-703.
+
+22

@@ -1,0 +1,1608 @@
+1804.04460v4 [eess.SP] 19 Mar 2022
+
+arXiv
+
+ACCEPTED BY IEEE TRANSACTIONS ON SIGNAL PROCESSING
+
+Off-Grid DOA Estimation Using Sparse Bayesian
+Learning in MIMO Radar With Unknown Mutual
+Coupling
+
+Peng Chen, Member, IEEE, Zhenxin Cao, Member, IEEE, Zhimin Chen, Member, IEEE,
+Xianbin Wang, Fellow, IEEE
+
+Abstract—In the practical radar with multiple antennas, the
+antenna imperfections degrade the system performance. In this
+paper, the problem of estimating the direction of arrival (DOA) in
+multiple-input and multiple-output (MIMO) radar system with
+unknown mutual coupling effect between antennas is investi-
+gated. To exploit the target sparsity in the spatial domain, the
+compressed sensing (CS)-based methods have been proposed by
+discretizing the detection area and formulating the dictionary
+matrix, so an off-grid gap is caused by the discretization pro-
+cesses. In this paper, different from the present DOA estimation
+methods, both the off-grid gap due to the sparse sampling and the
+unknown mutual coupling effect between antennas are considered
+at the same time, and a novel sparse system model for DOA
+estimation is formulated. Then, a novel sparse Bayesian learning
+(SBL)-based method named sparse Bayesian learning with the
+mutual coupling (SBLMC) is proposed, where an expectation-
+maximum (EM)-based method is established to estimate all the
+unknown parameters including the noise variance, the mutual
+coupling vectors, the off-grid vector and the variance vector of
+scattering coefficients. Additionally, the prior distributions for all
+the unknown parameters are theoretically derived. With regard
+to the DOA estimation performance, the proposed SBLMC
+method can outperform state-of-the-art methods in the MIMO
+radar with unknown mutual coupling effect, while keeping the
+acceptable computational complexity.
+
+Index Terms—Compressed sensing, DOA estimation, MIMO
+radar, sparse Bayesian learning, mutual coupling.
+
+I. INTRODUCTION
+
+NLIKE the traditional phased-array radar, multiple-input
+Ui multiple-output (MIMO) radar systems can transmit
+correlated or uncorrelated signals and improve the degree of
+freedom, so the recent advancement of radar technology has
+directly led to MIMO radar systems. Usually, the MIMO radar
+systems can be classified into the colocated radar and dis-
+tributed radar. In the colocated MIMO radar, the space between
+antennas is comparable with the wavelength of transmitted
+signals [1]-[3], such that the waveform diversity can be used
+
+This work was supported in part by the National Natural Science Foundation
+of China (Grant No. 61801112, 61471117, 61601281), the Natural Science
+Foundation of Jiangsu Province (Grant No. BK20180357), the Open Program
+of State Key Laboratory of Millimeter Waves at Southeast University (Grant
+No. Z201804). (Corresponding author: Peng Chen)
+
+P. Chen and Z. Cao are with the State Key Laboratory of Millimeter
+Waves, Southeast University, Nanjing 210096, China (email: {chenpengseu,
+caozx } @seu.edu.cn).
+
+Z. Chen is with the School of Electronic and Information, Shanghai Dianji
+University, Shanghai 201306, China (email: chenzm@sdju.edu.cn).
+
+X. Wang is with the Department of Electrical and Computer Engineering,
+Western University, Canada (e-mail: xianbin.wang @uwo.ca).
+
+to improve the target estimation performance. In the distributed
+MIMO radar, the distances between antennas are significant,
+so the spatial diversity of target’s radar cross section (RCS)
+provided by the different view-angles of antennas can be used
+to improve the target detection performance [4,5]. In general,
+the operation of distributed MIMO radar could be challenging
+due to the coordination and signal exchange among different
+antennas. Therefore, in this paper, a colocated MIMO radar
+system is investigated to estimate the directions of arrival
+(DOAs) for multiple targets.
+
+Traditionally, the DOA estimation can be achieved based on
+the discrete Fourier transform (DFT) of the received signal in
+the spatial domain [6], but the resolution of such technique is
+too low to estimate multiple targets using one beam. The max-
+imum likelihood-based and the subspace-based methods have
+been proposed to improve the DOA estimation performance,
+including multiple signal classification (MUSIC) method [7,8],
+Root-MUSIC method [9], and estimating signal parameters
+via rotational invariance techniques (ESPRIT) method [10].
+Additionally, the beamspace-based methods have also been
+proposed for DOA estimation [11]. For example, a beamspace
+design method is proposed in [12] for the DOA estimation in
+the MIMO radar with colocated antennas; a two-dimensional
+joint transmit array interpolation and beamspace design for
+planar array mono-static MIMO radar is proposed in [13] for
+DOA estimation via tensor modeling; a transmit beamspace
+energy focusing method is proposed in [14] for MIMO radar
+with application to direction finding. Moreover, a combined
+Capon and approximate maximum likelihood (CAML) method
+is proposed in [15] for the estimation of target locations and
+amplitudes in MIMO radar. The tensor algebra and multidi-
+mensional harmonic retrieval are investigated for the DOA
+estimation of MIMO radar [16], and an iterative adaptive
+Kronecker beamformer for MIMO radar is proposed in [17].
+However, in the subspace-based DOA estimation methods,
+only the power of received signals from targets are exploited
+to establish the target and noise subspaces.
+
+To exploit the target sparsity in the spatial domain, com-
+pressed sensing (CS)-based methods are utilized to estimate
+DOA [18]-[25]. For example, in [11], an iterative adaptive
+approach (IAA), maximum likelihood-based IAA ([AA-ML)
+and multi-snapshot sparse Bayesian learning (M-SBL) are
+given for the beamforming design based on the sparsity. The
+Bayesian approach together with expectation-maximization
+(EM) is used in M-SBL to realize the user parameter-free
+/n/nACCEPTED BY IEEE TRANSACTIONS ON SIGNAL PROCESSING
+
+method. In [26], both the SBL and the relevance vector
+machine (RVM) are proposed, and the sparse reconstruction
+theory based on SBL is developed. In [27], Bayesian com-
+pressive sensing (BCS) is developed for the sparse signal
+reconstruction with the CS measurements. In the CS-based
+method, the DOA estimation performance can be improved
+by the dense sampling grids. However, both the computational
+complexity and the mutual coherence between the columns
+in the dictionary are increased by the dense sampling grids.
+To improve the DOA estimation performance without the
+dense sampling grids, the off-grid DOA estimation method
+is proposed in [28]. To further improve the sparse estimation
+performance, an off-grid sparse Bayesian inference (OGSBI)
+method is first proposed in [29] for the DOA estimation. Then,
+by solving a specific polynomial in the off-grid DOA esti-
+mation problem, a Root-SBL method with low computational
+complexity is proposed in [30]. In [31], the perturbed SBL-
+based algorithm is proposed for the DOA estimation. A dic-
+tionary learning algorithm for off-grid sparse reconstruction is
+proposed in [32]. In [33], a grid evolution method is proposed
+to refine the grids for the SBL-based DOA estimation.
+
+However, in the practical MIMO radar system, the mutual
+coupling effect between antennas cannot be ignored [34,35].
+Therefore, the DOA estimation methods with the unknown
+mutual coupling effect have been proposed [36]-[38]. Usu-
+ally, the mutual coupling effects among the antennas can
+be characterized by a mutual coupling matrix, which is a
+symmetric Toeplitz matrix [39]-[41]. However, in the present
+papers, the effects of both off-grid in the CS-based method
+and the mutual coupling among antennas have not been
+considered simultaneously, especially, for the methods based
+on the Bayesian theory.
+
+In this paper, the DOA estimation problem in the MIMO
+radar system with unknown mutual coupling effect is inves-
+tigated. Different from the present methods, a novel sparse-
+based system model considering both the off-grid gap and
+the unknown mutual coupling effect is formulated. Then, a
+novel estimation method named SBL with the mutual cou-
+pling (SBLMC) is proposed, where an EM-based method is
+established to iteratively estimate all the unknown parameters
+including the noise variance, the mutual coupling vectors, the
+off-grid vector and the variance vector of scattering coeffi-
+cients. Additionally, we theoretically derive the prior distri-
+butions for all the unknown parameters including the target
+scattering coefficients, the mutual coupling vectors, the off-
+grid vector and the noise variance. Then, the proposed SBLMC
+is compared with state-of-the-art methods. To summarize, we
+make the contributions as follows:
+
+¢ The Sparse-based model for MIMO radar with un-
+
+known mutual coupling effect: Considering both the
+off-grid effect and mutual coupling effect, a novel system
+model of MIMO radar is formulated by exploiting the
+target sparsity in the spatial domain, so the DOA esti-
+mation problem is converted into a sparse reconstruction
+problem.
+
+e« The SBL-based method for DOA estimation with
+
+unknown mutual coupling effect: A novel SBL-based
+method (SBLMC) is proposed for the DOA estimation in
+
+Receiver
+
+Transmitter
+
+Colocated MIMO radar system
+
+Fig. 1. The MIMO radar system for DOA estimation.
+
+the MIMO radar system with unknown mutual coupling
+effect and off-grid effect. By estimating all the unknown
+parameters iteratively, the better estimation performance
+can be achieved than state-of-the-art methods.
+
+e The theoretical expressions for all unknown parame-
+ters in the SBL-based method: In the proposed SBL-
+based method (SBLMC), the estimation expressions for
+all unknown parameters including the noise variance, the
+mutual coupling vectors, the variance vector of scattering
+coefficients and the off-grid vector are all theoretically
+derived.
+
+The remainder of this paper is organized as follows. The
+MIMO radar model for DOA estimation is elaborated in Sec-
+tion II. The proposed DOA estimation method with unknown
+mutual coupling, ie, SBLMC, is presented in Section III.
+Section IV gives the simulation results. Finally, Section V
+concludes the paper.
+
+Notations: Matrices are denoted by capital letters in bold-
+face (e.g., A), and vectors are denoted by lowercase letters
+in boldface (e.g., a). I denotes an N x N identity matrix.
+E{-} denotes the expectation operation. CN (a, B) denotes
+the complex Gaussian distribution with the mean being a
+and the variance matrix being B. || + ||, || - |l2, @, Tr {-},
+vec {-}, (-)*, (-)7 and (-)# denote the Frobenius norm, the
+fy norm, the Kronecker product, the trace of a matrix, the
+vectorization of a matrix, the conjugate, the matrix transpose
+and the Hermitian transpose, respectively. C*% denotes the
+set of Mx N matrices with the entries being complex numbers.
+R{a} denotes the real part of complex value a. For a vector
+a, [a},, denotes the n-th entry of a, and diag{a} denotes a
+diagonal matrix with the diagonal entries from a. For a matrix
+A, [A],, denotes the n-th column of A, and diag{A} denotes
+a vector with the entries from the diagonal entries of A.
+
+Il. MIMO RADAR MODEL FOR DOA ESTIMATION
+
+As shown in Fig. 1, we consider a colocated MIMO radar
+system, where M transmitting antennas and N receiving an-
+tennas are adopted. In the MIMO radar system, the orthogonal
+signals are transmitted by the antennas, and the waveform in
+the m-th (m = 0,1,...,—1) transmitting antenna is s,,,(t).
+Assuming that /¢ far-field point targets in the same range cell
+are detected, we will consider the DOA estimation problem
+for these targets. The angle of the k-th (k = 0,1,...,& —1)
+/n/nACCEPTED BY IEEE TRANSACTIONS ON SIGNAL PROCESSING
+
+target is denoted as @;. Therefore, under the assumption
+of narrowband signals, the received signals during the p-th
+(p = 0,1,...,P —1, and P denotes the number of pulses)
+pulse can be expressed as
+
+K-1
+
+yp(t) = S- InpCxbx) [Cra(,)]" s(t — Tr — Te) + vp(t)
+k=0
+
+(tr +7R <t<tr+7R+Tp), a)
+
+where Tp denotes the pulse duration, v,(t) +
+
+[vp.o(t), vpr(t)s +s %p,.n—1(t)]" denotes the additive white
+Gaussian noise (AWGN), and 7;,, denotes the scattering
+coefficient of the k-th target during the p-th pulse. tp denotes
+the signal propagation time delay between the transmitter and
+the range cell, and tg denotes the delay between the range
+cell and the receiver. The received signals and transmitted
+signals are respectively defined as
+
+yp (t) 4 [yo(t), w(t), vee syn-i(t)]", (2)
+a(t) © [so(t),s1(8),---58ar-1(8)] (3)
+
+The steering vectors of the transmitter and receiver are respec-
+tively denoted as
+
+T
+5 aT 5. (M—Ddr
+a() © [rein Fsine,. | gieG2esine] | (4)
+T
+on 8 om iN—Dde gi
+6(0) © [1 672388, gfe sina] . 6)
+
+where dy and dp denote the distance separation between
+two neighboring antennas in the transmitter and receiver,
+respectively, and \ denotes the wavelength. Cp € C’*™
+and Cp € CX*% denotes the mutual coupling matrices in the
+transmitter and receiver, respectively. The mutual coupling ma-
+trix Cy is a symmetric Toeplitz matrix, and can be expressed
+as [41]
+
+1 Cra CT,M-1
+Cr 1...) erm-2
+Cr= . Lo, . : (6)
+Cr,M-1 CrA 1
+
+where cry,, denotes the m-th entry of a vector cr 4
+
+T .
+[ero, CTlye ees cr,m—1] . Alternatively, the entry of C’y at the
+m-th row and m-th column can be also written as
+
+1,
+Crmym! =
+CT,|m—m'|>
+
+Using the same method, we can obtain the expression of Cr.
+
+Since the orthogonal signals are adopted in the transmitting
+antennas, we can use M/Z matched filters corresponding to the
+M orthogonal signals to distinguish the orthogonal signals. We
+estimate the parameters of targets at a specific range cell, so
+the delays rr and 7p are omitted. Therefore, passing the m-th
+matched filter (designed for the m-th signal) [1], the received
+
+mem a)
+
+otherwise
+
+signals r,(t) from the same range cell are sampled at Tp and
+obtained as
+
+J so(t)sin (tat
+
+K-1 :
+Tram = S> Ye,pCrbOx) [Cra(O)]" | J 8m(t)sin (tat
+k=0 .
+J sar—1(t)sh (t)dt
+eee
+em
+J epo(t) sth (tat
++ | fUp,m(t)sih (t)dt (8)
+J vp, (t) sth (dt
+vite a
+K-1 -
+= YO ep CRb(Ox) (Cra(O,)]" eM + tp .m
+k=0
+K-1
+= > Vke.p [CTa(Px) | mn CRO(Ok) + Npms
+k=0
+
+where e” is a M x 1 vector with the m-th entry being 1
+and others entries being zeros, and n»,m is the additive noise.
+
+Collect rpm into a matrix, and we can obtain
+
+T
+r
+rf! K-1
+RypS) | = YP ye pCra(Ox) [Cxb(9)]" + Np
++ : k=0
+T,M-1
+(9)
+where the noise matrix is defined as N, 4
+[Mp,0; Rpts +++ s Mp Me |’. Vectorizing the receiving signal
+
+matrix into a vector r, = vec {Rp}, we can obtain
+
+K-1
+
+rp = D> rep vee {Cra(x) [Cxb(Oe)]"} + mp (10)
+k=0
+
+K-1
+= YS rep [Cxb(O%)] @ [Cra(x)] + rp;
+k=0
+where n, = vec {Np}.
+Alternatively, the received signal r, can be also rewritten
+into a matrix form
+
+rp = Ay, +N, (11)
+
+where Yp [Yp,05 Yp.t> oo pK-1]". A
+[50,61,...,6«—1], and
+
+5x 4 [Cab(Ox)] ® [Cra(%)] (12)
+
+= [Cr ® Cy] [b(9.) ® a(x) -
+
+By defining C = Cp ® Cy and d(6,) = b(6;,,) @ a(O;), we
+have
+
+A = C [d(90),d(01),...,d(0x-1)] = CD, (13)
+/n/nACCEPTED BY IEEE TRANSACTIONS ON SIGNAL PROCESSING
+
+where D = [d(0o),d(01),...,d(0—1)]. Therefore, the re-
+ceived signal with mutual coupling effect can be formulated
+by the following model
+
+Pp = CD, + Np. (14)
+
+To simplify the formula with the mutual coupling matrix in
+(14), we will use the following lemma:
+
+Lemma 1. For complex symmetric Toeplitz matrix A =
+Toeplitz {a} € C!*™ and complex vector c € CM**, we
+have [41]-[43]
+
+Ac = Qa, (15)
+
+where a is a vector formed by the first row of A, and Q =
+Q, + Qe with the p-th (p = 0,1,...,M — 1) row and q-th
+(q =0,1,..., 44 —1) column entries being
+
+Cp+q, DtGSM-1
+= : 16
+Qilpa {° otherwise : (16)
+
+Cp-q, P 2q2l
+. = . 17
+Qalna {° otherwise (17)
+Based on Lemma 1, 6; can be rewritten as
+
+5x = [Crb(Ox)] ® [Cra(Gx)] (18)
+
+= [Q,(9x)er] © [Qa(%)er]
+= [Q, (x) ® Q, (9) ¢,
+
+where c = cr ® cr, and the m-th entry of cr and the n-th
+entry of Cp respectively are
+
+1, m=0
+[erlm = fe otherwise ’ (19)
+1, n=0
+[er}n = fe, otherwise © (20)
+Q,(9%) and Q,(6;.) can be obtained as
+Qa (Px) = Qai (9%) + Qa2(9), (21)
+Qi (Fi) = Qi (Px) + Qro(e), (22)
+
+where the p-th row and g-th column entries of Q,, (9x),
+Qe2(9r), Qyi (Ox) and Qyz (A) respectively are
+
+Ai )Ip+a PtISM—1
+= 23
+Qala { otherwise ; (23)
+a(O)|p—q, PZQZ1
+= ; 24
+Qaaloa {" otherwise © (24)
+bn )Iprg D+QSN-1
+= ; 25
+Quo {? otherwise (5)
+bx)|p-q, PZQZ1
+= , . 26
+Qraloa {° otherwise (26)
+Therefore, we have
+A=Q[Ix @¢l, (27)
+
+where
+
+Q = [Q,(40) ® Q, (0), --- Q,(Ox-1) @ Qa(Ox-1)] -
+
+(28)
+Then, the received signal in (14) can be rewritten as
+Pp =Q (Lk @€)%y + Np
+=Q(% Be) + Mp. (29)
+
+Collect the P pulses into a matrix, and the received signal
+can be finally obtained as
+
+R=Q [19671 96---,Yp-1 SE] +N
+
+=QTec)+N, (30)
+os Mp_i],
+ra [0.715 a Yp-i]; and the u-th row and p-th column
+of T is denoted as I’,,,,. In this paper, we will estimate the
+DOAs from R with the unknown mutual coupling vector c,
+the target scattering coefficients I and the noise variance o?.
+
+III. DOA EsTIMATION METHOD WITH UNKNOWN
+MUTUAL COUPLING
+
+A. The Off-Grid Sparse Model
+
+Discretize the angle of detection area into U grids ¢ ©
+[Co,¢1,.--,¢v—1], and the u-th discretized angle are denoted
+as ¢,. Then, a dictionary matrix can be formulated as
+
+wv A [®(6o), 8(41), i ,B(Gv-1)] € CMNXUMN (1)
+where ®(¢,,) = Qy(Gu) @ Qa(Gu), and the space between
+discretized angles, also known as grid size, is 6 & Guta — Cul.
+For the dictionary matrix W, the restricted isometry property
+(RIP) with constant 6,, is defined as [44]
+
+(1-42) llarllo < al|z <(1+de)|el2, G2)
+
+for all w-sparse vector « (~w = KMN). If a is w-sparse
+and W satisfies d25 + 632 < 1, then & is the unique ¢)
+minimizer [45]. However, the tight RIP constant of a given
+matrix W is difficult to compute, so we calculate the minimum
+DOA separation for multiple targets. As described in [46], in
+our scenario (the system parameters are given in Section IV),
+the minimum DOA separation can be obtained as 9.67°.
+
+However, for the k-th target, the DOA is 6; and is not at the
+discretized grids exactly, so the sub-matrix for the k-th target
+can be approximated by
+
+B(9e) = Bu, + (Ge — Sux))
+
+x lao + (Oe — Cur)
+
+8Q,(6) |
+6=Cuy
+
+|
+
+(33)
+
+9Q,(9)
+
+® aC
+
+Qa(Gux) + (9% ~ Gur)
+
+& B(Guz) + (ke = Guy, A(Guy) +
+
+/n/nACCEPTED BY IEEE TRANSACTIONS ON SIGNAL PROCESSING
+
+Fig. 2. Graphical model of SBLMC (rectangles are the hyperparameters,
+circles are the radar parameters and signals).
+
+where ¢,,, is the discretized grid angle nearest to the target
+DOA @;, and we define the first order of derivative as
+
+0Q.4(9)
+ag
+
+Cun) = Q(Su.) ®
+
+9Q,()
+ag
+
+C=buy
+
++ ® QaGux)-
+
+| (34)
+C=C
+
+By formulating a sparse matrix X ¢€ CY*? with the
+columns x, (p = 0,1 , P — 1) having the same support
+set, ie., X 4 [
+approximated by a sparse-based model
+
+Rw [V+ SE (diag {v} @Iyn)|\(X @c)+N, (35)
+
+where & © [Q(¢o), Q(G1),...,@(Gu—1)], and the u-th sub-
+matrix can be also written as ©,, 4 Q(¢,,) to simplify the
+notation. The u-th row and p-th column of sparse matrix X €
+
+CUxP is
+T, U = Uk
+X,pad ter , 36
+wep { otherwise (36)
+and the u-th entry of the off-grid vector v € RU*? is
+Oi — Cups U= UE
+Vy = Suge U aul : (37)
+0, otherwise
+
+Finally, by absorbing the approximation into the additive
+noise, the off-grid sparse model in the MIMO radar with
+unknown mutual coupling effect can be described by a sparse
+model
+
+R=TY(v)(X @cr®er) +N, (38)
+where Y(v) &£ W + S(diag{v} @Iyn). With the re-
+ceived signal R, we can estimate the target DOAs 6; (k =
+0,1,..., — 1) with the unknown parameters including the
+sparse matrix X, the off-grid vector v, and the mutual
+coupling vectors cr and cr. The DOAs can be obtained from
+the support sets of X, the target scattering coefficients are
+obtained from the nonzero entries of X, and the mutual
+coupling matrices can be obtained from cy and cp.
+
+B. Sparse Bayesian Learning-Based DOA Estimation Method
+
+In this paper, we propose an SBL-based method to estimate
+the target DOAs with unknown mutual coupling effect, and
+the proposed method is named as SBL with the mutual
+coupling (SBLMC). The graphical model of SBLMC is given
+in Fig. 2, where the unknown parameters are determined by the
+hyperparameters, and the received signal S' is determined by
+radar parameters and signals. To realize the SBLMC algorithm,
+the distribution assumptions are given as follows.
+
+We assume that the additive noise is white (circularly
+symmetric) Gaussian noise with the noise variance being 02,
+and the distribution of noise can be expressed as
+
+U-1
+
+p(N\o;,) = Il CN(n)|0mnx1.%,2un), (39)
+u=0
+where the complex Gaussian distribution is defined as
+1 Hy-1
+,d) = =e (ea) 40
+CN (#\a,®) = Taree (40)
+
+2 is unknown, by defining a
+
+When the noise variance o7,
+hyperparamter, i.e., the precision, An 4 Oo, 2. a Gamma
+distribution can be adopted to describe the inverse of noise
+
+variance
+
+P(Qn) = (An; a, 6), (41)
+
+where a and b are the hyperparameters for a,, and
+G(an;a,b) Tol (a)btae bene | (42)
+T(a) 4 [ a te-"dx. (43)
+
+Note that the Gamma distribution a, ~ G6(an;a,b) is a
+conjugate prior of the Gaussian distribution given mean with
+unknown variance x ~ N‘(2|0,a;,1), so the posterior distri-
+bution p(a,,|z) also follows a Gamma distribution. Therefore,
+the assumption of Gamma distribution for the precision a,»
+can simplify the following analysis.
+
+When the scattering coefficients I are independent among
+snapshots, we can also assume that the sparse matrix X
+follows a Gaussian distribution
+
+P-1
+P(X|Ae) = [] CN (ap|Ovx1, Ax),
+
+p=0
+
+(44)
+
+where A,, € RY*Y is a diagonal matrix with the u-th diagonal
+entry being Oo Usually, the sparseness prior is the Laplace
+density function [26,27], but the Laplace prior is not conjugate
+to the Gaussian likelihood. Therefore, for simplification, we
+use the Gaussian prior for the sparse matrix X and obtain the
+estimation expressions in closed form. Then, by defining the
+
+precision B = [Bo, Bi... ,Bu-i]" and 8, = o72, we have
+the following Gamma prior for 3
+U-1
+
+(45)
+
+p(B;¢,4) = T[ 6(Bus6,4),
+u=0
+
+where c and d are the hyperparmaters for 3.
+/n/nACCEPTED BY IEEE TRANSACTIONS ON SIGNAL PROCESSING
+
+Similarly, when the mutual coupling coefficients are inde-
+pendent with antennas, we can also assume that the mutual
+coupling vectors cr and cr follow Gaussian distributions
+
+M-1
+
+pler|Ar) = [] CN Cern|0; of ns (46)
+m=0
+N-1
+
+perlAr) = TT CA (ce.nl0, 28, n): (47)
+n=0
+
+where Ay € R™*™ js a diagonal matrix with the m-th
+diagonal entry being o%,,,, and Ap € R*% is a diagonal
+matrix with the n-th diagonal entry being ORn- Define the
+precisions Oy & [Or 0,011, eey (tm = Or, 2)
+and Jp = [Oro ORs +++ Oe.w—1] (rn * ORD): Then, we
+can have the following Gamma distributions
+
+Pr,m—1] r
+
+M-1
+
+p(Or; e1, fi) = Il G(0t mi er, fi); (48)
+m=0
+N-1
+
+P(OR; e2, fz) = Il G(URn5 €2, fe), (49)
+n=0
+
+where both e; and f; are the hyperparameters for Yr, and
+both e2 and f2 are the hyperparameters for 0p. Usually, we
+can choose the following values a= b=c=d=e, = fi =
+
+= f2 = 10~? as the hyperparameters. As shown in [26], the
+small values for hyperparameters are chosen and not sensitive
+to specific values [47].
+
+The off-grid parameter v follows a uniform prior distribu-
+tion, and the distribution of the u-th entry 1, can be expressed
+
+as
+1.1
+D(Vu;5) = Un, ([-36 |) ; (50)
+where we have
+a <a<b
+Up ([a,b]) £4 Re STS 0 51
+([a,6)) { otherwise GD)
+
+The relationships between parameters are shown in Fig. 2.
+To estimate the DOAs, we can formulate the following prob-
+lem to maximize the posterior probability with the received
+signal
+
+& = arg max p(|F), (52)
+where we use a set X 4 {X, V, Cr, CR, o BS to contain all
+the unknown parameters. However, the problem of posterior
+probability cannot be solved directly, so an EM method is
+adopted to realize the sparse Bayesian learning.
+
+To obtain the posterior distribution of X, we first calculate
+the joint distribution for all the parameters
+
+p(R, X) = p(R|X)p(X|B)p(er|9r)p(er|Ir)P(an)
+
+P(B)p(9r)p(Or)p(v). (53)
+
+Therefore, with the parameters a,,, 3, Ur, Vp, V, Cr and Cr,
+the posterior for X can be obtained as
+
+p(X|R,v, cr, cr, An, 8, Or, OR)
+p(R, X)
+p(R, Vv, cr, cr, An, 3, Or, OR)
+p(R|X)p(X |B)
+p(R\v, cr, CR, An, B, Or, OR)’
+
+where p(R|X) and (X|) can be calculated as
+
+(54)
+
+P-1
+TL ON lV) (a @ ©), 07 Taw)
+
+mo
+
+P(R|X) =
+
+aMN >
+_ “112 Ee  onlltp—T(v)(@p@e)||2
+cane ,
+
+P-l
+Il CN (ap|Ou x1, diag{B}~*)
+
+p=0
+
+(55)
+
+p(X|B) =
+1 /U-1
+_ “1 [ (I a) 3 =e* diag{B}axp_ (56)
+Since the denominator in (54) is not a function of X, the
+posterior distribution of X can be simplified as
+p(X|R, v, cr, CR, An, B, Or, OR) x p(R\X)p(X |B). (57)
+
+Both p(R|X) and p(X|G) are Gaussian functions, so the
+posterior for X can be also expressed as a Gaussian function
+
+p(X|R, v, cr, cr, On, 3, Or, OR) x p(R|X)p(X |B)
+
+P-1
+x [] evant ee)
+p=0
+
+(Iu @c)xp||3—x} diag{B}x,
+
+P-1
+2 TT CM (plu Ex), (58)
+p=0
+where the mean yz, and covariance matrix x are
+My = mBx(Iu ® Coen G9)
+Dx = [an(Iy @e)# YN (vy Ue @e)+ diag{A}] *
+(60)
+
+and we use /p,, to denote the u-th entry of y.,.
+
+To calculate Xx and ps, we need to estimate the mu-
+tual coupling vectors cr and cp, the off-grid parameter
+vy, and the precisions a, and @. We can use the max-
+imum posterior probability (MAP) method to maximize
+DV, Cr, CR, An, B, OT, OR|R). We have
+
+P(V, Cr, CR, An, B, Or, OR|R)p(R)
+
+= PV, Cr, Cr, On, B, Vr, OR, R), (61)
+so maximizing p(Vv, cr, cr, An, 3, Ur, YR|R) is equivalent to
+maximizing p(v, cr, cr, An, 3,07, Or, R). The EM method
+can be used to solve the MAP estimation by treating X as
+a hidden variable. Before estimating the parameters, we will
+/n/nACCEPTED BY IEEE TRANSACTIONS ON SIGNAL PROCESSING
+
+first obtain the likelihood function under the expectation with
+respect to the posterior of X
+
+L(V, cr, CR, An, 8, OT, OR)
+© Ex| Rv ,c1,en,0n,8,01,9, (P(X, Vr, Ox, R)}.
+To simplify the notation, we just use E{-} to represent
+EX|R,v,cr,cR,0n3,01,9{'}> SO the likelihood function can be
+simplified as
+L(V, Cr, CR, On, 3, Or, BR)
+= E{ np(R|X)p(X|B)p(cr|Pr)p(cr|Ox)p(an)
+p(B)p(9r)p(PR)p(v)}. (63)
+
+In the following contents, we will give the expressions for
+all the remaining unknown parameters.
+
+(62)
+
+1) For the mutual coupling vector er, ignoring terms inde-
+pendent thereof, we can obtain the following likelihood
+
+function
+L(er) = € {Inp(R|X, v, er, cr, On) p(er|Vr)}
+=E {m Tl CN (rp|L(v)(ap ® ©), cian}
+"he
+
++In T] CX (erm|0, Pm)
+
+m=0
+
+x van? Mo ee)! Y"(v)T(v) (Iu @ e)Ex}
+- y On||tp — L(Y) (Hy ® ©) 13
+p=0
+M-1
+- > PrmlCrml- (64)
+m=0
+©) are
+given. By setting oeter = =o, cr can be obtained as
+cr = Hy‘ 21, (65)
+where
+P-1
+Ay= > an TEL" (v)L(v)(u, @ cr ® In)
+p=0
+U-1U-1 H
++ anPGE (= So VE) Te (V)Ex, ws)
+p=0 k=0
+(cr ® Ins) + diag{0r}, (66)
+and
+Pe
+zr = So anTEY" (v)rp, (67)
+p=0
+Ty [e, @er@e\,.. My @cr@exy_,], (68)
+Gr [cr @ev cr@eM,..., cr @ eM i]. (69)
+
+2) For the mutual coupling vector cr, using the same
+method with cy, we can obtain
+
+CR = HR’ zr, (70)
+
+3)
+
+4)
+
+5)
+
+where
+P-1
+AR = > an TRY" (Vv) T(r) (u, @In ® cr)
+p=0
+U-1U-1 H
++ anPGR (= SO VEO) Te(V)Ex.e »)
+p=0 k=0
+(In ® er) + diag {Vr}, (71)
+and
+ZR= > anTRY (Vv) rp, (72)
+Tr = [p, @ eh! @er,.--;M@yp DEN, @er], (73)
+Gr [eq @er,eNer,.. .,eN_1€r] . (74)
+
+For the precision (@ of scattering coefficients, ignoring
+terms independent thereof, we can obtain the likelihood
+function
+
+L£(B) = E {In p(X|B)p(B)}
+
+P-1
+=€ {» Il eMe0.1-8.)) +n [] 6(Gu;¢,4).
+
+p=0 u=0
+(75)
+
+By setting “ae = 0, the u-th entry of @ can be
+obtained as
+P+e-1
+Bu (76)
+
+d+ POxauu t+ Dp o lupl2-
+
+For the precision a, of noise, ignoring terms indepen-
+dent thereof, we can obtain the likelihood function
+
+L(an) = € {Inp(R|X,v, cr, cr, On)p(an) }
+P-1
+=E {» Il CN (rp|¥(v) (tp ® cr ® en.ats)}
+p=0
++ In G(an; a,b). (77)
+By setting Fen) = 0, we can obtain
+MNP+a-1
+n= ’ 78
+° PM +My +b (78)
+where
+me Tr{(Iv ® c)®Y"(v)Y(v)(Iu ® e)Ex}, (79)
+MN. = ||R- L(v)(u@ €)|Ib, (80)
+1 [Wo; Miss pa] - (81)
+
+For the precision 87 of mutual coupling vector, ignoring
+terms independent thereof, we can obtain the likelihood
+function
+
+L(Br) = E {In p(er|Pr)p(Fr)}
+
+M-1
+=€ {» TI CM Cerml0. va}
+
+m=0
+M-1
++1n Il G(0r ms er, f1)-
+
+m=0
+
+(82)
+/n/nACCEPTED BY IEEE TRANSACTIONS ON SIGNAL PROCESSING
+
+26(00) _
+
+By setting
+Oy as
+
+= 0, we can obtain the m-th entry of
+
+€1
+
+Om = ==
+, H .
+fi + Chm €t,m
+
+(83)
+6) For the precision 3p of mutual coupling vector, using
+
+the same method, we can obtain the n-th entry of Bp as
+e2
+
+ar (84)
+fo+ ch CRin
+
+Rn =
+
+7) For off-grid v, ignoring terms independent thereof, we
+can obtain the likelihood function
+
+L(v) = E {Inp(R|X,v,cr,cr,an)p(v)}. (85)
+By setting Sev) = 0, we can obtain
+v=H"'z, (86)
+
+where the entry of the u-th row and m-column in H €
+RUXY is
+
+P-1
+Hum = nf (Pam +> But) "ats.c}
+
+p=0
+(87)
+and the u-th entry of z € RU*? is
+= -> R{ [rp U(u, @e)| *Buttupe}
+p=0
+
+U-1
+=~ SE R{PExumetW Buc}. (88)
+
+m=0
+
+The details to obtain v are given in Appendix B.
+
+In Algorithm 1, we show the details about the proposed
+method SBLMC to estimate the DOAs with unknown mutual
+coupling effect. In the proposed SBLMC algorithm, after the
+iterations, we can obtain the spatial spectrum Px of the sparse
+matrix X from the received signal R. Then, by searching all
+the values of Px, the corresponding peak values can be found.
+By selecting positions of peak values corresponding to the
+maximum values, we can estimate the DOAs of targets, where
+we use ¢ + vas the discretized angle vector.
+
+IV. SIMULATION RESULTS
+
+In this section, the simulation results about the proposed
+method for DOA estimation in the MIMO radar system are
+given, and the simulation parameters are given in Table I.
+For the proposed SBLMC algorithm, the maximum iteration
+is Niter = 10° and the stop threshold is 4 = 1073. All
+experiments are carried out in Matlab R2017b on a PC with
+a 2.9 GHz Intel Core iS and 8 GB of RAM. Matlab codes
+have been made available online at https://sites.google.com/
+site/chenpengdsp/publications.
+
+First, we show the estimated spatial spectrum of 3 targets.
+As shown in Fig. 3, 3 present methods including off-grid
+sparse Bayesian inference (OGSBI) [29], Bayesian compres-
+sive sensing (BCS) [27] and MUSIC [8], have compared
+with the proposed SBLMC method. With the mutual coupling
+effect, the traditional MUSIC method cannot achieve better
+
+Algorithm 1 SBLMC algorithm to estimate the DOAs with
+unknown mutual coupling effect
+1: Input: received signal R, dictionary matrix W, the first
+order derivative of dictionary matrix =, the number of
+pulses P, the maximum of iteration Nite, stop threshold
+Mtn:
+2: Initialization: ep = Or = [1,01x(u—1]", er = OR =
+11,01. (w-1l’, Q», = 1, the hyperparameters a = b =
+Cc d e1 fi e2 fe 10-2, v
+B=1vyxi, titer = 1, A = || RIlZ-
+3: while titer < Niter or A < An do
+Tv) — © + & (diag {v} @ Iu).
+5: Obtain yw, (p = 0,1,...,P—1) and Xx from (59) and
+(60), respectively.
+6: Obtain the spatial spectrum
+
+Ouxa,
+
+RS
+
+Px = R {diag{Ex}} + 5 1s IspI?, (89)
+Po 0
+T
+where |p| © [|Mp,ol; Mpls -»- + [ép.u—a]
+
+7; ' — B, and update from (76).
+
+: Update er and cr from (65) and (70), respectively.
+9: Update 3p and Jp from (83) and (84), respectively.
+10: Estimate v from (86).
+
+11: Update a,, from (78).
+
+12: if titer > 1 then
+. ||]B—B' ||2
+1: \= "RT
+
+14: end if
+
+15: titer titer + 1.
+
+16: end while
+
+17: Output: the spatial spectrum Px, and the DOAs (¢ + v)
+can be obtained from the positions of peak values in Px.
+
+I—SBLMC
+I— Target DOA
+
+Spatial spectrum
+
+10°
+
+-80 -60 -40 -20 0 20 40 60 80
+
+DOA (deg)
+
+Fig. 3. The spatial spectrum for DOA estimation.
+/n/nACCEPTED BY IEEE TRANSACTIONS ON SIGNAL PROCESSING
+
+10!
+
+[—sBLMC
+| Target DOA
+|—Capon-like method
+10° | EMUSIC-like method
+© CS-based method (LI norm )
+
+107
+
+Spatial spectrum
+
+80 -60 -40 -20 0 20 40 60 80
+DOA (deg)
+
+Fig. 4. The spatial spectrum of the proposed method is compared with that
+of the present methods in DOA estimation.
+
+-@- SBLMC (2°)
+~ -OGSBI
+AO A BCS
+Zz =f MUSIC
+a —CRLB
+E -20 "*** SBLMC (1°)
+<
+g
+3S.
+E 40
+6
+<
+rs) -60
+Qa
+-80 1 1 1
+-20 -10 10) 10 20
+SNR (dB)
+
+Fig. 5. The DOA estimation performance with different SNRs.
+
+-15
+-@SBLMC
+-20F | s-OGSBI
+LA-BCS
+-25 7 |e MUSIC
+
+&
+
+DOA estimation error (dB)
+é& to
+
+x
+
+n
+a
+
+-14 -12 -10 -8 -6 4 -2
+Mutual coupling between adjacent antennas (dB)
+
+Fig. 6. The DOA estimation performance with different mutual coupling
+effects.
+
+TABLE I
+SIMULATION PARAMETERS
+Parameter Value
+The signal-to-noise ratio (SNR) of echo signal 20 dB
+The number of pulses P 100
+The number of transmitting antennas 10
+The number of receiving antennas Nv 5
+The number of targets A” 3
+
+The space between antennas dp = dg 0.5 wavelength
+The grid size 6 2°
+
+The detection DOA range [-80°, 80°}
+The hyperparameters a, b, c,d, e1, f1,e2, fa 10-2
+The mutual coupling between adjacent antennas —5 dB
+
+10
+
+-2-SBLMC
+-4-OGSBI
+BCS
+
+DOA estimation error (dB)
+ne)
+
+-5( 1 1 1
+2 4 6
+
+Grid size (deg)
+
+oo
+
+10
+
+Fig. 7. The DOA estimation performance with different grid sizes.
+
+TABLE II
+ESTIMATED DOAS
+
+Methods Target 1 Target 2 Target 3
+Target DOAs = 4.3075° =. 27.0740° —- 49.3603°
+SBLMC 4.2746° —.27.2441° — 49.4521°
+OGSBI 1.8636° —-25.6868° —-50.7775°
+BCS 2.0000° —26.0000° ~—_50.0000°
+MUSIC 2.9929° 25.7086 550.1324°
+
+performance. Since the present Bayesian methods (OGSBI
+and BCS) have not considered the mutual coupling effect,
+the estimation performance cannot be further improved. The
+proposed SBLMC considers both off-grid and mutual coupling
+effects, can achieve the best spatial spectrum and improve
+the DOA estimation performance. In Table II, we give the
+estimated DOAs with different methods. We use the following
+expression to measure the estimation performance
+
+€ © 10 logy | — 4l|3 (4B), (90)
+where 6 denotes the estimated DOA vector and @ is the target
+DOA vector. Both @ and @ are in rad. The estimation errors of
+OGSBI, BCS and MUSIC methods are —25.20 dB, —26.78 dB
+and —28.94 dB, respectively. Since the mutual coupling effect
+has not been considered, the DOA estimation performance of
+/n/nACCEPTED BY IEEE TRANSACTIONS ON SIGNAL PROCESSING
+
+these 3 present methods almost the same. However, the DOA
+estimation error of the proposed SBLMC is —49.31 dB, which
+is significantly better than the present methods.
+
+Additionally, the DOA estimation performance of the pro-
+posed SBLMC method is compared with present methods in
+Fig. 4. The CS-based method (L1 norm) is proposed in [24,48],
+where the DOA estimation problem is converted into a sparse
+reconstruction problem via ¢; minimization. The MUSIC-
+like method is proposed in [41], where the mutual coupling
+effect is considered in the MUSIC-like method. The Capon-
+like is proposed in [15] for the DOA estimation in MIMO
+radar systems. As shown in this figure, the proposed method
+achieves the best DOA estimation performance in the scenario
+with unknown mutual coupling effect by estimating all the
+unknown parameters iteratively in the SBL-based method.
+However, the disadvantage of the proposed method is higher
+computational complexity than these present methods.
+
+We also show the DOA estimation performance with differ-
+ent signal-to-noise ratios (SNRs) in Fig. 5. As shown in this
+figure, when SNR < —10 dB, all the methods cannot work
+well, and the performance is almost the same. When SNR >
+—10 dB, the DOA estimation performance of present methods
+including OGSBI, BCS and MUSIC cannot be improved,
+and the estimation errors are around —28 dB. However, with
+improving SNR, the estimation performance of SBLMC can
+also be improved, and the final estimation error can be lower
+than —50 dB with SNR > 5 dB. With the Cramér-Rao lower
+bound (CRLB) in [49], Fig. 5 also shows the corresponding
+CRLB of DOA estimation. As shown in this figure, when
+SNR > 5 dB, the proposed method can approach CRLB.
+In Fig. 5, the curve “SBLMC (2°)” is the SBLMC method
+with the grid size being 6 = 2° and the curve “SBLMC (1°)”
+is that with the grid size being 5 = 1°. From the curves,
+we can see that the estimation performance of SBLMC can
+approach the CRLB with the dense sampling grids (6 = 1°).
+Therefore, the reason why the estimation error cannot be
+further reduced (error floor) is that the spatial spectrum is
+discretized to find the peak values and the discretized grids
+cannot be infinitely small. The proposed SBLMC method can
+improve the estimation performance, but the improvement is
+limited by the grid size.
+
+Then, we also show the mutual coupling effect on the DOA
+estimation in Fig. 6, where the mutual coupling effect between
+adjacent antennas is from —15 dB to —2 dB. With increasing
+the mutual coupling effect, the DOA estimation error of BCS
+is from —34 dB to —28 dB. Since the grid effect in the BCS
+method, decreasing the mutual coupling effect cannot further
+improve the estimation performance when the mutual coupling
+between adjacent antennas is less than —8 dB. However, for
+both OGSBI and MUSIC methods, decreasing the mutual
+coupling effect can decrease the estimation error from around
+—25 dB to around —50 dB. For the proposed methods, since
+the mutual coupling vectors ce; and cp are estimated, the
+mutual coupling has limited effect on the DOA estimation
+performance, and the estimation error can be lower than —50
+dB when the mutual coupling between adjacent antennas is
+less than —2 dB.
+
+We show the DOA estimation performance with different
+
+TABLE III
+COMPUTATIONAL TIME
+Methods Time (one iteration) Number of iterations Total time
+SBLMC 412s 139 537.71 s
+OGSBI 2.66 s 146 374.79 s
+BCS 0.17 s 147 17.23 s
+MUSIC - - 80.31 s
+
+grid sizes in Fig. 7, where the space between adjacent dis-
+cretized angles 5 is from 2° to 10°. Since the BCS method
+has not considered the off-grid effect, the worst estimation
+performance is achieved in these 3 methods. Both BCS and
+OGSBI methods have not considered the mutual coupling, so
+when the grid size 6 is less than 6°, the estimation performance
+cannot be improved. However, for the proposed SBLMC, with
+decreasing the gird size 6 from 10° to 2°, the estimation error
+can be decreased from —8 dB to —50 dB.
+
+Finally, we compare the computational time of the pro-
+posed SBLMC method with that of the present 3 methods in
+Table III. All the methods have not been further optimized
+to decrease the computational time. Without the additional
+simplifications, the computational complexities of SBLMC in
+Step 5, Step 8 and Step 10 are O(PU?7MN+UM?N?+U%),
+O(PU2MN + UM?N? + U*) and O(U? + PU?MN), so
+the computational complexities of SBLMC can be obtained
+as O(U? + PU?MN + UM?N7%) per iteration and an ad-
+ditional computational workload of order O(U?M?N?*) for
+initialization. To simplify the representation, with U > MN,
+the computational complexity of SBLMC can be approximated
+by O(PU®). If U < MN the computational complexity of
+SBLMC can be approximated by O(PUM?N?). Therefore,
+the proposed SBLMC algorithm has the same order of compu-
+tational complexity with OGSBI [29]. Since MUSIC algorithm
+is a continue domain method, we estimate the target DOAs
+by discretizing the detection range [—80°, 80°] into 1.6 x 10°
+grids. As shown in this table, the BCS method is the fastest
+among all methods, since the detection angle is discretized by
+5 = 2°. The proposed SBLMC is comparable with the OGSBI
+method, but the DOA estimation performance is much better.
+The computational time of MUSIC method is determined by
+the length of discretized angles, and usually is a method
+with higher computational complexity than BCS. Therefore,
+the proposed SBLMC method can significantly improve the
+estimation performance in the MIMO radar system with both
+off-grid and mutual coupling effects with the acceptable com-
+putational complexity.
+
+V. CONCLUSIONS
+
+We have investigated the DOA estimation problem in
+MIMO radar system with unknown mutual coupling effect
+in this paper. The off-grid problem in the CS-based sparse
+reconstruction method has also been considered concurrently
+to improve the DOA estimation performance. The novel sparse
+Bayesian learning with mutual coupling (SBLMC) method
+using EM has been proposed to estimate target DOAs. Ad-
+ditionally, we have theoretically derived the prior distributions
+/n/nACCEPTED BY IEEE TRANSACTIONS ON SIGNAL PROCESSING
+
+aL(er U-1U-1 / ;
+c( ) = —anP le (= > V3 (Vv) Vi (v) Be. [cr @ ef, ..., er ® eff _ 1
+T p=0 k=0
+Pol
++ YE anlrp = L(H)(Hy @ €)"L(Y) [Hy @ CB EN", My Ben SEN] — ef’ diag{Pr}. (91)
+p=0
+U-1 P 4
+So mR { (Pam +> Bot) c rats.cl - > R{[ [rp — U(u, ® ©)| Euttpuc
+m=0 p=0 p=0
+U-1
+=~ SO R{PExumetW Each. (92)
+m=0
+for all the unknown parameters including the variance vector =(Iy® o)EYH (vy) T(v) (10 Q cr ® =) Ex
+of target scattering coefficients, the mutual coupling vectors, Acq ym,
+the off-grid vector and the noise variance. Simulation results = (Iu @ e)* V4 (v)T(v) (Iu ® cx @ e}) Dx, (98)
+
+confirm that the proposed SBLMC method outperforms the
+present DOA estimation methods in the MIMO radar sys-
+tem with the unknown mutual coupling effect. Additionally,
+the computational complexity of SBLMC is also acceptable.
+However, with the same characteristic of the sparse-based
+super-resolution methods, the minimum DOA separation of
+the proposed SBLMC method is limited by the radar aperture.
+Future work will focus on the optimization of MIMO radar
+system using the SBLMC method for DOA estimation.
+
+APPENDIX A
+THE DERIVATION OF LIKELIHOOD FUNCTION L(er)
+
+The likelihood function £(cr) can be rewritten as
+
+L(er) x —An PGi (er > QnGo(er) — G3(er), (93)
+p=0
+where
+
+Giler) = Tr {Iu @ eo)" V4(v)(v)(Iu @ e)Ex}, (94)
+Go(er) = ||rp — Y(v)(H, @ eI, (95)
+
+M-1
+G3(er) & > Vrmlerm|- (96)
+
+m=0
+With the derivations of complex vector and matrix, 28 (er)
+
+is a row vector, and the m-th entry can be calculated as
+
+Ocy Oct.m
+
+ES ot {ete @ o)PTH(v)T(v)(Iv @ Ex “|
+
+(97)
+We can calculate
+O(Iy @c)HY#(v)Y(v) (Ip @ ce) Ex
+Oct m
+OIy @ c)#
+
+— Gu Cc) +H
+~  Oerm ren
+
++ (Iu @ 69 L(V) Tv)
+
+v)(Iy @ c)Ex
+
+ote ® Is.
+
+where e}/ is a M x 1 vector with the m-th entry being 1 and
+other entries being 0. Therefore, the the m-th entry can be
+simplified as
+
+agi (c U-1U-1
+i] -o( Eom om
+der Jin p=0 k=0
+
+(cx ® em); (99)
+
+and we finally have the derivation of Gi(cr) as
+
+Oi (er -2 (SY mem v)EXE ) (100)
+der p=0 k=0 °
+[cr @eM cr @em,...,cr® en-al .
+283{er) can be simplified as
+PEL) _ ip, —(v)(q, oe) Xv) Hee *
+= —[rp— L(v)(u, 2 o)"Y) (101)
+[H, @ cx @ ef! ,..., py @ ex @ehy_,]-
+263Ker) can be simplified as
+eee = cl diag{or}. (102)
+Finally, with verter ; Matec! and Bele) the expression
+
+of oeten) can be obtained in (91).
+
+APPENDIX B
+THE DERIVATION OF LIKELIHOOD FUNCTION Liv)
+
+The likelihood function £(cr) can be rewritten as
+
+P-1
+x So Ti (v) + Zo(v), (103)
+p=0
+where
+T(v) = |lrp — T)(H, @ ©)|I3, (104)
+%(v) £ Tr{(Iy @ ce)" T"(v)Y)(Tu @ e) Ex}. (105)
+/n/nACCEPTED BY IEEE TRANSACTIONS ON SIGNAL PROCESSING
+
+Fav) can be obtained as 16] D. Nion and N. D. Sidiropoulos, “Tensor algebra and multidimensional
+harmonic retrieval in signal processing for MIMO radar,” IEEE Trans.
+
+OT 71 (v) HOT(v) (um, @ ©) Signal Process., vol. 58, no. 11, pp. 5693-5705, Nov 2010.
+a —2R 9 [rp — Tv)(u, @ e)] a 17] Y. L. Abramovich, G. J. Frazer, and B. A. Johnson, “Iterative adaptive
+kronecker MIMO radar beamformer: Description and convergence anal-
+=-2R {[rp — L(v)(u, ® o)|"S(diag{u,} @c)}. (106) ysis. IEEE Trans. Signal Process., vol. 58, no. 7, pp. 3681-3691, July
+aly) e€ R!*Y is a row vector, and the u-th entry is 18 Zz. Yang and L. Xie, “Exact joint sparse frequency recovery via opti-
+mization methods,” JEEE Trans. Signal Process., vol. 64, no. 19, pp.
+
+[ee] {ate Q o)PYF (vy) Y(v) (Ip Q as} 5145 — 5157, Oct. 2016.
+
+Tr 19 , “Enhancing sparsity and resolution via reweighted atomic norm
+ov i, On minimization,” IEEE Trans. Signal Process., vol. 64, no. 4, pp. 995-
+_ HyyH/,\= 1006, Feb. 2016.
+=Tr { [0, (Iu @e x (v)Buc, 0] } H 20] Y. Yu, A. P. Petropulu, and H. V. Poor, “Measurement matrix design for
+H H = compressive sensing-based MIMO radar,” JEEE Trans. Signal Process.,
++ Tr{ [0, Tu @ eh) T"(v)B.,¢, 0] =x} vol 59, no. IL. pp. 5338 ~— 5352, Nov. 2011. 8
+U-1 21] M. Carlin, P. Rocca, G. Oliveri, F. Viani, and A. Massa, “Directions-
+H~+-H = of-arrival estimation through Bayesian compressive sensing strategies,”
+=2R > ¢c Lin (Y)BueEx,um (107) IEEE Trans. Antennas Propag. vol 61, no. 7, pp. 388 3838, Jul.
+m=0 2013.
+OTa(v . : 22 , “Novel wideband DOA estimation based on sparse Bayesian
+Therefore, oe : can be simplified as learning with dirichlet process priors,” [EEE Trans. Signal Process,
+Ot. (v) T vol. 64, no. 2, pp. 275 — 289, Jan. 2016.
+wees QR. {diag {Ex (Iv Q oF (vy) B(Iy @ c)} } . 23] Q. Shen, W. Liu, W. Cui, and S. Wu, “Underdetermined DOA estimation
+Ov under the compressive sensing framework: A review,” JEEE Access,
+(108) vol. 4, pp. 8865 — 8878, Nov. 2016.
+24] M. Rossi, A. M. Haimovich, and Y. C. Eldar, “Spatial compressive
+Therefore, with ew) = 0, we can obtain the equation (92) sensing for MIMO radar,” JEEE Trans. Signal Process., vol. 62, no. 2,
+to obtain v. “ pp. 419-430, Jan 2014.
+25] Z. Tan, P. Yang, and A. Nehorai, “Joint sparse recovery method for
+compressed sensing with structured dictionary mismatches,” JEEE Trans.
+REFERENCES Signal Process., vol. 62, no. 19, pp. 4997-5008, Oct 2014.
+1] J. Li and P. Stoica, “MIMO radar with colocated antennas,” IEEE Signal '2°! M. E. Tipping, “Sparse Bayesian leaming and the relevance vector
+Process. Mag., vol. 24, no. 5, pp. 106-114, Oct. 2007. machine,” J. Mach, Learn, Res., vol. 1, pp. 211-244, Sep. 2001.
+
+2) P Chen, L. Zheng X Wang H Li and L Wu “Moving target detection 27) S. Ji, Y. Xue, and L. Carin, “Bayesian compressive sensing,” JEEE Trans.
+using colocated MIMO radar on multiple distributed moving platforms,” Signal Process. vol. 56, no. 6, PP. 2346-2356, Jun. 2008.
+
+IEEE Trans. Signal Process., vol. 65, no. 17, pp. 4670 ~ 4683, Jun. 2017. (28) H. Zhu, G. Leus, and G. B. Giannakis, “Sparsity-cognizant total least-
+
+3] M. Davis, G. Showman, and A. Lanterman, “Coherent MIMO radar: squares for perturbed compressive sampling,” JEEE Trans. Signal Pro-
+The phased array and orthogonal waveforms,” JEEE Aerosp. Electron. cess., vol. 59, no. 5, Pp. 2002-2016, May 2011. : : :
+Syst. Mag., vol. 29, no. 8, pp. 76-91, Aug. 2014. 29] Z. Yang, x. Lihua, and Zz. Cishen, Off-grid direction of arrival esti-
+
+4] A. M. Haimovich, R. S. Blum, and L. J. Cimini, “MIMO radar with mation using sparse Bayesian inference,” JEEE Trans. Signal Process.,
+widely separated antennas,” IEEE Signal Process. Mag., vol. 25, no. 1, vol. 61, no. 1, pp. 38-43, Jan. 2013. ; ;
+pp. 116-129, Dec. 2008. 30] J. Dai, x. Bao, W. Xu, and Cc. Chang, Root sparse Bayesian learning
+
+5] P. Chen, C. Qi, and L. Wu, “Antenna placement optimisation for for off-grid DOA estimation,” JEEE Signal Process. Lett., vol. 24, no. 1,
+compressed sensing-based distributed MIMO radar,” JET Radar, Sonar pp. 46-50, Jan. 2017. eye . oo.
+
+& Navigation, vol. 11, no. 2, pp. 285-293, Feb. 2017. 31 x. Wa, W. Zhu, and J. Yan, Direction of arrival estimation for off-
+
+6] B.D. V. Veen and K. M. Buckley, “Beamforming: A versatile approach grid signals based on sparse Bayesian learning,’ JEEE Sensors Journal,
+to spatial filtering,” IEEE ASSP Magazine, vol. 5, no. 2, pp. 4 - 24, Apr. vol. 16, no. 7, pp. 2004-2016, Apr. 2016. Co
+1988. 32] H. Zamani, H. Zayyani, and F. Marvasti, “An iterative dictionary
+
+7] R. O. Schmidt, “Multiple emitter location and signal parameter estima- learning-based algorithm for DOA estimation,” vol. 20, no. 9, pp. 1784—
+tion,” JEEE Trans. Antennas Propag., vol. 34, no. 3, pp. 276-280, Mar. 1787, Sep. 2016. . . .
+
+1986. 33] Q. Wang, Z. Zhao, Z. Chen, and Z. Nie, “Grid evolution method for
+
+8] R. Schmidt, “A signal subspace approach to multiple emitter location DOA estimation,” IEEE Trans. Signal Process., vol. 66, no. 9, pp. 2474—
+spectrum estimation,” Ph.D. dissertation, Stanford University, Stanford, 2383, May 2018.
+
+CA, 1981. 34] Z. Zheng, J. Zhang, and J. Zhang, “Joint DOD and DOA estimation
+
+9] M. Zoltowski, G. Kautz, and S. Silverstein, “Beamspace Root-MUSIC,” of bistatic MIMO radar in the presence of unknown mutual coupling,”
+IEEE Trans. Signal Process., vol. 41, no. 1, pp. 344-364, Jan. 1993. Signal Processing, vol. 92, pp. 3039 — 3048, Jun. 2012.
+
+10] R. Roy and T. Kailath, “ESPRIT-estimation of signal parameters via 35] B. Clerckx, C. Craeye, D. Vanhoenacker-Janvier, and C. Oestges,
+rotational invariance techniques,” JEEE Trans. Acoust., Speech, Signal “Impact of antenna coupling on 2 x 2 MIMO communications,” JEEE
+Process., vol. 37, no. 7, pp. 984-995, Jul. 1989. Trans. Veh. Technol., vol. 56, no. 3, pp. 1009 —1018, May 2007.
+
+11] L. Du, T. Yardibi, J. Li, and P. Stoica, “Review of user parameter-free 36] J. Liu, Y. Zhang, Y. Lu, S. Ren, and S. Cao, “Augmented nested arrays
+robust adaptive beamforming algorithms,” Digital Signal Processing, with enhanced DOF and reduced mutual coupling,” JEEE Trans. Signal
+vol. 19, no. 4, pp. 567 — 582, Jul 2009. Process., vol. 65, no. 21, pp. 5549 — 5563, Nov. 2017.
+
+12] A. Khabbazibasmenj, A. Hassanien, S. A. Vorobyov, and M. W. 37] P. Rocca, M. A. Hannan, M. Salucci, and A. Massa, “Single-snapshot
+Morency, “Efficient transmit beamspace design for search-free based DoA estimation in array antennas with mutual coupling through a
+doa estimation in mimo radar,” IEEE Trans. Signal Process., vol. 62, multiscaling BCS strategy,” IEEE Trans. Antennas Propag., vol. 65,
+no. 6, pp. 1490-1500, March 2014. no. 6, pp. 3203-3213, Jun. 2017.
+
+13] M. Cao, S. A. Vorobyov, and A. Hassanien, “Transmit array interpolation [38] M. Hawes, L. Mihaylova, F. Septer, and S. Godsill, “Bayesian compres-
+for DOA estimation via tensor decomposition in 2-D MIMO radar,” sive sensing approaches for direction of arrival estimation with mutual
+IEEE Trans. Signal Process., vol. 65, no. 19, pp. 5225-5239, Oct 2017. coupling effects,” JEEE Trans. Antennas Propag., vol. 65, no. 3, pp.
+
+14] A. Hassanien and S. A. Vorobyov, “Transmit energy focusing for DOA 1357-1367, Mar. 2017.
+estimation in MIMO radar with colocated antennas,” JEEE Trans. Signal 39] B. Liao, Z.-G. Zhang, and S.-C. Chan, “DOA estimation and tracking
+Process., vol. 59, no. 6, pp. 2669-2682, June 2011. of ULAs with mutual coupling,” JEEE Trans. Aerosp. Electron. Syst.,
+
+15] L. Xu, J. Li, and P. Stoica, “Target detection and parameter estimation vol. 48, no. 1, pp. 891 - 905, Jan. 2012.
+for MIMO radar systems,” JEEE Trans. Aerosp. Electron. Syst., vol. 44, 40] T. Basikolo, K. Ichige, and H. Arai, “A novel mutual coupling com-
+
+no. 3, pp. 927-939, July 2008.
+
+pensation method for underdetermined direction of arrival estimation in
+/n/nACCEPTED BY IEEE TRANSACTIONS ON SIGNAL PROCESSING
+
+nested sparse circular arrays,” JEEE Trans. Antennas Propag., vol. 66,
+no. 2, pp. 909 — 917, Feb. 2018.
+41] C. Zhang, H. Huang, and B. Liao, “Direction finding in MIMO radar
+with unknown mutual coupling,’ JEEE Access, vol. 5, pp. 4439 — 4447,
+Mar. 2017.
+42] A. Termos and B. M. Hochwald, “Capacity benefits of antenna cou-
+pling,” in 2016 Information Theory and Applications (ITA), La Jolla,
+CA, USA, Apr. 2004, pp. 1-5.
+43] X. Liu and G. Liao, “Direction finding and mutual coupling estimation
+for bistatic MIMO radar,” Signal Processing, vol. 92, no. 2, pp. 517 -
+522, Feb. 2012.
+44] E. J. Candés and T. Tao, “Decoding by linear programming,” JEEE
+Trans. Inf. Theory, vol. 51, no. 12, pp. 4203-4215, Dec 2005.
+, “Near-optimal signal recovery from random projections: Universal
+encoding strategies?” JEEE Trans. Inf. Theory, vol. 52, no. 12, pp. 5406-
+5425, Dec 2006.
+46] E. J. Candés and C. Fernandez-Granda, “Towards a mathematical theory
+of super-resolution,” Communications on Pure and Applied Mathemat-
+ics, vol. 67, no. 6, pp. 906-956, Jun. 2014.
+47] S. D. Babacan, M. Luessi, R. Molina, and A. K. Katsaggelos, “Sparse
+Bayesian methods for low-rank matrix estimation,” JEEE Trans. Signal
+Process., vol. 60, no. 8, pp. 3964-3977, Aug 2012.
+48] Y. Yu, A. P. Petropulu, and H. V. Poor, “MIMO radar using compressive
+sampling,” JEEE Journal of Selected Topics in Signal Processing, vol. 4,
+no. 1, pp. 146-163, Feb 2010.
+49] H. Jiang, J. Zhang, and K. M. Wong, “Joint DOD and DOA estimation
+for bistatic MIMO radar in unknown correlated noise,” JEEE Trans. Veh.
+Technol., vol. 64, no. 11, pp. 5113-5125, Nov 2015.
+
+Peng Chen (S’15-M’17) was born in Jiangsu, China
+in 1989. He received the B.E. degree in 2011 and
+the Ph.D. degree in 2017, both from the School
+of Information Science and Engineering, Southeast
+University, China. From Mar. 2015 to Apr. 2016, he
+was a Visiting Scholar in the Electrical Engineering
+Department, Columbia University, New York, NY,
+USA.
+
+He is now an associate professor at the State
+Key Laboratory of Millimeter Waves, Southeast Uni-
+versity. His research interests include radar signal
+processing and millimeter wave communication.
+
+Zhenxin Cao (M’18) was born in May 1976. He
+received the M. S. degree in 2002 from Nanjing
+University of Aeronautics and Astronautics, China,
+and the Ph.D. degree in 2005 from the School
+of Information Science and Engineering, Southeast
+University, China. From 2012 to 2013, he was a
+Visiting Scholar in North Carolina State University.
+
+Since 2005, he has been with the State Key
+Laboratory of Millimeter Waves, Southeast Univer-
+sity, where he is a Professor. His research interests
+include antenna theory and application.
+
+Zhimin Chen (M’17) was born in Shandong, China,
+in 1985. She received the Ph.D. degree in infor-
+mation and communication engineering from the
+School of Information Science and Engineering,
+Southeast University, Nanjing, China in 2015. Since
+2015, she has been with Shanghai Dianji University,
+Shanghai, China. Her research interests include array
+signal pro-cessing and Millimeter-Wave communica-
+tions.
+
+ov
+
+se
+
+a
+
+Xianbin Wang (S’98-M’99-SM’06-F’17) is a Pro-
+fessor and Tier-I Canada Research Chair at Western
+University, Canada. He received his Ph.D. degree in
+electrical and computer engineering from National
+University of Singapore in 2001.
+
+Prior to joining Western, he was with Commu-
+nications Research Centre Canada (CRC) as a Re-
+search Scientist/Senior Research Scientist between
+July 2002 and Dec. 2007. From Jan. 2001 to July
+2002, he was a system designer at STMicroelectron-
+ics, where he was responsible for the system design
+of DSL and Gigabit Ethernet chipsets. His current research interests include
+5G technologies, Internet-of-Things, communications security, machine learn-
+ing and locationing technologies. Dr. Wang has over 300 peer-reviewed journal
+and conference papers, in addition to 26 granted and pending patents and
+several standard contributions.
+
+Dr. Wang is a Fellow of Canadian Academy of Engineering, a Fellow of
+IEEE and an IEEE Distinguished Lecturer. He has received many awards and
+recognitions, including Canada Research Chair, CRC President’s Excellence
+Award, Canadian Federal Government Public Service Award, Ontario Early
+Researcher Award and five IEEE Best Paper Awards. He currently serves
+as an Editor/Associate Editor for IEEE Transactions on Communications,
+IEEE Transactions on Broadcasting, and IEEE Transactions on Vehicular
+Technology and He was also an Associate Editor for IEEE Transactions
+on Wireless Communications between 2007 and 2011, and IEEE Wireless
+Communications Letters between 2011 and 2016. Dr. Wang was involved in
+many IEEE conferences including GLOBECOM, ICC, VTC, PIMRC, WCNC
+and CWIT, in different roles such as symposium chair, tutorial instructor, track
+chair, session chair and TPC co-chair.
+

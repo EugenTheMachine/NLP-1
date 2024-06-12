@@ -1,0 +1,1140 @@
+1507.00662v1 [cs.DS] 2 Jul 2015
+
+arXiv
+
+On the Approximability of Digraph Ordering
+
+Sreyash Kenkre!, Vinayaka Pandit!, Manish Purohit?*, and Rishi Saket!
+
+' TBM Research, Bangalore, Karnataka 560045, India
+{srekenkr, pvinayak, rissaket}@in.ibm.com
+? University of Maryland, College Park, MD 20742, USA
+manishp@cs.umd.edu
+
+Abstract. Given an n-vertex digraph D = (V,A) the MAX-k-ORDERING problem
+is to compute a labeling ¢: V — [k] maximizing the number of forward edges, i.e.
+edges (u,v) such that ¢(u) < ¢(v). For different values of k, this reduces to mazimum
+acyclic subgraph (k =n), and MAx-DiCutT (k = 2). This work studies the approxima-
+bility of MAx-k-ORDERING and its generalizations, motivated by their applications
+to job scheduling with soft precedence constraints. We give an LP rounding based
+
+2-approximation algorithm for MAX-k-ORDERING for any k = {2,...,n}, improving
+on the known 2k/(k — 1)-approximation obtained via random assignment. The tight-
+ness of this rounding is shown by proving that for any k = {2,...,n} and constant
+
+€ > 0, MAx-k-ORDERING has an LP integrality gap of 2 —¢ for n?(1/!08!08 ©) rounds
+of the Sherali-Adams hierarchy.
+
+A further generalization of MAx-k-ORDERING is the restricted maximum acyclic sub-
+graph problem or RMAS, where each vertex v has a finite set of allowable labels
+S, C Z*. We prove an LP rounding based 4V/2/(V2+ 1) & 2.344 approximation
+for it, improving on the 2/2 ~ 2.828 approximation recently given by Grandoni et
+al. [7]. In fact, our approximation algorithm also works for a general version where
+the objective counts the edges which go forward by at least a positive offset specific
+to each edge.
+
+The minimization formulation of digraph ordering is DAG edge deletion or DED(k),
+which requires deleting the minimum number of edges from an n-vertex directed
+acyclic graph (DAG) to remove all paths of length k. We show that both, the LP
+relaxation and a local ratio approach for DED(k) yield k-approximation for any k €
+{n]. A vertex deletion version was studied earlier by Paik et al. [17], and Svensson [18].
+
+1 Introduction
+
+One of the most well studied combinatorial problems on directed graphs (digraphs) is the
+Mazimum Acyclic Subgraph problem (MAS): given an n-vertex digraph, find a subgrapl of
+maximum number of edges containing no directed cycles. An equivalent formulation of MAS
+is to obtain a linear ordering of the vertices which maximizes the number of directed edges
+going forward. A natural generalization is MAX-k-ORDERING where the goal is to compute
+the best k-ordering, i.e. a labeling of the vertices from [k] = {1,...,k} (2 < k <n), which
+maximizes the number of directed edges going forward in this ordering. It can be seen —
+and we show this formally — that MAXx-k-ORDERING is equivalent to finding the maximum
+subgraph which has no directed cycles, and no directed pathd4 of length k. Note that MAS
+
+*Partially supported by NSF grants CCF-1217890 and IS-1451430.
+°Unless specified, throughout this paper a subgraph is not necessarily induced.
+“The length of a directed path is the number of directed edges it contains.
+/n/nis the special case of MAXx-k-ORDERING when k& = n, and for k = 2 MAx-k-ORDERING
+reduces to the well known MAx-D1CutT problem.
+
+A related problem is the Restricted Maximum Acyclic Subgraph problem or RMAS, in
+which each vertex v of the digraph has to be assigned a label from a finite set S, C Zt
+to maximize the number of edges going forward in this assignment. Khandekar et al.
+introduced RMAS in the context of graph pricing problems and its approximability has
+recently been studied by Grandoni et al. [7]. A further generalization is OFFSETRMAS
+where each edge (u,v) has an offset 0, € Z* and is satisfied by a labeling ¢ if €(u)+0¢ < &(v).
+Note that when all offsets are unit OFFSETRMAS reduces to RMAS, which in turn reduces
+o MAx-k-ORDERING when S$, = [k] for all vertices v.
+
+This study focuses on the approximability of MAXx-k-ORDERING and its generalizations
+and is motivated by their applicability in scheduling jobs with soft precedences under a
+hard deadline. Consider the following simple case of discrete time scheduling: given n unit
+length jobs with precedence constraints and an infinite capacity machine, find a schedule
+so that all the jobs are completed by timestep k. Since it may not be feasible to satisfy all
+he precedence constraints, the goal is to satisfy the maximum number. This is equivalent
+o MAx-k-ORDERING on the corresponding precedence digraph. One can generalize this
+setting to each job having a set of allowable timesteps when it can be scheduled. This can
+e abstracted as RMAS and a further generalization to each precedence having an associated
+ag between the start-times yields OFFSETRMAS as the underlying optimization problem.
+
+Also of interest is the minimization version of MAXx-k-ORDERING on directed acyclic
+graphs (DAGs). We refer to it as DAG edge deletion or DED(k) where the goal is to delete
+he minimum number of directed edges from a DAG so that the remaining digraph does
+not contain any path of length k. Note that the problem for arbitrary k does not admit any
+approximation factor on general digraphs since even detecting whether a digraph has a path
+of length k is the well studied NP-hard longest path problem. A vertex deletion formulation
+of DED(k) was introduced as an abstraction of certain VLSI design and communication
+problems by Paik et al. who gave efficient algorithms for it on special cases of DAGs, and
+proved it to be NP-complete in general. More recently, its connection to project scheduling
+was noted by Svensson [18] who proved inapproximability results for the vertex deletion
+version.
+
+The rest of this section gives a background of previous related work, describes our results,
+and provides an overview of the techniques used.
+
+1.1 Related Work
+
+It is easy to see that MAS admits a trivial 2-approximation, by taking any linear ordering or
+its reverse, and this is also obtained by a random ordering. For MAX-k-ORDERING the ran-
+dom k-ordering yields a 2k/(k — 1)-approximation for any k € {2,...,n}. For k = 2, which
+is MAX-D1Curt, the semidefinite programming (SDP) relaxation is shown to yield a ¥ 1.144-
+approximation in [14], improving upon previous analyses of [15], 21], and [5]. As mentioned
+above, RMAS is a generalization of MAX-k-ORDERING, and a 2\/2-approximation for it
+based on linear programming (LP) rounding was shown recently by Grandoni et al. [7]
+which is also the best approximation for MAX-k-ORDERING for k = 3. For 4 << k <n-—1, to
+the best of our knowledge the proven approximation factor for MAXx-k-ORDERING remains
+2k/(k—1).
+
+On the hardness side, Newman [16] showed that MAS is NP-hard to approximate within
+a factor of 66/65. Assuming Khot’s Unique Games Conjecture (UGC), Guruswami et
+/n/nal. [8] gave a (2 — e)-inapproximability for any ¢ > 0. Note that MAx-DICur is at least as
+hard as MAx-Cut. Thus, for k = 2, MAx-k-ORDERING is NP-hard to approximate within
+factor (13/12 —e) [9], and within factor 1.1382 assuming the UGC [13]. For larger constants
+k, the result of Guruswami et al. [8] implicitly shows a (2 — 0,(1))-inapproximability for
+Max-k-ORDERING, assuming the UGC.
+
+For the vertex deletion version of DED(k), Paik et al. [IZ] gave linear time and quadratic
+time algorithms for rooted trees and series-parallel graphs respectively. The problem re-
+duces to vertex cover on k-uniform hypergraphs for any constant k thereby admitting a k-
+approximation, and a matching (k — €)-inapproximability assuming the UGC was obtained
+by Svensson [18].
+
+1.2 Our Results
+
+The main algorithmic result of this paper is the following improved approximation guarantee
+for MAx-k-ORDERING.
+
+Theorem 1. There exists a polynomial time 2-approximation algorithm for MAX-k-ORDERING
+on n-vertex weighted digraphs for any k € {2,...,n}.
+
+The above approximation is obtained by appropriately rounding the standard LP relaxation
+of the CSP formulation of MAX-k-ORDERING. For small values of k this yields significant
+improvement on the previously known approximation factors: 2V2 for k = 3 (implicit in
+[7]), 8/3 for k = 4, and 2.5 for k = 5. The latter two factors follow from the previous best
+2k/(k — 1)-approximation given by a random k-ordering for 4 < k < n— 1. The detailed
+proof of Theorem [Jis given in Section B]
+
+Using an LP rounding approach similar to Theorem[]] in Section [/]we show the following
+improved approximation for OFFSETRMAS which implies the same for RMAS. Our result
+improves the previous 2/2 ~ 2.828-approximation for RMAS obtained by Grandoni et
+
+al. [7].
+
+Theorem 2. There exists a polynomial time 4V2/(V2+ 1) & 2.344 approximation algo-
+rithm for OFFSETRMAS on weighted digraphs.
+
+Our next result gives a lower bound that matches the approximation obtained in The-
+orem [I] In Section [5] we show that even after strengthening the LP relaxation of MAX-k-
+ORDERING with a large number of rounds of the Sherali-Adams hierarchy, its integrality
+gap remains close to 2, and hence Theorem []Jis tight.
+
+Theorem 3. For any small enough constant e > 0, there exists y > 0 such that for MAx-
+k-ORDERING on n-vertex weighted digraphs and any k € {2,...,n}, the LP relaxation with
+nrleslesk) rounds of Sherali-Adams constraints has a (2 —€) integrality gap.
+
+For DED(k) on DAGs we prove in Section [6] the following approximation for any k, not
+necessarily a constant.
+
+Theorem 4. The standard LP relaxation for DED(k) on n-verter DAGs can be solved in
+polynomial time for k = {2,...,n—1} and yields a k-approximation. The same approxima-
+tion factor is also obtained by a combinatorial algorithm.
+
+We complement the above by showing in Section [6.3] a (|k/2|—e) hardness factor for
+DED(k) via a simple gadget reduction from Svensson’s [18] (k — ¢)-inapproximability for
+the vertex deletion version for constant k, assuming the UGC.
+/n/n1.3. Overview of Techniques
+
+The approximation algorithms we obtain for MAX-k-ORDERING and its generalizations are
+based on rounding the standard LP relaxation for the instance. MAX-k-ORDERING is viewed
+as a constraint satisfaction problem (CSP) over alphabet [k], and the corresponding LP
+relaxation has (0, 1|-valued variables x? for each vertex v and label i € [A], and yf; for each
+edge (u,v) and pairs of labels i and j to u and v respectively. We show that a generalization
+of the rounding algorithm used by Trevisan for approximating g-ary boolean CSPs
+yields a 2-approximation in our setting. The key ingredient in the analysis is a lower bound
+on a certain product of the {2}, {x?} variables corresponding to the end points of an edge
+e = (u,v) in terms of the {yf} variables for that edge. This improves a weaker bound shown
+by Grandoni et al. [7]. For OFFSETRMAS, a modification of this rounding algorithm yields
+the improved approximation.
+
+The construction of the integrality gap for the LP augmented with Sherali-Adams con-
+straints for MAX-k-ORDERING begins with a simple integrality gap instance for the basic
+LP relaxation. This instance is appropriately sparsified to ensure that subgraphs of polyno-
+mially large (but bounded) size are tree-like. On trees, it is easy to construct a distribution
+over labelings from [k] to the vertices (thought of as k-orderings), such that the marginal
+distribution on each vertex is uniform over [k] and a large fraction of edges are satisfied in
+expectation. Using this along with the sparsification allows us to construct distributions for
+each bounded subgraph, i.e. good local distributions. Finally a geometric embedding of the
+marginals of these distributions followed by Gaussian rounding yields modified local distri-
+butions which are consistent on the common vertex sets. These distributions correspond to
+an LP solution with a high objective value, for large number of rounds of Sherali-Adams
+constraints. Our construction follows the approach in a recent work of Lee [13] which is
+based on earlier works of Arora et al. [I] and Charikar et al. [3].
+
+For the DED(k) problem, the approximation algorithms stated in Theorem [4] are ob-
+tained using the acyclicity of the input DAG. In particular, we show that both, the LP
+rounding and the local ratio approach, can be implemented in polynomial time on DAGs
+yielding k-approximate solutions.
+
+2 Preliminaries
+
+This section formally defines the problems studied in this paper. We begin with MAx-k-
+ORDERING.
+
+Definition 1. MAx-k-ORDERING: Given an n-vertex digraph D = (V,A) with a non-
+negative weight function w: A + Rt, and an integer 2 < k <n, find a labeling to the
+vertices €: V — [k] that maximizes the weighted fraction of edges e = (u,v) € A such that
+L(u) < Uv), i.e. forward edges.
+
+It can be seen that MAXx-k-ORDERING is equivalent to the problem of computing the max-
+imum weighted subgraph of D which is acyclic and does not contain any directed path of
+length k. The following lemma implies this equivalence.
+
+Lemma 1. Given a digraph D = (V, A), there exists a labeling €: V — [k] with each edge
+e = (u,v) € A satisfying (u) < L(v), if and only if D is acyclic and does not contain any
+directed path of length k.
+/n/nProof. If such a labeling ¢ exists then every edge is directed from a lower labeled vertex to
+a higher labeled one. Thus, there are no directed cycles in D. Furthermore, any directed
+path in D has at most k vertices on it, and is of length at most k — 1. On the other hand,
+if D satisfies the second condition in the lemma, then choose ¢(v) for any vertex v to be
+ty +1, where t, is the length of the longest path from any source to v. It is easy to see that
+L(v) € [k] and for each edge (u,v), ((u) < &(v). Oo
+
+The generalizations of MAX-k-ORDERING studied in this work, viz. RMAS and OFr-
+SETRMAS, are defined as follows.
+
+Definition 2. OFFSETRMAS: The input is a digraph D = (V,A) with a finite subset
+Sy C Z* of labels for each vertex v € V, a non-negative weight function w: A —+ Rt, and
+offsets o. € Z* for each edge e € A. A labeling ¢ to V s.t. &(v) € Sy,Vu € V satisfies an
+edge ec = (u,v) if C(u) + 06 < l(v). The goal is to compute a labeling that maximizes the
+weighted fraction of satisfied edges. RMAS is the special case when each offset is unit.
+
+As mentioned earlier, DED(k) is not approximable on general digraphs. Therefore, we
+define it only on DAGs.
+
+Definition 3. DED(k): Given a DAG D = (V,A) with a non-negative weight function
+w:A—>R?, and an integer 2<k <n-1, find a minimum weight set of edges F C A such
+that (V,A\ F) does not contain any path of length k.
+
+The rest of this section describes the LP relaxations for MAX-k-ORDERING and OFFSETR-
+MAS studied in this paper.
+
+2.1 LP Relaxation for MAx-k-ORDERING
+
+From Definition [IJ an instance ZT of MAX-k-ORDERING is given by D = (V, A), k, and w.
+Viewing it as a CSP over label set [k], the standard LP relaxation given in Figure[I]is defined
+over variables x7 for each vertex v and label i, and yf; for each edge e = (u,v) and labels i
+to u and j to v.
+Sherali-Adams Constraints. Let 25 € [0, 1] be a variable corresponding to a subset S of
+vertices, and a labeling o : S — [k]. The LP relaxation in Figure [I] can augmented with r
+rounds of Sherali-Adams constraints which are defined over the variables {z3 | 1 < || <
+r +1}. The additional constraints are given in Figure] The Sherali-Adams variables define,
+for each subset S' of at most (r +1) vertices, a distribution over the possible labelings from
+[k] to the vertices in S. The constraints given by Equation (7) ensure that these distributions
+are consistent across subsets. Additionally, Equations (9) and (10) ensure the consistency
+of these distributions with the variables of the standard LP relaxation given in Figure [I]
+
+LP Relaxation for RMAS and OrrsETRMAS. The LP relaxation for RMAS is a
+generalization of the one in Figure[I]for MAX-k-ORDERING and we omit a detailed definition.
+Let S = Uvev Sy denote the set of all labels. For convenience, we define variables {x? VE
+V,i € S} and {yf | e = (u,v) € A,i,j € S} and force the infeasible assignments to be zero,
+ie. c? = 0 for i ¢ S,. The other constraints are modified accordingly. For OFFSETRMAS,
+an additional change is that the contribution to the objective from each edge e = (u,v) is
+
+e
+ies j€Syit00<i Yi:
+
+on
+/n/nmax Yo w(e) : > Vij (1)
+ecA 4,9 €[k]
+i<j
+subject to,
+
+We, ral. (2)
+
+i€[k]
+Ve = (u,v) € A, and i,j € [Al, Yi wea et, (3)
+
+£e(k]
+and, vis = 2. (4)
+
+£e(k]
+Vu €V, andi € [k], x; >0. (5)
+Ve € A, and i,j € [ki], Yij = 0. (6)
+
+Fig. 1. LP Relaxation for instance Z of MAXx-k-ORDERING.
+
+3 A 2-Approximation for MAXx-k-ORDERING
+
+This section proves the following theorem that implies Theorem [I]
+
+Theorem 5. Let {x?}, {y{} denote an optimal solution to the LP in Figure[ Let €: V >
+[k] be a randomized labeling obtained by independently assigning to each vertex v label i with
+probability 1/2k + x?/2. Then, for any edge e = (u,v),
+
+Pr[C(u) < &(v)] > > Ui
+igelk]
+i<j
+
+rNle
+
+To analyze the rounding given above, we need the following key lemma that bounds the sum
+of products of row and column sums of a matrix in terms of the matrix entries. It improves
+a weaker bound shown by Grandoni et al. [7] and also generalizes to arbitrary offsets.
+
+Lemma 2. Let A = [aij] be ak x k matrix with non-negative entries. Let ri = yy, aij and
+
+cj = do; aij; denote the sum of entries in the i"* row and j'" column respectively, and let
+1<@<k-—1 be an integer offset . Then,
+
+2
+k-@4+1
+
+Drei > Wk) Do ai : (11)
+
+i+0<j i+ OS)
+
+ij€[k] i,j€[k]
+/n/nWS CTCY,
+1<|S| IT) <r41,
+
+and ao: S — [kl], w= > zn. (7)
+
+VS CV,1<|S|<r41,
+and a: S > [k], 0< 2 <1. (8)
+
+Vu €V, and o: {v} = [k],
+s.t. o(v) = 4, xy = 2h"), (9)
+
+Ve = (u,v) € A, and,
+o: {u,v} + [kl],
+s.t. (o(u),o(v)) = (i,3), yy =". (10)
+
+Fig. 2. r-round Sherali-Adams constraints for LP relaxation in Figure [I]
+
+Proof. The LHS of the above is simplified as,
+
+Ero E [Le )(Le) “
+
+i+0<j i+055 j iv
+2 P
+> Azy + 2° AgyAey! + AeyAx'y!s (13)
+2+0<y w+0<y w+0<y
+at0<y’ a’ +0<y!
+y<y’ a<a’
+
+where all the indices above are in [k]. Note that follows from because:
+
+(i) For any 7 +0 <y, ay appears in the RHS of (12) when i = x and j = y.
+
+(ii) For ©+0 < yand r+ < y', dzy@zy appears in the RHS of (12) both, when i = x, 7 = y,
+and when i = 2, j =y’.
+
+(iii) For any + 6 <y and 2’ +0 <y/’ (say x < 2’), it must be that + 0 < y’, and hence
+AzyAe/y appears in the RHS of (12) when i = « and j = y/.
+
+Thus, we obtain,
+
+2
+rej = Gey) = AgyAery | - (14)
+i$ 0<j w+O<y wt0<y
+a’ +0<y'
+aca!
+/n/nTherefore, it is sufficient to show that
+
+2
+
+k-@-1 .
+> AnyGe'y! Yk) > Gey (15)
+x+0<y @+OSy
+al +0<y"
+asa!
+
+Substituting,
+2
+atO<y at+Osy at+O<y a+O<y
+at0<y! a’ +0<y!
+y<y’ a<e
+
+and simplifying, inequality can be rewritten as,
+
+° 2
+S42 LY enor (ER) Downey 0)
+
+atO<y at+O<y a+0<y
+2+0<y! wv! +0<y!
+y<y’ a<a!
+© a Ma > 0, (17)
+
+where @ € R*, Z:= {(a,y) | +0 <y and a,y € [k]} with Ty) = dry, and M € R***
+is a symmetric matrix defined as follows:
+
+1 if (x,y) = (2’,y'),
+Mee,y)(«',y’) = 41 ife’=a2,andyZy’, (18)
+-1/(k-0@-1) ife4a’.
+
+To complete the proof of the lemma we show that M is positive semidefinite. Consider the
+set of unit vectors {v, | 1 < x < k — 6} given by the normalized corner points of the
+(k — @ — 1)-dimensional simplex centered at the origin. It is easy to see (for e.g. in Lemma
+3 of {6]) that, (vz, ve) = —1/(k-@—1) if #2’. Thus, M = L'L, where L is a matrix
+whose columns are indexed by Z such that the (x,y) column is v,. Therefore, M is positive
+semidefinite. Oo
+
+Proof (of Theorem[§). For brevity, let ze = Vic; y{; denote the contribution of the edge e
+to the LP objective. From the definition of the rounding procedure we have,
+
+Pr[C(u) < &(v)] = SS Prfé(u) = i] Pr[¢(v) = J]
+
+i<j
+
+y 1 _ 1 i
+Z~\ok ° 2 2k 2
+
+i<j
+
+1f{(k-1) 1 >
+4 EOD er a) + Dates
+/n/nWe can now apply Lemma[2] to the k x k matrix lug]. The LP constraints guarantee that
+rj, = vj and cj = xj are equal to the row and column sums respectively. Further, substituting
+
+offset 0 = 1, we obtain
+
+k 2
+
+1
+Prié L(v)| > = | ui +x") 4 : 1
+r[€(u) < &(v)] = ri Th E 2M x}) Ween (19)
+On the other hand,
+k-1 k
+Viet +29) = VO(k de} + SOG - V2}
+i<j i=1 j=2
+k-1 k
+SV] E-) VM | +0 G-Y SM v5] - (20)
+i=l j>i j=2 <j
+
+For a < b, y&, appears (k — a) times in the RHS of the above inequality when i = a, and
+(b—1) times when j = b. Since k —-a+b—1> k, we obtain that RHS of Equation is
+lower bounded by k 30,2, yS, = ke. Substituting back into Equation (19) and simplifying
+gives us that Pr[¢(w) < ¢(v)] is at least,
+
++ [ (= 4 ) 2 F0+)=F (21)
+( )
+
+where we use t+ 1/t > 2 fort > 0. Oo
+
+4 Approximation for OFFSETRMAS
+
+Let D = (V,A), {Sv}vev, w, and {oe}ee4 constitute an instance of OFFSETRMAS as given
+in Definition] Without loss of generality, one can assume that for each edge e = (u,v) € A,
+min(S,,) + 0. < max(S',), otherwise no feasible solution can satisfy e and that edge can
+be removed. A simple randomized strategy that independently assigns each vertex v either
+0) im (= min(S,) or 0°, = max(S,) with equal probability is a 4-approximation. The
+recent work of Grandoni et al. [7] show that combining this randomized scheme with an
+appropriate LP-rounding yields a 2\/2 ~ 2.828 approximation algorithm for RMAS.
+
+We show that a variant of the rounding scheme developed in SectionBlyields an improved
+approximation factor for OFFSETRMAS. In particular, we prove the following theorem
+which implies Theorem 2]
+
+Theorem 6. Let {x?}, {yf} denote an optimal solution to the linear programming relax-
+ation of OFFSETRMAS described in Section] Let ¢ be a randomized labeling obtained by
+independently assigning labels to each vertex v with the following probabilities:
+
+1,2 pe ae
+Pr[é(v) = 7] = at a ft € {mins Eman (22)
+fF ES \ {Ebina Enon}
+
+Then, for any edge e = (u,v) we have
+
+1 1 »
+Pri[é(u) + oe < &(v)] > Z (1 + =) > Vij
+/n/nProof. Let S = Uyev Sy denote the set of all labels and let z. = (Sisoccs v5) denote the
+contribution of the edge e to the LP objective. We have,
+
+Pr[C(w) + 0¢ < C(v)] = > Pr[é(u) = i] Pr[é(v) = Jj]
+it+0e Sj
+1€Su,JESy
+Substituting the assignment probabilities from into the above and simplifying we obtain,
+
+Pr[C(u) + o¢ < &(v)]
+
+spacey lifes] em
+
+ISO yp —0e G2OS iy H0e ifoe<j
+
+ieS jes iges
+Note that we allow i,7 € S in the above sums instead of S$, and S,. This does not affect the
+analysis as the LP forces «i = 0 for i ¢ Si, and similarly for v. Now, consider the |S| x |S|
+6 ° are equal to the row sums and column sums of this matrix
+
+matrix [yf]. Since x and x?
+
+respectively, Lemma [2] guarantees that,
+
+2
+uv |S)-oe +1 , S|—oe+1 2
+me Scat | ae Sa) ee
+ijes
+We thus have,
+Pr[€(u) +o < &(v)|
+1 g
+
+11 < z
+stef ye (cu)s vo (vu))2
+ISO ge \G2i+0e G2Ohin toe \itoe Si
+1 1
+- —|2 ie =e
+taf? de wl ts
+i+0e<j
+1€S,JESy
+s 1 4 Ze 4 2
+~ 16 4 8
+e 1 1 e 1
+=(1+5(—+%))>#(1+—). (24)
+4 2 \ 22, 4 V2
+where the last inequality uses t+ 1/at > 2/\/a for a,t > 0. Oo
+
+5 Sherali-Adams Integrality Gap for MAx-k-ORDERING
+
+For convenience, in the construction of the integrality gaps presented in this section the
+integral optimum and the LP objective shall count the weighted fraction of edges satisfied.
+
+10
+/n/nWe begin with a simple construction of an n-vertex digraph which is a (2 — 2/n) integrality
+gap for the standard LP relaxation for MAX-k-ORDERING in Figure[I] for 2< k <n.
+
+Claim 1. Let D = (V,A) be the complete digraph on n vertices, i.e. having a directed edge
+for every ordered pair (u,v) of distinct vertices u and v. Thus, |A| = 2(5). Letk € {2,...,n}.
+Then,
+
+— The optimum of MAX-k-ORDERING on D is at most 5 (1 - t) (<4):
+
+— There is a solution to the standard LP relaxation for MAX-k-ORDERING on D with
+value (1 - t)-
+
+In particular, the above implies a (2— 2/n) integrality gap for the LP relaxation in Figure
+
+Proof. The number of forward edges is simply the number of ordered pairs of vertices (u, v)
+with distinct labels. By Turan’s Theorem, the optimal integral solution is to partition the
+vertices into k subsets whose sizes differ by at most 1, giving each subset a distinct label
+from {1,...,4}. This implies that there are at most ne (1 - 9) forward edges. Hence, the
+optimal integral solution has value,
+
+1 1 1 n
+
+2 k n—-1)°
+On the other hand, consider an LP solution that assigns 7 = ¢ for all u € V andi € [k],
+and yj, = ¢ for all e = (u,v) € A and i € [k — 1]. Each edge e contributes,
+
+to the objective. Oo
+
+The above integrality gap is essentially retained even after near polynomial rounds of the
+Sherali-Adams constraints given in Figure 2] In particular, we prove the following that
+implies Theorem]
+
+Theorem 7. For any constant < > 0, there is y > 0 such that for large enough n € Z* and
+any k € {2,...,n}, there is a weighted digraph D* = (V*, A*) satisfying,
+
+— The optimum of MAX-k-ORDERING on D* is at most 4 (1 - -) +€é.
+— The LP relaxation for MAX-k-ORDERING augmented with n\7/°8!8*) rounds of Sherali-
+Adams constraints has objective value at least (1 —e)(l- t) :
+
+The rest of this section is devoted to proving the above theorem. Our construction of the
+integrality gap uses the techniques of Lee who proved a similar gap for a variant of the
+graph pricing problem. We begin by showing that a sparse, random subgraph D’, of the
+complete digraph D mentioned above, also has a low optimum solution. For this, we require
+the following result on ¢-samples [20] for finite set systems that follows from Hoeffding’s
+bound. The reader is referred to Theorem 3.2 in [2] for a proof.
+
+11
+/n/nTheorem 8. Let (U,S) denote a finite set systen[]. Suppose A is a multi-set obtained by
+
+sampling from U independently and uniformly m times where m > sain asl Then with
+probability at least 1 — 6,
+
+[An S| _ |S|
+|A| |
+
+VWSES.
+
+A is referred to as an ¢-sample for (U,8).
+
+In order to construct a solution that satisfies Sherali-Adams constraints for a large number
+of rounds, we require the instance to be locally sparse, i.e. the underlying undirected graph
+is almost a tree on subgraphs induced by large (but bounded) vertex sets. We use the notion
+of path decomposability as defined by Charikar et al. [3] as a measure of local sparsity.
+
+Definition 4. [Path Decomposability] A graph G is l-path decomposable if every 2-connected
+subgraph H of G contains a path of length | such that every vertex of the path has degree 2
+in H.
+
+We proceed to show that the sparse graph D’ obtained as above can be further processed so
+that it is locally sparse. Applying the techniques in [3] and yields a solution with high
+value that satisfies the Sherali-Adams constraints.
+
+5.1 Constructing a Sparse Instance
+
+€ > 0 be a small constant. The weighted digraph D' = (V, A’) obtained by sampling (Egg)
+edges uniformly at random satisfies Opt(D’) < 3(1 - +) +e with high probability, where
+Opt denotes the optimum of MAX-k-ORDERING.
+
+Lemma 3. Let D = (V,A) be the complete digraph on n vertices, let k € {2,..., n} and
+
+Proof. Let V = [n] and A C [n] x [n] denote the vertices and edges of the digraph D. Let
+p:[n| > [k] denote some labeling of the vertices. Let Sp := {(i,j) | p(t) < p(y), (4,3) € A}
+denote the subset of edges that are satisfied by p, and S := {S, | V labelings p} denote
+the collection of such subsets induced by all feasible labelings. Since the number of distinct
+labelings is k”, we have that |S| < k”.
+
+We now construct an (¢/2)-sample for the set system (A, S) by randomly sampling edges
+
+(with replacement) as per Theorem[] Let A denote the bag of randomly chosen (S In 2k’)
+
+edges. Substituting 5 = 4, we get that |A| = ee) and with probability at least 1 — +
+we have,
+[So Al _ [Spl
++ — | <e/2, Vp. (25)
+|A| |A|
+In order to avoid multi-edges in the construction, we define the weight of an edge w(u, v)
+to be the number of times that edge is sampled in A and let A’ denote the set of thus
+weighted edges obtained from A. Equation along with Claim [I] guarantees that the
+optimum integral solution of the weighted graph D’ induced by the edges A’ is bounded by
+Opt(D') < Opt(D) +e < $(1- }) ( 2 ) t+e/2< 4 (1-4) +e as desired. oO
+
+n—-1
+
+5A set system (U,S) consists of a ground set U and a collection of its subsets S C 2”. It is
+called finite if |/| is finite.
+
+12
+/n/nGiven a digraph, let its corresponding undirected multigraph be obtained by replacing every
+directed edge by the corresponding undirected one. Note that if the digraph contains both
+(u,v) and (v, u) edge for some pair of vertices, then the undirected multigraph contains two
+parallel edges between u and v.
+
+We now show that D’ obtained in Lemma] can be slightly modified so that its corre-
+sponding underlying multigraph is almost regular, has high girth, and is locally sparse i.e. all
+small enough subgraphs are J-path decomposable for an appropriate choice of parameters.
+
+Lemma 4. Let k = {2,...,n} and > 0 be a small enough constant. Given the complete
+digraph D = (V, A) onn vertices, let D’ = (V, A’) be obtained by sampling (with replacement)
+o(niss’) edges uniformly at random. Then, with high probability there exists a subgraph
+D" = (V,A") of D! obtained by removing at most <|A’| edges, such that the undirected
+multigraph G” underlying D” satisfies the following properties:
+
+1. Bounded Degree: The maximum degree of any vertex is at most 2A and G” has Q(An)
+edges, where A = o( 284).
+
+2. High Girth: G” has girth at least | = O( PES).
+
+Proof. Since D’ is obtained by sampling o( niet) edges uniformly, the probability that any
+given edge is selected is p = 6884). In addition, these events are negatively correlated.
+Therefore given any set of edges S, the probability that all the edges in S are sampled is
+upper bounded by p!*!.
+
+Bounded Degree: As the maximum degree of any vertex in D is at most 2n, the expected
+degree of any vertex v € V in D’ is at most A = 2pn = o( S54). Call a vertex v € V bad if
+it has degree more than 2A in D’, and call and edge (u,v) € A’ bad if either wu or v is bad.
+Now, for any edge (u,v), the probability that (u,v) is bad given that (u,v) € A’ is at most
+2e-# by Chernoff bound. Hence, the expected number of bad edges is at most 2¢ FIA’.
+Finally, by Markov’s inequality, with probability at least 3, the number of bad edges is at
+
+most 4e~# |A’|. Deleting all bad edges guarantees that the maximum degree of D’ is at most
+
+2A and with probability at least half, we only delete 4e-% |A’| edges which is much smaller
+than ¢|A’| since A = o( 284).
+
+Girth Control: Let G’ denote the undirected multigraph underlying D’. Since the degree
+of any vertex in D is at most 2n, we have
+
+E[Number of cycles in G’ of length i] < n(2n)'~'p' < (CA)!
+
+for some constant C. For i = OES), we get
+
+E[Number of cycles in G’ of length i] < n°°
+
+Summing up over all i in 2...1 = O( ee ), we get that the expected number of cycles of
+
+length up to 1 is at most O(n°-®) and hence it is less than O(n°-7) with high probability. We
+can then remove one edge from each such cycle (i.e. o(n) edges) to ensure that the graph
+G" so obtained has girth at least J. In particular, note that the corresponding digraph D”
+has no 2-cycles. Oo
+
+13
+/n/nEnsuring Local Sparsity Using Lemma [J] we ensure that the subgraph of G” induced
+by any subset of n° vertices is |-path decomposable for some constant 5 > 0. The following
+lemma shows that 2-connected subgraphs of G” of polynomially bounded size are sparse.
+
+Lemma 5. The undirected multigraph G" underlying the digraph D" satisfies the following
+p, i.e., there exists 6 > 0 such that every 2-connected subgraph G of Gl" containing t! < n°
+vertices has only (1+ )t’ edges where n = a
+
+Proof. Let G denote the undirected multigraph underlying the graph D that was used as a
+starting point for Lemma[4] The proof proceeds by counting the number of possible “dense”
+subgraphs of G and showing that the probability that any of them exist in G” after the
+previous sparsification steps is bounded by o(1). We consider two cases based on the value
+of t’.
+
+Case 1:4 < t' < + We first bound the total number of 2-connected subgraphs of G
+with t’ vertices and t’ + 1 edges. It is easy to verify that the only possible degree sequences
+for such subgraphs are (4,2,2,...) or (3,3,2,2,...). Suppose it is (4,2,2,...) and let v be
+the vertex with degree 4. Now, there must be a sequence of t’ + 2 vertices (v,...,v,...,v)
+that represents an Eulerian tour. But the number of such sequences is upper bounded
+by nt'(n)"—! = t'n" (n for guessing v, t/ for guessing the position of v in the middle,
+and n'~! to guess the other t/ — 1 vertices). Now assume that the degree sequence is
+(3, 3,2,2,...) and u,v be the vertices with degree 3. Now, there must a sequence of t + 2
+vertices (u,...,U,...,U,...,v) that represents an Eulerian path from u to v. By a similar
+
+argument, the number of such sequences is bounded by t’ enh, Hence, we are guaranteed
+that the total number of 2-connected subgraphs of G' with t’ vertices and t’ + 1 edges is at
+most 2¢/?n".
+
+Therefore, the probability that there exists a subgraph of G” with ¢’ vertices and t’/ + 1
+edges for 4 < t! < + = 31 is at most
+
+31 3L +1 3l41
+ayy i(A Cc A
+2t? nt! pt! = S~ 2? nl! (= < —B( = 26
+»~ uP »~ n 2Qn ~n 2 , ( )
+v= v=
+
+where C is an appropriate constant. For 1 = O( PES), we have that (S)yB(4)344 <n C=
+o(1).
+
+Case 2: n° >t! > + = 31. In this case, we count the number of subgraphs of G with ¢’
+
+vertices and (1+7)t’ edges. As shown by Lee the number of such subgraphs is bounded
+by Cal’ ni (sh)?n" for some constants C' and a.
+
+Therefore, the probability that such a subgraph exists in G” is at most
+
+1\ 2nt! 1\ 2nt! (l+n)t!
+Cal’ nt’ et patne Cat’ n™ et A
+2n 2n 2n
+
+ow (ery
+< (C,A?)! C2 ; (27)
+n
+where C) and C2 are appropriate constants. We choose | = O( P24) and 6 € (0,0.1), such
+that above quantity is less than n~°!. Summing up over all ¢/ = 31,...,n°, we still have
+that probability such a subgraph exists is bounded by o(1). Oo
+
+14
+/n/nFinally, we need the following lemma proved by Arora et al. [I] regarding the existence
+of long paths in sparse, 2-connected graphs.
+
+Lemma 6 (Arora et al. [I]). Let 1 > 1 be an integer and 0 <1 < gy, and let H be a
+2-connected graph with t vertices and at most (1+ 7)t edges and H is not a cycle. Then H
+contains a path of length at least |+1 whose internal vertices have degree 2 in H.
+
+Corollary 1. Every subgraph G of G" that is induced on at most t! < n° vertices is (l—1)-
+path decomposable.
+
+Proof. Consider any 2-connected subgraph H of G. If H is not a cycle, then Lemma[] and
+Lemma [6] together guarantee that H contains a path of length at least 1 +1 such that all
+internal vertices have degree 2 in H, which gives us a path of length (J — 1) with all vertices
+of degree 2 in H. On the other hand, if H is a cycle, then Lemma[J] guarantees that H has
+at least 1 + 1 vertices and hence again the required path exists. o
+
+For convenience we replace (J — 1) in Corollary [] with J, and since | = O25), this does
+not change any parameter noticeably.
+
+Final Instance
+
+Theorem 9. Given k € {2,...,n} and constants ¢, > 0, there exists a constant y > 0,
+and parameters A = o( #85), and | = 6( 725) such that there is an instance D (with
+
+underlying undirected graph G) of MAx-k-ORDERING with the following properties
+
+— Low Integral Optimum: Opt(D) < $(1 - -) +e.
+
+— Almost Regularity: Maximum Degree of G < 2A, and G has 92(An) edges.
+
+— Local Sparsity: For t < n7/!°&4, every induced subgraph of G on (2A)'t vertices is l-path
+decomposable.
+
+— Large Noise: Fort <n*/84, (1—p)/0 < £.
+
+Note that n7/'84 = n&CQ/loglogk) |
+
+Proof. Let D” be the digraph obtained from Lemma [4] Lemmas [3] and [4] imply that the
+digraph D” so obtained (i) has low integral optimum, (ii) is almost regular, and (iii) has
+girth > L.
+
+The large noise condition is satisfied by 1 > (Cy log n/log A) for an appropriate constant
+C.
+
+Corollary [I] guarantees that the local sparsity condition is satisfied if (2A)'t < n°, ie.
+1 < C’'(6 — y)logn for another constant C’. Hence, by selecting a small enough constant
+y and an appropriate | = O25), the instance D” obtained in Lemma [J] satisfies all the
+required properties. o
+
+5.2 Constructing Local Distributions
+
+Let D = (V,A) be the instance of MAXx-k-ORDERING constructed in Theorem [9] and let
+G = (V,E) be the underlying undirected graph. We now show that there exists a solution
+to the LP after t = n7/!°84 rounds of the Sherali-Adams hierarchy whose objective is at
+least (1 — e)(1 — ¢). Our proof for the existence of such a solution essentially follows the
+
+/n/napproach of Lee [13]. Given a set of t < n7/!°84 vertices S = {v1, v2,..., ur}, our goal is to
+give a distribution on events {¢(v1) = 21, (v2) = x2,...,€(ve) = Lt} er ,09,...,02€[h]*
+
+Let d(u,v) be the shortest distance between u and v in the (undirected) graph G. Let
+V’ CV be the set of vertices that are at most / distance away from S and let G’ be the
+subgraph induced by V’ on G. Since the maximum degree of vertices is bounded by 2A, we
+have |V’| < (2A)'¢ and hence G’ is I-path decomposable by Theorem J]
+
+The first step of the construction relies on the following theorem by Charikar et al. [4]
+that shows that if a graph G’ is l-path decomposable, then there exists a distribution on
+partitions of V such that close vertices are likely to remain in the same partition while
+distant vertices are likely to be separated.
+
+Theorem 10 (Charikar et al. [4]). Suppose G’ = (V’,E’) is an l-path decomposable
+graph. Let d(-,-) be the shortest path distance onG , and L = |1/9|; w € [1/L,1]. Then there
+exists a probabilistic distribution of multicuts of G’ (or in other words random partition of
+G’ into pieces) such that the following properties hold. For every two vertices u and v,
+
+1. If d(u,v) < L, then the probability that u and v are separated by the multicut (i.e. lie in
+different parts) equals 1 — (1 — py); moreover, if u and v lie in the same part, then
+the unique shortest path between u and v also lies in that part.
+
+2. If d(u,v) > L, then the probability that u and v are separated by the multicut is at least
+
+—(1-p)*.
+
+3. Every piece of the multicut partition is a tree.
+
+Based on this random partitioning, we define a distribution on the vertices in S (actually
+in V’). As each piece of the above partition is a tree, given some vertex u with an arbitrary
+abel i, we can extend it to a labeling ¢ for every other vertex in that piece such that every
+directed edge (x,y) in the piece satisfies ((y) — (x) = 1 (mod k).
+
+For vertices u and v with d(u,v) < L, we say that label i for u and i’ for v match if
+he labeling ¢(w) = i, €(v) = 7’ can be extended so that for every directed edge (x,y) on the
+unique shortest path between u and v, ¢(y) — ¢(z) = 1 (mod k). Note that there are exactly
+k such matching pairs for every u and v. We can now use Theorem[IQ] to obtain a random
+abeling as follows.
+
+Corollary 2. Suppose G’ = (V’,E’) is an l-path decomposable graph. Let L = |1/9|; €
+1/L, 1. Then there exists a random labeling r : V' — [k] such that
+
+1. Ifd=d(u,v) < L, then
+
+ope y
+
+Pr[r(u) =i,r(v) = 7] = 4, + if i and i! match
+nope otherwise
+
+2. Ifd > L, then
+
+easy! < Pri[r(u) =i,r(v) =i] < Ow + =)" for any i,t’ € [k]
+
+_ ye _—a_4
+(=) +E
+
+Proof. We first sample from the distribution of multicuts given by Theorem For every
+piece obtained, we pick an arbitrary vertex u and assign r(u) to be a uniformly random
+label from [k]. Now, since each piece is a tree, we can propagate this label along the tree
+so that for every directed edge (v, w) we have r(w) — r(v) = 1 (mod k). Note that the final
+distribution obtained does not depend on the choice of the initial vertex wu.
+
+Consider any two vertices u and v. If d(u,v) < L, then if u and v are in the same piece,
+then the path connecting u and v in the piece is the shortest path. If 7 and é’ are matching
+
+16
+/n/nlabels, then
+
+Pr[r(u) =i, r(v) = 7] = Pr[u, v in the same piece] - (
+
+)
+
+1
++ Priu,v are separated] - (+) .
+
+cod ad
+
+>
+
+On the other hand, if i and i’ are not matching,
+
+Pr[r(u) =i, r(v) = 7'] = Pr[u, v in the same piece] - 0
++ Pr[u,v are separated] - (4) .
+Similarly, if d(u,v) > L, then Pr[r(u) = i, r(v) = 7’] is lower bounded by Pr[u, v are separated] /k?
+
+and upper bounded by Pr[u,v in the same piece]/k + Pr[u,v are separated] /k?. Substitut-
+ing the separation probabilities in Theorem [10] proves the desired result. o
+
+The above random labeling defines a distribution vg over labels of pairs of vertices as
+follows.
+
+Definition 5. Let S = {v1,v2,..., 4} be a fixed set of vertices. For any two vertices u,v € S
+and i,i’ € kj, let vg(u(i), o(i’)) = Pr[x(u) = i,a(v) = 7] in the local distribution on S
+defined by r in Corollary [2
+
+We now define another distribution p over labels for pairs of vertices that is independent
+of the choice of the set S as follows.
+
+Definition 6. For any vertices u 4 v and i,i' € [k], let p(u(i), v(i’)) = Pr{x(u) = i,a(v) =
+i'] if d(u,v) < L, and xy otherwise. Also define p(u(i),u(i)) = ¢ and p(u(i), u(i’)) = 0 for
+i #1. Since the shortest path between u and v is unique when d(u,v) < L, p is uniquely
+defined by D and G and is independent of the choice of set S.
+
+Lee shows that it is possible to use the p and vg distributions defined above to produce
+consistent distributions over events of the form {@(v1) = 21,-..,€(vt) = ®t}er,....cc€[Al-
+Further, these distributions need to be consistent, i.e., the marginal distribution on $9 S$’
+does not depend on the choice of its superset (S or $’) that is used to obtained the larger
+local distribution. The key idea here as shown by Charikar et al. is to embed p into
+Euclidean space with a small error to obtain tk vectors {v(7)}yes,ie[n) Such that u(i)-v(i’) ©
+p(u(i), v(7’)). This uses the large noise property in Theorem[] The following lemma appears
+as Lemma 5.7 in [13].
+
+Lemma 7 (Lee [13]). There exist tk vectors {v(i) }ves.ic{ay such that ||v(i)||3 = w+ py
+and u(i)- v(t’) = § + p(u(2), v(7’)).
+
+Given such tk vectors, one can use a geometric rounding scheme to define the consistent local
+distributions. Note that the local distribution is completely defined by the pairwise inner
+products of the vectors which, for any two vectors, is independent of the subset S. Lee
+shows that the following simple rounding scheme suffices to obtain a good distribution:
+choose a random Gaussian vector g, and for each vertex v, let ¢(v) = arg max;(v(i) - g).
+
+Lemma 8 (Lee [13][9). There exists au > 0 depending on k and such that, in the above
+rounding scheme, for any edge (u,v) and any label i € [k] the probability that (uw) = i and
+&(v) =i +1 (mod k) is at least +425.
+
+°The lemma follows from the proof of Lemma 5.8 of Lee [13] by substituting la(u,v) = 1.
+
+17
+/n/nConsider the solution to n7/!°84 rounds of the Sherali-Adams hierarchy obtained by the
+above rounding process. For any edge (u,v) € A, its contribution to the objective is
+
+> Pr[¢(u) = i, &(v) = 7] > > Pr[C(u) = i, &(v) =i +1]
+
+1<i<i’<k i€[k—1]
+
+> > —*
+
+i€[k—1]
+
+The last inequality follows due to Lemma\§} Thus we have a fractional solution with value
+at least (1 — 12e)(1 — 4). This, along with the low optimum of the instance from Theorem
+Plcompletes the proof of Theorem [7]
+
+6 The DED(k) Problem
+
+Recall that the DED(k) problem is to remove the minimum weight subset of edges from a
+given DAG so that the remaining digraph does not contain any path of length k.
+
+6.1 Combinatorial k-Approximation
+
+In the unweighted case (i.e. all edges have unit weight), the following simple scheme is a k-
+approximation algorithm. As long as the DAG contains a directed path P of length k, delete
+all edges of that path. It is easy to see that the above scheme guarantees a k-approximation
+as the optimal solution must delete at least one edge from the path P while the algorithm
+deletes exactly k edges.
+
+The following slightly modified scheme that uses the local ratio technique yields a k-
+approximation for weighted DAGs.
+
+Algorithm LocalRatio:
+1. S< {ee E| w(e) = 0}
+2. While (V, E \ $) contains a path P of length k
+(a) Wmin — Minee p(w(e))
+(b) w(e) = w(e) — Wmin, Ve € P
+(c) S=+ {e€ E | w(e) = 0}
+
+Theorem 11. LocalRatio is a polynomial time k-approximation to the DED(k) problem on
+weighted DAGs.
+
+Proof. We note that the LocalRatio terminates in at most || iterations as the weight of
+at least one edge reduces to 0 in each iteration. Also, since one can check if there exists
+a path of length k in DAG via a dynamic programming, it follows that LocalRatio runs in
+polynomial time.
+
+Let O C E be an optimal solution and S C E be the solution returned by LocalRatio.
+Note that an edge is in S if its weight is reduced to 0 in some iteration of the algorithm.
+Thus, the weight of S is upper bounded by the total reduction in the weight of the edges.
+At each iteration, for a path P of length k, the reduction is at most / times the minimum
+weight edge (according to the current weights) on in P. Since there is at least one edge e in
+P which is in O, we charge this reduction to the weight of e. Then the weight of e decreases
+by at least 1/k factor of what is charged to it, and it cannot decrease beyond 0. Thus, the
+weight of S is at most the k times the weight of O. Oo
+
+/n/n6.2 k-Approximation via LP Rounding
+
+The natural LP relaxation for DED(k) on an n-vertex DAG D = (V, E) is given in Figure]
+This relaxation has n°“) constraints. However, when the input graph is a DAG, it admits
+
+min > w(e)te (28)
+eek
+subject to,
+V paths P of length k, > Ge >i. (29)
+eeP
+Vee E, Le > 0. (30)
+
+Fig. 3. LP Relaxation for instance Z of DED(k).
+
+the following polynomial time separation oracle for any k € {2,...,n — 1}.
+
+Separation Oracle and Rounding. For each vertex v € V and integer t € [n], define
+a; = minp(>>.<p#e) where P is a path of length ¢ that ends at vertex v. Once we compute
+all these a? values, then a constraint is violated if and only if there is a vertex v such that
+ay <i.
+
+On a DAG the {af | v € V,t € [n]} can be computed by dynamic programming. First
+assume that the vertices are arranged in a topological order. For any vertex v with no
+predecessors, set a? = 0,Vt. Otherwise, we have the following recurrence,
+
+al = min (2(u,v) + aj’_y).
+
+u€predecessors(v)
+It is easy to see that the above recurrence leads to a dynamic program on a DAG. Once we
+obtain an optimal solution to the LP relaxation, a simple threshold based rounding using a
+threshold of 1/k yields a k-approximation.
+
+Theorem 12. The standard LP relaxation for DED(k) on n-vertex DAGs can be solved in
+polynomial time for k = {2,...,n —1} and yields a k-approximation.
+
+6.3. Hardness of Approximation
+
+For fixed integer k > 2 and arbitrarily small constant « > 0, Svensson [18] showed factor
+(k — ¢) UGC-hardness of the vertex deletion version of DED(k), which requires deleting
+the minimum number of vertices from a given DAG to remove all paths with k vertices. In
+particular, proves the following structural hardness result.
+
+Theorem 13 (Svensson [18]). For any fixed integer t > 2 and arbitrary constant ¢ > 0,
+assuming the UGC the following is NP-hard: Given a DAG D(V,E), distinguish between
+the following cases:
+
+19
+/n/n— (Completeness): There exist t disjoint subsets Vi,...,Vi C V satisfying \Vi| > +£|V|
+and such that a subgraph induced by any t — 1 of these subsets has no directed path of t
+
+vertices.
+— (Soundness): Every induced subgraph on e|V| vertices has a path with |V|'~* vertices.
+
+The following theorem provides a simple gadget reduction from the above theorem to a
+hardness for DED(k) on DAGs.
+
+Theorem 14. Assuming the UGC, for any constant k > 4 and e > 0, the DED(k) problem
+on weighted DAGs is NP-hard to approximate with a factor better than (|k/2]—e).
+
+Proof. Fixt = | k/2|. Let D = (V, E) be a hard instance from Theorem[L3]for the parameter
+t and small enough ¢ > 0. The following simple reduction yields a weighted DAG H =
+(Vi, Ex) as an instance of DED(k). Assign w(e) = 2|V| to every edge e € E. Split every
+vertex v € V into vin and Vou, and add a directed edge (Vin, Vous) of weight 1. Also every
+edge entering v now enters v;,, while edges leaving v now leave Vout. It is easy to see that
+removing all edges of weight 1 from H eliminates all paths with 2 edges, implying that the
+optimum solution has weight at most |V|. Thus, we may assume that the optimum solution
+does not delete any edge of weight 2|V|.
+
+We now show that Theorem[3]implies that it is UG-hard to distinguish whether: (Com-
+pleteness) H has a solution of cost < (¢ + ¢)|V|, or (Soundness) H has no solution of cost
+(1 —¢)|V]. This immediately implies the desired (t — e’) = (|k/2 | — e’) UGC-hardness for
+DED(k).
+
+— (Completeness) There exists a subset S C V of size at most (+ + ¢)|V|, such that
+removing S eliminates all paths in D of t vertices. Let $’ denote the set of edges in
+H corresponding to the vertices in S. It is easy to observe that H(V, Ex \ S’) has
+no paths of length (number of edges) 2t. Thus, S’ is a feasible solution to the DED(k)
+problem of cost (+ + ¢)|V].
+
+— (Soundness) Assume for the sake of contradiction, that we have an optimal solution
+S’ C Ex of cost at most (1 —e)|V|. Since S’ is an optimal solution it only has edges of
+weight 1, each of which correspond to a vertex in V. Let S denote this set of vertices in
+V. By construction, since H(Vzy, Ey \ S’) has no paths with k edges, D[V \ S] has no
+induced paths with [k/2| +1 = t+ 1 vertices. Further, since |S’| = |S| < (1 —.)|V|,
+we have |V \ S| > e|V|. Thus, we have a set of size e|V| that has no induced paths of
+length t+ 1. This is a contradiction since every induced subgraph of ¢|V| vertices has a
+path of length |V|!-* >t+1.
+
+o
+
+References
+
+[1] S. Arora, B. Bollobés, and L. Lovdsz. Proving integrality gaps without knowing the linear
+program. In Proc. FOCS, pages 313-313, 2002.
+
+(2) H. Chan. COMP8601 Lecture-9 Notes. Department of Computer Science, HKU, Fall 2013.
+(http: //i.cs .hku.hk/~hubert/teaching/c8601_2013/notes9 .pdf
+
+[3] M. Charikar, K. Makarychev, and Y. Makarychev. Integrality gaps for Sherali-Adams relax-
+ations. In Proc. STOC, pages 283-292, 2009.
+
+[4] M. Charikar, K. Makarychev, and Y. Makarychev. Local global tradeoffs in metric embeddings.
+SIAM Journal on Computing, 39(6):2487-2512, 2010.
+
+20
+/n/na
+
+20
+
+21
+
+U. Feige and M. X. Goemans. Approximating the value of two prover proof systems, with
+applications to MAX 2SAT and MAX DICUT. In Proc. ISTCS, pages 182-189, 1995.
+
+A. Frieze and M. Jerrum. Improved approximation algorithms for MAX k-CUT and MAX
+BISECTION. Algorithmica, 18(1):67-81, 1997.
+
+F. Grandoni, T. Kociumaka, and M. Wlodarczyk. An LP-rounding-approximation for re-
+stricted maximum acyclic subgraph. Information Processing Letters, 115(2):182-185, 2015.
+V. Guruswami, R. Manokaran, and P. Raghavendra. Beating the random ordering is hard:
+Inapproximability of maximum acyclic subgraph. In Proc. FOCS, pages 573-582, 2008.
+
+J. Hastad. Some optimal inapproximability results. JACM, 48(4):798-859, 2001.
+
+R. Khandekar, T. Kimbrel, K. Makarychev, and M. Sviridenko. On hardness of pricing items
+for single-minded bidders. In Proc. APPROX, pages 202-216, 2009.
+
+S. Khot. On the power of unique 2-prover 1-round games. In Proc. STOC, pages 767-775,
+2002.
+
+S. Khot, G. Kindler, E. Mossel, and R. O’Donnell. Optimal inapproximability results for
+MAX-CUT and other 2-variable CSPs? SIAM Journal on Computing, 37(1):319-357, 2007.
+E. Lee. Hardness of graph pricing through generalized Max-Dicut. To Appear in Proc. STOC,
+2015. http://arxiv.org/pdf/1405.0740v2.
+
+M. Lewin, D. Livnat, and U. Zwick. Improved rounding techniques for the MAX 2-SAT and
+MAX DI-CUT problems. In Proc. IPCO, pages 67-82, 2002.
+
+S. Matuura and T. Matsui. 0.863-approximation algorithm for MAX DICUT. In Proc. AP-
+PROX, pages 138-146, 2001.
+
+A. Newman. Approximating the maximum acyclic subgraph. PhD thesis, Massachusetts Insti-
+tute of Technology, 2000.
+
+D. Paik, S. Reddy, and S. Sahni. Deleting vertices to bound path length. [EEE Transactions
+on Computers, 43(9):1091-1096, 1994.
+
+O. Svensson. Hardness of vertex deletion and project scheduling. In Proc. APPROX, pages
+301-312, 2012.
+
+L. Trevisan. Parallel approximation algorithms by positive linear programming. Algorithmica,
+21(1):72-88, 1998.
+
+V. Vapnik and A. Chervonenkis. On the uniform convergence of relative frequencies of events
+to their probabilities. Theory of Probability and its Applications, 16(2):264—280, 1971.
+
+U. Zwick. Analyzing the MAX 2-SAT and MAX DI-CUT approximation algorithms of Feige
+and Goemans. Manuscript, 2000.
+
+21

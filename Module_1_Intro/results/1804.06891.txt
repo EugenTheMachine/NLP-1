@@ -1,0 +1,766 @@
+On the Backus average of layers with randomly oriented
+elasticity tensors
+
+Len Bos* Michael A. Slawinski!, Theodore Stanoev!
+
+Abstract
+
+As shown by Backus (1962), the average of a stack of isotropic layers results in a transversely
+isotropic medium. Herein, we consider a stack of layers consisting of a randomly oriented
+anisotropic elasticity tensor, which—one might expect—would result in an isotropic medium.
+However, we show—by means of a fundamental symmetry of the Backus average—that the
+corresponding Backus average is only transversely isotropic and not, in general, isotropic. In
+the process, we formulate, and use, a relationship between the Backus and Gazis et al. (1963)
+averages.
+
+1 Introduction
+
+In this paper, we investigate the Backus (1962) average of a stack of anisotropic layers, wherein the
+tensors are oriented randomly. In spite of a conceptual relation between randomness and isotropy,
+herein, the Backus average results in a medium, whose anisotropy, even though weak, is irreducible
+to isotropy, regardless of increasing randomness.
+
+Each layer is expressed by Hooke’s law,
+
+3 3
+053 = Dd cigne exe, i,j =1,2,3,
+
+k=1 €=1
+
+where the stress tensor, 0;; , is linearly related to the strain tensor,
+
+where u and « are the displacement and position vectors, respectively, and
+
+Cigke = Cjike = Cheiz
+
+arXiv:1804.06891v1 [physics.geo-ph] 18 Apr 2018
+
+is the elasticity tensor, which has to be positive-definite. Under the index symmetries, this tensor
+has twenty-one linearly independent components, and can be written as (e.g., Béna et al., 2008,
+
+*Dipartimento di Informatica, Universita di Verona, Italy, leonardpeter.bos@univr.it
++Department of Earth Sciences, Memorial University of Newfoundland, mslawins@mac.com
+*Department of Earth Sciences, Memorial University of Newfoundland, theodore.stanoev@gmail.com
+/n/nexpression (2.1))
+
+C1111 C1122 €1133 V2¢1123 v2ei113 V2e1112
+C1122 C2222 €2233 v2 C2223 v2 €2213 v2 C2212
+C= C1133 €2233 C3333 v2 3323 v2 C3313 v2 €3312 (1)
+
+V2c1123  V2c2223  V2¢3323  2€2323 2 easis 2c2312
+V2e113 V2c2213 V2e3313. e313. esis 2c1312
+V2e12 V2e212 V2e3312 2easi2 ~—-2eigi2 2ci212
+
+Any elasticity tensor of this form is also positive-definite (e.g., Bona et al., 2007).
+
+A rotation of ¢jjxe , which is in R® , expressed in terms of quaternions, is
+
+@+eP—e—d —2ad+2be 2ac+2bd
+A= A(q)= 2ad+2be a — bP +c? — ad? —2ab+2cd
+—2ac+2bd 2ab+2cd @?-P-e?+d
+
+where g = [a, b, c, d] is a unit quaternion. The corresponding rotation of tensor (1) is (Béna et al.,
+2008, diagram (3.1))
+
+C=ACA’,
+where A is expression (A.1) in Appendix A.
+
+2 The Backus and Gazis et al. averages
+
+To examine the elasticity tensors, C € R®°*®, which are positive-definite, let us consider the space
+of all matrices M := R®°*® . Its subspace of isotropic matrices is
+
+Miso >= {MEM : QMQT=M, VQ €SO(3)}.
+
+Miso is a linear space, since, as is easy to verify, if My, M2 € Miso, then aM, + 8M2 € Miso, for
+all a, 8 € R. Let us endow M with an inner product,
+
+6
+(Mi, Mz) p := tr(Ma Mg!) = S> (Mi)ij(Ma)is ,
+
+ij=l
+
+and the corresponding Frobenius norm,
+M2 || = VM, Ma) re -
+
+In such a context, Gazis et al. (1963) prove the following theorem.
+Theorem 1. The closest element—with respect to the Frobenius norm—to M € M C Migo is
+uniquely given by
+
+Miso *= | QMGQT ao(Q),
+50(3)
+
+where do(Q) represents the Haar probability measure on SO(3) .
+/n/nProof. It suffices to prove that
+M — Migg L Miso -
+
+To do so, we let N € Migo be arbitrary. Then, for any A € SO(3),
+
+(M = Miso ,N) p = tr ((M — Migo) NT)
+= fe MQ? do(Q) | NT
+SO(3)
+= - [ aur do(Q) | NT AT (as Ais orthogonal)
+Jf
+_ fiw A | Q@MQ" do(Q) | AT (4n747)
+S0(3)
+
+But
+
+A [ OeracQ) AT= | A(QMQ‘) AT da(Q) (by linearity)
+
+S0(3) S0(3)
+
+$0(3)
+
+= | QMQT do(Q) (by the invariance of the measure)
+
+Hence,
+(M — Mio, N) p = tr (AM NTAT ) — Miso (4 NTAT )
+(ANTAT) ~ Mis. (AN7AT))
+NT — Mi N)
+NT) = tr(MioN?) ,
+as by assumption, N € Migo -
+Finally, integrating over A € SO(3), we obtain
+
+(M — Miso, N)p = tr | AMAT do(A) | NT | — tr(Miso N7)
+SO(3)
+= tr(Miso N7) — tr(Miso N7)
+= 0,
+/n/nas required.
+
+Rox6
+
+Since any elasticity tensor, C' € , is positive-definite, it follows that
+
+Cun =f FCT Ao(@)
+SO(3)
+is both isotropic and positive-definite, since it is the sum of positive-definite matrices QcQq’.
+Hence, Ciso is the closest isotropic tensor to C', measured in the Frobenius norm.
+
+If Q; € SO(3),i=1,...,n, is a sequence of random samples from S'O(3), then the sample means
+converge almost surely to the true mean,
+
+eer. oo
+
+jim [QCA = | QCQ"ao(Q) = Cine (2)
+id S0(3)
+
+which—in accordance with Theorem 1—is the Gazis et al. average of C.
+
+This paper relies on replacing the arithmetic average in expression (2) by the Backus average, which
+
+provides a single, homogeneous model that is long-wave-equivalent to a thinly layered medium.
+
+According to Backus (1962), the average of the function f(x3) of “width” ¢’ is the moving average
+given by
+oo
+Flea) = f w(x) A(6) ac,
+
+co
+
+where the weight function, w(x3), acts like the Dirac delta centred at x3 = 0, and exhibits the
+following properties.
+
+°°
+
+w(a3) >0, w(+too) =0, | w(x3)dr3 = 1, | x3 w(x3) dr3 = 0, | x3 w(x3) dz = (C)?.
+
+—0o
+
+These properties define w(a3) as a probability-density function with mean zero and standard devi-
+ation ¢’ , thus explaining the term “width” for ¢’.
+
+3. The block structure of C > ACAT
+
+The action C - ACAT has a simple block structure that is exploited in Section 4. To see this,
+we consider g = [a, 0,0, d], with a := cos(@/2), d := sin(@/2); thus, in accordance with expres-
+sion (1),
+
+cos@ —sind 0
+A=A(q)= | sin@ cos? 0 (3)
+0 0 1
+/n/nand, in accordance with expression (A.1),
+
+cos? @ sin? 6 0 0 Oo = a sin (20)
+sin? 6 cos? @ 0 0 0 4 sin (20)
+~ 0 0 1 0 0 0
+A-
+0 0 0 cos# sind 0
+0 0 0 —sin@ cosé 0
+Yq sin (26) -H sin(20) 0 0 0 cos (20)
+For q = [0, 6, c, 0], with 6 := cos(@/2) and c := sin(0/2) ,
+cos@ — sin® 0
+A=A(q) =| sin@ -cos@ 0 (4)
+0 0 -1
+and
+cos? @ sin? 6 0 0 0 Wa sin (20)
+sin? 6 cos? @ 0 0 0 - Wa sin (20)
+~ 0 0 1 0 0 0
+A-
+0 0 0 cos# —sin@ 0
+0 0 0 —sin@ —cosé 0
+Ya sin (26) -4 sin(20) 0 0 0 —cos (24)
+
+In both cases permuting the rows and columns to the order (3, 4,5, 1, 2, 6) results in a diagonal
+block structure for A. For expression (3), we have
+
+0 As
+where
+1 0 0 cos? 6 sin? - wa sin (26)
+A,=| 0 cosé sind and Ay = sin? 6 cos? Ww sin (20)
+0 —sin@ cos@ fT
+
+(20) -H sin (26) cos (26)
+
+Both A;, Ap € R8* are rotation matrices. Similarly, for expression (4),
+
+As|" 2),
+0 Apo
+herein, Ay, Ap € R°*? are reflection matrices. Thus, in both cases, A, and Ay are orthogonal
+
+matrices.
+
+In either case, the following lemma holds.
+
+a
+/n/nLemma 2. Suppose that the rows and columns of C are permuted to the order (3,4,5,1, 2,6)
+to have the block structure
+MB
+CH ;
+
+KJ
+
+with M, B, K, J € R°*°, and that the rows and columns of A are also so permuted. Then,
+
+ici? + nee a |
+
+AK AP Ay JAE
+
+Proof. Let P € R®°*® be the matrix obtained by permuting the rows of the identity to the or-
+der (3, 4,5, 1, 2,6). Our assumption is that
+
+r_[M B
+rort=[M 2].
+
+Then,
+
+,
+
+_| AMAL A, BAT
+| AgKAP Ay J AT
+
+as required.
+
+4 The fundamental symmetry of the Backus average
+
+Let us examine properties of the Backus average, which—for elasticity tensors, C;—we denote by
+
+(C1, ..-, En).
+Theorem 3. For A € R°*? of the form of expression (3) or (4) and any elasticity tensor, C1, ... , Cn
+E Rox6 ;
+A (Gis Cn) AT = (ACLAT,...,AC, AT), (5)
+
+which is a symmetry condition. Conversely, if for an orthogonal matrix, A € R°*? , we have equal-
+ity (5), for any collection of elasticity tensors, C1, ... , Cn € R°*®, then A must be of the form of
+expression (3) or (4).
+
+Proof. As in Lemma 2, we permute the rows and columns of C € R®*® to the order (3, 4,5, 1, 2,6).
+Thus, we have the block structure
+
+_| MB | 3x3,
+
+c=[k i |: M,B,K,JeER”™;
+
+herein, we use the notation of equations (5)—(9) of Bos et al. (2017). Also, A has the block structure
+
+of
+
+7 A, 0 q. 7 3x3
+
+A= ~ |, Ar, A2€R™”,
+| 0 Ay , 1, Ae ,
+/n/nand is orthogonal.
+
+Let
+
+where, by Lemma 2,
+M=A,MA,7, B=A,BA.7, K=A, KAT, F=ATAT.
+
+In particular,
+~ ~ ~ \-l
+M-1= (A M A,") (6)
+=A,M-1A,°.
+
+The Backus-average equations are given by (Bos et al., 2017)
+
+where
+
+-1
+Jpa = (7- KM1B+KM-1 (77) Mo B) ,
+
+and where o denotes the arithmetic average of the expression 0; for example,
+1
+T-1 = y-l
+MT = — > M;".
+i=
+
+Let Mega, Bea, Kpa and Jga denote the associated sub-blocks of the Backus average of the AC;AT .
+Then,
+
+= \-1
+=(A,;M-1 Ar) (by linearity)
+7 > t\
+= ( (A M Ai’) ) (by equation (6))
+— -1
+(9)
+= Mpa,
+/n/nM- ry M- MB) Ast
+
+=A ((
+
+“( A, (= Ty a 1°) (AaB TBAT )
+Ina(A
+Moa (Ai M\B Az")
+
+us
+g
+
+A, M-'B A, ) (by the previous result)
+
+Ay M-1B Ag? ) (by linearity)
+
+= Mpa (A M-1A,7) (A BAT)
+
+= Mpa B
+
+= Baa,
+
+Le
+A,’
+
+‘)
+= (AK MTA TA 7) (A _ r) ‘A:7)
+
+= (4, KM 4,7) ‘A,?) Mp
+
+Ay Kpa Ay? = Ay KM KM (Mr
+
+=KM— Mpa
+
+= Kpa,
+
+and
+
+~ ~ -1 ~
+Ay Jpa Ag™ = Ay (7- KM B+KM- "(= r) MTB) Aa
+
+Ay (J) Ao” — Ay (KMB) Ay” + Az (Rar "(are ty B) Apt
+
+= — — = ~ ~ ~ -12T ~ ~
+= Ay (J) Ag? — Ay (K MB) Ay? + Ay K M1 A,? A, (77) A,? A; M="B Ap?
+
+= —(4,K A,") (Ay M-1 Ay") (A, BAL") +
+
+aK MOAT (A (37) 47) (A.w14," A, BAL")
+
+=J —KM—B+KM-! Mg, M-!B
+=Jpa,
+which completes the proof of equality (5).
+
+To show the converse claimed in the statement of Theorem 3, let us consider C, = I and Cp = 21.
+Their Backus average is
+
+cocoooc Onw
+
+ooo ONWO
+
+cooowFoeo
+
+coowrkRO COO
+
+ouUrkRO COCO
+
+NnILeooooe
+&
+
+Following rotation,
+
+bw
+i
+i
+by
+a
+4
+Ss
+/n/nwhere A is given in expression (A.1). It can be shown by direct calculation that the (3,3) entry of B
+is
+
+Bag = 5 (142 (0 +02)? (a? +a*)’) . (10)
+Since C) and C2 are multiples of the identity,
+ACGAT=C, and AC,AT=Co,
+
+and the Backus average of AC, AT and ACjAT equals the Backus average of Cy and C2, which is
+matrix (8). Hence,
+
+A(C,, C2) AT = (Acar, AGAT)
+
+implies that, for expression (10),
+
+which results in
+
+21 2) (72 4 42
+3 (b? + c*) (a? +d?) 0.
+Thus, either b = c = 0 ora =d=0. This is a necessary condition for symmetry (5) to hold, as
+claimed.
+
+Remark 4. Theorem 3 is formulated for general positive-definite matrices C € R°*® , not all of
+
+which represent elasticity tensors. However, expression (5) is continuous in the C; and hence is
+
+true in general only if it is also true for C;, such as diagonal matrices, which are limits of elasticity
+tensors.
+
+5 The Backus average of randomly oriented tensors
+
+In this section, we study the Backus average for a random orientations of a given tensor. As discussed
+in Section 2, the arithmetic average of such orientations results in the Gazis et al. average, which
+is the closest isotropic tensor with respect to the Frobenius norm. We see that—for the Backus
+average—the result is, perhaps surprisingly, different.
+
+Given an elasticity tensor, C € R°*®, let us consider a sequence of its random rotations given by
+Cj) :=Q;CQ}, j=Hl,...,n,
+where Q; € R°*? are random matrices sampled from SO(3) .
+
+The C; are samples from some distribution and, hence, almost surely,
+
+_ 1
+Ci= di LG =(C),
+=
+
+the true mean,
+woy= | QCQTaa(Q),
+SO(3)
+
+where do(Q) is Haar measure on SO(3). Note that ju(C) is just the Gazis et al. average of C’.
+/n/nSimilarly, for any expression X(C) of submatrices of C, which appear in the Backus-average formu-
+las,
+
+1g
+X= im = p(X).
+j=
+
+Hence, almost surely limn—yo. (Ci, ... , Cn) equals the Backus average formula with each expres-
+sion X replaced by
+
+W(X) = | X (Q;0.Q,7) do(Q).
+
+S0(3)
+
+Theorem 5. The limp .0(Ci,.-.,Cn) exists almost surely, in which case it is transversely
+isotropic. It is not, in general, isotropic.
+
+Proof. Let A € R°*? be an orthogonal matrix of type (3) or (4). Then
+C; = AC,AT, j=l,...,n,
+=A(Q)0)Q)7) AT
+— ~~\T
+-(3)6,(80)
+
+——_ T
+= (AQ;) C; (AQ;)
+
+by the properties of the tilde operation, are also random samples from the same distribution. Hence,
+almost surely,
+
+lim (Ci. ....n) = Jim (Gr. Gn) = B, say .
+
+noo
+
+But by the symmetry property of the Backus average, Theorem 3,
+
+(Ci...) Cn) =A (Gry Cn AT.
+Thus oe
+B=ABA’,
+
+which means that B is invariant under a rotation of space by A. Consequently, B is a transversely
+isotropic tensor.
+
+In general, the limit tensor is not isotropic, as illustrated by the following example. Let
+
+C =diag[1,1,1,1,0,0],
+
+which, as stated in Remark 4, represents a limiting case of an elasticity tensor. Numerical evidence
+strongly suggests that
+
++ + +000
+PE L000
+pu} i 7 2 9 0 0
+00000 0
+00000 0
+00000 4
+
+which is not isotropic.
+
+10
+/n/nAlthough this is rather an artificial example, it could—with some computational effort—be “pro-
+moted” to a legal proof. The conclusion is readily confirmed by the numerical examples presente
+in Section 6.
+
+In fact, it is easy to identify the limiting matrix B; it is just the Backus average expression (7), with
+an expression X(C) replaced by the true mean
+
+wx(Q) = [ X(GCQ") aa(Q). (11)
+s0(3)
+This limiting transversely isotropic tensor is of natural interest in its own right. It plays the role of
+
+the Gazis et al. average in the context of the Backus average, and is the subject of a forthcoming
+work.
+
+6 Numerical example
+
+Let us consider the elasticity tensor obtained by Dewangan and Grechka (2003); its components are
+estimated from seismic measurements in New Mexico,
+
+7.8195 3.4495 2.5667 V2(0.1374)  V2(0.0558) /2 (0.1239)
+
+3.4495 8.1284 2.3589 V2 (0.0812) /2(0.0735) 1/2 (0.1692)
+
+Cx 2.5667 2.3589 7.0908 V2(—0.0092) /2(0.0286) 2 (0.1655)
+V2 (0.1374) /2(0.0812) V2(—0.0092) 2(1.6636)  2(—0.0787) —2.(0.1053)
+
+V2 (0.0558) /2(0.0735) V2(0.0286)  2(—0.0787)  2(2.0660) 2(—0.1517)
+V2 (0.1239) V/2(0.1692) V2(0.1655)  2(0.1053) = 2(—0.1517) 2 (2.4270)
+(12)
+
+Using tensor (12), let us demonstrate two methods to obtain B and their mutual convergence in the
+limit.
+The first method to obtain B requires a stack of layers, whose elasticity tensors are C. We rotate
+each C’, using a random unit quaternion, and perform the Backus average of the resulting stack of
+layers. Using 107 layers, the Backus average is
+
+7.3008 2.9373 2.9379 V2 (0.0000) V2(0.0000) V2 (0.0000)
+
+2.9373 7.3010 2.9381 ¥2(0.0000) V2(0.0000) V2 (0.0000)
+
+pe 2.9379 2.9381 7.2689 V2 (0.0000) V2(—0.0001) V2 (0.0000)
+=~ | V2(0.0000) V2(0.0000) V2(0.0000)  2(2.1710) 2 (0.0000) 2 (0.0000)
+V2 (0.0000) V2(0.0000) V2(—0.0001) 2(0.0000) 2 (2.1710) 2 (0.0000)
+
+V2 (0.0000) V2(0.0000) V2(0.0000) — 2(0.0000) 2 (0.0000) 2 (2.1819)
+
+(13)
+For an explicit formulation of the Backus average of generally anisotropic media, see Bos et al. (2017,
+expressions (5)—(9)).
+
+The second method requires integrals in place of arithmetic averages. Similarly to the first method,
+we use a random unit quaternion, which is tantamount to a point on a 3-sphere. We approximate
+the triple integral using Simpson’s and trapezoidal rules. Effectively, the triple integral is replaced
+by a weighted sum of the integrand evaluated at discrete points. The sums that approximate the
+integrals are accumulated and are used in expressions (7).
+
+11
+/n/n0.15
+
+Figure 1: Difference between tensors (13) and (14)
+
+Using the Simpson’s and trapezoidal rules, with a sufficient number of subintervals, the Backus
+average is
+
+7.3010 2.9373 2.9380 v2 (0.0000) V2(0.0000) V2 (0.0000)
+2.9373 7.3010 2.9380 V2 (0.0000) V2(0.0000) V2 (0.0000)
+Br = 2.9380 2.9380 7.2687 V2 (0.0000) V2(0.0000) V2 (0.0000)
+JI | ./2(0.0000) V2(0.0000) V2(0.0000)  2(2.1711)  2(0.0000) — 2(0.0000)
+V2 (0.0000) V2(0.0000) V2(—0.0001) 2(0.0000)  2(2.1711) 20.0000)
+V2 (0.0000) V2(0.0000) V2(0.0000)  2(0.0000)  2(0.0000)  2(2.1818)
+
+(14)
+In the limit, the components of expressions (13) and (14) are the same; their similarity is illustrated
+in Figure 1, where the horizontal axis is the number of layers and the vertical axis is the maximum
+componentwise difference between the two tensors.
+Expression (14) is transversely isotropic, as expected from Theorem 5, and in accordance with Béna
+et al. (2007, Section 4.3), since its four distinct eigenvalues are
+
+Ay = 18.1658, Ap = 4.3412, Az = 4.3636, Ay = 4.3421, (15)
+
+with multiplicities of my = m2 = 1 and m3 = m4 = 2. The eigenvalues of expression (13) are in
+agreement—up to 10~*—with eigenvalues (15) and their multiplicities. Furthermore, in accordance
+with Theorem 5, in the limit, the distance to the closest isotropic tensor for expression (14) is
+0.0326 A 0; thus the distance does not reduce to zero.
+
+Expressions (13) and (14) are transversely isotropic, which is the main conclusion of this work, even
+though, for numerical modelling, one might view them as isotropic. This is indicated by Thomsen
+(1986) parameters, which for tensor (14) are
+
+7 = 2.4768 x 107°, 6 = 1.5816 x 1073, e = 2.2219 x 1073;
+
+values much less than unity indicate very weak anisotropy.
+
+7 Conclusions and future work
+
+Examining the Backus average of a stack of layers consisting of randomly oriented anisotropic elastic-
+ity tensors, we show that—in the limit—this average results in a homogeneous transversely isotropic
+medium, as stated by Theorems 3 and 5. In other words, the randomness within layers does not
+result in a medium lacking a directional pattern. Both the isotropic layers, as shown by Backus
+(1962), and randomly oriented anisotropic layers, as shown herein, result in the average that is
+
+12
+/n/ntransversely isotropic, as a consequence of inhomogeneity among parallel layers. This property is
+discussed by Adamus et al. (2018), and herein it is illustrated in Appendix B.
+
+In the limit, the transversely isotropic tensor is the Backus counterpart of the Gazis et al. average.
+Indeed, the arithmetic average of randomized layers of an elasticity tensor produces the Gazis et
+al. average and is its closest isotropic tensor, according to the Frobenius norm. On the other hand,
+the Backus average of the layers resulting from a randomization of the same tensor produces the
+transversely isotropic tensor given in expression (11). This tensor and its properties are the subject
+of a forthcoming paper.
+
+Acknowledgments
+
+We wish to acknowledge discussions with Michael G. Rochester, proofreading of David R. Dalton,
+as well as the graphic support of Elena Patarini. This research was performed in the context of The
+Geomechanics Project supported by Husky Energy. Also, this research was partially supported by
+the Natural Sciences and Engineering Research Council of Canada, grant 238416-2013.
+
+References
+
+Adamus, F. P., Slawinski, M. A., and Stanoev, T. (2018). On effects of inhomogeneity on anisotropy
+in Backus average. arXiv, physics.geo-ph(1802.04075).
+
+Backus, G. E. (1962). Long-wave elastic anisotropy produced by horizontal layering. Journal of
+Geophysical Research, 67(11):4427-4440.
+
+Bona, A., Bucataru, I., and Slawinski, M. A. (2007). Coordinate-free characterization of the sym-
+metry classes of elasticity tensors. Journal of Elasticity, 87(2-3):109-132.
+
+Bona, A., Bucataru, I., and Slawinski, M. A. (2008). Space of SO(3)-orbits of elasticity tensors.
+Archives of Mechanics, 60(2):123-138.
+
+Bos, L., Dalton, D. R., Slawinski, M. A., and Stanoev, T. (2017). On Backus average for generally
+anisotropic layers. Journal of Elasticity, 127(2):179-196.
+
+Dewangan, P. and Grechka, V. (2003). Inversion of multicomponent, multiazimuth, walkaway VSP
+data for the stiffness tensor. Geophysics, 68(3):1022-1031.
+
+Gazis, D. C., Tadjbakhsh, I., and Toupin, R. A. (1963). The elastic tensor of given symmetry nearest
+to an anisotropic elastic tensor. Acta Crystallographica, 16(9):917-922.
+
+Slawinski, M. A. (2018). Waves and rays in seismology: Answers to unasked questions. World
+Scientific, 2 edition.
+
+Thomsen, L. (1986). Weak elastic aniostropy. Geophysics, 51(10):1954-1966.
+
+13
+/n/nA Rotations by unit quaternions
+
+The R® equivalent for A € SO(3) of ejjx¢, which is the rotation of tensor (1), is (e.g., Slawinski,
+2018, equation (3.42))
+
+A=
+
+[ Ah Aly Als V2 Ai2Ai3 V2 An Aig V2 An Ai
+Ady Ab, Abs v2 Ag Ag v2 Ax Ags v2 Ag Ava
+AR Ab, Ajs v2 Aza A33 v2 Asi A33 v2 A31 A32
+
+V2 Aoi Asi V2 Ax2A32 V2 Ao3A33 A23 A32 + Ag2A33 Ag3A31 TT Ap A33 Ag2Azi + Ag1 A32
+V2 An Asi V2 Ai. A32 V2 Ai3A33 A13A32 + Aj2A33 Aj3A31 TT Ai A33 Ai2Az3i + Ai A32
+L V2 An Aoi V2 A12Aa2 V2 A13.A03 A13A22 + Aj2Ao03 Aj3Aa1 TT Aji Ao3 Aj2Ao1 + AA
+
+In quaternions, this expression is
+
+A=
+(a? +0? —? — a)” (2be—2ad)*
+(2be+2ad)° (+a)?
+(2bd—2ac) (2ab+2cd)
+
+V2(2bc+2ad) (2bd—2ac) V2 (2ab+2cd) (a? —b? +c? —d’)
+V2 (2bd —2ac) (a? +b? —c? —d?) V2 (2bce— 2ad) (2ab+2cd)
+V2 (2be+2ad) (a? +b? —c?—d?) V2 (2be—2ad) (a? —b? +c? —d’)
+
+(2ac+2bd)* V2 (2be— 2ad) (2ac+2bd)
+(2cd—2ab)? V2 (2ed —2ab) (a? —b? +c? —d’)
+(a? — 0 — 2 +a)? V2 (2ab + 2ed) (a? — b? ~c? +d?)
+
+V2 (2cd—2ab) (a? —b? —c? +d?) (2cd—2ab) (2ab+2cd) + (a? —b? +e? —d?) (a? —b? —c? +”)
+V2 (2ac+2bd) (a? —b? —c +d’) (2ac+2bd) (2ab+2ed) + (2be— 2ad) (a* —b? —c? +d”)
+V2 (2ac+2bd) (2cd—2ab) (2ed — 2ab) (2be— 2ad) + (2ac + 2bd) (a* —b? +c? —d?)
+V2 (2ac+2bd) (a? +b? —c* —d?)
+V2 (2be + 2ad) (2cd—2ab)
+V2 (2bd—2ac) (a® —b? —c? +d?)
+(2bd — 2ac) (2ed — 2ab) + (2be + 2ad) (a? — b? — ce” +d”)
+(2bd—2ac) (2ac+2bd) + (a? +? —c? —d’) (a? —b? —c? +d?)
+(2be + 2ad) (2ac+2bd) + (2ed—2ab) (a +b? — ce” —d?)
+
+V2 (2be—2ad) (a? +? —c? —d’)
+a :
+d?
+”)
+1)
+
+V2 (2be+2ad) (a? —b? +c? —d’)
+V/2(2bd —2ac)(2ab4+2cd)
+(2be+2ad) (2ab+2cd) + (2bd—2ac) (a? -W +c -
+(2bd — 2ac) (2be— 2ad) + (2ab4+ 2ed) (a? +? — ce? —
+(2be+2ad) (2be—2ad) + (a? +b? —c? —d’) (a —P +e? -d
+
+14
+/n/nB. Alternating layers
+
+Consider a randomly-generated elasticity tensor,
+
+14.5739 6.3696 2.9020  /2(9.4209) V2(3.8313) 2 (3.5851)
+
+6.3696 10.7276 6.2052 V2 (4.0375) V2 (5.1333) V2 (6.0745)
+
+Ce 2.9020 6.2052 11.4284 = 21.9261) 2 (9.8216) 4/2 (1.3827)
+~ | V2(9.4209) V2 (4.0375) V/2(1.9261) 2(13.9034)  2(0.2395) 2 (2.0118)
+V2 (3.8313) V2 (5.1333) V2(9.8216) 2(0.2395)  2(10.7353) 2 (0.0414)
+
+V2 (3.5851) V2(6.0745) /2(1.3827) 2(2.0118)  2(0.0414) 2 (9.0713)
+
+whose eigenvalues are
+
+(B.2)
+
+Ay = 34.0318, Az = 18.1961, Az = 10.4521, Aq = 4.8941, As = 2.2737, Ag = 0.5921.
+
+The Backus average of 107 alternating layers composed of randomly oriented tensors (12) and (B.2)
+
+is
+
+8.4711 1.1917 1.2572 2 (0.0000)
+1.1917 8.4710 1.2570 2 (0.0000)
+By = 1.2572 1.2570 6.6648 V2 (—0.0001)
+SI | ./2(0.0000) V2(0.0000) V2(—0.0001) 22.8440)
+V2 (0.0000) V2(0.0000) V2 (0.0000) 2 (0.0000)
+V2 (0.0000) V2(0.0000) V2(0.0000) 2 (0.0000)
+
+Its eigenvalues show that this is a transversely isotropic tensor,
+
+Ai = 10.4892, Az = 5.8384, Az = 7.2794, Aq = 7.2793, A5 =
+
+Its Thomsen parameters,
+
+y = 0.1400, 6 = 0.0433, €
+
+0.1353 ,
+
+/2 (0.0000)
+
+/2 (0.0000)
+
+¥/2 (0.0000)
+2 (0.0000)
+2 (2.8440)
+2 (0.0000)
+
+2 (0.0000)
+2 (0.0000)
+2 (0.0000)
+2 (0.0000)
+2 (0.0000)
+2 (3.6340)
+
+5.6880, Ag = 5.6878 .
+
+indicate greater anisotropy than for tensor (14), as expected. In other words, an emphasis of a
+
+pattern of inhomogeneity results in an increase of anisotropy.

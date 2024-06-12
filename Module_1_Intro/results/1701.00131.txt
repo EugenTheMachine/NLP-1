@@ -1,0 +1,1893 @@
+1701.00131v1 [math.PR] 31 Dec 2016
+
+arXiv
+
+Random partitions of the plane via Poissonian
+coloring, and a self-similar process of
+coalescing planar partitions
+
+David J. Aldous *
+January 3, 2017
+
+Abstract
+
+Plant differently colored points in the plane; then let random points
+“Poisson rain”) fall, and give each new point the color of the nearest
+existing point. Previous investigation and simulations strongly sug-
+gest that the colored regions converge (in some sense) to a random
+partition of the plane. We prove a weak version of this, showing that
+normalized empirical measures converge to Lebesgue measures on a
+random partition into measurable sets. Topological properties remain
+an open problem. In the course of the proof, which heavily exploits
+ime-reversals, we encounter a novel self-similar process of coalescing
+planar partitions. In this process, sets A(z) in the partition are asso-
+ciated with Poisson random points z, and the dynamics are as follows.
+Points are deleted randomly at rate 1; when z is deleted, its set A(z)
+is adjoined to the set A(z’) of the nearest other point 2’.
+
+MSC 2010 subject classifications: 60D06, 60G57.
+Key words: random tessellation, Poisson point process, spatial tree,
+stochastic coalescence.
+
+“Department of Statistics, 367 Evans Hall # 3860, U.C. Berkeley CA 94720; al-
+dous@stat.berkeley.edu; www.stat.berkeley.edu/users/aldous. Aldous’s research sup-
+ported by N.S.F Grant DMS-1504802.
+/n/n1 Introduction
+
+The work in this paper has several motivations. We focus be
+concrete motivation; more broadly, as indicated in sections and
+
+will encounter a kind of spatial analog of well-studied
+
+of stochastic fragmentation (in forward time) or stochastic
+reversed time). A minor variant of the process below has
+
+ow on the most
+[5.2] we
+non-spatial models
+coalescence (in
+een considered
+
+independently by several researchers (see section|1.2), but without any pub-
+
+lished results.
+
+As the “elementary” variant{}] choose k > 2 distinct
+the unit square, and assign to point z; the color i from a
+Take iid. uniform random points Upii, Up+o,...
+inductively, for 7 >k+1,
+
+give point U; the color of the closest point to U; amongs
+
+where we interpret U; = z;,1 <i < k (there is a unique c
+
+poi
+pa
+
+nts 21,...,2,% in
+ette of k colors.
+
+in the unit square, and
+
+U,,...,Uj-1
+
+osest point a.s.;
+
+throughout the paper we omit the “a.s.” qualifier where no subtlety is in-
+
+volved). This defines a process S, = (S,(i),1<i<k), w
+of color-i points amongst (U;,1 < 7 <n). Simulations
+intuition strongly suggest that there is (in some sense) an
+
+1ere S',(i) is the set
+see Figure |1})?] and
+n — oo limit which
+
+is a random partition of the square into k colored regions. Simulations (see
+
+Figure[2) also suggest that the boundaries between these
+be fractal, in some sense, though intuition is less clear he
+
+What can we actually prove? For rigorous study, it is
+consider a slightly more sophisticated model. On the in
+
+the infinite time interval —oo < t < oo there is a space-
+process (PPP), which we will envisage as the times and p
+
+imit regions should
+re (see section [5.3).
+
+more convenient to
+finite plane R? and
+‘ime Poisson point
+ositions of arriving
+
+particles, such that the set of particles which arrive be
+
+fore time t forms a
+
+spatial PPP on R? with intensity e’ per unit area. Within this process (more
+
+details and notation for what follows in this section wi
+section [1.1), imagine assigning a different color to each
+
+1 be given next in
+particle present at
+
+time t;, and then as t increases suppose we color each newly arriving particle
+
+by the previous rule, that is by copying the color of t
+particle. Intuitively, what we see in the unit square wi
+
+ye nearest existing
+chin this model, at
+
+large times t, must be similar (up to boundary effects) as in the elementary
+
+lWe mean that the model definition is elementary.
+
+?Figures|1|and|2|created by Weijian Han.
+
+2
+/n/nFigure 1: A realization within part of the unit square. Line segments indicate
+parent-child relation.
+
+Figure 2: A close-up of the boundary between partition components suggests
+the boundary is fractal.
+
+/n/nmodel with a Poisson(e“!) number of initial particles and with n ~ e! total
+particles.
+
+The advantage of this more sophisticated model is that we can exploit the
+exact self-similarity property of the underlying space-time PPP. In particular,
+by reversing time the “line of descent” by which a particle acquires its color
+from previous particles can be studied. Moreover, suppose the first intuitive
+suggestion is true. That is, after assigning different colors to particles at
+positions z at time t,, suppose there is a t — oo limit random partition
+A(t1) of R? into regions A(t, z) occupied by particles with the color of the
+particle at z at time t;. This (supposed) partition valued process (A(t1),00 >
+t; > —oo), has a simple intuitive description in reversed time. Given A(t)
+and the time-t, particle positions z, we obtain A(t, — dt) by the rule
+
+delete each particle with probability dt; for each deleted particle,
+at position z say, let z’ be the nearest other particle position, and
+replace A(t,, 2’) by A(ti, 2’) U A(ri, 2).
+
+The purpose of this paper is to prove two intertwined results; that the random
+partition A(t,) does exist as a certain type of limit of the coloring process
+(Theorem |2); and that the resulting reversed-time process (A(t1) : 00 >
+t, > —oo) is a self-similar version of the process defined by the rule above
+(Theorem [1).
+
+1.1. Notation and more detailed outline
+
+Write R x R? for the set with elements (t,z), interpreted as “time” t € R
+and “position” z € R?. Write & for the Poisson point process on R x R? with
+mean measure e'dtdz. All the random objects considered in this paper will
+be constructed from &. We write a typical “point” of E as € = (te, ze) or
+¢ = (te, zc). We consider € as the label for an immortal particle with arrival
+or “birth” time tg at position zg, and so
+
+Ba i= {€ ES: te < th}
+
+denotes the set of particles which are alive at time t. Define =z; analogously.
+Write
+
+Zar = {% 26 € Ei}
+for the positions of the particles at time t. Of course Z<, and Z <q are Pois-
+son point processes on R? with rate e’, that is mean measure e'dz, because
+
+4
+/n/nfon e*’ ds = e'. The self-similarity properties of the PPP — that Z<, is
+distributed as a spatial rescaling of Z<;. — will extend to self-similarity for
+the process (A(t;) : 00 > t; > —oo) outlined in the previous section.
+
+To each particle € let us assign a parent particle ¢ = parent(&), defined as
+the particle in =;,— for which the Euclidean distance ||z¢ — || is minimized.
+This defines a (genealogical) tree process. So for each particle € there is
+an ancestral sequence of particles, written (parent{i,é],i > 0), defined by
+parent([0, €] = € and then recursively by
+
+parent[? + 1, €] = parent(parent{i, €]), i > 0.
+
+The associated line of descent indicates the ancestor of € at each time t < te,
+that is
+
+ancestor(t,€) = parent[?, €] for i > 1 such that tparentfig] < t < tparent[i—1,¢]
+(1)
+where for completeness we define
+
+ancestor(t, €) = € for t > te.
+
+The first part of the proof (Proposition [4}in section[2) shows that for a typical
+particle € present at time 0, the distance to ancestor(—t,&), the ancestor at
+time —t, is of order e‘/*, which is the same order as the distance to the nearest
+particle present at time —t. In the second part of the proof (section [3) we first
+consider two particles present at time 0 and distance r apart. Their lines of
+descent merge at some random past time —T}., and we need an upper bound
+(Proposition on the tail of the distribution of T.. The methods in these
+sections are very concrete — calculations and bounds involving Euclidean
+geometry and spatial Poisson processes — though rather intricate in detail.
+
+The limit result we seek involves descendants (rather than ancestors) of
+typical particles, and we set up notation as follows] For t; < tg and ¢ € Bey,
+define
+
+Descend(ty, to, ¢) := {€ € Zz, : ancestor(t,,€) = ¢}. (2)
+
+This is the set of particles born before t2 whose time-t; ancestor in the line
+of descent was ¢. In the coloring story, this is “the set of particles at time
+
+3For ancestor-descendant pairs we systematically write ¢ for the ancestor and € for the
+descendant.
+/n/ntz which have inherited the same color as ¢, if we gave all the particles at t,
+different colors”. Then, still for t; < tg and ¢ € E<;,, define
+
+H1;,to,¢ 18 the measure ju putting weight e~”
+
+on the position of each particle in Descend(ty, ta, ¢). (3)
+
+So fe,,t2,¢ is a random element of the space M(R?) of finite measures on R?,
+equipped with the usual topology of weak convergence. To obtain the limit
+theorem we first show (Proposition 24]in section [4.2) that there exist tg + oo
+limits in probability (as M(R?)-valued random variables); that is, there exist
+random measures {t1,,00,¢ : ¢ € Z<t,} such that
+
+Ht1,t2,¢ — [ty,00,¢ in probability as tz + 00, (WC € Bey,). (4)
+
+The proof essentially relies on Proposition |4| and self-similarity. We then
+use Proposition |13] to show that a limit /14,,.0,¢ is in fact Lebesgue measure
+restricted to some random set A(t,,¢), implying that the collection { A(t, ¢) :
+¢ € Ec} is necessarily a partition of R?.
+
+For fixed t we can regard
+
+Z) = {(z, A(t, €)) : € € Ea}
+
+as a marked point process. As ¢ increases, the process (Z", —oo < t < 00)
+evolves in a way one can describe qualitatively:
+
+new points arrive randomly at rate e’ per unit area per unit time;
+when a point € arrives at time t, the region A(t, ¢) associated with
+the closest existing point ¢ is split into two regions A(t + dt, ¢)
+and A(t + dt, €).
+
+But the probability distribution over possible splits depends on Z in some
+complicated way which we are unable to describe explicitly.
+
+However, the key feature of this process is that as t decreases the regions
+merge according to the simple rule stated earlier. To summarize:
+
+Theorem 1. The space-time PPP {(te, ze) : € € E} can be extended to a
+process {(te, ze, A(t,€),t > te): € € E} with the following properties.
+
+(a) For each —co < t < 00 the collection {A(t,§) : € € Zz} is a random
+partition of R? into measurable sets.
+
+(b) The distribution of the entire time-varying process {(te, ze, A(t, §),t =
+te) : € € S} ts invariant under the action of the Euclidean group on R?.
+
+(c) The process whose state at time t is {(ze, A(t, €)) : € € Zz} evolves in
+reversed time according to the rule:
+/n/nduring [t,t — dt], for each € € Be, delete € (that is, remove the
+entry (ze, A(t, €)) ) with probability dt; for each deleted particle €,
+let ¢ be the nearest other particle, and set A(t —dt,¢) = A(t,¢)U
+
+A(t, §).
+
+(d) The action of the scaling map z > e~*/?z on R? that takes the distribution
+of Z<q to the distribution of Z< also takes the distribution of {(ze, A(0, €)) :
+€ € Exo} to the distribution of {(ze, A(t,€)) : € € Za}.
+
+The earlier statement can now be rephrased as follows, where we
+define fi,t),¢ as at @ and consider it as an M(R”)-valued random variable.
+Write A, for Lebesgue measure restricted to A C R?.
+
+Theorem 2. For each € € Ec; we have
+Ht,t2,¢ > atte) in probability as tz —> co
+
+where the limit random sets {A(t,€) : € € Z<,} comprise a process with the
+properties stated in Theorem|
+
+Note this implies that the limit random sets here and in Theorem |1] are
+o(&)-measurable.
+
+Theorem [2] is a formalization of the “limit colored regions exist” result
+described in the opening section, but this particular formalization is math-
+ematically weak in two senses. Our formalization via weak convergence of
+empirical measures means, in the original “elementary” version, that we are
+ignoring positions of o(n) size subsets of the n particles. Second, our proof
+gives no information about topological properties of the regions A(t, €), only
+that they are measurable. In fact because the regions A(t,€) are identified
+via the Lebesgue measure they support, they are only well-defined up to
+Lebesgue-null sets of R?. So, for instance, the natural question “is € an
+element of A(t,€)?” is not well-posed. But it is natural to guess that the
+following is true.
+
+Conjecture 3. For each t one can identify the regions {A(t,€): € € Baz}
+so that the topological boundary of each region has Lebesgue measure zero.
+
+If true, we could rephrase the question above as the well-posed question
+“ig each € in the interior of A(t,€)?”, and we conjecture the answer is Yes.
+More interestingly, assuming Conjecture 3] is true, it is natural to conjecture
+/n/nthat the boundaries have some (suitably defined) non-random fractal dimen-
+sion 1 < d < 2, and section|5.3]contains heuristic discussion. Further related
+remarks are in the next section. Finally, one might expect the regions to be
+connected sets, but this seems incorrect — see section [5.3.2]
+
+1.2. Background and analogous models
+To quote the unpublished notes [11]
+
+The [elementary] model is described in [[13], sec. 7.6.8, pp. 270-
+271}, although we are not sure of its origins: [we] probably first
+learned of the problem from Mathew Penrose in about 2003,
+while Ben Hambly [personal communication] recalls that the same
+problem arose elsewhere at about the same time.
+
+The context of that line of work was on-line algorithms in computational
+and stochastic geometry. Separately the present author learned {personal
+communication] that the elementary model has been considered by Ohad
+Feldheim as a spatial analog of the Polya urn process.
+
+The approach in [IJ] to the elementary model is to identify colored regions
+in the unit square as Voronoi regions, that is the set of points for which the
+nearest particle has a given color. Then via the Hausdorff metric on closed
+sets, it makes sense to ask whether our notion of convergence of empirical
+measures can be strengthened to include convergence of Voronoi regions. In
+our language and model, this could only be true if Conjecture [3] is true.
+Arguments in [LI] focus on the length ¢, of the boundary between the two
+regions (for two colors and n particles in the unit square). Using arguments
+with a more geometric flavor than ours, they raise and discuss the question of
+whether ¢,, = O(n“/?) for some d < 2. This mirrors our “fractal dimension”
+question, and indeed would imply that Conjecture |3]is true. The arguments
+in this paper make surprisingly little use of the “local geometry” of the PPP,
+so one can hope that our results might be combined with more geometric
+arguments to make further progress.
+
+Note also that, intuitively, the area of the Voronoi region of a given color
+should behave almost as a martingale, because a new particle near the bound-
+ary seems equally likely to make the area larger or smaller. If one could bound
+the martingale approximation well enough to establish a.s. convergence of
+such areas, the results of this paper would follow rather trivially. But doing
+so seems to require detailed knowledge of the geometry of the boundary.
+
+/n/nThe author’s own interest in the model arose in the context of a scale-
+invariant random spatial network (SIRSN) [2] 3], studied as abstractions of
+road networks. A general conjecture is that any network built dynamically
+from randomly-arriving Poisson points by means of edges (now line segments
+in the plane) being created to attach an arriving point to the existing network
+by a “scale-invariant rule” (that is, a rule which uses only relative distances,
+not absolute distances) should in the limit define a SIRSN. Of course the
+rule in our model “create an edge from the newly-arrived point to the closest
+existing point” is about the simplest scale-invariant rule one can imagine]
+The fact that this “simplest case” is hard to analyze suggests that the general
+conjecture is very challenging.
+
+There is extensive literature on stochastic fragmentation and coalescence
+models in the non-geometric “mean-field” setting [4] [6]. There is also sub-
+stantial literature (see e.g. [7] Chapter 9) concerning random partitions of the
+plane (tessellations, tilings etc). But the combination of these themes, that
+is Markovian processes of refining or coarsening partitions in the plane, has
+been considered only in special refining models [8] and in variants of the STIT
+model [9} [14]. The coalescing partitions process in Theorem [I] is perhaps the
+only known self-similar Markovian process of pairwise merging partitions of
+R? with explicit rates. See section for further brief comments.
+
+2 <A bound on ancestor displacement
+
+2.1 Compactness for the marked point process
+
+Our first objective is to obtain a concrete bound, Proposition |4) on the
+distance between the position z¢ of a particle € (present at time 0) and the
+position Zancestor(—t,¢) Of its ancestor at time —t.
+
+Some notation:
+
+e 0 is the origin in R?.
+e ||x — y|| denotes Euclidean distance in R?.
+
+e disc(z,r) is the closed disc with center z and radius r.
+
+4Unfortunately the tree-like structure of this model implies it does not satisfy the
+requirement of a SIRSN that mean route lengths be finite.
+/n/ne For measurable B C R? write area(B) for its area (2-dimensional
+Lebesgue measure) and diam(B) = sup, ,cg ||« — y|| for its diameter.
+
+Proposition 4. There exists a function G(r) | 0 as rt 00 such that, for all
+z € R’ and allt > 0, conditional on E<q having a particle € with ze = z and
+te > —t we have
+
+G,(r) = P(||Zancestor(—t,¢) _ Fall > ret/?) < G(r), O<r<o.
+Moreover J>° rG(r)dr < co.
+
+The rest of section |2]is devoted to the proof of Proposition |4] and a variant
+(Proposition [9). As mentioned earlier, the conceptual point of Proposition [4|
+is that the distance to the time t (in the past) ancestor is the same order of
+magnitude as the distance to the closest particle at that time, that is order
+e/?. An expression for G(r) is given at (17).
+
+The elementary “thinning” property of Poisson processes leads to a cor-
+
+responding property of our space-time Poisson point process &. As ¢ runs
+backwards over oo > t > —oo, the processes E<; evolve according to the rule
+
+each particle is deleted at stochastic rate 1.
+
+This Poisson thinning process representation is the foundation for much of
+our analysis, as are the related self-similarity properties of our derived pro-
+cesses, discussed in section [4-1]
+
+To be pedantic, in forwards time we work with the filtration F, = o(E<,).
+In reversed time we work with the filtration
+
+F,= o((max(te,t), ) » €€ 3). (5)
+
+_
+So F; tells us the positions of all particles, and the arrival times of particles
+born after time t, and the following “thinning process” property holds.
+
++
+Lemma 5. Conditional on F;, the previous lifetimes {t — te: ze € Z<:} of
+the particles alive at time t are i.i.d. with Exponential(1) distribution.
+
+2.2 Derivation of an EA process
+
+We study lines of descent in the genealogical tree process. Consider a particle
+€ present at time 0 at position zo. From the thinning process representation,
+
+10
+/n/nits arrival time Tp < 0 is such that —Tp has Exponential(1) distribution. For
+i > 1 write (Jj, Z;) for the arrival time and position of its i’th generation
+ancestor, that is parent{i,€]. We will show how to represent this process in
+terms of a certain Markov process we will call the excluded area (EA) process.
+
+Conditional on {To = to} the particles present at ty are distributed as the
+PPP =.;,, and so parent|i, €] is the closest such point to zo, at position Z,
+say. Conditional also on {Z,; = z,}, we know there are no points of Ze, in
+the interior of C) := disc(zo, ||z1 — 20||). The arrival time T; of Z, has density
+function x e' on —oo < t < to, implying that to — T; has Exponential(1)
+distribution.
+
+Now given To = to and (7), 21) = (t1, 1), the information we have about
+Ect, is precisely the fact that it has no points in Cj. So Z» is the closest
+point to 2, in a PPP of rate e on R?\ ©. And as before, t; — T> has
+Exponential(1) distribution.
+
+Now given Ty = to and (7), Z1) = (t1, 21) and (Th, Za) = (te, z2), we have
+built an “excluded region” C2 := C Udise(z1, ||z2— zi||). The information we
+have about E<;, is precisely that it is a PPP of rate e with no points in C2,
+and we can continue inductively to describe the entire process ((Tj, Z;),4 > 0).
+
+2.3 Definition of the EA process
+
+Here we re-specify the process above in intrinsic terms. Working with time
+{| —oo is rather counter-intuitive, so in the definition below it seems helpful
+to reverse the direction of time.
+
+Consider the space C of triples c = (C, z,r) such that
+
+C is a compact set in R?; 2z€C; 0<T<o.
+
+Given an clement c = (C,z,7) € C we can define a probability distribution
+He on C as follows. Take a PPP = of rate e~7 on R?\ C. Let € be the point
+of & closest to z. Set
+
+z= €; C’ = CUdise(z, ||€ — 2||); 7’ =7 +8
+where 9 has Exponential(1) distribution independent of =. Then let [Me be
+the distribution of (C’, z’,7’).
+Define the EA process to be the C-valued Markov chain (C; = (C;, Z;, 7:),0 <
+i < co) where, for each step i, the conditional distribution of C;;, given
+
+11
+/n/nFigure 3: Illustration of the standard EA process. C; is the union of the discs
+centered at 0, 21,...,2;-1, and z; is on the boundary of C;.
+
+24
+
+oO
+
+((
+
+C; = c is the distribution 1. specified above. Figure [3] provides an illus-
+tration. It is straightforward to formalize the argument in section to
+show
+
+Lemma 6. Condition on & containing a particle € with te < 0 and z = 2.
+The process ((tparent{i,€]> Zparent{i,e]),0 < i < 00) of arrival times and positions
+of the ancestors of this € is distributed as the random process ((—7;, Zi),0 <
+i < oc) within the EA process ((Cj, Z;,T;),0 < i < co) with initial state
+({zo}, 20,70), where T| has Exponential(1) distribution.
+
+Terminology. In what follows we write step for the steps 7 of the EA
+chain, and time for the r’s.
+
+2.4 Geometric analysis of the EA process
+It is enough to study the standard EA process with initial state
+(Co, 20,7) = ({O}, 0, 70)
+
+where 7 has Exponential(1) distribution} So in the context of Lemma ig
+we will study ancestors of a particle present at position 0 at time 0. The
+
+5This is notationally more convenient than taking 7) = 0, because of our convention
+that particles are labeled by position and arrival time.
+
+12
+/n/nstarting observation, Lemma [7] below, is an expression for the growth of the
+area of C;, at each step. After that we use geometric arguments to bound the
+diameter of C; in terms of its area. Because Z; is on the boundary of C; this
+will be enough to prove Proposition
+
+Lemma 7. Conditional on C; = (C;,2%,7:), the increment area(Cj41) —
+area(C;) has Exponential(e~") distribution, independent of Ti41 — Ti.
+
+Proof. Writing a, for the area of disc(z;,7) \ Ci,
+P(area(Cj41) — area(C;) > a,)
+
+= P( no point of a rate e~% Poisson process in disc(z;,1r) \ C;)
+
+= exp(—e “a,).
+
+The independence holds by construction.
+
+We can lower bound the diameter in terms of the area via the classica.
+fact (called Bieberbach’s inequality or the isodiametric inequality — see [12]
+for a short proof) that the disc is extremal:
+
+area(C’) < 4(diam(C))*, all compact C C R’. (6
+
+We want a corresponding upper bound, to verify that Cj does not become
+long and thin. The bound will rely upon the following geometry lemma.
+
+Lemma 8. Let C be a compact set in R? and let D be a closed disc whose
+center is in C. Then
+
+diam(C'U D) < max (<iam(c) + /Bearealcup arent) (eee) .
+
+wT T
+
+Proof. The right side clearly bounds the distance between two points in C,
+and also between two points in D because
+
+sup ||z — 2’|| = diam(D) = vi area(D) < vi area(C'U D).
+
+2,2'ED
+
+So it will suffice to prove the bound for one point in C’ and the other in D,
+that is to prove
+
+2(area(C U D) — area(C))
+
+T
+
+sup ||z— 2"|| — diam(C) < / (7)
+
+z€C,2/ED
+
+13
+/n/nFigure 4: Illustration of proof of Lemma [|
+
+Figure [4] illustrates the argument.
+
+First assume C’ is convex. If D C C the result is trivial, so suppose not.
+Let y be a point on the boundary of D at maximal distance (= ro, say) from
+C, and let w be a point in C' with ||y — w|| = ro. Then
+
+sup{||z — 2’|| : 2 € C,2’ € D} < diam(C) +19 (8)
+
+by applying the triangle inequality to the point in C' closest to 2’. Now
+consider the half-spaces defined by the line @ through w that is orthogonal
+to the line segment wy. The convex set C must lie in the half-space not
+containing y, else by convexity some point in C' would be closer to y. And
+the tangent line to the disc at y must be parallel to @, otherwise some other
+point on the boundary would be farther from C' than is y. But this implies
+that the line segment wy is part of the line segment vy, where v is the center
+of the disc D. So r9 < r := radius of D, and
+
+area(C' U D) — area(C) > area(DN H)
+
+where 4 is the half-space containing y. Now area(DNH) is a certain function
+of ro and r > ro, and clearly this function is, for fixed r9, minimized at r = ro,
+and there its value is arg. So
+
+area(C'U D) — area(C’) > $79
+
+14
+/n/nand combining with gives (7).
+In proving we assumed C' was convex. For general C' we can apply
+to its convex hull C* and then, noting
+
+diam(C*) = diam(C), area(C* U D) — area(C”) < area(C U D) — area(C)
+
+we see that remains true for non-convex C.
+
+2.5 Completing the proof of Proposition
+
+Returning to the standard EA process C; = (C;, Z;, 71), we now have sufficient
+tools to study 7; and
+
+Aj; :=area(C;), D; := diam(C;).
+
+From Lemma |7| we obtain a constructive representation of the distribution
+of ((Aj, 7;),0 < i < 00), as follows.
+
+The process (7;, i > 0) forms a Poisson process of rate 1 on (0,00). (9)
+Aj = Yo e710; where (6;,j > 0) are i.i.d. Exponential(1),
+independent of (7;, i > 0). (10)
+
+Then from Lemma [§| we get the inequality
+
+Dixy < max @ + / 2Ait— A) | \/ ae) . (11)
+
+In this section we use only the weaker inequality
+
+Dini < Di +) *#. (12)
+
+Because Do = 0 this implies
+
+k
+Dy <2 So AN? (13)
+
+i=l
+
+Because
+i-l
+
+i-l 1/2
+j=0
+
+j
+
+tl
+°
+
+15
+/n/nwe find that
+k-1
+
+Dg < Dy = 2m PS (k= je ?O5”. (14)
+j=0
+In Proposition[A]we seek to bound the probability of the event {|| Zancestor(—t,¢)—
+O|| > re‘/?} for a particle € at time 0 with position ze = 0 (the case of gen-
+eral ze = z is the same, by translation-invariance). Fix t. Identifying the
+EA process with the “line of descent” process as in Lemma |6} the position
+Zancestor(—t,¢) 8 by construction on the boundary of the region Cyq)41 for
+
+N(t) = max{i: 7; < t}.
+
+Therefore, using ;
+N(t)
+
+I[Zancestor(-te) ~ Ol] < Dyna <2a-¥? S(t) +1 = je?0?, (15)
+j=0
+
+From properties of the rate-1 Poisson process (7;,7 > 0) on (0,00), the time-
+points (¢— Ty), — Tw()-1, t — TN()-1, ---t — To) are distributed as an initial
+segment of a rate-1 Poisson process (0;,j > 1) on (0,00). So rewriting
+in terms of the (oj) and u = N(t) +1 —j gives
+
+1/2
+U
+
+7/7 || zancestor(—t,€)—O|| is stochastically dominated by x := Qn 1/2 > ue ?“n,
+u=1
+(16)
+where (7, > 1) are i.i.d. Exponential(1), independent of the Poisson pro-
+cess (04, > 1). So Proposition [A] holds for
+G(r) := P(x >1r), 0<r<oco (17)
+
+and it is easy to check that to rG(r)dr < oo.
+
+2.6 A large deviation bound for occupation times
+
+The following technical bound will enable us to bound the distance required
+for two lines of descent to merge (Proposition [13] later).
+
+Proposition 9. For the standard EA process write
+B= Ufgiser/? diam(C,)>8} [7-1 Ti)
+
+16
+/n/nThen for sufficiently large b there exist A < oo and p> 0 such that
+P(Leb(BN [0,T]) > T/3) < Aexp(-pT), 0<T<c (18)
+where Leb denotes Lebesgue measure.
+
+We previously used inequality (12) to bound D; := diam(C;) in terms of
+the areas A; = area(A;). Here we oi use a slightly different bound.
+
+Lemma 10. D; < fat + v0 2Ar Ay)
+
+Ai inequality becomes
+Dist < max - v2 Beem Ai) (V@ yi) . 0) .
+But the term ( (/ —4/ dant) is negative, and Do = = 0, so we find
+i-l
+dD: < > — ~Aj)
+j=0
+
+establishing the asserted bound.
+
+Proof. Setting Dd; = Di -
+
+Recall the notation from (9[10): (7;, j > 0) denotes a Poisson process
+of rate 1 on (0,00), and (4;,7 > 0) denotes i.i.d. Exponential(1) random
+variables independent of (7;, 1 > 0). From and Lemma 10}
+
+bec (E+ 2p: as)
+i-l i-1
+
+Ai =o 070;; Dp = So e705”.
+j=0 j=0
+
+To prove Proposition[9] we will rephrase inequalities from section [2.5]in terms
+of continuous-time processes. Set Vj = 0 and define (V;,0 < t < co) to be
+the process which increments by 0; at time 7;, and otherwise decreases at
+exponential rate 1. In symbols, writing N} = less};
+
+where
+
+dV, = —Vidt + > 6;dNj.
+
+j20
+
+17
+/n/nAt time 7;— (just before the jump at 7;) we have
+i-l
+Vi. = S007 = TA.
+j=0
+
+Because V; is decreasing on [1;-1,7;) we have
+if ec" A; > ba then V, > by on [7;-1, 7). (20)
+
+Similarly, define (W;,0 < t < 00) to be the process which increments by 6; 2
+at time 7;, and otherwise decreases at exponential rate 1/2. Take Wo =
+In symbols,
+dW, = —3Wrdt + > 0;?aNj.
+j
+At time 7;— we have
+
+i-l
+W,,- = So oP? = RDF,
+j=0
+
+So as at
+if e 7? Ds > bp then W; > bp on (7-1, 7:). (21)
+
+Combining with for appropriate b4, bp defined in terms of b, we
+now see that the proof of Proposition 9 reduces to proofs of large deviation
+bounds for occupation measures of the processes (V;) and (W;). That is, it
+suffices to prove
+
+Proposition 11. For sufficiently large b there exist A < co and p > 0 such
+that
+
+T
+P (/ Lpvsoy dt > 1/6) < Aexp(-pT), 0<T<o (22)
+0
+T
+P (/ Loves) dt > 1/0) < Aexp(—pT), 0<T <oe. (23)
+0
+
+We will give the proof for (V;), and then note that essentially the same
+proof works for (W;).
+
+18
+/n/nFix a high level b. The process regenerates at each downcrossing of b. So
+
+starting from the first downcrossing there is ani.i.d. sequence ((Ly(i), A,(7)), 7 >
+
+1) where Ly is the duration and Ky is the “occupation time above b” between
+successive downcrossings. We can decompose Ly as Li, + Ky where Li, is the
+time until first upcrossing of b and K; is the subsequent time until the nex
+downcrossing of b. It is easy to see
+
+Li, >) 00 as b > 00. (24
+
+It is also easy to see that Ky, >, 0 as b > ov, though we need the stronger
+result
+im Eexp(6,) =1, 0<0<o0. (25
+00
+
+To prove this, note that during an excursion above b the process (V;) is upper
+bounded by the process (V,") in which the drift term is —b dt instead of —V; dt.
+But the process (V;") describes the workload in a M/M/1 queue with arriva
+rate 1 and service rate b. So the distribution of Ky is stochastically smaller
+than the server’s busy period in that queue, and from classical exact formulas
+for that busy period distribution (e.g. [5]) one can deduce (25).
+
+Writing 7, for the time of the n’th regeneration, and the classical
+large deviation theorem for i.i.d. sums imply that for b sufficiently large
+
+P (/ Lpysey dt > n/) =P (x: K,(4) > np) decreases exponentially
+0 i=l
+
+as n — oo. Another use of the iid. large deviation theorem applied to the
+time intervals Lj, at (24) implies that for b sufficiently large the probabilities
+P(t <n) decrease exponentially as n + oo, and this establishes (22).
+
+The argument for is essentially the same, and this completes the
+proof of Proposition [9]
+
+3  Coalescence of lines of descent
+
+In this section we continue the style of analysis in section 2] by studying the
+lines of descent of two particles present at time 0. This involves a coupled
+EA process, whose dynamics are described in section [3-1] Note that Propo-
+sition |4] implies that, for particles at distance r >> 1 apart, the “coalesce”
+time (time backwards to their most recent common ancestor) must be at
+
+19
+/n/nleast (2 — o(1))logr. Our goal is to give an upper bound, Proposition
+on the coalesce time distribution. The central idea is to use Proposition [9
+to show that, if not coalesced already, the lines of descent at time —t are
+typically only order e’/? apart (the same order as the distance to the nearest
+time —t particle): this is Proposition [16] A geometric argument then shows
+(Lemma 15) that there is a non-vanishing chance to merge in the next gen-
+eration backwards. These ingredients are combined in section to prove
+
+Proposition
+
+3.1 The coupled EA process
+
+Fix to > 0. For the rest of section [3] we condition on the time-to configuration
+Z<t) containing a particle at position zj and the time-0 configuration Z<o
+containing a particle at position z3. The distribution of the line of descent
+for each particle is just a translated and scaled version of the distribution of
+the EA process in Lemma [6] So we anticipate that the joint distribution of
+the two lines of descent can be described in terms of some suitably coupled
+versions of the EA process.
+
+Precisely, we will specify the coupled EA process
+
+((C};C?), ¢=0,1,2,...) = ((C}, 2}, 72); (C?, 27,77), ¢=0,1,2,...)
+
+ara
+
+with initial states ({zd}, 24,74) and ({23}, 22,73) where 73 and 74 + to are
+independent Exponential(1). At each step (before the coalescence step [coat
+below) only one of the components (C} or C?) changes. There are notational
+issues in describing this coupled processes. We write (C}; C?) for the configu-
+ration after the i’th step of the coupled process. Because only one component
+changes in each step before coalescence, we need different notation for the
+configuration of a given component after 7 changes of that particular com-
+ponent, and we write (Ci) and (Ci) for these “jump processes” of each
+component. And it is these jump processes which individually are evolving
+as the ordinary EA process.
+
+The evolution rule for the coupled process, which will be derived from
+the dynamics of the underlying tree process as was done in Lemma |6} is as
+follows.
+
+Write the configuration after i steps as (C};C?). Before step
+Teoa we must have 7} # 72; suppose 7} < 7? (the other case is
+
+symmetric). Take a PPP of rate e~” on R? \ (C} U C?), but
+
+20
+/n/naugmented with an extra point planted at z?. Let € be the point
+of the augmented PPP closest to z}. If € = z? then we say that
+the process coalesces at position ed and time TP; write Deoal =
+i+ 1 for the coalesce step, Zeoal = 2 for the coalesce position,
+Tool = 7? for the coalesce time. Otherwise set C},, = C} U
+dise(z}, ||€ — zi||), set z,, = € and take 7/,, = 7} + 6 where
+6 has Exponential(1) distribution independent of all previously
+constructed random variables. Set C?,, = C?.
+
+Note in particular that the configuration after i steps determines the value
+7; = min(7}, 77); (26)
+
+the arg min determines which component will change on the next step and
+7; determines the rate e~” of the PPP used to construct the next step.
+Remark. For completeness, let us give the behavior of the coupled pro-
+cess after coalescence, though this is not directly relevant to our arguments.
+If the coalesce step is i +1 as above, then 2, = 27,, and T,, = 77,, but
+maybe C},, # C?,,. In subsequent steps k we use the same PPP outside
+CiU C@ for each component, and therefore we have (rj, 24) = (7?, 23) for all
+k >%+1. Each of the two component jump processes does evolve as the
+EA process, except that for the first component process there is the extra
+planted point at 2§. But this extra point only comes into play if it is the
+exact point of coalescence, and so does not affect our arguments for upper
+bounding the coalesce time.
+
+A realization of six initial steps of the coupled process is illustrated in Figure
+On the left are the successive positions 2}, Zu): Za): 23): 2lay in the first
+component process, and on the right are the positions in the second compo-
+nent process. The associated times for the first process are —tg < Tj = T) <
+Td) < Tix) < Ta) < Tia and for the second process are 0 < TH = Ti) < TA) <
+TO): Suppose that the times associated with these steps are ordered as
+
+1 1 1 2 1 2
+—to < Tio) < Tay < Ta) < To) < Ty) < Ti):
+
+In terms of steps i of the coupled process (indicated in the figure as a, b,c, d,e, f)
+we have
+
+21
+/n/nFigure 5: Initial steps of the coupled EA process.
+
+z 0 al b2 c d4 e5 f6
+1_ 1 1 1 1 1 1 1
+% = *0 “) *2) “(3) “(3) “) a)
+4a 9 8 OD %Q)
+mS To TH) T TT TH |
+i ee OC)
+T= T) Tay Te) T Ts) Tay 2?
+
+We will now relate how this description of the coupled EA process arises
+as the description of the two lines of descent within the tree process for the
+two given points of Z<,, and Z<o at positions zj and z2. Consider Figure
+5} Inductively, we have traced back the two lines of descent to (-Ty: 2)
+and (—Té), 2): using 6 steps of the coupled process. What happens next
+depends on which of r/y or 7%) (that is, which of 7§ or 7) is smaller. Taking
+the case Ty < To) (the other case is symmetric) then, to find the parent of
+
+22
+/n/n(—Tiy); 2) in the tree process, we need to search the region where vertices
+may have arrived before —Ty; this excludes both Cy and the interior of
+Ch): because the latter contains no particles arriving before —r?, and we
+must have TC) < Ti) because of the rule that the component with smaller 7-
+value expanded first. However the particle at 2) arrived at time —Téys which
+was before time —1/,), and so is eligible to be the parent of (—T(4), 2(4)). So
+the parent of (—Tiy); 2) is the closest particle to 2lay in the Poisson process
+Zr: which has rate e~), on the complement of Cy U Cos or is 2) if
+that particle is closer. In the latter case the two lines of descent coalesce at
+(=T(); 2ay)-
+
+In terms of steps i of the coupled process, 7/4, = T¢ and Ci U Ca) =
+CG U CE and (—Té), 2%) = (-76, 26). This completes the derivation of the
+evolution rule stated in section
+
+To summarize:
+
+=
+
+Lemma 12. Condition on = containing particles €' and €? with ta <
+to, tez <0 and (ze, 22) = (25, %). The joint process
+
+((tparent{i,e1], Zparent|[i,é4]) tparent{i,£2]> Zparent[i,€2]) 0 < i< oo)
+
+of arrival times and positions of the ancestors of these particles is distributed
+as the random process ((—Tiy, Zi, —Tiy: Zi), 0 < t < 00) within the cou-
+pled EA process ((C}, Z},7;);(C?, Z?,77), 0 < i < co) with initial states
+
+({26}, 205 Toy) and ({zG}, 2, Toy) where To) +to and Ty) are independent with
+Exponential(1) distribution.
+
+As mentioned before, we write J.oa1 for the first step J such that 2} = 2
+(and call that point Z.oa1), or equivalently for the first step J such that 7} = 77
+(and call that time T’.1). We can now state the main result of section [3]
+
+Proposition 13. There exist constants K,8 < oo and p > 0 such that, in
+the coupled EA process above, for any (24,24) and any to > 0,
+
+P(Teoa > t) < K exp(—pt) for all t > Blog* ||zj — ||. (27)
+
+Heuristically we expect ||Zeoa — 24|| = exp(Tcoa/2) in the tails, and so
+tail behavior of the form P(T.oai > t) < exp(—yt/2) would be equivalent to
+
+23
+/n/ntail behavior of the form P(||Zcoai|| > 7) < r77. We conjecture the latter is
+true; precisely, that the exponent
+
+log P Zeoal
+yx = tin EPC |Zenall > 0)
+
+2
+roo logr (28)
+
+exists and does not depend on ||zj — z2|| or to. This is closely related to the
+“are boundaries fractal?” issue, as will be discussed in section [5.3}
+
+For ease of exposition we will present the proof of Proposition [13 in the
+case ty = 0. The general case requires only minor modifications, noted below.
+
+3.2 The coalescence step
+
+Here we will give conditions to ensure a non-vanishing probability of coalesc-
+ing at the next step. This requires only a simple geometric lemma.
+
+Lemma 14. Let 2,2) € R?, and let r,\ > 0. Let Z* be a Poisson point
+process of rate X on R?. Then the event
+the nearest point z € Z* to x is also the nearest point to z 2, and
+min(||z — ||, ||z — zal|) >r
+has probability at least
+
+exp(—Aa(r + || 22 — 2:||)”) — 2eo"”"||20 — all (29)
+
+for a certain absolute constant co.
+
+Proof. Write d = ||z2 — 21||. Consider the events
+(A): the distance from z, to the nearest point of Z* is at least r + d;
+(B): the distances Dp” and DY from z to the nearest two points of Z*
+are such that DY - Dp” < 2d.
+
+We assert that, in order that the event in Lemma [14] occurs, it is sufficient
+that the event (A) occurs and the event (B) does not occur. To prove this
+assertion, let 2 be the closest point of Z* to 2, and let 24, be the closest
+point of Z* to z). Suppose 2, 4 2}. By the triangle inequality
+
+I|21 — 23|| < d+ |l22 — 25]] and |lz2 — || <a + lla — all
+Because 2} is the closest point to 2
+Il. — all < Ile — 2all-
+
+24
+/n/nCombining these three inequalities leads to
+I|22 — AI — |l22 — || < 2d.
+
+So if (B) fails then then z; = zi = z say. And so if (A) holds then, by the
+triangle inequality, min(||z — z1||, |}z — zal|) > r-
+
+The probability P(A) equals the first term in (29). It is easy to check tha
+Dy? - DW) has a density bounded by some co, so (by scaling) the density of
+D® — D® is bounded by coA¥2. So P(B) is at most 2coA!/2d.
+
+We now apply this to the coalescence step.
+
+Lemma 15. Consider a state (c!,c?) = ((C1, 21,71), (C?, 2*,7)) of the
+coupled EA process started at z4 and z2. Suppose tT < 7?. Write A =
+max(diam(C’), diam(C?). Then the probability that the process coalesces at
+the next step is at least
+
+1
+
+exp(—4me~7 (|z4 — 22|| + 2A)?) — 2co|l2d — 22 |e" 2. (30)
+
+Proof. Because 2) € C! and 2 € C?, we have
+ll2" = 27II $ Ilzo — 2oll +20 =r
+
+and moreover each disc(z’,r) contains C1 U C?. We can now apply Lemma
+[14] with \=e-7: if the event in Lemmaf14] occurs then the process coalesces
+at the next step.
+
+3.3 Diameters in the coupled process
+
+The key ingredient in proving Proposition is the following extension of
+
+Proposition ig to the coupled EA process, which will enable us to apply
+
+Lemma [15] This extension looks “obvious” but the proof is rather fussy.
+Fix large b, and regard a step i of the coupled EA process as “good” if
+
+e~™/? max(diam(C/), diam(C?)) < b. (31)
+
+Let N,(T) be the number of “good” steps beford] time T.
+
+Tn the general case to > 0 we only count the number of steps with 7} > 0.
+
+25
+/n/nProposition 16. In the coupled EA process, for sufficiently large b there
+exist constants a,p > 0 and K < oo such that
+
+P(Teoa > T, No(T) < aT) < K exp(—pT), 0< T < ov.
+
+The bound does not depend on the distance ||z4 — z3|| between the par-
+ticles.
+
+In this section for an event indexed by T we say the event “has
+vanishing probability” if the probabilities are O(exp(—pT)) as T’ — ov, for
+some p> 0. As in Proposition [9] for 7 = 1,2 write
+
+_ Joi
+B Ueied2 diam(C?)>b} [as Ti ).
+Note this is the same if use the indices Ty of the jump processes.
+Write 7
+N,(T) := Leb((B! U B?)* 1 (0, T)).
+
+In words, this is the duration of time for which a “good” event similar to
+is occurring. Applying Proposition [9] to both components of the coupled
+process, for sufficiently large b
+
+the event {Too > T, N,(T) < T'/3} has vanishing probability. (32)
+
+This is almost what we are trying to prove as Proposition [16] except that we
+need to switch from “duration of time” N,(T) to “number of steps” N;(T).
+
+In the construction of the coupled EA process we can start with two
+independent rate-1 PPPs on (0,00) and use these as the values of Ti) and Ti)
+until the coalescence step. So on the event {Teoa1 > T} these times, within
+[0,7], coincide with the times of two independent rate-1 PPPs. Here is a
+helpful way to record a consequence of this fact]
+
+Lemma 17. Let Br be an event defined in terms of two independent rate-1
+PPPs on (0,T]. Let By be the corresponding event defined in terms of the
+times Ty < Thy < Tay < +.» < T and Ty < Tay < Ta <.-. < T in the
+coupled EA process. Then
+
+P(Teoa > T, BE) < P(Br).
+
+“The fact is slightly subtle, in that the previous assertion is not true conditional on the
+event {Teoa > T}.
+
+26
+/n/nWe will apply this to events Br which have vanishing probability, in which
+setting Lemma |17| says we can ignore such events for the purpose of prov-
+ing Proposition We state the following straightforward large deviation
+bounds for quantities associated with the PPP.
+
+Lemma 18. Let (7;) be a rate-2 PPP on (0,00), let a > 0 and let Hy(a)
+be the sum of the lengths of the |aT | longest intervals (7, Tiz1) with T < T.
+Then, for sufficiently small a,
+
+the event {Hr(a) > T/4} has vanishing probability. (33)
+
+Lemma 19. Let (7;) be a rate-2 PPP on (0,00), represented as the superpo-
+sition of two independent rate-1 PPPs. Define 7 as the minimum value of
+
+T, for€ >k+2 such that the events at Th41.Th42,--.,T¢ include events from
+both component processes. Define
+
+Gr(a’) = Sotat —T 2 Te <T, 7 —T > a’t.
+Then, for sufficiently large a’,
+the event {Gr(a’) > T/12} has vanishing probability. (34)
+
+Now choose a sufficiently small and a’ sufficiently large that inequalities
+and hold. Write H7(a) and G7(a’) for the random variables cor-
+responding (as in Lemma to Hy(a) and Gr(a’) defined in terms of the
+times in the coupled EA process. Consider the event
+
+{Teoa > T, Hila) < T/4, Ga’) < T/12, N,(T) > T/3}. (35)
+
+On this event, take the “good” intervals comprising N,(T) (with total length
+> T/3) and delete the intervals comprising G7(a’) (with total length <
+T/12). There remain “good” intervals with total length > T/4, so there
+are at least |aT'| such intervals. In other words, on event there are at
+least |aT'| steps i of the coupled process such that
+
+[7i, 7141) is disjoint from BtU B? and 7° < 7444’. (36)
+For each such step i we have (see argument below),
+e~7/? max(diam(C}), diam(C?)) < be®/? := 8, say. (37)
+
+27
+/n/nFigure 6: The times 7; of steps of the coupled process are shown on the axis.
+
+The arrows point to the times Ti) and 72_., associated with the completed
+
+(ij)
+steps of the component processes.
+
+Wii
+
+j) k—j+1)
+
+In other words, on the event we have Ng(T) > |aT'|. So now
+P(Teoa > T, Ng(T) < aT)
+< P(Tooa > T, Hi(a) > T/A)
++ P(Teoa > T, Gh(a’) > T/12) + P(Teom > T, Ni(T) < T/3)
+< ei > 7/4) + P(G3(a’) > T/12) + P(Tooa > T, N,(T) < T/3)
+
+using Lemma Each term on the right has vanishing probability, by (32)
+
+and (33) and ia, and a establishes Sa ake [16] (with 8 in place of b).
+
+The argument that ee (37) is illustrated by the case in Figure
+
+A Consider 7, = min(7;, *) = min (TG) 3)? Tih ;)) ) for some 7, and suppose that
+as in the Figure) T > TCs )- Saying that
+
+[Tes a is disjoint from B! U B?
+is saying that
+[7/)1):7()) is not in B’, and [7(,_;),7(4—741)) 18 not in B?
+which is saying that
+et)? diam(C}) < b and eo 7h s41)/? diam(C?,,) <b.
+
+Now consider the first time after 7, that both components have expanded,
+that is
+qt = min{r : 7) > 7 and 77 > 7}.
+
+28
+/n/nThen the inequality above implies
+ee? max(diam(C{), diam(CZ)) < b.
+
+So when 7° < 7, +a’ we have (37).
+
+3.4 Proof of Proposition
+
+We need the following standard martingale-type bound.
+
+Lemma 20. Let S > 1 be a stopping time for a filtration (Fn). For any
+0<po<landm>1,
+
+P(S > n) < (1— po)” + P(L(n, po) < m,S > n)
+
+where
+L(n, po) = |{i: 1< isn, P(S =i|F,4) > po}l-
+
+Proof. The process (M,,) with Mo = 1 and, for n > 1,
+
+M, = 0 on {S <n}
+= on {S > n}
+
+1
+Thi<icn P(S>iF i-1)
+
+is a martingale. On the event {L(n,po) > m,S > n} we have M,, > (1 —-
+po)” and so
+
+l= EM, > EM, 1(1(n,p9)>m,S>n) = (1 ~ po) "P(L(n, po) = Mm, S> n).
+Because
+
+P(S > n) = P(L(n, po) > m, S > n) + P(L(n, po) <m,S >n)
+
+the result follows.
+
+We can now combine previous ingredients to prove Proposition [13] Sup-
+pose i is such that J¢oa > ¢ and the configuration (C};C?) satisfies (31).
+Then by the probability of coalescing on the next step is at least
+
+exp(—4m(||2g — zalle*/? + 2b)) — 2coll2g — zolle*”?.
+
+29
+/n/nSo there exist constants a > 0 and po > 0 (determined by b and co) such
+that, for the natural filtration (F;) of the coupled EA process,
+
+P(LIeoat = i+1|F;) > po on {Teoar > 4, ||24—z3||e-7”? < a, (Cl; C?) sacs (31)}.
+
+Appealing to Lemma 20}
+P(Leoa > 2) < (1 = po)” + P(Ln < m, Icoat > 2) (39)
+
+where
+In = |{t: OS ¢< n=-1, Pca = t+ 1|Fi) > po}|-
+
+Recall the definition of N,(¢) in Proposition [16] Take a > 0 (to be specified
+later) and consider some m < an. If
+
+leg — 22|[e"/? < a for 7 = [an| —m (40)
+
+then, on the event {Ico > n, Np(t) > an}, the events in (88) hold for at
+least m values of i <n, which implies L, > m. So if holds then
+
+P(Ln < m, Leo > 2) < P(Lcoar > 2, No(n) < an)
+and then using we have
+
+P(Leoa > 2) < (1=po)" +P(Lcoa > 2, No(n) < an)+P(Lcoa >, event (40) fails).
+
+Proposition |16]implies that for sufficiently large b there exist constants a, p >
+0 and kt < oo such that
+
+P(Teoa > 2/3, Ny(n) < an) < K exp(—pn), n= 1,2,3,....
+Using this choice of a above,
+P(Leoat > 2) S (1 = po)” + Ocep (7)
+
++P(Leoat > 2; Teoat < 2/3) + PULcoar > mn, event (40) fails)
+
+where O,,,(n) denotes a “vanishing probability” sequence which is O(p") as
+n — oo for some p < 1. Now note that elementary large deviation bounds
+for the rate-2 PPP (7;) show that
+
+P(Leoa > 7; Teoar < r/3), PUcoa < 2, Teoa > 2), P(Tr < n/3) are all O.,,(n).
+(41)
+
+30
+/n/nChoosing m = |an/2| we find
+P(Leoat > 2) < Ocep(n) + P( event (40) fails), m = 1,2,3,...
+
+where the O,,,(n) term does not depend on ||z) — ||. From the definition
+of event and the choice of m
+
+P( event (40) fails) < P(7; < 2log lleo=26ll) for j = |an/2] — 1. (42)
+From the final term in there exists a constant @ such that
+P( event (40) fails) = O.,,(n) for n > Blog* ||z4 — 2]|.
+So now
+P(Lcoat > 2) < Ovap(n) for n > Blog™ ||z5 — lI.
+
+Because P(Tooa > 2) < P(Lcoa > 2) + P(Lcoar < n,Teoar > m) we have
+established Proposition
+
+4 Proof of the main theorems
+
+4.1 Notation
+
+In this section we use the preceding bounds to prove Theorems |1| and
+Recall some definitions from section [1-1] M(R?) denotes the space of finite
+measures on R?, equipped with the usual topology of weak convergence. For a
+particle €, the time-t ancestor is denoted ancestor(t, €), and Descend(ty, ta, ¢)
+denotes the set of particles born before tg whose time-t; ancestor is ¢. And
+for ty < tg and ¢ € Ea,
+
+H1;,to,¢ 18 the measure ju putting weight e~”
+
+on the position of each particle in Descend(ty, ta, ¢). (43)
+
+Note that given S<;,, the “marks” (Ji,1.,c, ¢ € Eee) are still random ele-
+ments of the space M(R?), whose distributions depend on all =<;, and are
+dependent as ¢ varies.
+
+If we use Z<;, to define a translation-invariant marked PPP of the form
+{(&,m*(&)),€ € Z<:} with non-negative real marks m*(€), then there is a
+spatial average rate of mark values, which we will write as
+
+ave(m*(€) : € € Ze)
+
+31
+/n/ndefined as the value of a such that
+
+E > mt (€) =ax area(B), BCR’.
+
+fect, EB
+
+For instance we have, for t; < ta,
+
+ave(| {44 ,t2,¢ : g € E<t,) =1 (44)
+where || denotes the total mass of pu.
+
+The self-similarity property of the underlying space-time PPP & allows us
+to write down exact self-similarity properties for our marked point processes.
+In particular, the action of the scaling map z > e~*/?z on R?, applied to the
+distribution of {(2¢, /Mt,t2,¢), € € E<t,}, gives a distribution which coincides
+with the distribution obtained from {(ze, fit, +1t0+14¢), € € E<t,44} under the
+action of rescaling weights js > ety. These self-similarity properties allow us
+to take previous results, which were stated in the context of time decreasing
+from 0 to —t, and rewrite them in the context of time decreasing from t to 0
+and in the notation above. These rewritten results and simple consequences
+are recorded as Corollaries [21] — [23] below.
+
+As a first example, Proposition [A] shows that for t > 0
+
+ave(||Zancestor(—t,¢) — Zell : € € Exo) < Kell?
+where K = to G(r)dr < co. Using self-similarity this implies
+Corollary 21. For 0 < to < t,
+
+ave(||Zancestor(to,é) _ 2¢|| : € € Ex) < Kele/?,
+
+Next, the fact that a set of cardinality k contains k(k—1) ordered distinct
+pairs gives the first identity below, and the second follows from self-similarity.
+For t > 0
+
+ave(
+
+:¢ € Exo) (45)
+
+= y Lfancestor( (0,€2)=ancestor(0,£1)} * a € Fer
+GE ct
+
+=e “ave > Lfancestor( (—t,€2)=ancestor(—t,€1)} * ae E<o
+[we
+
+=e q(t; 21, 22)dzedz = af q(t; 0, z)dz
+R2
+
+LL.
+
+32
+/n/nwhere 0 denotes the unit square and q(t; 21, z2) is the probability, given that
+=<o has particles at z, and 2, that they have the same ancestor at time
+—t. In the notation of Proposition [4] we have (using the triangle inequality)
+q(t; 0, z) < 2G,(e~/?||z||/2). So from the conclusion of Proposition|4| we have
+
+af q(t; 0, z)dz < ae | Glo" |/2)d2=2 | G(||z||/2)dz < co
+R2 R2 R2
+
+Using for the —e’ term in we have established
+Corollary 22. sup,.y ave(|Ho,,¢/?_ : ¢ € Z<o) < 00.
+Finally, self-similarity allows us to rewrite Proposition {13} as follows.
+
+Corollary 23. Let sy < § < 51 < 89. Let p(S9, $1, $2; 21, 22) be the probability,
+given that Z<,, contains a particle at position ~ and Z<.s, contains a particle
+at position 29, that these particles have different time-so ancestors. Then
+
+P(S0, 81; 823 21, 22) < K exp(—p(8 — 80) provided ||2, — || < V2e~*?
+
+for the constants K, p in Proposition[Z3) .
+
+4.2 Convergence of mark measures
+Here we will prove
+
+Proposition 24. There exist M(R*)-valued marks (poo, ¢ € E<o) such
+that ave(|Ho,00,c|; ¢ € Z<o) = 1 and for all ¢ € E<o
+
+Ho,t,¢ + Ho,oo,¢ in probability as t —+ oo.
+
+The argument is slightly subtle: we cannot directly compare jup,z,,¢ and
+H0,t2,¢ because the relative numbers of time-tz descendants of different time-
+t, ancestors are different (as in a supercritical branching process), so the
+measure on time-t,; descendants derived from the uniform measure on time-
+ty descendants is not uniform. Instead we first prove convergence of total
+masses.
+
+Proposition 25. There exist real-valued marks (moc, ¢ € E<o) such that
+ave(mo,¢: ¢ € E<o) = 1 and for all ¢ € E<o
+
+|Ho,,c| + Mo,¢ in probability as t + oo.
+
+33
+/n/nProof. Write O for the unit square and H(t) for the scaled square of area e~*.
+
+For 0 < ty < ty < tg and ¢ > 0 write A(to, ti, t2,€) for the event
+
+ti—to
+
+there exist at least (1 — e)e particles of E<;, in O(tp), and
+at least (1 — e)e!2~ particles of Z<;, in O(to), all with the same
+time-0 ancestor.
+
+Define
+
+p(to, €) = lim inf lim inf P(A (fo, t1, ta, €)). (46)
+ti-co—tz-400
+We will show
+Lemma 26. lim,,).0 p(to,€) = 1 for each e > 0.
+
+Granted that, consider
+a(ty, tz) := ave( min( |Hoz.,cl , |éots,cl ), ¢ € E<o) <1.
+By averaging over area-ty squares in R?,
+a(ti,t2) > (1 — e€)P(A(to, ti, te, €)).
+So Lemma [26] implies
+
+lim inf lim inf a(t1, t2) = 1. (47)
+
+tioo ote
+
+By the triangle inequality and 4.
+
+ave(| |Ho,tu.cl — |Hotecl |: ¢ € Exo) < 2a(t, te).
+
+Then and the Cauchy criterion imply there exist limits mo¢ for which
+lim ave(| |Hoz,c] — moe |: ¢ € S<o) =0.
+too
+
+Finally, Corollary [22] provides the “uniform integrability” condition needed
+(0 pass to the limit to obtain ave(mo¢ : ¢ € S<o) = 1. This establishes
+
+Proposition
+Oto
+
+Proof. [of Lemma26| Write Ee; ) for the restriction of E<; to particles within
+(to). We can upper bound the mean number of pairs (€, 2) in O(¢o) with
+& € S<;, and with different time-0 ancestors, as follows. Write
+
+M(to, th, ty) = > > L fancestor(0,é1)Zancestor(0,f2)}
+
+~o =o
+Sona eS ot0)
+
+34
+/n/nThen
+EM (to, ti, t2) = ee” / / p(0, ti, te, 21, 22) dzdz
+O(to) 4O(to)
+
+where p(0, t1, te, 21, 22) is the probability, given that E<;, has a particle at 2
+and Z<;, has a particle at z2, that these two particles have different time-0
+ancestors. But Corollary [23] shows that when z; and z are in (to) we have
+p(0, t1, ta, 21, 22) < K exp(—pto). So
+
+EM (to, ti, tz) < e+” K exp(—pto). (48)
+
+We now quote an elementary lemma.
+
+Lemma 27. Let I C J be finite sets, let ~ be an equivalence relation on J
+and let B be a maximal-cardinality set in the corresponding partition of J.
+
+Let
+Md Px + iD
+[Z| - |F\ 2 :
+Then |BNI| > (1— p)|L| and |BN(J\ D| > A- p)|F\ LI.
+
+We will apply the lemma with J and J being aa and Ba), so that
+|I| and |J| have Poisson distributions with means e"~'° and e”~, and to
+the equivalence relation “same time-0 ancestor”. Choose 6 > 0 such that
+(1 — 6)(1 — 6(1 — 6)~?) < e. On the event
+
+|Z| > (1—d)e"—® and |J| > (1—d)e2~ and M(to, ti, te) < de (49)
+
+Lemma|27]implies that event A(to, ti, t2,€) holds. The first two events in
+have probabilities — 1 as t1, tg — oo, and so by and Markov’s inequality
+the limit p(to,€) at satisfies
+
+p(to,€) > 1—6-'K exp(—pto),
+
+establishing Lemma
+
+Proof of Proposition [24] Take 0 < to < ¢. By self-similarity, Proposition
+25]remains true if time 0 is replaced by an arbitrary time to: there exist real-
+valued marks (mie, € € Z<i,) such that for all € € Bey,
+
+|H1o,t,¢| —* Mt,¢ in probability as t > oo. (50)
+
+35
+/n/nFor ¢ € E<o define 4p 49,¢ to be the measure that puts weight m;,¢ on the
+position ze of each particle € € Descend(0,to,¢). And define 19 4,4,¢ to be
+the measure that puts weight |/,7,¢| on the position ze of each particle € €
+Descend(0, to, ¢). We will need to show that, for large to, the measures 1 ,4,1,¢
+and jo,,¢ are close.
+
+We exploit the dual bounded Lipschitz metric on M(R?):
+
+d(v,v') =sur{| [ar f par
+
+I[fllax = max (swish sup a)
+z zy Az2
+
+: |Ifllax < i}
+
+This metric has the property
+
+(Loew) <eS° lz - zl. (51)
+
+Consider 0 < t; < tg < t. The relationship between voi. 4¢ and Vos, 2¢ is
+that for each € € Descend(0,t,¢) the weight e~' moved from the position of
+ancestor(tz,€) to the position of ancestor(t,€). Taking spatial averages and
+using (51) we find
+
+e ave(| | Zancestor(t1,€) — Zancestor(t2,€) \|, g € Ee)
+
+2Ke"? by Corollary 21
+
+ave(d(Vo,t1,,¢5%,t2,,¢)) 6 € Exo) <
+<
+
+This and are sufficient to imply that the v’s have a limit: for all ¢ € E<o
+Yo.t,¢ > Ho,co,¢(Say), in probability as t + oo. (52)
+
+Now by we can write the definition of 19 49,¢ as
+Yotog = YA (lim |Miouel)5eg + € € Descend(0, to, ¢)}
+whereas (by definition) for t > to
+
+Ho,t.¢ = Stone : € € Descend(0, to, ¢)}-
+
+36
+/n/nSo now we have
+
+A(tot,¢; Ho,c0,¢) <  A(Yo.to.¢; Ho.co,¢) + A(Ho,t,¢; Y0,t0.¢)
+S  d(Yoto,¢; Ho,c0,¢) + Di {d( tim, |e Sees Hto,t,¢) + € € Descend(0, to, ¢)}
+
+lA
+
+A(V0,t0,¢5 H0,00,¢) + > {| lim Hiouel — |Pto.tze| | 2 € € Descend(0, to, ¢) \
++S 2 {d(Mione + \Mto.teldze) : € € Descend (0, to, ¢)}.
+
+Taking the spatial average over ¢ € E<o of sums over all time-tp descendants
+of ¢ is the same as taking the spatial average over all time-to particles. So
+taking averages in the inequality above gives
+
+ave(d(o,1,c; H0,00,¢) : ¢ € E<0) < bi (to) + bo(to, t) + b3(to, t) (53)
+
+where
+bi(to) = ave(d(vo,10,c; [40,00,¢) : ¢ € E<o)
+ba(to,t) = ave (| lim |dinel — [Monel | + € € Et)
+bs(to,t) = ave(d(tiote > [Mtoteloec) + € € Bcto):
+
+To prove Proposition [24] it is enough to prove
+ave(d(10,4,¢; H0,00,¢) 1 ¢ € E<o) 4 0 as t > oo. (54)
+
+We know bi(to) + 0 as to + 00 by (52). And 62(0,t) + 0 as t + oo by
+Proposition [25] and then by self-similarity b2(to,t) > 0 as t > oo for all to.
+Finally,
+
+Alpineg » Wtoselbse) Sf llee~=ll toee(d)
+= +S 4llzmectort-tox) —2ll + x-€ Descend to,t,£)}
+and so
+b3(to,t) < e~' avel||Zancestor(—to,v) — 2xI| = xX € Exe)
+< Ke by Corollary 21]
+
+Now taking limits in the inequality establishes and then Proposition
+24
+
+37
+/n/n4.3. The random partition
+
+We will now show that a limit random measure [ip,o0,¢ in Proposition [24] is in
+fact Lebesgue measure A restricted to some random set. The fact that the
+t — oo limit normalized empirical measure on Z; is A implies that
+
+So {lo,s0.¢ [CE E<o} =Aas. .
+
+So the random measures /o,.0,¢ have random densities fc(z), z € R® such
+that
+
+YLFe(2) :C€ Eeof =1Vz as.
+As t + co we have
+
+EL) DS eo Lieg, zeit) 1 € Bet, & € Bart > Ff bss-saen daydzy
+
+ze, €0 2, <0
+
+Now consider whether a pair (£1, 2) have different time-0 ancestors; precisely,
+consider
+
+jim E{ > > CL illee, eg IIS} L fancestor(0,é1)#ancestor(0,£2)} : ‘I € Fer, €2 € Be}
+ze, €0 2%, €0
+
+(55)
+From the fact s10,,¢ + Ho,oo,¢ the limit in equals
+
+E Lf tivs--ieo 1- > fela)felza) | dzrdz. (56)
+
+CEE <o
+
+But consider the probability p(0, t,t, 1, z2), given that E<; has particles at
+2 and 2g, that they have different time-0 ancestors. By Corollary [23] with
+defined by 6//2 = exp(—s/2),
+
+if ||22 — 21|| < 6 then p(0, t,t, 21, 22) < K6°? for t > 5.
+
+So the limit in also equals
+
+ff ruamaien lim p(0, t,t, 21, 22) dzidzq < Ko | / 14 \/21-22|| <6} dzdzq.
+OVO OVO
+(57)
+
+38
+/n/nFor probability distributions (a;) and (b;) we have 1— }3, a,b; > 1— max; a.
+Applying this to and using inequality (57),
+
+E fa Ja lia—z21)<0} (d 7 MaXcez<o fe(a1)) dzdzz
+Js Js Lg\j21-22|| <6} dz dz
+Letting 6 | 0 we deduce that as.
+
+< K6?,
+
+max f¢(z) =l1 ae. .
+quax fe(z)
+
+So defining
+
+A(0,¢) = {2: fel2) = 1
+and modifying on null sets, the random sets {A(0,¢) : ¢ € E<o} form a
+partition of R?, and jW9,00,¢ is Lebesgue measure restricted to A(0,¢). So
+writing A, for Lebesgue measure restricted to A, we can rewrite Proposition
+as follows, using self-similarity to extend from the time-0 case to the
+general time t case.
+
+Proposition 28. For each —oo < t < oo there exists a random partition
+{A(t,6) :¢ € Zr} of R? into measurable sets such that for all € € By
+
+Htuc + Nawc in probability as u— oo.
+
+4.4 Completing the proofs
+
+Proposition 28]is essentially enough to prove Theorems [2] and[I] As noted in
+the introduction, for fixed t we can regard
+
+ZL = {(x, A(t,€)): €€ Zar}
+
+as a marked point process. The fact that the evolution of the coloring process
+after time t, given Z;, does not depend on the arrival times of the particles in
+=<, means that Z is measurable with respect to the time-reversed filtration
+
+=
+Fat bh. The statement in Theorem |1| was that the process Z“ evolves in
+reversed time according to the rule:
+
+during [t,t — dt], for each € € Ex, delete € (that is, remove the
+entry (ze, A(t,)) ) with probability dt; for each deleted particle
+€, let ¢ be the nearest other particle, and set A(t — dt,¢) =
+A(t, ¢) U A(t, €).
+
+39
+/n/nTo see how this arises, fix large T and for —oo < t < T consider {(z¢, /u,r¢) :
+€ € S<;} as a marked point process. From Lemma} (the thinning property of
+the PPP), in reversed time ¢ this evolves precisely as a “coalescing measures
+process” :
+
+during [t,t — dt], for each € € Ex, delete € (that is, remove the
+entry (Ze, /4,r,¢)) with probability dt; for each deleted particle €,
+let ¢ be the nearest other particle, and set py—air¢ = Marc +Here-
+
+Taking the T’ > oo limit given in Proposition we obtain the former rule
+for the dynamics of Z.
+
+The other assertions of Theorem |1| hold by translation-invariance and
+self-similarity of the underlying space-time PPP &.
+
+40
+/n/n5 Discussion
+
+5.1 In what sense is this a tree process?
+
+We have used the language of ancestors and descendants, but otherwise have
+not really exploited the implicit tree structure of the colored point process
+construction. If we draw the process as a random tree in the plane, with
+edges drawn as line segments, it is clear from Figure [I] that edges sometimes
+cross, so we do not get a “tree” in the usual sense. This suggests that,
+in the opening “k colors in the unit square” model, in the limit partition
+into k colored regions, these regions are not necessarily connected. Figure [?|
+illustrates how this could happen. Simulations strongly indicate that in fact
+a typical region is not connected but that only a very small proportion of its
+area is outside its largest connected component.
+
+Figure 7: A possible realization of the tree in the unit square on the first
+n = 11 arriving points. The edge from 1 to 2 is omitted, to show the k = 2
+subtrees associated with the first two vertices. At this stage the unit square
+is Voronoi-partitioned into 2 components according to whether the nearest
+vertex is o or e, and the o component is not connected. We expect this
+disconnection to persist in the n — oo limit.
+
+41
+/n/n5.2 Other models of coalescing partitions
+
+There has been very little study of partition-valued processes in the plane
+which evolve by merging of adjacent components. One such process can be
+obtained by thinning a Poisson line process, but we are thinking of pairwise
+mergers. A well-studied implicit example is provided by bond percolation.
+As illustrated in Figure |8| to a percolation cluster of “open” edges (A) one
+can associate (this is planar duality) the region consisting of the union of the
+unit squares centered at the the vertices in the cluster (B), and then delete
+the open edges (C) and vertices to obtain a partition of the plane (D). The
+length of the boundary between two adjacent regions in this partition equals
+the number of “closed” edges between the original percolation clusters. So
+in the bond percolation model where edges become open at Exponential(1)
+times, the associated partition-valued process is such that the merger rate
+of adjacent regions equals the length of their common boundary. For this
+model classical percolation theory [10] implies that infinite regions appear
+after time log2. More general models in which two adjacent components
+merge into one at some stochastic rate determined by their geometry are
+discussed in [1], where it is conjectured that if large components do not grow
+too quickly (relative to small components) then there should be some self-
+similar asymptotics, but no such result is proved. The coalescing partitions
+process in this paper is perhaps the only known self-similar Markovian process
+of pairwise merging partitions of R?. In one dimension, the thinning process
+of Poisson points defines a self-similar process of merging adjacent intervals,
+which has an interpretation as intermediate-size asymptotics in the Kingman
+coalescent ({4] section 3.1).
+
+42
+/n/nFigure 8: Bond percolation clusters as a partition of R?.
+
+peeps:
+
+ad: bse:
+
+etary =H .
+SCL
+
+5.3 Heuristic arguments
+
+Arguments in this section are heuristics, only parts of which seem easily
+formalized. We conjectured at (28) that the tail behavior of the “meeting
+distance” random variable ||Zcoai|| is of the form
+
+P(||Zeoai|| > 17) X r77 as r 4 co (58)
+
+for some exponent y. This is heuristically related to the issue of fractal
+dimension of the boundaries of the regions (A(0,), € € E<o), as follows.
+Consider the boundaries within the unit square. Saying this has fractal
+dimension d is saying that for small 2 > 0 we need order a~@ radius-x discs
+
+43
+/n/nto cover these boundaries. Consider a uniform random point z; in the square
+and another random point z2 uniform on disc(z:, 2). The chance that z, and
+Zq are in different components is the same order as the chance they are in the
+same covering disc, which chance is order x?~¢. But the former chance is the
+same order as the chance that the meeting distance MM, between their lines
+of descent is at least 1, that is P(M,, > 1). So we expect P(M, > 1) x a?~¢
+as x | 0. Now by self-similarity M, =q 7M,. So setting r = 1/x
+
+P(M, >r)xr-e9 (59)
+and we heuristically identify the fractal dimension as
+
+d=2-y7.
+
+5.3.1 Heuristic 1: the boundary has fractal dimension 1
+
+For large to consider the Voronoi regions associated with the different sets of
+particles Descend(0, to, ¢) as ¢ varies. The particles in =<, are separated by
+distance of order e~*°/?. Consider three points (21, 22, 23) on the boundary at
+‘ime tg at distances of (say) 5e~'*/? apart. As ¢ increases, particles arriving
+nearby move the boundary near these three points. The first such move is
+over a distance of order e~*?/? and subsequent moves decrease geometrically.
+So in the t > oo limit the positions of the boundaries near (21, 22, z3) should
+ecome (2, + Dye7"/?, zy + Dye~/?, z3 + Dze~/?) for some (D1, Dz, D3)
+with a non-vanishing limit as tg + oo. But this is saying that in the limit
+partition (A(0,¢),¢ € =<o), on every scale o = ||y: — ys||, for y: and ys on
+she boundary, the distance from the midpoint (y; + y3)/2 to the boundary
+is of the form Do for some random D > 0. This is a hallmark of “fractal
+dimension = 1”.
+
+5.3.2 Heuristic 2: the boundary has fractal dimension 1
+
+The genealogical tree defines a “line of descent” for each particle in &; these
+particle positions are dense in R?, so let us suppose that in the continuum
+limit there is such a “line of descent” from almost all points z of R? to
+infinity. Draw the tree via line segments in R?. Consider a point (2,0) on
+the x-axis. The route from there to infinity first crosses the y = 1 line at
+some random point (c(x),1). Consider the random set C of all such values
+c(x) as a varies. This is stationary (translation-invariant) and so has some
+
+44
+/n/nintensity y, which cannot be zero; moreover we expect y < oo because the
+intensity of line segments of length > a is finite for each a > 0. Then suppose
+that for each c € C, the sets of originating points {x : c(x) = c} form som
+interval (x_(c), x4(c)).
+
+Next consider, for z > 0, the random quantity defined as
+
+the infimum of y > 0 such that the routes from (1,0) to infinity
+and from (a; + z,0) to infinity first hit the line {(x,y) : —oo <
+x < co} at the same point.
+
+This has a distribution, say D,, which does not depend on 21. By considering
+endpoints of the intervals (a_(c),7+(c)) we have
+
+y= lim P(Ds > 1)/6.
+
+But by scale-invariance we have Ds =q 6D,, and so
+P(D, > d)~y/dasd> ow.
+
+But D, should have the same tail behavior as Mj, at 9). This suggests the
+scaling exponent is y = 1 and hence the fractal dimension of the boundaries
+=1.
+
+5.3.3 Heuristic 3: the boundary has fractal dimension # 1
+
+The heuristics at are essentially saying that the fractal dimension d
+is determined via the limit
+
+lim P(\|Zeoail| > 21) — 94-2.
+
+reo P({|Zeoail| > 7)
+But the limit is determined by the asymptotics of the coupled EA process,
+conditioned on not coalescing for a long time. As we saw in in section [3.1
+the dynamics of the coupled EA process involve the complicated geometry
+of excluded regions, and there seems no reason why that limit should turn
+out to be exactly 1/2.
+
+5The argument is unchanged if instead it is a union of a finite-mean number of intervals.
+
+45
+/n/n5.3.4 Regarding Conjecture [3]
+
+One might imagine that Conjecture |3] would follow easily from Proposition
+[13] via some general result of the form
+
+If {A, A°} is a partition of the unit square such that p(r) > 0
+as r — 0, where p(r) is the probability that two random points
+at distance r apart are in the same subset, then (after modifying
+A on a set of measure zero) the topological boundary of A has
+measure zero.
+
+But this assertion is not true in general, by considering an example of the
+form A = U; disc(z;, r;) for dense (z;) and r; | 0 very fast. Proving Conjecture
+
+[3] seems to require some new argument.
+
+References
+
+1
+
+D. J. Aldous, J. R. Ong, and W. Zhou. Empires and percolation:
+stochastic merging of adjacent regions. J. Phys. A, 43(2):025001, 10,
+2010.
+
+David Aldous. Scale-invariant random spatial networks. Electron. J.
+Probab., 19:no. 15, 41, 2014.
+
+David Aldous and Karthik Ganesan. True scale-invariant random spatial
+networks. Proc. Natl. Acad. Sci. USA, 110(22):8782-8785, 2013.
+
+David J. Aldous. Deterministic and stochastic models for coalescence
+(aggregation and coagulation): a review of the mean-field theory for
+probabilists. Bernoulli, 5(1):3-48, 1999.
+
+Seren Asmussen. Applied probability and queues, volume 51 of Applica-
+tions of Mathematics (New York). Springer-Verlag, New York, second
+edition, 2003. Stochastic Modelling and Applied Probability.
+
+Jean Bertoin. Random fragmentation and coagulation processes, vol-
+ume 102 of Cambridge Studies in Advanced Mathematics. Cambridge
+University Press, Cambridge, 2006.
+
+46
+/n/nSung Nok Chiu, Dietrich Stoyan, Wilfrid S$. Kendall, and Joseph Mecke.
+Stochastic geometry and its applications. Wiley Series in Probability and
+Statistics. John Wiley & Sons, Ltd., Chichester, third edition, 2013.
+
+Richard Cowan. New classes of random tessellations arising from itera-
+tive division of cells. Adv. in Appl. Probab., 42(1):26-47, 2010.
+
+Hans-Otto Georgii, Tomasz Schreiber, and Christoph Thale. Branching
+random tessellations with interaction: a thermodynamic view. Ann.
+Probab., 43(4):1892-1943, 2015.
+
+Geoffrey Grimmett. Percolation. Springer-Verlag, New York, 1989.
+
+Jonathan Jordan and Andrew R. Wade. Evolution of random territories
+via on-line nearest-neighbours. Unpublished notes, 2012.
+
+J. E. Littlewood. Littlewood’s miscellany. Cambridge University Press,
+Cambridge, 1986. Edited and with a foreword by Béla Bollobas.
+
+Mathew D. Penrose and Andrew R. Wade. Random directed and on-line
+networks. In New perspectives in stochastic geometry, pages 248-274.
+Oxford Univ. Press, Oxford, 2010.
+
+Tomasz Schreiber and Christoph Thale. Shape-driven nested markov
+tessellations. Stochastics, 85(3):510-531, 2013.
+
+47

@@ -1,0 +1,1882 @@
+1507.02292v3 [astro-ph.GA] 14 Mar 2016
+
+ee
+
+arXiv
+
+MNRAS 000, 1-15 (0000) Preprint 17 October 2018 Compiled using MNRAS IATRX style file v3.0
+
+The overmassive black hole in NGC 1277: new constraints
+from molecular gas kinematics
+
+J. Scharwachter!*, F. Combes!, P. Salomé!, M. Sun? and M. Krips?
+
+1LERMA, Observatoire de Paris, PSL, CNRS, Sorbonne Universités, UPMC, F-75014, Paris, France
+- 2Physics Department, University of Alabama in Huntsville, Huntsville, AL 35899, USA
+* 3 Institut de Radioastronomie Millimétrique (IRAM), 300 Rue de la Piscine, Domaine Universitaire, F-38406 Saint Martin d’Héres, France
+
+17 October 2018
+
+ABSTRACT
+
+We report the detection of CO(1-0) emission from NGC 1277, a lenticular galaxy in
+he Perseus Cluster. NGC 1277 has previously been proposed to host an overmassive
+black hole (BH) compared to the galaxy bulge luminosity (mass), based on stellar-
+inematic measurements. The CO(1-0) emission, observed with the IRAM Plateau de
+Bure Interferometer (PdBI) using both, a more compact (2.9-arcsec resolution) and
+a more extended (l-arcsec resolution) configuration, is likely to originate from the
+dust lane encompassing the galaxy nucleus at a distance of 0.9 arcsec (~ 320 pc).
+The double-horned CO(1-0) profile found at 2.9-arcsec resolution traces 1.5 x 10° Mo
+of molecular gas, likely orbiting in the dust lane at ~ 550 km s~', which suggests a
+otal enclosed mass of ~ 2 x 10!° Mo. At L-arcsec resolution, the CO(1-0) emission
+appears spatially resolved along the dust lane in east-west direction, though at a low
+signal-to-noise ratio. In agreement with the previous stellar-kinematic measurements,
+he CO(1-0) kinematics is found to be consistent with an ~ 1.7 x 10! Mo BH for a
+stellar mass-to-light ratio of M/Ly = 6.3, while a less massive BH of ~ 5 x 10° Mo
+is possible when assuming a larger M/Ly = 10. While the molecular gas reservoir
+may be associated with a low level of star formation activity, the extended 2.6-mm
+continuum emission is likely to originate from a weak AGN, possibly characterized
+by an inverted radio-to-millimetre spectral energy distribution. Literature radio and
+X-ray data indicate that the BH in NGC 1277 is also overmassive with respect to the
+Fundamental Plane of BH activity.
+
+Key words: galaxies: general — galaxies: kinematics and dynamics — galaxies: indi-
+vidual: NGC 1277 ~ galaxies: nuclei
+
+BR
+
+INTRODUCTION by AGN feedback (e.g. Silk & Rees 1998; Di Matteo et al.
+2005). However, the implicit build-up of scaling relations
+in the course of hierarchical merging, as proposed by Peng
+(2007) and Jahnke & Maccid (2011), may play a role as
+well. A more complex picture involving self-regulatory and
+non-causal processes may be required to explain the var-
+ious aspects of the observed BH-galaxy correlations (see
+Kormendy & Ho 2013, for a recent review).
+
+The discovery of scaling relations between supermas-
+sive black holes (BHs) and their host galaxies has
+~~ been a major observational result in the field of galaxy
+evolution over the last ~15-20 yr. Scaling relations
+have been found between the mass of the supermas-
+sive BH and the stellar velocity dispersion of the host
+galaxy bulge (Mpu-o relation), the bulge luminosity
+
+(Mpu-Lspn relation), and bulge mass (Mpu-Mspn_ rela-
+tion), (e.g. Magorrian et al. 1998; Ferrarese & Merritt 2000;
+Gebhardt et al. 2000; Marconi & Hunt 2003; Haring & Rix
+2004; Giiltekin et al. 2009a; Graham et al. 2011; Sani et al.
+2011; McConnell & Ma 2013). These empirical scaling re-
+lations have been interpreted as a sign of co-evolution be-
+tween supermassive BHs and their host galaxies, mediated
+
+* E-mail: julia.scharwaechter@obspm. fr
+
+© 0000 The Authors
+
+Outliers from the BH scaling relations are of particu-
+ar interest for the purpose of testing and interpreting these
+relations. Larger sample sizes of galaxies with reliable mea-
+surements of BH and galaxy parameters have recently led
+to refined analyses, by which it has been possible to rec-
+oncile some of the previous outliers with the BH relations.
+Barred galaxies have been found to deviate from the Mgu-o
+relation of non-barred galaxies, explaining some of the out-
+iers with under-massive BHs (e.g. Graham 2008). Similarly,
+ased on a classification into ‘classical’ bulges (formed by
+
+/n/n2 J. Scharwéchter et al.
+
+mergers) and ‘pseudo’-bulges (dominated by secular evolu-
+tion and related to bars), Kormendy et al. (2011) have iden-
+tified ‘pseudo’-bulges as outliers from the relations. Graham
+(2012) and Graham & Scott (2013) have recently proposed
+that the location of galaxies in the Mpu-Mspn plane can be
+interpreted as a bent relation, resulting from the superposi-
+tion of two different relations for galaxies with ‘Sérsic’ and
+‘core-Sérsic’ spheroids in the low- and high-mass regime, re-
+spectively. ‘Core-Sérsic’ spheroids, which are typically more
+massive and thought to be dominated by dry mergers, fol-
+low a nearly log-linear Mpu-Mgpn relation, while ‘Sérsic’
+spheroids, which are thought to be dominated by rapid
+BH growth in gas-rich processes, follow a steeper, almost
+quadratic relation at BH masses below ~ (2—10) x 10° Mo.
+Some low-redshift AGN with apparently under-massive BHs
+(e.g. Mathur et al. 2012; Busch et al. 2014) could be repre-
+sentatives of this near-quadratic relation (Graham & Scott
+2015).
+
+At the high-mass end, the BH scaling relations have
+recently been challenged by a number of galaxies hosting
+ultramassive BHs of the order of 10'°Mo, the largest BH
+masses known to date. Ultramassive BHs are likely to pro-
+vide new insights into galaxy and BH growth, as they must
+have experienced the strongest growth over time. Ultramas-
+sive BHs seem to typically be associated with central mas-
+sive galaxies in clusters. Two such galaxies, NGC 4889 and
+NGC 3842, have measured BH masses of 2.1*}'§ x 10° Mo
+and 9.7732 x 10° Mo, respectively (McConnell et al. 2011,
+2012) and further indirect arguments suggest a similar asso-
+ciation (Hlavacek-Larrondo et al. 2012). Ultramassive BHs
+seem to show a tendency to be overmassive compared to
+the Mgu-o relation, while they are still largely in agreement
+with the Mpu-Mgpn relation (cf. McConnell & Ma 2013).
+This deviation could indicate that the growth of the cen-
+tral galaxies in clusters has had a significant contribution
+from dry mergers, which tend to increase velocity disper-
+sion more than stellar mass (Volonteri & Ciotti 2013). How-
+ever, the dry-merger scenario is observationally controversial
+(Savorgnan & Graham 2015).
+
+An extreme case for an ultramassive BH is NGC 1277,
+which is not a Brightest Cluster Galaxy, but a 1.2x10'! Mo
+compact SO galaxy in the core of the Perseus Cluster,
+about 3.8 arcmin away from the Brightest Cluster Galaxy
+NGC 1275 (van den Bosch et al. 2012). A number of re-
+cent studies have analysed the BH mass in NGC 1277
+based on stellar kinematics. The first measurement was
+published by van den Bosch et al. (2012), who found a BH
+mass of (1.7 + 0.3) x 10!° Mo, using Schwarzschild mod-
+els for the long-slit stellar kinematics and input photometry
+from multi-Gaussian expansion of a Hubble Space Telescope
+(HST) image. The measurement by Yildirim et al. (2015)
+has resulted in a marginally smaller best-fitting BH mass of
+1.3 x 10'° Mo, but, otherwise, in a good general agreement
+with the van den Bosch et al. (2012) results. Most recently,
+Walsh et al. (2016) have presented a revised BH mass of
+(4.9 + 1.6) x 10° Mo, based on stellar-kinematic data at
+higher spatial resolution than used in the previous studies.
+van den Bosch et al. (2012) report an extreme BH-to-stellar
+mass ratio, with a BH mass amounting to 59 per cent of
+the bulge mass or 14 per cent of the total stellar mass of
+NGC 1277. Even with the latest BH mass measurement of
+(4.9 £ 1.6) x 10° Mo, the BH in NGC 1277 is overmassive
+
+compared to the K-band Mpu-Lspn relation (Walsh et al.
+2016).
+
+NGC 1277 could have lost a fraction of its stel-
+lar mass by tidal stripping in the cluster environment,
+which could explain why the BH is overmassive. How-
+ever, van den Bosch et al. (2012) find no strong indica-
+tions that would suggest that NGC 1277 has been af-
+fected by tidal stripping. Optical spectra suggest that
+the stellar population of NGC 1277 is uniformly old (~
+10 Gyr), and the galaxy shows no obvious signs of in-
+teractions (van den Bosch et al. 2012; Trujillo et al. 2014;
+Martin-Navarro et al. 2015). NGC 1277 has been discussed
+as a local example of a ‘relic’ galaxy, which has not un-
+dergone any significant transformations in its recent evo-
+lution and shows a stellar mass density profile similar to
+the ones found for massive compact high-redshift galaxies
+(Trujillo et al. 2014; Ferré-Mateu et al. 2015).
+
+The overmassive BH in NGC 1277 has possibly been in
+
+place since this last violent star formation episode, because
+significant BH accretion without coeval star formation is un-
+likely (van den Bosch et al. 2012). By analysing an X-ray
+Chandra spectrum of NGC 1277, Fabian et al. (2013) find
+evidence of a power-law from an unresolved central point
+source with a 0.5-7 keV luminosity of 1.3x 10*° erg s-! (cor-
+rected for absorption) and extended thermal gas. NGC 1277
+has also been reported to be associated with an unresolved
+radio continuum detection with fluxes of 2.85 and 1.6 mJy
+at 1.4 and 5 GHz, respectively (Sijbring 1993). Fabian et al.
+(2013) argue that the current growth rate of the BH is likely
+to be negligible and that radiatively efficient Bondi accre-
+tion on to such a massive BH would suggest a 5-6 orders of
+magnitude larger luminosity of the X-ray power-law source
+than observed. The small current growth rate is surprising
+because the X-ray properties of NGC 1277 are characteristic
+of minicoronae and the corona lies within the Bondi radius
+(Sun et al. 2007; Fabian et al. 2013).
+n view of the extreme properties of NGC 1277,
+Fabian et al. (2013) have proposed an evolutionary scenario
+based on the assumption that ultramassive BHs acquired
+the bulk of their mass at high redshift, where the most mas-
+sive haloes could grow BHs rapidly. This rapid BH growth
+would most likely have involved extreme AGN feedback,
+shutting down new star formation. By z = 3, ultramas-
+sive BHs are then likely to be hosted in compact red bulges
+with a passive stellar population. Fabian et al. (2013) sug-
+gest that the further evolution of these host bulges de-
+pends on whether they are able to accrete external gas and
+stars. Galaxies like NGC 1277, moving at high velocity in a
+cluster core, may have remained virtually unchanged since
+z = 3, whilst Brightest Cluster Galaxies, centred in the
+cluster potential well, may have continued to grow signifi-
+cantly. Graham & Scott (2015) point out that the location of
+NGC 1277 in the Mgu-Mspn plane overlaps with an extrapo-
+lation of the near-quadratic relation for ‘Sérsic’ spheroids to
+high masses, where the plane is typically populated by ‘core-
+Sérsic’ spheroids. In this interpretation, NGC 1277 could be
+a rare example of a galaxy in which growth by gas-rich pro-
+cesses has continued on a near-quadratic relation instead of
+being terminated at the typical break mass. This scenario,
+however, is more difficult to reconcile with the small present
+growth rate of the BH in NGC 1277 and the predominantly
+old stellar population.
+
+MNRAS 000, 1-15 (0000)
+/n/nThe first BH mass measurement for NGC 1277 by
+van den Bosch et al. (2012), which resulted in (1.7 + 0.3) x
+10'° Mo, has been controversial. Emsellem (2013) argues
+that this large value for the BH mass is mostly determined
+by the fit to the central part of the measured Gauss-Hermite
+ha profile, so that the accuracy of this parameter is criti-
+cal. The N-body realizations presented by Emsellem (2013)
+show that a smaller BH mass of 5 x 10° Mo provides a good
+fit to the stellar kinematics, except for a small discrepancy
+in the Gauss-Hermite ha parameter. According to Emsellem
+(2013), an even smaller BH mass is possible, if variations in
+the mass-to-light ratio or high-velocity stars in the central
+region are present. These N-body realizations are based on a
+new multi-Gaussian expansion of the HST photometry and
+on the assumption that the potential is defined by a constant
+mass-to-light ratio of M/Ly = 10 without any dark mat-
+ter halo. As an alternative scenario, Emsellem (2013) also
+demonstrates that an end-on view on an inner bar together
+with a BH of only 2.5 x 10° Mo can reproduce the stel-
+lar kinematics, except for the central part of the ha profile.
+The smaller BH mass of 5 x 10° Mo suggested by Emsellem
+(2013) is consistent with the most recent measurement of
+(4.9 + 1.6) x 10° Mo reported by Walsh et al. (2016) based
+on stellar kinematic data at high spatial resolution.
+
+An independent constraint on the BH mass of
+NGC 1277 can be obtained by using gas kinematics as a
+tracer of the gravitational potential (e.g. Davis et al. 2013;
+Davis 2014; Onishi et al. 2015). In this paper, we report
+the first detection of CO(1-0) emission from the centre of
+NGC 1277, based on observations with the IRAM PdBI. We
+interpret the CO(1-0) and 2.6-mm continuum data with the
+help of an optical image, obtained from archival HST data,
+and discuss implications for the BH mass of NGC 1277. The
+observations and data reduction of the IRAM and ancil-
+lary data are described in Section 2. The results obtained
+for the CO(1-0) and 2.6-mm continuum emission are pre-
+sented in Section 3. In Section 4, we interpret the origin
+of the molecular gas and continuum detections, derive con-
+straints for the enclosed mass from the molecular gas kine-
+matics, and discuss star formation in the molecular gas as
+well as BH accretion scenarios. We summarize the main re-
+sults in Section 5 and conclude with notes on the role of
+NGC 1277 in BH and galaxy growth scenarios. Throughout
+the paper, we will assume a scale of 353 pc arcsec”' and
+a luminosity distance modulus of 34.39 (i.e. a luminosity
+distance of 75.5 Mpc), consistent with the values used by
+van den Bosch et al. (2012).
+
+2 OBSERVATIONS AND DATA REDUCTION
+2.1 IRAM PdBI data
+
+The millimetre data for NGC 1277 were obtained using the
+IRAM PdBI in both, a more extended and a more com-
+pact configuration, providing spatial resolutions of ~ 1 arc-
+sec and ~ 2.9 arcsec, respectively. A list of all observa-
+tions, indicating the number of antennas, the minimum and
+maximum baselines, and the calibrators, is provided in Ta-
+ble 1. In order to observe the redshifted CO(1-0) line in
+NGC 1277, the dual-polarization receiver in the 3-mm band
+was tuned to 113.356 GHz, according to the optical sys-
+temic velocity of NGC 1277 of 5066 kms~! (Falco et al.
+
+MNRAS 000, 1-15 (0000)
+
+The overmassive black hole in NGC 1277 3
+
+1999). We verified the systemic velocity based on stellar
+absorption lines (Car A2.26 wm, MgI A2.28 pm, and CO
+bandheads at about 2.29, 2.32, and 2.35 jm) in a sin-
+gle nuclear-aperture K-band spectrum of NGC 1277, ex-
+tracted from a subset of archival NIFS (Gemini North) data
+from programme GN-2011B-Q-27 (PI: D. Richstone), (see
+Walsh et al. 2016). The systemic velocity derived from fit-
+ting this spectrum with template stars from the NIFS spec-
+tral template library v2.0 (Winge et al. 2009) using PPXF
+(Cappellari & Emsellem 2004) agrees within ~ 20 km s~*
+with the value of 5066 km s~'. Since an offset of this or-
+der of magnitude is negligible compared to the accuracy at
+which the CO(1-0) data are analysed, we will present the
+CO(1-0) data using the reference velocity of 5066 km s~'.
+
+The PdBI observations of NGC 1277 were performed
+using the Wide-Band correlator WideX, which provides a
+spectral resolution of 1.95 MHz and a bandwidth of 3.6 GHz
+covering the CO(1-0) line as well as the adjacent 2.6-mm
+continuum. The J2000 coordinates R.A. = 03h 19m 51.5s
+and Dec = +41° 34’ 24''7 were used as pointing reference.
+The data for both configurations were reduced using the
+IRAM GILDAS software CLIC and MAPPING.
+
+2.1.1 Observations at low spatial resolution
+
+The observations in the more compact configuration (special
+CD configuration, including the new seventh antenna) — ob-
+tained between 2014 December 16 and 2015 July 6 — cover
+baselines between 24 and 176 m and a total on-source time of
+9.38 h for seven antennas. The details of these observations
+are listed in Table 1. The phase and amplitude calibration
+was performed based on 3C 84 and quasar 0300+470. Ei-
+ther MWC 349 or LKHA 101 were used as flux calibrators,
+while 0059+581, 3C 454.3, or 3C 84 were used as RF calibra-
+tors. The RF calibration based on 3C 84 could be affected
+by CO(1-0) emission from 3C 84. This calibrator was nev-
+ertheless chosen for the observations on 2015 February 19,
+because no obvious contamination was found and because
+the calibration was improved by using this strong calibrator
+instead of the weaker alternatives. The final UV table was
+created by merging the data from all observing dates using
+a spectral resolution of 40 MHz (105.8 km s~').
+
+The UV table was mapped using 256 x 256 spatial
+pixels, natural weighting, no tapering, and a pixel size of
+0.61 x 0.61 arcsec”. The data cube was cleaned by apply-
+ing Hégbom deconvolution (Hégbom 1974) to each spa-
+tial plane. The deconvolution was performed with a prede-
+fined support covering the emission that is evident in each
+channel close to the reference position of NGC 1277. The
+resulting beam size is 2.96 x 2.78 arcsec”. The lo noise
+level per 40-MHz channel in the cleaned cube is found
+to be 0.36 mJy beam~! at 6000 km s~' and increases to
+0.62 mJy beam~! at —3400 km s~! with a value of about
+0.47 mJy beam~' around the NGC 1277 reference velocity.
+The continuum was subtracted from the cleaned data cube
+by subtracting the average of all channels close to the line
+emission but excluding the velocity range of the line itself.
+A number of the highest and lowest velocity channels were
+not considered when computing the continuum, since they
+show indications of unidentified features or noise peaks.
+
+/n/n4. J. Scharwéchter et al.
+
+Table 1. Journal of observations
+
+Configuration Observation | Number of Minimum Maximum RF Phase/amplitude Flux
+date antennas baseline (m) baseline (m) calibrator calibrator calibrator
+Compact 2014-Dec-16 6 24 176 3C 454.3 3C 84, 0300+470 MWC 349
+2015-Feb-19 7 24 144 3C 84 3C 84, 0300+470 MWC 349
+2015-Apr-11 7 24 176 0059+581 3C 84, 0300+470 LKHA 101
+2015-Jul-03 6 24 97 3C 454.3 3C 84, 0300+470 MWC 349
+2015-Jul-06 6 24 97 3C 454.3 3C 84, 0300+470 MWC 349
+Extended 2014-Mar-12 6 88 452 3C 273 3C 84, 0307+380 0307+380
+2014-Mar-14 6 88 452 2013+370  3C 84, 0307+380 MWC 349
+
+2.1.2 Observations at high spatial resolution
+
+In the more extended configuration (B configuration), NGC
+1277 was observed on 2014 March 12 and 14, respectively
+(see Table 1). These observations cover baselines between
+88 and 452 m and a total on-source time of 8.29 h with
+six antennas. The phase and amplitude calibration for both
+observing dates was derived from observations of 3C 84
+and quasar 0307+380. The flux is based on 0307+380 or
+MWC 349, while 3C 273 or 2013+370 were used as RF cal-
+ibrators. The final UV table was created by merging the
+data from both observing dates using a spectral resolution
+of 40 MHz or 105.8 km s~?.
+
+The UV table was converted into a data cube by map-
+ping the data spatially on to 512 x 512 pixels using natural
+weighting, no tapering, and a pixel size of 0.24 x 0.24 arcsec”.
+The data cube was cleaned using the same method as ap-
+plied to the low-resolution data. The resulting beam size in
+this more extended configuration is 1.15 x 0.86 arcsec”. The
+lo noise level per 40-MHz channel in the cleaned cube in-
+creases with decreasing velocity from about 0.3 mJy beam™!
+at 6000 km s~' to 0.6 mJy beam™' at —3400 km s~' with a
+value of 0.42 mJy beam™~! around the NGC 1277 reference
+velocity.
+
+Since the CO(1-0) emission in this data set is weak, a
+blind detection assessment was performed on the cleane:
+data cube, both before and after continuum subtraction,
+using a wrapper around SEXTRACTOR (Bertin & Arnouts
+1996). For each channel in the cube, a narrow-band im-
+age was created by averaging over a predefined number o:
+neighbouring channels. In order to account for different line
+widths, the channel average was varied between a single
+channel and the maximum range of channels, using only odd
+numbers for a symmetric average around the central channel.
+Each narrow-band image was sent to SEXTRACTOR in order
+to identify all groups of pixels with values above a certain
+detection threshold. Both, the detection threshold as well
+as the minimum area covered by pixels above this thresh-
+old, are user-defined input parameters of SEXTRACTOR. In
+order to improve the detection process, we applied the SEX-
+TRACTOR image filtering before detection, using a Gaussian
+convolution kernel with an FWHM of 4 pixels (0.96 arcsec),
+which roughly matches the beam size.
+
+The detection assessment of the full data cube using
+single-channel narrow-band images, a SEXTRACTOR detec-
+tion threshold of 30, and a minimum detection area of 3 pix-
+els, results in the detection of a continuum emission peak at a
+mean offset of AR.A. = —0.15 arcsec and ADec = 0.18 arc-
+sec for most channels across the full frequency range. In
+
+order to isolate weak line emission, a continuum subtraction
+was performed using the same method as applied to the low-
+resolution data. The resulting continuum image has a lo
+background noise level of 0.089 mJy beam~'. A new detec-
+tion assessment was performed on the continuum-subtracted
+data cube, using a detection threshold of 2o and a minimum
+detection area of 1 pixel to detect faint features. Within
+a distance of 13 arcsec around the reference position, only
+one detection is identified at a > 50 (peak flux over back-
+ground rms) level. This detection at ~ 5.lo is found at
+AR.A. = 0.48 arcsec and ADec = 0.17 arcsec from the
+reference position when averaging 3 channels (320 km s')
+around a central velocity of +530 km s~'. While this detec-
+tion is rather marginal based on the blind assessment, we
+will show in Sect. 3.3 that this feature is clearly confirmed
+as CO(1-0) emission from NGC 1277 by comparison with
+the data obtained at lower spatial resolution.
+
+2.2 Ancillary optical data
+
+Ancillary archival data from HST observations in the
+F550M filter are used to compare the millimetre observa-
+tions with the optical features of NGC 1277. The optical
+HST image has already been presented by other authors to
+discuss the morphology of NGC 1277 (van den Bosch et al.
+2012; Emsellem 2013; Fabian et al. 2013; Trujillo et al.
+2014). We found the World Coordinate System (WCS) of
+the archival HS'T image to be offset, which we corrected by
+comparing the positions of objects in a ~ 45 x 45 arcsec”
+cut-out around NGC 1277 to coordinates from the Guide
+Star Catalog (GSC) 2.3 (Lasker et al. 2008). Four of these
+objects, extracted using the IMSTAR routine included in
+the WCSTOOLS package (e.g. Mink 1997), were found to
+match catalogued sources. Based on these, a new plate so-
+lution was derived using the IRAF! task CCMAP with a
+second-order polynomial fit. The fit shows an rms of about
+0.2 arcsec, which is a similar order of magnitude as the aver-
+age absolute astrometry error of 0.2—0.3 arcsec of the GSC
+2.3 (Lasker et al. 2008). The HS'T image was resampled ac-
+cording to the new plate solution on to 0.05 x 0.05 arcsec?
+pixels using the software SWARP (Bertin et al. 2002) with a
+LANCZOS3 interpolation and an oversampling factor of 3.
+
+1 TRAF is distributed by the National Optical Astronomy Obser-
+vatories, which are operated by the Association of Universities for
+Research in Astronomy, Inc., under cooperative agreement with
+the National Science Foundation.
+
+MNRAS 000, 1-15 (0000)
+/n/n1.5
+
+1.5
+15 410 05 00 -05 -1.0 -1.5
+
+ARA. (’)
+
+Figure 1. Optical F550M HST image of the central 3 x 3 arcsec?
+region of NGC 1277. The image is shown in arbitrary units in a
+logarithmic colour scale chosen to enhance the contrast on the
+dust lane. The centre of the relative coordinate system is deter-
+mined from a Gaussian fit to the nuclear emission peak.
+
+The final image quality, based on stars in the image field-of-
+view, is ~ 0.14-0.15 arcsec (Gaussian FWHM).
+
+3 RESULTS
+3.1 Optical morphology
+
+As already discussed by other authors (van den Bosch et al.
+2012; Emsellem 2013; Fabian et al. 2013), the HST optical
+image shows a prominent dust lane around the centre of
+NGC 1277 (Fig. 1). The dust lane has a radius of ~ 0.9 arc-
+sec (~ 320 pc), (see also, e.g., Fabian et al. 2013), and is
+seen nearly edge-on. van den Bosch et al. (2012) deduce an
+inclination of ~ 75°, suggesting a similar inclination for the
+galaxy, if the dust lane is in the plane of the galaxy disc. It
+has been noted by Fabian et al. (2013) that the large central
+mass concentration corresponding to an ~ 10'° Mo BH in
+NGC 1277 would imply high circular velocities of 480 km s~!
+for gas orbiting in the dust lane.
+
+3.2  2.6-mm continuum emission
+
+The 2.6-mm continuum of NGC 1277 (Fig. 2), obtained from
+the high-spatial-resolution data, shows an integrated flux of
+(5.60.2) mJy in a pseudo-circular aperture with a diameter
+of 3.36 arcsec. The continuum is found to be extended at the
+spatial resolution of 1 arcsec and shows a possible weak fea-
+ture to the south. In order to probe the continuum extension,
+both, a point source and a circular Gaussian model, were fit-
+ted to the continuum map after convolution of the models
+with the beam. Both models result in AR.A. = —0.15 arc-
+sec and ADec = 0.18-0.19 arcsec for the continuum position
+with respect to the pointing reference. This is in agreement
+
+MNRAS 000, 1-15 (0000)
+
+The overmassive black hole in NGC 1277. 5
+
+4.0
+3.5
+3.0
+2.55
+
+E
+20 §
+
+1.15” x 0.86”
+
+40 20 0.0 -20 -4.0
+ARA. (”)
+
+Figure 2. Map of the 2.6-mm continuum of NGC 1277 based on
+the data obtained in the more extended configuration. Contour
+levels start at 5o and are shown in steps of 60 (at 0.44, 0.98, 1.51,
+2.04, 2.58, 3.11, 3.64 mJy beam~'). The colour scale extends from
+—3o to the continuum peak value. The size and orientation of the
+beam are indicated in the lower right corner.
+
+with the position derived from the basic blind detection as-
+sessment in Sect. 2.1.2. Fitting a point source model, yields
+a best-fitting flux of 4.7 mJy. It is obvious that this fit only
+recovers about 80 per cent of the total flux of 5.6 mJy, ob-
+tained by direct aperture integration. The residual map of
+the continuum after subtraction of the point-source model
+(Fig. 3, top panel) shows that the continuum has extended
+excess emission compared to a point source. Fitting a sin-
+gle circular Gaussian instead of a point source, yields best-
+fitting parameters of 5.5 mJy for the flux and 0.5 arcsec for
+the Gaussian FWHM. The circular Gaussian model recov-
+ers most of the flux measured via direct aperture integration,
+and the residuals (Fig. 3, bottom panel) are negligible.
+
+3.3 CO(1-0) emission
+
+A very broad CO(1-0) line is clearly detected close to the
+pointing reference in the data obtained at low spatial res-
+olution (Figs 4 and 5). The line is symmetrically centred
+around the systemic velocity of NGC 1277 and marginally
+resolved in terms of kinematics. The map of the CO(1-0)
+emission, shown in Fig 4, has been computed by spectrally
+integrating the data over a symmetric range of 13 channels
+of 40-MHz width (i.e. 1380 kms~') around the systemic
+velocity of NGC 1277. This wide spectral range has been
+selected to cover the full CO(1-0) line profile, as marked
+by the vertical dashed lines in the middle panel of Fig. 5,
+where the spectrum from the brightest pixel of the emission
+peak is displayed. The flux of the CO(1-0) emission peak,
+integrated over a pseudo-circular aperture with a diameter
+of 6.1 arcsec, and the corresponding H2 mass are listed in
+Table 2.
+
+The central CO(1-0) profile (Fig. 5, middle panel) shows
+clear indications of a double-horned shape with a stronger
+velocity component centred at +530 km s~/ and a less pro-
+nounced component centred at —530 km s~!. The compari-
+
+/n/n6 J. Scharwéchter et al.
+
+Table 2. Summary of the physical properties of the three main CO(1-0) detections, i.e.
+the double-horn profile at 2.9 arcsec spatial resolution as well as the clear and marginal
+detections of the redshifted and blueshifted horn, respectively, at 1 arcsec resolution. The
+columns show the integrated flux, the corresponding Hz mass calculated via equations 3
+and 4 from Solomon & Vanden Bout (2005) assuming a Milky Way conversion factor of
+a= 4.6 Mo (K kms~! pc?)~!, and the line centre and width, as used for the integrated
+
+line maps (see Figs 4—7).
+
+Detection Beam size Flux M(H2) Line centre Line width
+(arcsec?) (mJy km s~?) (108 Mo) (km s~+) (km s~+)
+Double-horn profile 2.96 x 2.78 2400 + 400 15+0.3 0 1380
+Redshifted horn 1.15 x 0.86 300 + 100 0.19 + 0.06 530 320
+Blueshifted horn 1.15 x 0.86 200 + 100 0.13 + 0.06 -420 320
+
+son of the three spectra from an eastern, central, and west-
+ern pixel in Fig. 5 suggests that the CO(1-0) kinematics is
+marginally resolved in east-west direction. The pronounced
+horn at +530 km s~' is mostly contributed by the eastern
+part of the CO(1-0) emission peak, while the weaker horn at
+—530 km s~' seems to be associated with the western part.
+
+At L-arcsec resolution, in the more extended configura-
+tion, a clear ~ 50 detection is only found for the pronounced
+velocity component at +530 kms~', as deduced from the
+blind detection assessment in Sect. 2.1.2. The narrow-band
+image of this single CO(1-0) detection is indicated via the
+two solid (black) contours in Fig. 6. This image has been av-
+eraged over three 40-MHz channels (i.e. 320 km s~') around
+a central velocity of +530 km s~ order to isolate the
+line emission as suggested by the detection experiment.
+The emission peak is found at AR.A. = 0.48 arcsec and
+ADec = 0.15 arcsec, in agreement with the position derived
+from the detection experiment. The total flux measured for
+this peak in the above image, using a pseudo-circular aper-
+ture with a diameter of 1.92 arcsec, and the correspond-
+ing H2 mass are listed in Table 2. The spectrum of this
+emission peak, extracted from the brightest pixel, is shown
+in the top panel of Fig. 7. The spectrum shows a narrow
+(roughly three-channel-wide) line centred at +530 km s~1.
+In comparison to Fig. 5, it is obvious that this single detec-
+tion corresponds to the pronounced red horn of the double-
+horned CO(1-0) profile seen in the more compact configura-
+tion. Fig. 7 also shows a number of apparent features in the
+spectral region at < —1000 km s~!, which we ascribe to the
+increasing noise towards higher
+
+in
+
+requencies.
+
+By visually inspecting the l-arcsec resolution data in
+light of the double-horned profile seen at 2.9-arcsec resolu-
+tion, we found indications of a marginal CO(1-0) emission
+peak associated with the blueshifted horn of the profile.
+This peak is just above the 3c-level when spectrally inte-
+grating the cube over 320 kms‘ around a central velocity
+of —420 km s~! (single (blue) contour in Fig. 6). The spec-
+trum of this peak is shown in the lower panel of Fig. 7, and
+the corresponding total flux and gas mass, derived by inte-
+grating the emission over a pseudo-circular aperture with a
+diameter of 1.92 arcsec, are listed in Table 2. The peak is
+found at AR.A. = —0.63 arcsec and ADec = 0.32 arcsec, i.e.
+to the west of the detection associated with the redshifted
+horn. Although the current signal-to-noise ratio is low, the
+1-arcsec resolution data seem to spatially resolve the east-
+west alignment of the redshifted and blueshifted CO(1-0)
+
+emission that has already been indicated by the data at 2.9-
+arcsec resolution (Fig. 5).
+
+Possible evidence for CO(1-0) emission from the region
+connecting the two emission peaks is found when integrating
+the l-arcsec resolution data over the full spectral range cov-
+ered by the double-horned profile seen at 2.9-arcsec resolu-
+tion (ie. 1380 km s~'). None of the features in the resulting
+map, shown as the underlying colour image in Fig. 6, reaches
+the 30 limit. However, the map suggests that the two CO(1-
+0) emission peaks are located at the opposite ends of an
+underlying ridge of positive emission. In view of the double-
+horned profile found at lower spatial resolution, it can be
+speculated that this emission ridge originates from compo-
+nents of the double-horned profile that are just below the
+current detection limit.
+
+The clearly detected CO(1-0) emission peak associated
+with the velocity of +530 km s~’ shows a spatial offset of
+0.6 arcsec to the east compared to the 2.6-mm continuum
+emission (Fig. 8). Assuming that the lo positional uncer-
+tainty AO for a signal-to-noise ratio SNR and a beam size
+Qz is given by AO  Oz/(2 x SNR), the CO(1-0) line emis-
+sion involves a positional uncertainty of AO ~ 0.1 arcsec
+(using the major axis of the beam size (1.15 arcsec) and the
+SNR of the CO(1-0) emission peak of ~ 5.1). Compared
+this estimate, the measured offset between the CO(1-0)
+tection and the 2.6-mm continuum emission has an ~ 60
+significance. (For the continuum peak, the uncertainty is
+much smaller than 0.1 arcsec, as it is detected with a much
+larger SNR.) For completeness, the marginal detection from
+CO(1-0) emission that is kinematically associated with the
+opposite side of the double-horned profile has been added
+to Fig. 8 (single blue contour). This emission shows an off-
+set of about 0.5 arcsec to the west of the continuum peak.
+It is also noteworthy that the direction of the offset of the
+CO(1-0) emission peaks with respect to the 2.6-mm contin-
+uum does not coincide with the possible weak extension of
+the continuum to the south, mentioned in Section 3.2.
+
+Marginal evidence of a spatial gradient across the CO(1-
+0) kinematic components in east-west direction is also found
+in the combined data set after merging the l-arcsec and
+2.9-arcsec resolution data. The position-velocity diagram
+extracted from this merged data set along a slit oriented
+in east-west direction is shown in Fig. 9. Apart from the
+dominant +530 km s~' component, the CO(1-0) emission is
+characterized by a low signal-to-noise ratio in this spatially-
+resolved diagram. However, the diagram indicates that the
+highest velocity (+530 km s~') component is located far-
+
+to
+e
+
+MNRAS 000, 1-15 (0000)
+/n/nResidual of point-source model
+
+4.0
+2.0 _
+S :
+1S}
+8 0.0 8
+4 €
+-2.0
+~0.1
+-4.0 1.15”x 0:86” fad
+40 20 0.0 -2.0 -4.0
+AR.A. (’)
+Residual of circular Gaussian model
+4.0
+2.0 _
+: :
+[o}
+8 0.0 8
+4 €
+-2.0
+6 ~0.1
+-4.0 1.15”x 0:86” fad
+
+4.0 2.0 0.0
+
+ARA. (’)
+
+-2.0 -4.0
+
+Figure 3. Residual maps after subtracting a point source model
+(top) and a circular Gaussian model (bottom) from the 2.6-mm
+continuum of NGC 1277, based on the high-resolution data. The
+lo noise level of the maps is 0.089 mJy beam~!. Contour lev-
+els start at 30 and are shown in steps of lo (at 0.27, 0.35, and
+0.44 mJy beam~'). The colour scale in both plots is identical and
+ranges between —3c and the peak value of the map in the top
+panel. The size and orientation of the beam are indicated in the
+lower right corner.
+
+thest to the east, while the lowest-velocity components
+around —530 kms~'! are found farthest to the west. The
+evidence for a spatial gradient between the two extreme ve-
+locity components discussed in this section would be consis-
+tent with molecular gas clumps in rotation around a roughly
+north-south axis.
+
+MNRAS 000, 1-15 (0000)
+
+The overmassive black hole in NGC 1277 7
+
+2000
+1600
+1200
+
+800
+
+400
+
+mJy beam~! km s~!
+
+ARA. (’)
+
+Figure 4. Map of the CO(1-0) detection for NGC 1277 ob-
+tained in the more compact configuration. The CO(1-0) line has
+been integrated over a symmetric velocity range of 1380 km s~!
+(13 channels of 40 MHz) around the systemic velocity. The
+4o to 100 contours (859, 1074, 1289, 1503, 1718, 1933, and
+2148 mJy beam~! km s~!) are shown as black solid lines. The
+—30 to 30 contours (—644, —430, —215, 0.0, 215, 430, and
+644 mJy beam~! km s~!) are shown as white dashed lines. The
+size and orientation of the beam are indicated in the lower right
+
+corner. ‘east’, ‘centre’, and ‘west’ mark the positions of the three
+pixels from which the marginally resolved spectra shown in Fig. 5
+were extracted.
+
+4 DISCUSSION
+4.1 CO(1-0) kinematics and BH mass
+
+The CO(1-0) data for NGC 1277 are consistent with a sce-
+nario in which the CO(1-0)-emitting molecular gas is dis-
+tributed in a ring corresponding to the dust lane (see Fig. 1).
+The double-horned line profile shown by the CO(1-0) emis-
+sion in the more compact configuration (2.9-arcsec resolu-
+tion) in Fig. 5 suggests that CO emission is detected from the
+full extent of the dust lane. In Figs 10 and 11, we compare
+the CO(1-0) line profile to model predictions for different
+gas distributions and BH masses, based on a realistic model
+of the mass distribution in the centre of NGC 1277. Accord-
+ing to the data by van den Bosch et al. (2012), the half-light
+radius is 1 kpc, and the total stellar mass is 1.2 x 10'' Mo.
+The distribution of light is such that a maximum of circu-
+lar velocity of 476 km s~! is reached at a radius of 0.56 kpc,
+when the mass-to-light ratio is selected as M/Ly = 6.3. This
+mass distribution corresponds also to the model of Emsellem
+(2013), although the peak velocity is now 600 km s~', with a
+higher M/Ly = 10. We therefore adopted for the rotational
+velocity due to the stars the curve labelled ‘no BH’ in fig. 4 of
+Emsellem (2013), corresponding to the best multi-Gaussian
+expansion fit of the light distribution. To this stellar con-
+tribution, we added a point mass with two different values,
+as shown in Figs 10 and 11. For the molecular gas, we first
+assume a nuclear ring, corresponding to the dust lane. The
+ring is modelled using a constant surface density between
+0.8 and 1.2 arcsec radii, or between 0.28 and 0.42 kpc. Since
+this distribution does not allow us to sample the high veloc-
+/n/n8 J. Scharwéchter et al.
+
+v [GHz]
+113.956 113.356 112.756
+
+r
+
+3b East '
+A R.A.=1.22” '
+
+f
+
+f
+
+f
+
+;
+2 A Dec=0.0" Vi
+1:
+\
+1
+1
+
+3b Centre
+af A Dec=0.0"
+
+ii
+ARA.=0.0" |
+
+1
+
+I
+
+flux [mJy beam~']
+m
+
+1 Lit in 1
+—2000 —1000 0 1000 2000
+
+velocity [km s~']
+
+Figure 5. Spectra extracted from an eastern, central, and
+western pixel in the CO(1-0) emission peak, as indicated in
+Fig. 4. The spectra are shown at a spectral resolution of 40
+MHz (105.8 km s~'). The vertical dotted lines mark +530 and
+—530 km s~!, which roughly coincides with the peaks of the
+double-horned line profile. The vertical dashed lines indicate the
+symmetric spectral range of 13 channels around the systemic ve-
+locity that was used to compute the integrated CO(1-0) map pre-
+sented in Fig. 4.
+
+ities expected in the centre near the BH, we also consider
+another extreme molecular gas distribution, which is an ex-
+ponential disc with a scale of ro = 50 pc, ending also at
+0.42 kpc. For these two molecular gas distributions, we test
+two values for the BH mass, the high value of 1.7 x 10'° Mo
+proposed by van den Bosch et al. (2012) and the lower value
+of 5 x 10° Me selected by Emsellem (2013), which is con-
+sistent with the most recent measurement by Walsh et al.
+(2016). The inclination of the gas disc is assumed i = 75°.
+The combination of these scenarios yields four possible
+spectra, which we computed according to the model already
+used by Wiklind et al. (1997). For an assumed axisymmet-
+ric gas distribution of surface density n(r), a typical global
+spectrum dN/dv(V) is the sum over all radii r of
+
+dN dV
+aw = [ neeyraras [roe sinOain?? (1)
+
+where V;ot (7) is the rotational velocity at radius r, and i the
+inclination of the galaxy in the sky (i = 0 is face-on). The
+
+Figure 6. Map of CO(1-0) emission features in the more ex-
+tended configuration. The two (black) 30 and 4o contours (232
+and 310 mJy beam! km s~!) east of the reference position
+show the only clear CO(1-0) detection, obtained by spectrally
+integrating the data cube over three channels of 40 MHz (i.e.
+320 km s~') around a central velocity of +530 km s~! (see also
+Sect. 2.1.2). This detection corresponds to the redshifted horn of
+the double-horned profile detected in the more compact configura-
+tion (Fig. 5). The (blue) 30 contour (263 mJy beam~! km s~!)
+west of the reference position shows a marginal detection from
+the blueshifted horn of the profile, obtained by spectrally inte-
+grating three channels of 40 MHz (i.e. 320 km s~!) around a
+central velocity of —420 km s~!. The underlying colour image
+shows the map obtained by integrating the cube over the full
+spectral range of the double-horned profile (ie. 13 channels of
+40 MHz or 1380 km s~!, as indicated by the dashed vertical lines
+in Fig. 5). White dashed contours mark the 0 to —3a levels at
+0.0, —207, —413, and —620 mJy beam~! km s~}, respectively.
+Dark red dashed contours indicate the lo and 2c levels at 207
+and 413 mJy beam~! km s~}, respectively. Note that 30 is not
+reached. The size and orientation of the beam are indicated in
+the lower right corner.
+
+observed velocity in each point is V = Vict cos 6 sin 7, and the
+global spectrum is derived by a simple radial integration.
+Fig. 10 shows the four spectra obtained when varying the
+BH mass and the adopted molecular gas distribution.
+
+The simulation clearly shows that the most likely gas
+distribution is indeed the nuclear ring, corresponding to the
+dust lane. For the case of an exponential gas distribution,
+the velocity wings of the line are boosted, which is not ob-
+served. The ring-like gas distribution is also supported by the
+preliminary results for the underlying spatial and kinematic
+structure of the CO(1-0) emission, discussed in Sect. 3.3 and
+summarized in the form of the position-velocity diagram in
+Fig. 9. The emission components corresponding to the high-
+est velocities around +530 and —530 km s~! are most en-
+hanced and show the strongest evidence for a spatial sepa-
+ration. Such a position-velocity diagram is expected for gas
+orbiting in an inclined ring, where the highest line-of-sight
+velocities coincide with the orbital nodes of the ring, i.e. the
+edges of the projected lane of gas. For a smooth gas distri-
+bution, these edges would, furthermore, be characterized by
+enhanced gas emission as a result of line-of-sight projection
+
+MNRAS 000, 1-15 (0000)
+/n/nv [GHz]
+
+113.956 113.356 112.756
+
+L5E East
+
+peak flux [mJy beam~!]
+
+L5E West L:
+i}
+i}
+
+fl farenes f f f
+—2000  —1000 0 1000 2000
+
+velocity [km s~']
+
+Figure 7. Spectra of the CO(1-0) detections in the more extended
+configuration. The upper panel shows the spectrum extracted
+from the brightest pixel in the eastern emission peak (black con-
+tours in Fig. 6). The lower panel shows the corresponding spec-
+trum for the western, marginal emission peak (blue contour in
+Fig. 6). The arrows indicate the spectral integration ranges that
+were used to compute the maps of the emission peaks shown as
+solid (black and blue) contours in Fig. 6. For comparison with the
+double-horn profile seen in the data at low spatial resolution, the
+vertical dotted and dashed lines from Fig. 5 are reproduced here.
+
+20 1.0 0.0 -1.0 -2.0 -3.0
+ARA. (’)
+
+Figure 8. Position of the CO(1-0) emission peaks relative to the
+2.6-mm continuum emission in the data at l-arcsec resolution.
+The continuum colour scale and contours (dark red dashed lines)
+are the same as in Fig. 2. The contours for the two CO(1-0) peaks
+(black and blue) are shown as in Fig. 6. The size and orientation
+of the beam are indicated in the lower right corner.
+
+MNRAS 000, 1-15 (0000)
+
+The overmassive black hole in NGC 1277. 9
+
+PA=90°
+
+-1000.0
+
+-750.0
+
+-500.0
+
+-250.0
+
+0.0
+
+velocity [km s~!]
+
+250.0
+
+500.0 Ks
+750.0
+
+-2.0 -10 00 1.0 2.0
+
+W + offset [arcsec] > E
+
+Figure 9. Position-velocity diagram of the CO(1-0) emission, ex-
+tracted along a 0.72-arcsec-wide slit oriented in east-west direc-
+tion and centred on the position defined by the peak of the 2.6-mm
+continuum. The diagram is based on the combined data set of all
+CO(1-0) observations discussed in this paper. This merged data
+set has a beam size of 1.4 x 1.1 arcsec? with a major axis orien-
+tation along PA = 52° and is shown at a spectral resolution of
+40 MHz (105.8 km s~!) after continuum subtraction. Contours
+start at 4c and increase in steps of lo.
+
+effects. On the contrary, for gas orbiting around a central
+point mass in an inclined exponential disc, the highest ve-
+locities and strongest emission would be found in the centre.
+
+If the molecular gas is distributed in the dust lane, the
+rotational velocities probe the total enclosed mass. The two
+horns of the observed CO(1-0) profile in Fig. 5 are roughly
+located at V = +530 and —530 kms~! with respect to
+the systemic velocity of NGC 1277. For an inclination of
+i = 75°, this corresponds to a rotational velocity of Vrot =
+V/cos(90° — i) © 550 kms~'. The enclosed mass is given
+by Mene = (Vier)/G, where r is the distance of the gas
+from the BH and G is the gravitational constant. Using a
+istance of r ~ 320 pc (0.9 arcsec), corresponding to the
+radius of the dust lane, the resulting total enclosed mass is
+Mene ~ 2X 10'° Mg. The models in Figs 10 and 11 provide a
+more detailed analysis by distinguishing the stellar and BH
+mass contributions. Compared to the line profile in Fig. 5,
+the best model for M/Ly = 6.3 (Fig. 10) appears to be
+the top left one, supporting the high mass for the BH. For
+M/Ly = 10 (Fig. 11), the width of the observed CO(1-0)
+spectrum can also be reproduced by the 5 x 10° Mo BH (top
+right panel). We conclude that the observed CO(1-0) line
+profile is consistent with a 1.7 x 10'° Mo BH, while a lower
+mass of 5 x 10° Mo is likewise possible, if the underlying
+mass distribution is characterized by M/Ly = 10.
+
+In the data at 1-arcsec spatial resolution, the only clear
+CO(1-0) detection is associated with the pronounced kine-
+
+/n/n10. J. Scharwéchter et al.
+
+10 - 4 10- 4
+2
+€
+5
+>
+6 57 4 5h 4
+.
+<
+
+1.7e10 5.E9
+0 L L L 0 H L I
+—500 le) 500 —500 ie) 500
+
+10 - qj 10 4
+£
+<
+5
+>
+S 5 4+ 5h 4
+2
+<
+
+1.7E10 5.E9
+0 L L L 0 L L L
+—500 ie} 500 —500 ie) 500
+
+Velocity (km /s) Velocity (km /s)
+
+Figure 10. Molecular gas spectrum from the nuclear disc, com-
+puted assuming the van den Bosch et al. (2012) mass model for
+the stellar distribution with M/Ly = 6.3, and a BH mass of
+1.7x 10! Mo (left) and 5 x 10° Mg (right). The top two spectra
+correspond to a gas distribution in a ring, with constant surface
+density between 0.28 and 0.42 kpc (or 0.8 and 1.2 arcsec), and
+the bottom two spectra to a gas distribution in an exponential
+disc of characteristic scale 50 pc.
+
+10+ 4 10 4
+2
+fod
+:
+5
+6 5} 4 5h 4
+:
+x=
+
+1.7210 5.E9
+fe} 1 1 1 (0) 1 1 1
+—500 10) 500 —500 fo} 500
+
+10 4 10 a
+'€
+:
+s
+6 5- 4 5h 4
+2
+?
+
+1.7E10 5.E9
+0 L L L 0 L L L
+—500 0 500. —500 ie) 500
+
+Velocity (km /s) Velocity (km /s)
+
+Figure 11. Same as Fig. 10, but now assuming M/Ly = 10.
+
+matic component around +530 km s~!. This emission peak
+is found to be offset by ~ 0.6 arcsec largely to the east of the
+2.6-mm continuum peak. It could originate from a molecu-
+lar gas clump close to the eastern orbital node of the dust
+lane. As discussed in Sect. 3.3, we also find marginal evi-
+dence of a CO(1-0) emission peak on the opposite side of
+
+41.5741
+
+41.5738
+
+Dec (J2000) [deg]
+
+41.5732
+
+9652 49.9648 49.9644 49.9640 49.9636
+R.A. (J2000) [deg]
+
+Figure 12. Overlay of the CO(1-0) line and 2.6-mm continuum
+emission found at l-arcsec spatial resolution and the HST im-
+age. For this overlay, the astrometry of the HST image has been
+adjusted by hand in order to match the scenario, in which the 2.6-
+mm continuum peak is associated with the optical galaxy nucleus.
+The HST image is shown in colour scale. The 2.6-mm continuum
+contours (white) and the contours for the two CO(1-0) peaks
+(black and blue) are the same as in Fig. 8. The size and orien-
+tation of the beam corresponding to the continuum and CO(1-0)
+map is indicated in the lower right corner. The error bar in the
+lower left corner shows the estimated uncertainty of +0.3 arcsec
+in the absolute astrometry of the HST image.
+
+the 2.6-mm continuum peak associated with similar abso-
+lute, but blueshifted, velocities. This emission may originate
+from a region close to the western orbital node of the dust
+lane. The Hz masses derived for the eastern and western
+emission peaks are ~ 2 x 10° and ~ 1 x 10" Mo, respec-
+tively (see Table 2). These values are at the upper end o!
+the gas masses found for the most massive giant molecular
+clouds in the Milky Way (e.g. Murray 2011). In addition
+to the molecular cloud scenario, it is also possible that the
+peaks are enhanced by line-of-sight crowding effects, which
+would be expected around the orbital nodes of an incline
+ring model. The above interpretation, in which the CO(1-0)
+peaks are associated with the orbital nodes of the dust lane,
+is highlighted in comparison to the HS'T image in Fig. 12.
+While a blind comparison between the millimetre data an
+the HST image is subject to the astrometric uncertainty o
+~ 0.3 arcsec in the HST image, the astrometry in this fig-
+ure has been adjusted by hand in order to align the 2.6-mm
+continuum peak with the optical galaxy nucleus.
+
+4.2 The molecular gas as a reservoir for star
+formation
+
+The CO(1-0) emission discussed here indicates a reser-
+voir of molecular gas in the central region of NGC 1277,
+which can potentially fuel star formation. The H2 mass of
+1.5 x 10° Mg (Table 2) corresponding to the double-horned
+profile seen at 2.9-arcsec resolution is in good agreement
+with the typical Hz masses found for early-type galaxies
+from ATLAS*? (Young et al. 2011), but lower than the in-
+tegrated Hz masses found for dust-lane early-type galaxies
+(4 x 108 to 2 x 10!° Mo, Davis et al. 2015). A rough es-
+
+MNRAS 000, 1-15 (0000)
+/n/ntimate of the mean surface density of the 1.5 x 10° Mo of
+molecular gas in NGC 1277 results in about 500 Ms pe?.
+According to the Kennicutt-Schmidt relation (Schmidt 1959;
+Kennicutt 1998), this could imply a star formation rate den-
+sity of ~ 0.5 Mo yr ' kpc? and an integrated star forma-
+tion rate of the order of 0.1 Mo yr_'. For this estimate, the
+size of the molecular gas reservoir and star formation re-
+gion is assumed to be the ring confined to radii between 0.8
+arcsec and 1.2 arcsec, consistent with the model presented
+in Sect. 4.1. However, the exact dimensions of the ring are
+unknown, so that this estimate involves large uncertainties.
+In addition, it also has to be taken into account that the
+mean gas surface density may not be a good representa-
+tion of the actual surface density, since the gas distribution
+could be clumpy. Further insights into the clumpiness of the
+gas distribution could be obtained from high resolution ob-
+servations. However, based on the current sensitivity limit
+of the data obtained at l-arcsec resolution, it remains un-
+clear whether the observed CO(1-0) emission peaks rather
+originate from giant molecular clouds or from line-of-sight
+projection effects.
+
+UV data from the GALEX (Martin et al. 2005) archive
+independently suggest a low level of active star formation
+in NGC 1277 with a global star formation rate of the or-
+der of 0.1 Mo yr~!. The far-UV (FUV) flux reported for
+NGC 1277 in the GALEX archive is (20.24 + 0.52) pJy, or
+(67.2 + 1.7) pJy after correction for foreground extinction
+using E(B — V) = 0.165 from Schlegel et al. (1998) and
+Apuv = 7.9E(B-—V) (Gil de Paz et al. 2007). This flux ap-
+pears to be associated with a slightly extended detection in
+the far- and near-UV images. The corresponding luminos-
+ity is Lpuv = 8.9 x 10*' erg s~‘. Together with the total
+infrared luminosity of NGC 1277 of Lig(8 — 1000 jum)
+2.3 x 10° Lo = 8.8 x 10” erg s~!, which we will derive in
+Sect. 4.3, the FUV detection indicates a dust-corrected star
+formation rate of about 0.2 Mo yr~!, using the calibration
+
+SFR = 4.6 x 10°-““[Lruy + 0.46Lir (8 — 1000 ym)! (2)
+
+(Hao et al. 2011; Calzetti 2013). Note that this calibration
+is based on a Kroupa initial mass function, while a Salpeter
+initial mass function would result in a 55 per cent larger
+star formation rate (e.g. Smith et al. 2015). The actual star
+formation rate may be lower than the value derived above,
+since the FUV flux could include contributions from an old
+stellar population (cf. Burstein et al. 1988) or an AGN. In
+Sections 4.3 and 4.4, we discuss indications for an AGN
+in NGC 1277. However, the optical spectra of NGC 1277
+presented by Trujillo et al. (2014) and Martin-Navarro et al.
+(2015) do not show any prominent AGN emission lines, so
+that an AGN, if present, is likely to be weak.
+
+The FUV emission in star forming regions is dominated
+by young (< 100 Myr) massive stars. Therefore, the star for-
+mation history derived from optical spectra may not be suffi-
+ciently sensitive to a low-level of recent star formation with a
+rate of a few 0.1 Mo yr~! in a stellar population otherwise
+dominated by old stars. The stellar population properties
+based on optical spectra for NGC 1277 indicate a uniformly
+old = 10 Gyr stellar population (van den Bosch et al. 2012;
+Trujillo et al. 2014; Martin-Navarro et al. 2015). Further-
+more, the optical spectra presented by Martin-Navarro et al.
+(2015) in their Fig. 2 do not provide any strong evidence of
+Ha emission as an indicator of active star formation. By
+
+MNRAS 000, 1-15 (0000)
+
+The overmassive black hole in NGC 1277 11
+
+visual inspection, the figure only shows a possible emission
+peak close to the Ha wavelength in the nuclear averaged
+spectrum, which could be associated with weak emission
+from ionized gas.
+
+Since the above estimates for the star formation rate
+in NGC 1277 involve large uncertainties, we also have to
+consider the possibility that star formation is suppressed
+despite the presence of a 1.5 x 10° Mo reservoir of molec-
+ular gas. Shear can have a disruptive effect on star forma-
+tion by altering the collapse and fragmentation of molecular
+clouds (e.g. Hocuk & Spaans 2011; Dobbs & Pringle 2013).
+High shear has been discussed as a possible explanation
+for the lower star formation efficiency with respect to the
+Kennicutt-Schmidt relation, displayed by early-type galax-
+ies from the ATLAS®? sample (Davis ct al. 2014). In the
+steeply rising gravitational potential towards the centre of
+NGC 1277, shear can potentially play a role in preventing
+efficient star formation in molecular clouds in the region of
+the dust lane.
+
+Active star formation would tend to lower the V-band
+stellar mass-to-light ratio compared to a uniformly old stel-
+lar population. As discussed in Sect. 4.1, a tendency towards
+a lower M/Ly would be in favour of a larger BH mass, be-
+cause the required velocity width of the CO(1-0) line profile
+can only be reproduced when compensating the smaller stel-
+lar mass contribution with a larger central BH mass (see
+Figs 10 and 11). However, recent observational data are
+rather in support of a high mean stellar mass-to-light ra-
+tio in the central region. Based on optical long-slit spectra
+obtained in 0.8-arcsec seeing, Martin-Navarro et al. (2015)
+suggest that the stellar mass-to-light ratio in NGC 1277
+increases towards the nucleus. These data are limited in
+spatial resolution and lack detailed information on the run
+of the stellar mass-to-light ratio inside the region encom-
+passed by the dust lane. The innermost off-nuclear ra-
+dial bin in their data roughly corresponds to the radius of
+the dust lane. A high stellar V-band mass-to-light ratio of
+M/Ly = (9.3 + 1.6) for the central 1.3 arcsec in NGC 1277
+has also been reported by Walsh et al. (2016), based on high-
+spatial-resolution near-infrared integral field spectroscopy.
+This value is derived from stellar-dynamical models assum-
+ing a constant mass-to-light ratio, so that possible radial
+variations in the mass-to-light ratio are not traced.
+
+4.3 Origin of the 2.6-mm continuum emission
+
+The 2.6-mm continuum flux of NGC 1277 of (5.6+£0.2) mJy
+could be associated with star formation or with an AGN-
+related radio jet. In order to discuss the origin of this con-
+tinuum emission, we show the 2.6-mm continuum flux to-
+gether with the infrared-to-radio spectral energy distribu-
+tion of NGC 1277 in Fig. 13. The analysis of the spectral
+energy distribution is likely to involve uncertainties given
+that the composite is based on an inhomogeneous data set.
+Furthermore, the significance of the models discussed in the
+following is limited by the small number of published data at
+radio frequencies. To our knowledge, the only published data
+in the radio domain are the 1.4 and 5 GHz detections of 2.85
+and 1.6 mJy, respectively, reported by Sijbring (1993), who
+found the radio source to be unresolved in the corresponding
+13 x 19 arcsec? and 3.5 x 5.2 arcsec” beams.
+
+Fig. 13 shows example models for the available data,
+
+/n/n12. J. Scharwéchter et al.
+
+based on the far-infrared and radio continuum, which under-
+predict the flux at 2.6 mm by about one order of magni-
+tude. The infrared data include data from Herschel, Spitzer,
+and Wise. The Herschel photometry measurement was per-
+formed using the Herschel Interactive Processing Environ-
+ment (HIPE) 13.0.0. The SPIRE fluxes are from SUSSEX-
+TRACTOR, while the results from the TIMELINE FITTER agree
+within a few per cent. The PACS fluxes are derived from
+aperture photometry with aperture correction included. We
+used the python code MBB_EMCEE to fit modified blackbod-
+ies to photometry data using an affine invariant Markov
+chain Monte Carlo (MCMC) method, with the Herschel
+passband response folded (Dowell et al. 2014). Assuming
+that all dust grains share a single temperature Ty, that
+the dust distribution is optically thin, and neglecting any
+power-law component towards shorter wavelengths, the fit
+results in a temperature of Ty/(1 +z) = (24.0 + 0.8) K,
+a luminosity Lip(8 — 1000 ym) = (2.3 + 0.2) x 10° Lo,
+and a dust mass of My = (2.6 + 0.5) x 10° Me for 6 = 2.
+For 8 = 1.5, the corresponding values are Ty/(1 +z) =
+(27 + 1) K, Lin(8 — 1000 pm) = (2.4 + 0.2) x 10° Lo,
+and Mg = (1.3 40.2) x 10° Mo. We also performed a fit
+using a free @ parameter, which results in Ty/(1 + z) =
+(32 + 5) K, Lir(8 — 1000 wm) = (2.4 + 0.2) x 10° Lo,
+Ma = (9+5) x 10° Mo, and 8 = 1.1+0.4. The dust tem-
+peratures are similar to the ones found for the cold-to-warm
+dust component in galaxies. The cold component (~ 15 -
+25 K) has been interpreted as diffuse dust heated by the
+general interstellar radiation field from young and/or old
+stellar populations, while the warmer component (~ 30 -
+40 K) is assumed to be associated with dust in star forming
+regions heated by young O and B stars (e.g. Cox et al. 1986).
+The uniformly old stellar population of NGC 1277 iden-
+tified via optical spectroscopy (van den Bosch et al. 2012;
+Trujillo et al. 2014; Martin-Navarro et al. 2015) is likely to
+provide heating of diffuse dust by the general interstellar
+radiation field. As discussed in Sect. 4.2, NGC 1277 may
+also host a low level of active star formation, which could
+contribute a warmer dust component. However, it is evi-
+dent that the cold-to-warm dust component derived from
+the model in Fig. 13 can clearly not account for the contin-
+uum emission found at 2.6 mm.
+
+The radio fluxes at 1.4 and 5 GHz have been fitted with
+a single power-law of the form S, x v“, resulting in a power-
+law index of a = —0.46. This index is in agreement with a
+synchrotron spectrum. Given that the stellar population of
+NGC 1277 is dominated by old stars (van den Bosch et al.
+2012; Trujillo et al. 2014; Martin-Navarro et al. 2015) and
+that recent star formation is only present at a low level at
+most (Sect. 4.2), it is likely that the 1.4 and 5 GHz data trace
+non-thermal emission from an extended radio jet. This con-
+clusion is also supported by the fact that the given radio and
+far-infrared fluxes indicate a mild radio excess with respect
+to the radio-far-infrared relation for star forming galaxies.
+Based on the definition
+
+lo Srir lo
+7 008 | 3.75 x 10! Wm 8
+
+S14 Gua
+W m-? vad (3)
+
+with Sprn = 1.26x 107 '4[2.58 S60 pmnt+Si00 pm] W m~? from
+Yun et al. (2001), the 70 and 100 ym fluxes for NGC 1277
+from Herschel and the 1.4 GHz flux from Sijbring (1993) sug-
+gest gq ~ 2.0. A comparison with fig. 6 in Yun et al. (2001)
+
+shows that this q-value indicates some radio excess compared
+to the distribution of q-values for far-infrared selected galax-
+ies and, therefore, a possible contribution from an AGN. In
+other words, using the 1.4~GHz flux as an indicator of the
+star formation rate based on the radio-far-infrared correla-
+tion (e.g. Yun et al. 2001; Murphy et al. 2011), results in a
+recent star formation rate that is about one order of magni-
+tude larger than the rates discussed in Sect. 4.2.
+
+The excess of the 2.6-mm continuum in Fig. 13 (both,
+when considering the total flux or only the point source con-
+tribution) with respect to the synchrotron-like radio contin-
+uum derived from the 1.4 and 5 GHz fluxes of NGC 1277
+is about one order of magnitude. The 2.6-mm flux indi-
+cates an inverted spectral energy distribution from the ra-
+dio to the millimetre regime, which cannot be fully ex-
+plained by S, x v~°! free-free emission from H11 regions
+(cf. Murphy et al. 2011) and rather suggests AGN emis-
+sion. Some of this excess at 2.6 mm could be caused by vari-
+ability or by extended non-thermal emission probed more
+prominently by the larger beam size corresponding to the
+1.4 and 5 GHz data. Similarly inverted spectra have been
+found for a number of low-luminosity AGN and elliptical
+galaxies (Doi et al. 2005, 2011). These authors discuss the
+possibility that the strong flux at millimetre wavelengths is
+a signature of the accretion disc in an advection-dominated
+accretion flow (Ichimaru 1977). More data at radio and mil-
+limetre wavelengths will be required for a more stringent
+interpretation of the radio-to-millimetre spectral energy dis-
+tribution of NGC 1277.
+
+The presence of a weak AGN in NGC 1277 would be
+consistent with X-ray data. Fabian et al. (2013) find evi-
+dence for an unresolved power-law source with a 0.5-7 keV
+luminosity of 1.3 x 10“° erg s~'. A rough estimate indicates
+that an AGN producing the X-ray and the non-thermal ra-
+dio emission would be in agreement with the known radio-
+X-ray correlations for AGN. The 6-cm (5 GHz) flux of
+Se cm = 1.6 mJy from Sijbring (1993) corresponds to a lu-
+minosity of Lg cm = 5.5 X 10°7 erg st. Using the 0.5-7 keV
+as an approximation for the 2-10 keV luminosity, the radio
+and X-ray fluxes are consistent with the radio-X-ray corre-
+lation, which is, e.g., shown by the corresponding projection
+of the Fundamental Plane of BH activity in Merloni et al.
+(2003, left-hand panel of their fig. 3).
+
+4.4 Implications for gas accretion on to the BH
+
+If NGC 1277 hosts a BH with a mass of ~ 5 x 10°
+to 10!° Mo, this BH is overmassive compared to the
+value expected from the Fundamental Plane of BH activity
+(Merloni et al. 2003), assuming that the radio continuum as
+well as the X-ray power-law source are indeed associated
+with an AGN. According to the Fundamental Plane rela-
+tion from Giiltekin et al. (2009b), the 6-cm radio luminos-
+ity of 5.5 x 10°” ergs ' (see Section 4.3) combined with
+an approximate 2-10 keV luminosity of 1.3 x 104° ergs!
+(Fabian et al. 2013, and Section 4.3) suggests a BH mass of
+about 1 x 108 Mo, which is two orders of magnitude smaller
+than the BH mass of 1.3x10'° to 1.7x10'° Mo suggested by
+van den Bosch et al. (2012) and Yildirm et al. (2015) and
+still significantly smaller than the revised BH mass mea-
+surement of (4.9 + 1.6) x 10° Mo from Walsh et al. (2016).
+
+There is evidence that the gas accretion on to the
+
+MNRAS 000, 1-15 (0000)
+/n/nThe overmassive black hole in NGC 1277 13
+0 21cm 6cm 2.6 mm 350 pm = 70 um 22 ppm
+if J
+-of J
+_ he,
+>
+2-3 4
+3
+too)
+2
+—4al J
+@ =~ Herschel A Sijbring 1993
+—57 mi Spitzer PLx v®, a=-0.46 Z|
+> Wise —— dust: =2
+6 @ =~ PdBI 2.6 mm (total) -- dust: =1.5
+~°L @ — PdBI 2.6 mm (point source) dust: 3=free |
+9 10 u 12 13
+log v [Hz]
+
+Figure 13. Infrared-to-radio spectral energy distribution of NGC 1277, together with an example model fit based on the far-infrared and
+radio data (see text for details). The infrared measurements are compiled based on data from Herschel, Spitzer, and Wise, as described
+in the text. For the 2.6-mm continuum measured in this work the figure shows both, the total aperture-integrated flux as well as the
+point source contribution discussed in Sect. 3.2. The 1.4 and 5 GHz fluxes are taken from Sijbring (1993). The solid, dashed, and dotted
+black lines show the fits for the dust component, assuming 8 = 2, 8 = 1.5, and a free §, as described in the text, extrapolated to 2.6
+mm. The dotted (magenta) line connecting the 1.4 and 5 GHz data points shows the results from fitting a power-law S, « v® to the 1.4
+
+and 5 GHz fluxes.
+
+BH in NGC 1277 deviates from simple Bondi accretion.
+Based on the thermal gas detected within the Bondi ra-
+
+dius, Fabian et al. (2013) s
+
+how that the accretion luminos-
+
+ity expected from radiatively efficient Bondi accretion is 5-6
+
+orders of magnitude more
+ray power-law component.
+similar order-of-magnitude
+6-cm flux from Sijbring (
+
+luminous than the observed X-
+As pointed out in Sect. 4.3, a
+difference is suggested by the
+993), which is consistent with
+
+the radio-X-ray correlation as one projection of the Fun-
+damental Plane of BH activity (though for a much smaller
+BH). Why the observed X-ray luminosity of the central
+point source in NGC 1277 is much smaller than the one
+expected for radiatively efficient Bondi accretion, remains
+unclear. Fabian et al. (2013) suggest the possibility of a very
+radiatively-inefficient accretion process. Alternatively, gas
+angular momentum may be responsible for lowering the ac-
+cretion rate (Li et al. 2013).
+
+The dust lane is likely to play an important role in im-
+peding cold gas accretion. This has already been pointed out
+by Fabian et al. (2013), considering the high velocities in the
+dust lane that would be expected from the large BH mass.
+Our data support this picture, since the CO(1-0) detection
+is consistent with emission from a ring and shows the pre-
+dicted high rotational velocities. While the gas in the dust
+lane may eventually loose angular momentum due to viscous
+processes and begin to spiral inward, the current lack of cold
+gas in the nuclear region may be the reason for the very low
+current BH accretion rate.
+
+MNRAS 000, 1-15 (0000)
+
+5 SUMMARY AND CONCLUSIONS
+
+We have reported a detection of CO(1-0) emission from
+NGC 1277, probed at ~ 1 and ~ 2.9 arcsec spatial reso-
+lution, using the IRAM PdBI. The data indicate that the
+molecular gas is distributed in the ring of the dust lane en-
+compassing the nucleus of NGC 1277 at a distance of 0.9 arc-
+
+sec. Furthermore, the molecu
+velocities of ~ 550 km s~!. Th
+
+lar gas shows high rotational
+is is suggested consistently by
+
+the low- and high-resolution data. The low-resolution data
+reveal a very broad, double-horned line covering a symmet-
+ric velocity range around the systemic velocity of NGC 1277,
+which appears marginally resolved in terms of kinematics
+in east-west direction. In the high-resolution data, the pro-
+nounced red horn of the double-horned profile, centred at
+~ +530 km s~!, is detected with an offset of ~ 0.6 arc-
+sec to the east of the 2.6-mm continuum peak, while a
+marginal detection of kinematic components associated with
+the blue horn are found to the west of the continuum peak.
+The high rotational velocities of the molecular gas provide
+independent evidence for a central mass concentration of
+~ 2x 10'° Mo inside the radius of the dust lane. This en-
+closed mass is large enough to potentially host an ultra-
+
+massive BH as massive as reported by van den Bosch et al.
+(2012) and Yildirim et al. (2015) based on stellar kinemat-
+ics. Compared to models with realistic mass distributions
+for M/Ly = 6.3, the spatially-unresolved CO(1-0) line pro-
+file is consistent with the profile expected for the presence
+of a central 1.7 x 10'° Mo BH. However, a lower-mass BH
+of 5 x 10° Mo, consistent with the revised measurement by
+Walsh et al. (2016), is also possible, if the stellar mass-to-
+light ratio is assumed to be M/Ly = 10.
+/n/n14. J. Scharwéchter et al.
+
+Future observations are required in order to further
+resolve this ambiguity in the gas-kinematic measurement.
+Tighter gas-kinematic constraints on the BH mass can be
+expected from sensitive observations at high angular resolu-
+tion, by probing gas clouds as close as possible to the BH
+(ie. the gas with the highest rotational velocities). If the
+molecular gas is indeed largely confined to a ring, such ob-
+servations will ultimately be limited by the lack of gas in
+the vicinity of the BH. However, depending on the radial
+extent of the ring, gas kinematics from the innermost parts
+of the ring may already be sufficiently sensitive to the cen-
+tral gravitational potential to provide a clearer distinction
+between the BH mass and extended stellar mass contribu-
+tions. A better knowledge of the stellar mass-to-light ra-
+tio in the circum-nuclear region could similarly improve the
+gas-kinematic BH mass constraints. Stellar absorption line
+studies for NGC 1277 have so far been limited in spatial res-
+olution (see, e.g., the discussion by Yildirim et al. 2015), so
+that the detailed run of stellar mass-to-light ratio with radius
+inside the region encompassed by the dust lane remains un-
+certain. Recent results by Walsh et al. (2016) indicate a high
+stellar mass-to-light ratio of M/Ly = 9.3+1.6 for the central
+region of NGC 1277. This measurement is based on stellar-
+dynamical models assuming a constant mass-to-light ratio
+out to a radius of 1.3 arcsec (~ 460 pc), which covers the
+full extent of the dust lane. This value would be in favour of
+an ~ 5x 10° Mo gas-kinematic BH mass, in agreement with
+the stellar-dynamical mass derived by Walsh et al. (2016).
+
+The strong underlying 2.6-mm continuum emission of
+NGC 1277 cannot be explained by the cold dust component
+seen in the far-infrared and appears to be in excess of the
+radio-to-millimetre spectral energy distribution expected for
+free-free emission from H1I regions. Based on literature X-
+ray and radio data, we suggest that the 2.6-mm continuum
+is caused by a weak AGN. The continuum is extended and
+shows marginal evidence of an extension to the south that
+could be related to a radio-jet.
+
+If the BH in NGC 1277 is as massive as ~ 5 x 10° to
+~ 1.7 x 10!° Mo, it appears to be an overmassive outlier
+with respect to the Fundamental Plane of BH activity as
+well as the Mguy-Lspn,x«-relation — although the latter may
+strongly depend on the details of the bulge-disc decompo-
+sition (Savorgnan & Graham 2016). It is likely that the pe-
+culiar properties of NGC 1277 are a result of its location
+in the environment of the Perseus Cluster. It has been sug-
+gested that the formation of ultramassive BHs may have
+proceeded rapidly in the early Universe, well before z ~ 2-3
+(Dubois et al. 2012; Fabian et al. 2013). Early BH growth in
+NGC 1277 is supported by the fact that NGC 1277 seems to
+currently lack any significant BH accretion. The offset from
+the Mpu-Lspn,«-relation indicates that NGC 1277 has either
+lost a large part of its stellar mass or has not been able to ac-
+quire additional stellar mass and gas after an initial phase of
+star formation. Furthermore, the predominantly old stellar
+population, the currently small BH accretion rate, and the
+offset from the Fundamental Plane of BH activity suggest
+that NGC 1277 has been devoid of gas during its recent evo-
+lution. A stripping event in the cluster environment could
+have removed large parts of the gas and stellar mass, al-
+though this scenario has so far been regarded less likely (e.g.
+van den Bosch et al. 2012). If NGC 1277 has been moved
+off the Mpu-Lspn,x-relation by tidal stripping, this implies
+
+that galaxies with ultramassive BHs have been close to, or
+in agreement with, this relation by z ~ 2-3 and that ultra-
+massive BHs have primarily evolved in lockstep with their
+host galaxies. Alternatively, as suggested by Fabian et al.
+(2013), NGC 1277 may have undergone quenching at high
+redshift and may have been prevented from acquiring fur-
+ther gas and stellar mass by its off-centre location in the
+Perseus Cluster, in contrast to central cluster galaxies which
+may have grown significantly through mergers. In this case,
+NGC 1277 would have neither experienced galaxy nor BH
+growth in its more recent evolution and may be a ‘relic’
+galaxy (Trujillo et al. 2014), in terms of both, its stellar pop-
+ulation and BH. This scenario has recently been explored in
+more detail by Ferré-Mateu et al. (2015). As these authors
+iscuss, this scenario implies that the growth of ultramassive
+BHs may have preceded the growth of their host galaxies, so
+that all galaxies with ultramassive BHs may have been out-
+liers from the BH-bulge luminosity (mass) relation by z ~
+2-3, in a similar manner as still observed for NGC 1277 to-
+ay. It is noteworthy that the BH in the central galaxy of
+the Perseus Cluster, NGC 1275, is significantly less massive
+than the one suggested for NGC 1277 (Scharwachter et al.
+2013). As a possible explanation, Shields & Bonning (2013)
+proposed that NGC 1277 may have captured a massive BH
+that had originally grown in NGC 1275.
+
+Regardless of which process may have led to this par-
+ticular BH distribution in NGC 1275 and NGC 1277, it is
+evident that probing the most massive BHs in clusters will
+provide new insights into cluster formation and evolution.
+Given the very small number of confirmed ultramassive BHs
+to-date, future observations are required in order to better
+understand the growth of the most massive BHs and their
+host galaxies as well as the role of the cluster environment.
+
+ACKNOWLEDGEMENTS
+
+We thank the anonymous referee for a constructive report
+and interesting suggestions which have led to Sect. 4.2. This
+work is based on observations carried out under projects
+number X094 and W14DB with the IRAM Plateau de
+Bure Interferometer. IRAM is supported by INSU/CNRS
+(France), MPG (Germany) and IGN (Spain). We are grate-
+ful to the IRAM staff, especially Sabine Kénig, for sup-
+porting the observations. JS and FC acknowledge the Eu-
+ropean Research Council for the Advanced Grant Program
+Num 267399-Momentum. This research has made use of the
+NASA/IPAC Extragalactic Database (NED) which is oper-
+ated by the Jet Propulsion Laboratory, California Institute
+of Technology, under contract with the National Aeronau-
+tics and Space Administration. Some of the data presented
+in this paper were obtained from the Mikulski Archive for
+Space Telescopes (MAST). STScI is operated by the Associ-
+ation of Universities for Research in Astronomy, Inc., under
+NASA contract NAS5-26555. Support for MAST for non-
+HST data is provided by the NASA Office of Space Science
+via grant NNXO9AFO08G and by other grants and contracts.
+
+MNRAS 000, 1-15 (0000)
+/n/nNOTE ADDED IN PROOF
+
+Based on a new bulge/disc decomposition and new stellar-
+kinematic data, Graham et al. (2016) propose that NGC
+1277 might be brought back on the BH-to-host spheroid
+mass relation, albeit with a high M/Ly = 12.3.
+
+REFERENCES
+
+Bertin E., Arnouts S., 1996, A& AS, 117, 393
+
+Bertin E., Mellier Y., Radovich M., Missonnier G., Didelon P.,
+Morin B., 2002, in Bohlender D. A., Durand D., Handley
+T. H., eds, Astronomical Society of the Pacific Conference Se-
+ries Vol. 281, Astronomical Data Analysis Software and Sys-
+tems XI. p. 228
+
+Burstein D., Bertola F., Buson L. M., Faber S. M., Lauer T. R.,
+1988, ApJ, 328, 440
+
+Busch G., et al., 2014, A&A, 561, A140
+
+Calzetti D., 2013, in Falcén-Barroso J., Knapen J. H., eds, , Secu-
+lar Evolution of Galaxies. Cambridge University Press, p. 419
+
+Cappellari M., Emsellem E., 2004, PASP, 116, 138
+
+Cox P., Kruegel E., Mezger P. G., 1986, A&A, 155, 380
+
+Davis T. A., 2014, MNRAS, 443, 911
+
+Davis T. A., Bureau M., Cappellari M., Sarzi M., Blitz L., 2013,
+Nature, 494, 328
+
+Davis T. A., et al., 2014, MNRAS, 444, 3427
+
+Davis T. A., et al., 2015, MNRAS, 449, 3503
+
+Di Matteo T., Springel V., Hernquist L., 2005, Nature, 433, 604
+
+Dobbs C. L., Pringle J. E., 2013, MNRAS, 432, 653
+
+Doi A., Kameno S., Kohno K., Nakanishi K., Inoue M., 2005,
+MNRAS, 363, 692
+
+Doi A., Nakanishi K., Nagai H., Kohno K., Kameno S., 2011, AJ,
+142, 167
+
+Dowell C. D., et al., 2014, ApJ, 780, 75
+
+Dubois Y., Pichon C., Haehnelt M., Kimm T., Slyz A., Devriendt
+J., Pogosyan D., 2012, MNRAS, 423, 3616
+
+Emsellem E., 2013, MNRAS, 433, 1862
+
+Fabian A. C., Sanders J. S., Haehnelt M., Rees M. J., Miller J. M.,
+2013, MNRAS, 431, L38
+
+Falco E. E., et al., 1999, PASP, 111, 438
+
+Ferrarese L., Merritt D., 2000, ApJ, 539, L9
+
+Ferré-Mateu A., Mezcua M., Trujillo I., Balcells M., van den
+Bosch R. C. E., 2015, ApJ, 808, 79
+
+Gebhardt K., et al., 2000, ApJ, 539, L13
+
+Gil de Paz A., et al., 2007, ApJS, 173, 185
+
+Graham A. W., 2008, ApJ, 680, 143
+
+Graham A. W., 2012, ApJ, 746, 113
+
+Graham A. W., Scott N., 2013, ApJ, 764, 151
+
+Graham A. W., Scott N., 2015, ApJ, 798, 54
+
+Graham A. W., Onken C. A., Athanassoula E., Combes F., 2011,
+MNRAS, 412, 2211
+
+Graham A. W., Durré M., Savorgnan G. A. D., Medling A. M.,
+Batcheldor D., Scott N., Watson B., Marconi A., 2016,
+preprint, (arXiv:1601.05151)
+
+Giiltekin K., et al., 2009a, ApJ, 698, 198
+
+Giiltekin K., Cackett E. M., Miller J. M., Di Matteo T., Markoff
+S., Richstone D. O., 2009b, ApJ, 706, 404
+
+Hao C.-N., Kennicutt R. C., Johnson B. D., Calzetti D., Dale
+D. A., Moustakas J., 2011, ApJ, 741, 124
+
+Haring N., Rix H.-W., 2004, ApJ, 604, L89
+
+Hlavacek-Larrondo J., Fabian A. C., Edge A. C., Hogan M. T.,
+2012, MNRAS, 424, 224
+
+Hocuk S., Spaans M., 2011, A&A, 536, A41
+
+Hégbom J. A., 1974, A&AS, 15, 417
+
+Ichimaru S., 1977, ApJ, 214, 840
+
+Jahnke K., Maccid A. V., 2011, ApJ, 734, 92
+
+Kennicutt Jr. R. C., 1998, ApJ, 498, 541
+
+MNRAS 000, 1-15 (0000)
+
+The overmassive black hole in NGC 1277 15
+
+Kormendy J., Ho L. C., 2013, ARA&A, 51, 511
+
+Kormendy J., Bender R., Cornell M. E., 2011, Nature, 469, 374
+
+Lasker B. M., et al., 2008, AJ, 136, 735
+
+Li J., Ostriker J., Sunyaev R., 2013, ApJ, 767, 105
+
+McConnell N. J., Ma C.-P., 2013, ApJ, 764, 184
+
+McConnell N. J., Ma C.-P., Gebhardt K., Wright S. A., Murphy
+J. D., Lauer T. R., Graham J. R., Richstone D. O., 2011,
+Nature, 480, 215
+
+McConnell N. J., Ma C.-P., Murphy J. D., Gebhardt K., Lauer
+T. R., Graham J. R., Wright S. A., Richstone D. O., 2012,
+ApJ, 756, 179
+
+Magorrian J., et al., 1998, AJ, 115, 2285
+
+Marconi A., Hunt L. K., 2003, ApJ, 589, L21
+
+Martin D. C., et al., 2005, ApJ, 619, L1
+
+Martin-Navarro I., La Barbera F., Vazdekis A., Ferré-Mateu A.,
+Trujillo I., Beasley M. A., 2015, MNRAS, 451, 1081
+
+Mathur S., Fields D., Peterson B. M., Grupe D., 2012, ApJ,
+754, 146
+
+Merloni A., Heinz S., di Matteo T., 2003, MNRAS, 345, 1057
+
+Mink D. J., 1997, in Hunt G., Payne H., eds, Astronomical Society
+of the Pacific Conference Series Vol. 125, Astronomical Data
+Analysis Software and Systems VI. p. 249
+
+Murphy E. J., et al., 2011, ApJ, 737, 67
+
+Murray N., 2011, ApJ, 729, 133
+
+Onishi K., Iguchi S., Sheth K., Kohno K., 2015, ApJ, 806, 39
+
+Peng C. Y., 2007, ApJ, 671, 1098
+
+Sani E., Marconi A., Hunt L. K., Risaliti G., 2011, MNRAS,
+413, 1479
+
+Savorgnan G. A. D., Graham A. W., 2015, MNRAS, 446, 2330
+
+Savorgnan G. A. D., Graham A. W., 2016, MNRAS, 457, 320
+
+Scharwiichter J., McGregor P. J., Dopita M. A., Beck T. L., 2013,
+MNRAS, 429, 2315
+
+Schlegel D. J., Finkbeiner D. P., Davis M., 1998, ApJ, 500, 525
+
+Schmidt M., 1959, ApJ, 129, 243
+
+Shields G. A., Bonning E. W., 2013, ApJ, 772, L5
+
+Sijbring D., 1993, PhD thesis, University of Groningen
+
+Silk J., Rees M. J., 1998, A&A, 331, L1
+
+Smith R. J., Lucey J. R., Conroy C., 2015, MNRAS, 449, 3441
+
+Solomon P. M., Vanden Bout P. A., 2005, ARA&A, 43, 677
+
+Sun M., Jones C., Forman W., Vikhlinin A., Donahue M., Voit
+M., 2007, ApJ, 657, 197
+
+Trujillo I, Ferré-Mateu A., Balcells M., Vazdekis A., SAnchez-
+Blazquez P., 2014, ApJ, 780, L20
+
+van den Bosch R. C. E., Gebhardt K., Giiltekin K., van de Ven
+G., van der Wel A., Walsh J. L., 2012, Nature, 491, 729
+
+Volonteri M., Ciotti L., 2013, ApJ, 768, 29
+
+Walsh J. L., van den Bosch R. C. E., Gebhardt K., Yildirim
+A., Richstone D. O., Giiltekin K., Husemann B., 2016, ApJ,
+817, 2
+
+Wiklind T., Combes F., Henkel C., Wyrowski F., 1997, A&A,
+323, 727
+
+Winge C., Riffel R. A., Storchi-Bergmann T., 2009, ApJS,
+185, 186
+
+Yildirim A., van den Bosch R. C. E., van de Ven G., Husemann
+B., Lyubenova M., Walsh J. L., Gebhardt K., Giiltekin K.,
+2015, MNRAS, 452, 1792
+
+Young L. M., et al., 2011, MNRAS, 414, 940
+
+Yun M. S., Reddy N. A., Condon J. J., 2001, ApJ, 554, 803
+
+This paper has been typeset from a T&X/IAT EX file prepared by
+the author.

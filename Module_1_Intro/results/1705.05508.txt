@@ -1,0 +1,294 @@
+arXiv: 1705.05508v1 [cs.GR] 16 May 2017
+
+Automated Body Structure Extraction from Arbitrary 3D
+Mesh
+
+Yong Khoo, Sang Chung
+
+This paper presents an automated method for 3D character skeleton extraction that can be
+applied for generic 3D shapes. Our work is motivated by the skeleton-based prior work on
+automatic rigging focused on skeleton extraction and can automatically aligns the extracted
+structure to fit the 3D shape of the given 3D mesh. The body mesh can be subsequently
+skinned based on the extracted skeleton and thus enables rigging process. In the experiment,
+we apply public dataset to drive the estimated skeleton from different body shapes, as well as
+the real data obtained from 3D scanning systems. Satisfactory results are obtained compared
+
+to the existing approaches.
+Introduction
+
+Nowadays, most of 3D animation tools enable people to create a skeleton of a 3D model manually.
+Although this technique provides great help to 3D animation, especially some strange 3D objects,
+it is not friendly enough to novices and time-consuming when a large number of 3D characters are
+in need. Apart from creating a new easy-learn and convenient system for 3D animation, automatic
+generation of skeletons for 3D object is also a choice. In the first paper, Wade and Parent introduce
+an algorithm for automated construction of skeleton from mesh data. In the second paper, Baran
+and Popovic create a system, Pinocchio, that construct a skeleton and embed it into the characters
+
+for the use of animation.
+/n/nRelated Works
+
+Comparing to the previous review paper, I focus on 3D reconstruction. They demonstrate different
+method on building a 3D model. In this paper, it is review on the study how to animate the
+3D object. Distance map, mentioned in both papers, is an important tool to the procedure of
+discretization of the 3D model. Early in 1998, Gagvani et al. Suse distance map, called in distance
+transform in this paper, in animating 3D model with skeleton tree. For more details on how distance
+map interacts with computer graphics, Frisken et al.s work” has a clear illustration on them.
+According to Baran and Popovic, more and more researchers, taking the novice users into account,
+created an animation system that can used by users who have little knowledge on animation. In
+2005, Shen et al. ©! present a system enable users to make a short 3D animation by controlling
+the 3D object to perform different move by fingers. More, they also create other similar systems),
+for 3D animation. The second system record different points that indicating a variety of a 2D
+characters motions. By changing the points, the screen shows different motions of the character as
+different frames.
+
+In most of works on this field, researches use skeleton extraction to find the skeletal graph. In
+2003, Liu et al. 8 construct a repulsive force filed in a given model to generate the skeletal graph
+of the model. Same year, Katz and Tal extract the skeleton of an object by segmenting it.
+Skinning is one of the big problem for 3D animation. A good skinning work improves the quality
+of 3D animation and can facilitate many VR based applications § Tn 2004, Yu et al! employ the
+Poisson equation to manipulate 3D models. In 2005, Lipman et al) introduce an approach on
+
+editing mesh based on object surface.
+/n/nMethod 1
+
+This section discusses the method of the first paper. The algorithm includes four steps: voxeliza-
+tion and distance map construction, medial surface extraction, path tree generation, and control
+
+skeleton construction.
+
+Voxelization and distance map construction In the first step, the researchers put a 3D model in
+to a box that can include all the model inside. The box is divided into small cubes in same size.
+The 3D distance map of the model is constructed. Figure 1 shows how to construct a 2D Euclidean
+distance map (EMD.The number of a square means the value of the shortest distance from the
+
+square to the boundary.
+
+Medial surface extraction The EDM calculated in previous step is used to compute the discrete
+medial surface (DMS)™. Extraction algorithm is applied in this step. Daniellsson’s™, and Ge and
+Fitzpatrick’g! works are suggested to read for the detail on the extraction algorithm. The DMS
+
+result is show in Figure 2a.
+
+Path tree generation In this step, the heart of the DMS is found, which is a globally central voxel
+in the object, shown in Figure 2a. The researchers use a breadth-first search on the DMS to find
+
+extreme points, which are the local maximum points.
+/n/n1013108 5444444442
+916171310999999985
+9 16 25 20 17 16 16 16 16 16 16 16 13 10 §
+9 16 17 16 16 16 16 16 16 17 20 2013 8
+913109 9 9 9 9 9 10131710
+9854444445 8139
+
+Figure 1: The 2D Euclidean distance map for a discretized horse polygon.
+
+The procedure of path tree generation is show in Figure 2. The researchers, using the weighted
+measure function below, create a centralized path in the model. The path connects the farthest
+point to the heart through the voxels. The dark point region in the figure is made of covered DMS
+voxels. The covered DMS voxels are the voxels that in the overlap sphere whose center is on the
+path and whose radius equals to the shortest distance between the center and models surface. Not
+
+all the extreme points are used to generate the path tree. Some of them are unqualified because the
+/n/n@ Covered
+DMS voxels
+
+© Path tree voxels
+oF non-covered
+extreme points
+
+f
+
+Figure 2: From a to f, they show the process of generating the path tree. The black points are path tree voxels or non-covered extreme points, the
+
+dark points are covered DMS voxels, and the grey points are non-covered DMS voxels.
+
+shortest path from it to a cover DMS voxel is less than the threshold. Then, researchers convert the
+
+jagged the path tree into the smooth one. The conversion is displayed in Figure 3 and Figure 4.
+
+Control skeleton construction The researchers using the path tree to construct the skeleton. Fig-
+ure 5 illustrates the method on creating the skeletal graph. Figure 6 shows the horse skeleton
+constructed from the path tree. The basic idea is that an edge is split into two new edges repeat-
+edly. There is an edge between two initial end points. The researchers use the points on the tree
+path that connects two initial end points as split points. Each split point can generate two edges
+
+with the end points. The split point has the smallest maximum error is chosen to be the new end
+/n/nFigure 3: A smooth path-tree chain
+
+Figure 4: A path tree of the horse
+
+point for the further splitting. The splitting stops when the number of segments parameters, de-
+pends on users setting, is reached or the heap memory for dynamic use is empty. The new edges set
+is constructed as a skeletal graph. Every edge of the graph is a control segments of it. Each joint
+among the edge has three rotational degrees of freedom to change the certain part of the model.
+Finally, the problem is how to let the model move rationally under the control of the skeleton. Each
+chain in the graph manages its correspondent segments of the 3D model, which are based on the
+
+covered DMS voxels and the study on how covered DMS voxels influence the uncovered DMS
+/n/nFigure 5: Splitting of a skeletal graph edge.
+
+Figure 6: A skeleton of the horse
+
+voxels.
+
+Method 2
+
+The method of the second paper is reviewed in this section. It contains two stages: skeleton em-
+
+bedding and skin attachment.
+/n/nSkeleton embedding The first step in this stage is discretization. The system builds a graph to
+
+represent a 3D object. Figure 7 shows the steps of creating the graph. The adaptive distance field
+
+Figure 7: From left to righ, Figure 7a-7d, approximate medial surface, packed spheres, constructed graph, and The original and reduced skeleton.
+
+is used in the system to build approximate medial surface. A graph point in the model that are
+farthest from the surface is selected. The point becomes the center of a sphere that fills the 3D
+object as much as possible and does not go beyond the surface. New graph points containing the
+same character are picked to build new spheres. More, each spheres do not contain the center of
+the others. Figure 7b show the object represented by packed spheres. Some pairs of centers are
+connected to construct the graph, showed in Figure 7c.
+
+The graph is reduced and merged to construct the skeleton of the object. The graph is set as
+G = (V,£). The reduced skeleton is represented by an r-tuple v = (v1, ...,v,) of vertices in V,
+where 7 means the joints in the reduced skeleton. The sample reduced skeleton, which has 7 joints,
+is showed in Figure 7d.
+
+The discrete penalty function is proposed to ensure the good quality of the embedding by MRF
+based approach" The researchers produce a penalty functions f(v) = S7*_, 7ibi(v) to penalize
+
+the improper factors on the skeleton. The feature vector b is divided in to p and q where p repre-
+/n/nsentes the k-dimensional feature vectors of good embeddings and q does that of bad ones. Then,
+the researchers need to find [ that can maximum the margin between the best ”’bad” embedding
+
+and the best ’good” embedding. The optimization margin is defined below.
+min®_, Tq; — min™ Tp, (||F|| = 1)
+
+Figure 8 illustrate the optimization margin. The machine learning method is used in the optimiza-
+
+Good embeddings (p;’s): @
+A Bad embeddings (q;’s): @
+
+A / Margin
+
+Figure 8: Figure 8
+
+tion to find a stable [.
+
+The next not the last step in this stage is discrete embedding. The whole embedding start from
+small partial embeddings. It sounds like jigsaw puzzle. Different partial embeddings have differ-
+ent priority.The best optimal part is embedded first. Finally, the embedding is refined for better
+
+skeleton. Figure 9 show the embedding refinement.
+
+Skin attachment Only embedding skeleton into the object cannot present animation. Skin attach-
+ment is required to telling how the object deforms based on the skeleton. The standard linear blend
+
+skinning method is applied to the system. The function is shown here, )>; wi T'(v;). vj means the
+
+9
+/n/nFigure 9: The blue skeleton change to the red one after embedding refinement
+position of vertex j, T’ is the transformation of the i” bone, and wi’, is the weight of the i” bone
+for vertex j. The problem here is to get bone weights w’, which is the relationship between each
+
+bone and each vertex when deformation happens. The researchers use heat equilibrium method to
+
+solve the problem.
+
+Result
+
+This section shows part of result in both paper.
+
+Result in the 1st paper The examples of result are showed in the Figure 5, horse, octopus and
+
+jellyfish.
+
+Result in the 2nd paper Figure 6 below shows the test results of skeleton embedding. The 13th
+
+model of the test result suggest the limitation of the system.
+
+10
+/n/nFigure 10: a. The default pose of the horse. The other are the horse in two random poses
+
+Reference
+
+1. WADE, L. 2000. Automated generation of control skeletons for use in animation. PhD thesis,
+
+The Ohio State University.
+
+2. Ilya Baran and Jovan Popovi. 2007. Automatic rigging and animation of 3D characters. ACM
+
+Trans. Graph. 26, 3, Article 72 (July 2007). DOI: https://doi.org/10.1145/1276377.1276467
+
+3. Gagvani N, Kenchammana-Hosekote D, Silver D (1998) Volume animation using the skeleton
+
+tree. In: IEEE Symposium on Volume Visualization, pp 4754; ISBN 0-8186-9180-8
+
+4. FRISKEN, S. F., PERRY , R.N..ROCKWOOD,A.P., AND JONES, T. R. 2000. Adaptively sam-
+pled distance fields: A general representation of shape for computer graphics. In Proceedings
+
+of ACM SIGGRAPH 2000, Annual Conference Series, 249-254.
+
+5. J. Shen and J. Yang, “Automatic Pose Tracking and Motion Transfer to Arbitrary 3D Charac-
+
+ters,” International Conference on Image and Graphics, pp. 640-653, 2015.
+
+11
+/n/nFigure 11: a. an octopus skeleton; b. an octopus pose; c. a jellyfish skeleton; d. a jellyfish pose.
+
+6. IGARASHI, T., MOSCOVICH, T., AND HUGHES , J.F. 2005. Spatial keyframing for
+
+performance-driven animation. In Symposium on Computer Animation (SCA), 107-115.
+
+7. J. Shen and J. Yang, “Automatic Human Animation for Non-Humanoid 3D Characters,”
+2015 14th International Conference on Computer-Aided Design and Computer Graphics
+
+(CAD/Graphics), Xi’an, 2015, pp. 220-221.
+
+8. LIU, P.-C., WU , F-C., MA , W.-C., LIANG , R.-H., AND OUHYOUNG, M. 2003. Auto-
+matic animation skeleton using repulsive force field. In 11th Pacific Conference on Computer
+
+12
+/n/n16. €5
+
+Figure 12: Test results of 16 models. The 13th model is an undesirable result produced by the system
+
+Graphics and Applications, 409-413.
+
+9. J. Shen, P. C. Su, S. c. S. Cheung and J. Zhao, “Virtual Mirror Rendering With Stationary RGB-
+D Cameras and Stored 3-D Background,” in IEEE Transactions on Image Processing, vol. 22,
+
+no. 9, pp. 3433-3448, Sept. 2013.
+
+10. KATZ, S., AND TAL, A. 2003. Hierarchical mesh decomposition using fuzzy clustering and
+
+cuts. ACM Transactions on Graphics 22, 3 (Aug.), 954-96
+
+11. J. Shen and W. t. Tan, “Image-based indoor place-finder using image to plane matching,” 2013
+
+IEEE International Conference on Multimedia and Expo (ICME), San Jose, CA, 2013, pp. 1-6.
+
+12. YU, Y., ZHOU, K., XU, D., SHI, X., BAO, H., GUO, B., AND SHUM , H.-Y. 2004. Mesh
+editing with poisson-based gradient field manipulation. ACM Transactions on Graphics 23, 3
+
+(Aug.), 644-651.
+
+13
+/n/n13. LIPMAN, Y., SORKINE, O., LEVIN, D., AND COHEN-OR, D. 2005. Linear rotation-
+
+invariant coordinates for meshes. ACM Transactions on Graphics 24, 3 (Aug.), 479-487.
+
+14. Danielsson P-E (1980) Euclidean distance mapping. Comput Graph Image Process 14(3):227-
+
+248
+
+15. Ge Y, Fitzpatrick JM (1996) On the generation of skeletons from discrete Euclidean distance
+
+maps. IEEE Trans Pattern Anal Mach Intell 18(11):1055-1066
+
+16. J. Shen and S. C. S. Cheung, “Layer Depth Denoising and Completion for Structured-Light
+RGB-D Cameras,” 2013 IEEE Conference on Computer Vision and Pattern Recognition, Port-
+
+land, OR, 2013, pp. 1187-1194.
+
+14

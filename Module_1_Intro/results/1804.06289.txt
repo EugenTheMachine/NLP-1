@@ -1,0 +1,1601 @@
+1804.06289v1 [hep-th] 17 Apr 2018
+
+arXiv
+
+PREPARED FOR SUBMISSION TO JHEP
+
+Integrability in heavy quark effective theory
+
+Vladimir M. Braun,* Yao Ji* and Alexander N. Manashov °°
+
+“Institut fiir Theoretische Physik, Universitat Regensburg, D-93040 Regensburg, Ge'
+
+DESY 18-056
+
+rmany
+
+» Institut fiir Theoretische Physik, Universitét Hamburg, D-22761 Hamburg, Germany
+
+°St.Petersburg Department of Steklov Mathematical Institute, 191023 St.Petersburg
+E-mail: vladimir. braun@physik.ur.de, yao. ji@ur.de,
+
+alexander .manashov@desy.de
+
+ABSTRACT: It was found that renormalization group equations in the heavy-q
+
+, Russia
+
+uark effective theory
+
+(HQET) for the operators involving one effective heavy quark and light degrees of freedom are
+
+completely integrable in some cases and are related to spin chain models with the Hamiltonian
+
+commuting with the nondiagonal entry C(u) of the monodromy matrix. In t
+a more complete mathematical treatment of such spin chains in the QISM
+discuss the relation of integrable models that appear in the HQET context
+
+his work we provide
+iramework. We also
+with the large-spin
+
+limit of integrable models in QCD with light quarks. We find that the conserved charges and the
+
+“eround state” wave functions in HQET models can be obtained from the ligh
+
+in a certain scaling limit.
+
+-quark counterparts
+
+KEYWORDS: Effective Field Theories; Lattice Integrable Models; Renormalization Group
+/n/nContents
+
+1 Introduction
+2 General remarks
+2.1 Renormalization Group Equations in HQET
+2.2 Spin chain models
+3 Heavy-light spin chain models
+3.1 Closed spin chain
+3.1.1 Monodromy matrix
+3.1.2 Heavy-light Hamiltonian
+3.2 Open spin chains
+3.2.1 Inhomogeneous chains
+4 Heavy-light eigenfunctions
+5 Light-to-heavy reduction
+6 Summary
+Appendices
+1 Twist-four operators
+
+/n/n1 Introduction
+
+The notion of effective field theories (EFT) is central to modern particle physics both at the
+
+conceptual level and as a calculationa’
+
+tool. In particular the large range of quark masses in nature
+
+invites the EFT construction. If the quarks are very light as compared to the typical scales, their
+
+masses effectively become irrelevant
+interactions in this limit acquires ac
+effective low-energy theory described
+
+their masses again become irrelevan'
+
+and can be treated as a perturbation; the theory of strong
+
+ditional chiral symmetry and can be matched to an
+by chiral Lagrangian. Similarly, if the quarks are very heavy,
+
+. Heavy quarks in loops decouple whereas heavy quarks in
+
+initial and final states move along their classical trajectories and can be thought of as sources of an
+
+external Coulomb field. The corresponding EFT — the Heavy
+
+is well established and contributec
+Model.
+
+Gauge theories can have “hidden” symmetries that are not seen at the Lagrangian level.
+particular, it turns out that the renormalization group equations (RGEs) in QCD are integrable
+
+several important cases to one loop accuracy in the multi-color
+to apply a powerful mathematical apparatus — Quantum
+
+to study properties of these equations and their solut
+several concrete applications. Integrability was also
+
+Yang-Mills theory [15, 16] and is much more powerful
+
+Inverse Scattering Method (QISM) [7-10]
+ions in great detail, see e.g. [5, 11-14]
+
+Quark Effective Theory (HQET) [1]
+
+significantly to the studies of flavor sector of the Standard
+
+In
+for
+limit [2-6]. This property allows one
+
+for
+
+iscovered in the N = 4 supersymmetric
+in this case. A comprehensive review of
+
+integrability in. V = 4 supersymmetric Yang-Mills theory and its connection with the AdS/CFT
+
+correspondence can be found in [16], together with furt
+
+1er references.
+
+It is natural to expect that an EFT describing a certain sector of the underlying theory retains
+
+some of the symmetries. Indeed, it was found [17-19] that
+
+involving one effective heavy quark and light degrees
+
+conditions as in QCD with light quarks and are rela’
+
+RGEs in HQET for the operators
+
+of freedom are integrable under similar
+ed to unconventional integrable models
+
+with the Hamiltonian commuting with the nondiagonal entry C(u) of the monodromy matrix.
+
+Analogous unconventional integrable models have appeared recently in the studies of high-energy
+
+scattering amplitudes in the V = 4 supersymmetric Yang-Mi
+In Refs. [17-19] only the results of immediate relevance
+
+Is theory [20-23].
+for the phenomenology of B-meson
+
+weak decays were presented without derivation. The aim of the present paper is twofold. First, we
+
+provide a more complete mathematical treatment of the RG equations in HQET in the framework
+
+of QISM approach. The relevant spin chain models are iden
+arbitrary number of light degrees of freedom.
+Second, we discuss the relation of integrable models that aj
+
+ified and solved for one heavy and
+
+ppear in the HQET context with the
+
+large-spin limit of integrable models in QCD with light quarks [4-6]. We find that the conserved
+
+charges in HQET models can be obtained from the light-quar
+procedure, and also the “ground state” wave functions are re
+
+k counterparts by a simple rescaling
+
+ated.
+/n/n2 General remarks
+
+2.1 Renormalization Group Equations in HQET
+
+For our discussion the two-component spinor formalism is the most convenient. We write the Dirac
+spinor as
+
+Ya - 8
+q=|_3]. d= (x", va) (2.1)
+%
+and decompose the gluon field strength in terms of chiral and antichiral symmetric tensors fag
+and Fao
+
+Fugag = Toa Tgpt uv = 2 (cas fas - cashes) (2.2)
+
+which belong to (1,0) and (0,1) representations of the Lorenz group, respectively.
+Twist decomposition is usually done by a projection on a pair of auxiliary light-like vectors
+
+n? = 0, 7? = 0 which can be represented by a product of auxiliary spinors
+
+Naa = Ny04, = ora Rod = Myo, = baba (2.3)
+where \ = Al, fi= pi. The “+” and “” fields are defined as
+XE = AMo, UE =A Ya, fe = AM fos, fe = AHP fos, fee =A" Fxg (2-4)
+
+etc. The effective heavy quark field of HQET h, can be represented by a Wilson line in a timelike
+direction v = (1/2)(n +7), v? = 1 with an attached free Dirac spinor so that [24]:
+
+0
+
+(0|/.(0)|h, v) = [0, -vo0] = Pexp ia /
+
+—oo
+
+da u.AM(on)| . (2.5)
+
+The equation of motion (EOM) #h, = hy implies for the two-component spinors
+
+hy =—h_, h_=h,. (2.6)
+
+In this work we will be dealing with renormalization of gauge-invariant operators built of a
+heavy quark and light quark/gluon fields at lightlike separations (“light-ray operators”). The
+
+simplest operator in question is
+
+- 1
+O+(z, w) = v+(zn)[zn, O]A+(0) , [zn, 0] = Pexp liv f da ny At(azn)| . (2.7)
+
+Thanks to (2.5) this operator can be viewed as a single light antiquark attached to the Wilson line
+with a cusp containing one lightlike and one timelike segment. Its matrix element between vacuum
+and HQET meson state defines what is called a leading twist heavy-meson (e.g. B-meson in static
+limit) distribution amplitude (DA) in position space
+
+H0|O4(2, #)|B(o)) ~ (251). (2.8)
+/n/nThe DA ®+(z;,1) is an analytic function of the light-cone separation z in the lower half of the
+complex plane. Its scale dependence is driven by the RGE for the operator O4(z, j4), which has
+the form
+
+0 Oo asc
+(: 15, + Blo) + Fyn) Onl) = 0, (2.9)
+
+where the evolution kernel Hg, (the heavy-light “Hamiltonian” ) is an integral operator [25-27]
+
+"da
+
+(Manflle) = f (fe) afta) + Inline) 2) (onto) f(2), @=1-a. (10)
+
+a
+Here 0), = 1/2 and og = 3/4 are the heavy and light quark anomalous dimensions, respectively. In
+what follows we imply using dimensional regularization with minimal subtraction (MS-scheme).
+It was noticed [28] that this operator can be written in a simpler form in terms of the generator
+of special conformal transformations
+
+Hah In(iuS}) + YE — On — Oq- 2.11
+
+Thus Hg, and St = 270, + 2z share the same eigenfunctions
+
+iSy Qs(z) = 8 Qs(z) , Hah Qs(z) [n(u s) + YE — Oh o| Qs(z) 2.12
+
+with
+
+Qs(2) = —pel"!*, 2.13
+
+72
+
+providing the complete set of solutions for the RGE (2.9).
+In the description of heavy baryons and also of higher Fock states in heavy mesons, more
+complicated operators arise that involve more than one light degree of freedom, of the type
+
+ven n)p+(zon)h4(0),
+x4 (ain) f+ (zon)h+ (0) ,
+wale). (zan)h_(0), (2.14)
+
+etc., where we suppress color structure and the gauge links. The “Hamiltonians” appearing in the
+RGEs for such operators to one loop accuracy have a pairwise structure, e.g.
+
+Hagh = Hag + Hah + Hoh , (2.15)
+
+where the “heavy-light” two-particle evolution kernels have the form similar to (2.11) with the
+generators in the appropriate representation, and the “light-light” ones can be written in terms of
+the corresponding quadratic Casimir operators [29]. Explicit expressions can be found, e.g., in [19].
+
+It turns out [17-19] that these more complicated RGEs are completely integrable and can be
+solved using QISM techniques. In this work we construct and discuss the corresponding spin chain
+models which differ somewhat from the standard ones and may be interesting in other applications.
+/n/n2.2 Spin chain models
+
+The RGE kernels in HQET of the type (2.15) can be identified with the Hamiltonians of certain
+spin chain models with SL(2, R) Oa gi These models describe quantum mechanical systems
+
+of interacting spins, si) = ts er) "gi }, which are the generators of SL(2,IR). The index
+k =1,...,N enumerates the sites of the chain, where the number N corresponds to the number of
+
+light degrees of freedom. The spin operators on a given site k obey standard commutation relations
+
+[s®, 9) = +5, [s®, 9] = a5 (2.16)
+
+and commute with each other for k 4 k’. The generators can conveniently be realized as the first
+order differential operators
+
+sP= = 20x, + 228k, sy? = 20x, + 8k; so = — dz, - 2.17)
+
+The spin s; labels a representation of the SL(2,R) group. The choice of the representation depends
+on the problem under consideration. In statistical physics one usually encounters spin chains with
+finite dimensional representations, while in QFT one deals with infinite dimensional representations.
+In the present context we need the so-called discrete series representation of SL(2,R) group,
+D5 [30]. It is defined on the space of functions analytic in the lower half-plane and equipped with
+the scalar product [30]
+
+(f.9)s = / Daz (F(2))*al2); 2.18)
+
+where
+
+2s—1
+Dz = . (—2Im z)?5~?dedy , z=at+iy. (2.19)
+T
+
+This scalar product is invariant with respect to the symmetry transformations
+
+1 az+b
+ye [Tg —. 2.20
+Tg) Al oe (ES as). (2.20)
+b
+where g7! = e 1 € SL(2,R). The operators (2.17) are the generators of infinitesimal transfor-
+ca
+
+mations corresponding to (2.20). They are anti-hermitian with respect to the scalar product (2.18).
+The Hilbert space of the N-site spin chain is given by the space of functions of N complex
+variables analytic in the lower complex half-plane in each variable and equipped with the scalar
+
+product
+N
+(f.a)sinsw =] | Daye (f(21s+++52n))*9(21)+-52N)- (2.21)
+ka 7 bmz,.<0
+In the following we will often drop the subscripts s;,...,$, if the spins are clear from the context.
+/n/n3 Heavy-light spin chain models
+
+3.1 Closed spin chain
+
+3.1.1 Monodromy matrix
+
+The QISM approach allows one to construct a set of mutually commuting operators (charges) for
+spin chain models as follows. One defines the so-called Lax operator
+
+5 9
+
+Ly (u) =uti ( 0 (3.1)
+
+s® —s\?
+
+where the spectral parameter u is a complex number. The monodromy matrix is defined as a
+
+product of the Lax operators
+
+Ty (u) = Ly (uy) L2(uz)... Ly (uy) = (2x ot) ; (3.2)
+
+with uz, = u+ &, where the €% are the so-called impurities and we assume s; = s unless stated
+otherwise. By construction, the entries of the monodromy matrix are polynomials in the spectral
+
+parameter u. It can be shown that these operators form commuting families [7], i.e.
+[An(u), An(v)] =0, [By(u), Bn(v)] =0, [Cn(u),Cn(v)] =0, [Dn(u),Dn(v)] =0. (3.3)
+
+Since [Sq + 0/2, T(u)] = 0 where a4 are the Pauli matrices and Sy = a Ss ig the operator
+of total spin, it is easy to show that
+
+(So, An] = [So, Dw] = 0, [S-, Bw] =[S+,Cn] =0,
+
+[S+,Dy] = —[S4, An] = Cn, [S_, An] = —[S_, Dy] = By. (3.4)
+
+In the familiar field-theory applications such as the RG equations for light-ray operators built of
+light quarks/gluons in QCD, one deals with the SL(2,R) invariant systems. For such systems the
+
+proper object to consider is the transfer matrix,
+tw(u) = An(u) + Dn(u), tw(u), tw(v)] = 0, (3.5)
+which is an invariant operator, [Sa,tw(u)] = 0. It turns out that the transfer matrix of a
+
+homogeneous chain without impurities commutes also with the (Hamiltonian) operator
+
+N
+
+Hy = SO Hees ; Hers = 2((Jer+1) + Ye) — 204, (3.6)
+k=l
+
+where 7(x) is the polygamma function and J;;,41 is the two-particle operator of conformal spin,
+Teens (Feezi — 1) = (5 4 SAPD), (3.7)
+
+The operator Hy can be identified with the leading-order evolution kernel for certain RGEs in
+gauge theories [4]. Since Hy commutes with ty(w) they share the same set of eigenfunctions which
+can be constructed with the help of QISM |7, 10].
+/n/n3.1.2 Heavy-light Hamiltonian
+
+The main new element in the present case is that the evolution kernels in HQET are not SL(2, R)
+invariant. It was shown, however, that at leading order all heavy-light kernels commute with the
+generator S, of special conformal transformations [27]. Since [S4, Cw] = 0 (3.4) it is natural to
+expect that the conserved charges (if there is any hidden symmetry) in the heavy-light sector have
+to be generated by the Cy(u)-entry of the monodromy matrix. An example of such a system is
+given by the heavy-light baryon [31-33] corresponding to a two-site chain and first studied in [17].
+Motivated by this application, we consider from now on a homogeneous (s; = s) closed spin chain
+without impurities (€, = 0), but with an arbitrary number of sites N.
+As the first step, we show that the Hamiltonian
+N-1
+Hy =H, + > Hirt + Hn . (3.8)
+k=1
+
+where Hyz+1 are defined in (3.6) and the boundary Hamiltonians are given by!
+H,=In (ius?) +E, Hy =I|n (ius?) +yYE, (3.9)
+
+commutes with the Cy(u)-entry of the monodromy matrix. This statement follows almost
+
+immediately from the relation [34]
+[Hrepis Le(u)Lesi(u)) = i(Ln(u) — Lesi(u)) , 3.10)
+which is a consequence of the defining RLL relation for the R-operator [7],
+
+Rio(u — v)Ly(u)Lo(v) = Lo(v) Li (u)Ri2(u — v), 3.11)
+
+and its small-u expansion: Rjo(u) = Pr(t — wHyg + O(u?)). Here Pj, is the permutation
+operator, Piaf (21,22) = f(z2, 21). In addition, [So, In $,] = 1 implies that
+
+Ky = [ms L,(u)] = - (; ‘) ; Ky = (nS), Ly(w)] = -i (; ‘) ; 3.12)
+
+Using (3.10) and (3.12) one easily finds
+
+N-1
+[ So Mansa, Tv(w)] = -iLe(u) -. Ly(u) + ia (uw). Lya(w) (3.13)
+k=1
+and
+(Ha, Ty (u)] = ky L2(u) wee Lyn(u) 5 (Hy, Ty (u)| = Iy(u) wee Ly_-i(u)Kn. (3.14)
+
+Adding up all terms one verifies that indeed
+
+[Hy, Ty (u)Jo1 = (Hy, Cy (u)] = 0. (3.15)
+
+‘In this discussion we omit trivial constants corresponding to the quark wave-function renormalization, cf. (2.11).
+/n/nIt is convenient to consider the operator By(u) instead of Cy(u) at the intermediate steps,
+using the fact that they are unitarily equivalent: The inversion operator J (which is an unitary
+operator) intertwines Cy (u) and By(w). The inversion operator is defined as
+
+[Jfl(2) = 2-**f(-1/2), FIP = INP, (3.16)
+
+where ||f||? = (f, f)s. It intertwines the generators, JS9 = —SoJ, JS: = —SyJ, and asa
+consequence the following relation for the monodromy matrix holds:
+
+ITn(u)J71 = o2Tn(u)o2, (3.17)
+where go» is the Pauli matrix. Comparing the off-diagonal entries in this relation one gets
+JCn(u) = —By(u)J. (3.18)
+
+Thus Cy(u) and By(u) are indeed unitarily equivalent and their eigenfunctions are related to
+each other by inversion. The Hamiltonian (3.8) transforms under inversion into
+
+N-1
+Hy=JHyJ7! = Hy + > Here + Hn, (3.19)
+k=1
+
+where Hn) =In ( - ipsl™) + Ye.
+
+Eigenfunctions of the operator By(u) provide the basis for Sklyanin’s representation of
+separated variables. They have been constructed explicitly in [35] and are given by the product of
+layer operators acting on the exponential function. For the homogeneous chain considered here
+
+Wp ay(21,---2n) = An (@1)An-1(#2)...Ao(ay—i)ew””,, 3.20
+where
+& = {x1,...,¢n-1}, wt, ER. 3.21
+
+The “momentum” p € Rx is an eigenvalue of the generator of translations
+
+(s@ t...+ s) Upp ay(21,---,2N) = ip yp ay(Z1,---,2N)- 3.22
+
+The layer operator Aj;(2) maps a function of M — 1 variables into a function of M variables anc
+is defined as follows:
+
+M-1
+
+[Am (a) f](41,---, 2) = (1 [ P-ns) Am(a,.--,2u|wi,...wu_-1) f(wi,...,Wu-1)- (3.28
+kai
+
+Here
+
+M-1
+
+Am(a1,---,2m|W1,.-.WM—1) = II Ds~ix (Zk, Wk) Ds+in(Ze+1; Wk) 5 (3.24)
+k=1
+/n/nWi we W3
+
+Figure 1. Diagrammatic representation of the layer operator Aj—a(x) for a closed spin chain.
+
+where the function Da(z, w) ("propagator”) is given by the following expression
+
+zZ—-—W
+
+Dale) = ( = y (3.25)
+
+Here and below w = w*. The layer operator Ayy can be visualized as the diagram shown in Fig. 1
+where a directed line from w to z with an index a stands for the “propagator” D(z, w) and the
+a and £ indices take the values s — ix and s + ix, respectively. A summary of the properties of
+the layer operators can be found in [36] (see also Sec. 4). We mention here that Vype,.ey_
+symmetric functions of separated variables 71,...,2%\_— , and they are orthogonal to each other
+with respect to the scalar product (2.18) for different sets, 7 #2.
+
+The eigenfunctions of the operator By(w) (3.20) diagonalize the Hamiltonian Hy (3.19). The
+
+corresponding eigenvalues can be found either with the help of QISM machinery that involves
+
+construction of the relevant Baxter-Q operators, see e.g. [37, 38], or by a a more brute-force
+approach described below. To this end we notice that in the region z1 > zg >... > zn, ie.
+\zn41/2| = O(e), € > 0, the eigenfunction (3.20) is simplified to a linear combination of “plane
+waves”
+
+—stiay —stitn—1—ipzy
+
+Wipay(Z1,---, 2) © ep, Z) 4 ZN] e€ tee, (3.26
+where c(p, Z) is a certain coefficient and ellipses stand for the similar terms with permutations o
+the separated variables 71,...,2,_1. Action of the Hamiltonian (3.19) on the eigenfunction (3.26)
+can be brought to a more convenient form using the following identities [22, 28, 38]:
+
+In(id,) = w(—z0-) — In(iz), In(iz?0,) = u(zd-) + In(iz). (3.27
+
+The “bulk” Hamiltonians can be written as Heey1 = hkjk+i + he+i,0 where [39, 40]
+
+hw = U( Zin Oe + 28) — WL). (3.28
+These expressions can be simplified in the chosen kinematics as
+
+het = Y(zrOn + 28) — ¥(1) + Ole),
+hgh = In(iz) + W(—Zp410K41) _ w(1) _ In(ize41) + O(e) : (3.29)
+/n/nThe last identity can be obtained as follows
+
+/ F -\ — p— zk OK —2s,) 2. OK.
+DV (Ze bOb41 + 28) = eH (ze On) ae eee
+
+—2,0K 3 —2s “(2 2s 20K
+= eR (— In izegy + 7 nize Oks) Zep en nt
+
+Inizpoip + In 2% + In(iOp41) + O(6)
+= In(ize) + b(—Zr+1On41) — In(izn41) + O(€)- (3.30)
+
+Thus, in the chosen region |2,41/zx| = O(c), the Hamiltonian Hy takes the form
+
+N-1
+Hy (b(—2.z) + (ze, + 28) — 20b(1)) + 2In(ipOy) — 24(1) + O(6), (3.31)
+
+from which one immediately reads the eigenvalue from Eq. (3.26)
+
+Ey ag = 2In(pp) — 2(1) 4 (ie + ixp) + W(s — ixp) 2u(1)) . (3.32)
+
+The special case considered in [17] (heavy baryons) corresponds to s = 1, N = 2. In this case one
+obtains (in a certain convenient normalization)
+
+I ay tx
+Wp e(21, 22) = rf da (<) exp[—ip(az + az2)], a=1-a, (3.33)
+0 a
+and
+Ey = 2In(up) + W(1 + ix) + Y(1 — ix) + 4y Rp — 20n — 404, (3.34)
+
+where we have added the constant term corresponding to the (light and heavy) field anomalous
+dimensions.
+
+Finally, one has to perform an inversion transformation z — —1/z (3.16) in order to go back to
+the original problem with the Hamiltonian commuting with C2(u), and obtain the wave function,
+
+Vpal21, 22) 2 Dp e(z1,22) [17]
+
+1 ay ix .
+®p 2 (21, 22) = +a f da (=) explip(@/z1 + a/z2)|
+0 a
+
+pra efP/21 . 7-1
+= 35 1 (1+ix,2 ip(Zy 2 ). 3.35
+sinh(rx) 2723 mM 2 tp(22 v) (3.35)
+which coincides with the expression found in [17]. Note that in this representation p (p> s in the
+notation of [17]) becomes an eigenvalue of the generator of special conformal transformations
+
+(si) + 82) ®p0(a,22) = —tp pc (21, 22)- (3.36)
+
+The functions (3.35) define the basis of states for the heavy-light baryon DAs with autonomous
+scale dependence (for the case of aligned light-quark helicities), where z; and 22 are the light-
+quark light-cone coordinates. The energies (3.34) are nothing but the corresponding anomalous
+dimensions.
+
+10
+/n/n3.2 Open spin chains
+
+A systematic approach to construct integrable models with nontrivial boundary conditions (open
+
+spin chains) was developed by Sklyanin [41]. The monodromy matrix for such systems is given by
+
+the following expression ?
+
+Tw(u) = (-1)% Tr (u)o2T 4 (—u)o2 = (es aay ; 3.37
+
+where Ty (u) is the monodromy matrix of the closed spin chain (3.2), Ti(u) is the transposec
+matrix. It can be written in terms of the Lax operators as follows:
+
+Tw(u) = Li(u)Lo(u)... Ly (u) Ln (wu)... Lo(u)Li(u). 3.38
+This representation can easily be obtained using the identity
+(Lp(u))! = —ogLy(—u)oo. 3.39
+
+Off-diagonal elements of the monodromy matrix satisfy the following relations (see e.g. [42])
+
+(—2u + 1) By(—u) = (2u +7) By(u), (—2u + 1) Cy(—u) = (Qu+ 7) Cy(u). 3.40
+
+As a consequence, the operators By(u) and Cy(u) vanish at wu = i/2 and can be represented as
+By(u) = (—2u +2)By(u) and similarly for Cy(u). The operators with a “hat” are even functions
+of u, By(u) = By(—u), Cx (u) = Cn(—u). These operators and the transfer matrix,
+
+tw(u) = An(u) + Dy(u), tn(u) = ty(—u), 3.41)
+
+form commuting operator families *
+
+[By (u),By(v)] = [Cw(w),Cx(v)] = [tx(u), tw(v)] = 0. 3.42)
+
+Our aim is to construct a Hamiltonian which commutes with Cy(u) (or with By(u)). Let us
+consider at first the homogeneous spin chain. In this case using the representation in (3.38) for the
+monodromy matrix and the relation in (3.10), it is easy to find that the commutator of the bulk
+Hamiltonian
+
+N-1
+
+Hy = 0 Hees, Harp = 2(Versi) — 0); (3.43)
+k=l
+
+and the monodromy matrix reads
+
+[Hy, Tx (u)] = —tLo(u)... Ly (uw) Ly (u)... Ly (u) + ily (u)... Ly (u) Ly(u)... L2(u)
+= i[L1(u),Ty-i(u)], (3.44)
+
+Our definition differs from the standard one, Ty(u) = Tn(u)Ty'(—u +4), by a numerical factor.
+3Note that in distinction with the closed spin chains diagonal elements of the monodromy matrix for open spin
+chains do not commute.
+
+11
+/n/nwhere Ty_i(u) = Lo(u)...Ln(u)Ly(u)...L2(u). Taking the trace over the auxiliary space in
+(3.44) results in
+
+[Hy,tn(u)] =0. (3.45)
+
+Furthermore, considering the off-diagonal matrix elements of (3.44) and taking into account Eq. (3.12)
+one can show that
+
+{In (ips) +Hy, Cy (u) =0 and {In ( - ips) + Hy, By (u)]| =0. (3.46)
+
+Thus in the homogeneous case the Hamiltonian belonging to the Cy(u) family is obtained from
+the bulk Hamiltonian (3.43) by adding the boundary operator In (ins). In full analogy to the
+closed spin chain it can be shown that the operators Cxy(u) and By(u) are related to each other
+by the inversion transformation, J Cn (u) =-B n(u)J. Therefore, it is sufficient to consider only
+one of them.
+
+3.2.1 Inhomogeneous chains
+
+Spin systems that are interesting in QCD context are somewhat more complicated and correspond
+to inhomogeneous open spin chains with impurities [43]. In a typical setup one can assume that
+the spins on all sites except for the last one are equal to each other, s, = s, 1 <k< N. The
+
+monodromy matrix in this case takes the form
+TO (u) = Li (u)Lo(u)... Ly (ut iw) Ly (u— iw)... Lo(u)Ly(u), (3.47)
+
+where w is an impurity parameter. The dependence on w comes only through the Lax operators
+Ly so that it is easy to check that TY (w) is an even function of w, ie. BW) (u) = BU” (u)
+etc. Since (BY (u))t = BO’ )(u*) = BY Nut), this symmetry implies that the corresponding
+conserved charges are hermitian operators if the impurity parameter w is either real or imaginary.
+
+We will show that the operators BO (w), E(u) commute with the Hamiltonian FT) with
+
+added boundary operators, cf. (3.46),
+[In (ipSD) + 9, Ew (u)] = 0, [in (— ips) +. By(u)] =0, (3.48)
+
+which is modified compared to Hy (3.43) by one term
+
+N-2
+
+FO) = > Hkrei + HO ; (3.49)
+k=l
+where
+d . / ;
+Hkkvi = Rigi 0) 5 Revsale)) = 2(W(Juw+1) - e)) ; (3.50)
+
+w - .. d .
+HO = Rye py (iw) ZR (iw)
+
+WwW
+
+= U(Jn-in + uw) + ¥(Jn-in — w) —¥(1+w)- (1 —w). (3.51)
+
+12
+/n/nHere Ryg+41 is the sl(2)-invariant R-matrix [9]
+
+Reepi(u) = (—1)Zee+1 ose
+
+T(Jeezi — tu) D(1 + tu)
+U(Ser¢i + tu) (1 — iu) °
+
+Sk+1
+
+(3.52)
+
+Note that R,, Ly (u w) = Reryi(—u), and hence Hey is a hermitian operator for both real and
+
+imaginary w.
+The main task is to calculate the commuta'
+
+cor of the Hamiltonian HO) with the monodromy
+
+matrix Te Yu). Using the relation in (3.10) repeatedly one obtains
+
+bs Hoxyi,T Pea] = i[L1(u), TS") y(u)
+
++iLy.n-2{ Ly(u + iw)Ly(u — iw)Ly1(u)
+
+= Ly-a(u)Ly (w+ iw)Ly(u iw) bona, (3.53)
+
+where Ly...47 = L1(u)---Ly4(u) and Te? y(u )
+
+Lo(u)...Ly(u+ iw)Ly(u— iw)... L(u). The
+
+expression in the curly brackets on the r.h.s. 0
+
+Eq. (3.53) can be simplified to
+
+{...} = (2u—%) {Lx (u )En-1(u) — Ly-1(u) Ly (u )} (3.54)
+
+with the help of the following identity for the Lax operators:
+
+L2(u) = ps(u) + (2u— i) Leu) ,
+Next, differentiating the RLL relations (below
+
+R(iw)Ly_1(u)Ly(u— iw) =
+R(iw)Ly(u t+ iw)Ly_1(u) =
+
+with respect to w results in
+
+He ny, Lyn(u—iw)Ly_1(u)]
+He ny, Ly-1(u)Ln(ut iw)] =
+
+Thus we get
+
+ps(u) = —(s + iu)(s — 1 iu). (3.55)
+R(iw) = Ry-1,n(iw)):
+
+Ly(u—iw)Ly_1(u)R(iw) ,
+Ly-1(u)Ly(u+ iw) R(iw) (3.56)
+
+= i (R(iw)Ln_-1(u)R(—iw) — Ln_i(u)),
+i(Ln_-1(u) — R(iw)Ln_1(u)R(-iw)) . (3.57)
+
+HY? ys TA? (u)] = tLa.n2 X Ly 21, (3.58)
+
+where
+
+X=- He ys bw 1(u)Ly(u+ iw) Ly (u
+
+~ iw) Ly -a(w)
+
+= —2iwL*,_(u) — R(iw) (LX (uw) Ly (u—iw) — Ly(ut+ iw) LR (u)) R(—iw). (3.59)
+
+Using Egs. (3.55) and (3.56) this expression cai
+
+X= —(2u — )(Ly(u )L
+
+n be simplified to
+
+y-a(u) — Ly-a(w)L(w)) (3.60)
+
+13
+/n/nwhich exactly cancels (3.54). Thus we obtain
+(74, TH? (w)] = ala (u), Ty (uw). (3.61)
+
+Finally, adding the contribution from the boundary operator In(—ips) one ends up with the
+desired result
+
+[In (= ipS®) +0”, B (w)] =0. (3.62)
+
+The similar equation with In ( - ips) + In (ius) holds for E(u),
+
+It is instructive to compare this result with the more conventional spin chains that appear in the
+analysis of the RGE for light quark-gluon operators, of the type y(z1n)f(zen)... f(zn_in)W(znn),
+cf. (2.14). In such applications the spins on the first and the last sites can differ from the spins in
+the bulk, which are all equal, and also the impurity parameters w; and wy, on the first and the
+last site can be nonzero. The monodromy matrix for such a system takes the form
+
+Ten) (w) = Li(u + iw))Lo(u)... Ly(ut+ iwy)Ln(u—iwy)...Lo(u)Li(u— iwi). — (3.63)
+
+The conserved charges are generated by the transfer matrix, ee ON Yu) =Tr Te ON Yu), which
+commutes with the Hamiltonian [43]
+
+N-2
+TR) HIS) +O Heer +H - (3.64)
+k=2
+Th £ oj : : +s : . . yp(wiwn) 4(wi,wn) _
+ne proof given in [43] is not explicit. A more direct way to show that [%4; sty (u)] =0
+is the following. Making use of Eq. (3.61) we get
+
+N—2
+
+[ > Heo + Hen). er) (u)| =iTr (Liu + iwi) [Z2(u), TEN) (w)| Li(u- iw1))
+k=2
+
+=iTr (Liu) [Z2u), TY"N (u)| Li(u)) (3.65)
+
+In order to calculate the commutator with the remaining term, He), it is convenient to write
+
+the transfer matrix in a different form. Namely, using Eq. (3.39) one can write trey) (a) =
+
+Tr Te wn) (—u), where
+TY) (u) = Ly(u— wy)... L2(u)Li(u— iw) Ly(u + iwi)L2(u)...Ly(u+iwy). — (3.66)
+Using this representation it is easy to bring the commutator in question to a form similar to (3.58)
+[H\3), TY) (u)) = iLy...3 X! Lg...n , (3.67)
+with
+X! = —(2u = i) (La(u)La(u) — Lo(u)Li(u)) = -(Li(w)Lau) - Lau) Liu)). (8.68)
+
+Finally, using (3.39) one can bring the trace of (3.67) to the same form as in Eq. (3.65) with an
+opposite sign, which completes the proof.
+
+14
+/n/nFigure 2. Diagrammatic representation of the layer operator Aj—a4(x) for open spin chains. The notations
+are the same as in Fig. 1, the vertices imply integration with the measure (2.19) .
+
+4 Heavy-light eigenfunctions
+
+The basis formed by the eigenfunctions of the operator By plays a distinguished role in the QISM
+and defines the so-called Sklyanin representation of separated variables (SoV) [10]. Since By
+commutes with the Hamiltonian (3.48), the latter is diagonalized in this basis and therefore the
+calculation of its spectrum becomes straightforward. These eigenfunctions for homogeneous spin
+chains, for closed as well as open ones, were constructed in [35, 42]. For our applications it is
+necessary to generalize this construction to inhomogeneous open spin chains with impurities.
+
+The eigenfunctions of By operator for homogeneous closed spin chains were already introduced
+in Sec. 3.1, Eq. (3.20). The eigenfunctions for the open spin chain [35, 42] take a similar form.
+In both cases the eigenfunctions are labeled by N real parameters, X = {p,x1,...,¢n—i}, where
+p= 0, and have the form
+
+Wx (2) = Vpar,..cey_1}(2) = bn (p) An (a1) An—1(#2) ..-Ao(@y_ie7?* (4.1)
+Here 7 = {z,..., zy} and by(p) is a normalization coefficient which we choose as
+
+] Ns~1/2(p(Q5))-N?/2 closed chain ,
+
+bu(p) =p
+pNs-!/2(D(28))-N(N-1/2) open chain . (4.2)
+
+by (p)
+
+All differences between the closed and open spin chain in the construction (4.1) come from the
+form of the layer operators Ajy(2),
+
+M-1
+
+II [ P-s) Au(41,---,2m|W1,--.Wa—1)f (wi,...,Wa-1)- (4.3)
+
+k=1
+
+[Am f(z. Lee ,2M) _ (
+
+The function Ajy(z1,...,2Z.¢|W1,---War_-1) for a closed chain is given in Eq. (3.24) and can be
+visualized as the diagram in Fig. 1. The corresponding expression for an open chain is more
+complicated and is presented in diagrammatic form (for M = 4) in Fig. 2 where the vertices imply
+integration with the measure (2.19). Diagrammatic representation for the eigenfunctions Wx (7)
+
+of open and closed spin chains is shown in Fig. 3.
+
+15
+/n/nFigure 3. Diagrammatic representation for the eigenfunctions of the open (left) and closed (right)
+homogeneous spin chains for N = 4. The indices are ag = s — ix, and By = $+ ixg.
+
+The proof that Ux(Z) (4.1) diagonalizes the corresponding B-operator relies on the following
+properties of the layer operators [35, 42]:
+
+By(x)An(a) =0 and Au (2)Am-1(y) = Au(y)Am-1(2)- (4.4)
+
+The layer operator for open chain has an additional symmetry A;(x) = Ay(—2x). From the second
+equation in (4.4) it is obvious that Ux is a symmetric function of separated variables 71,...,¢N—1
+, for the open chain). The first equation ensures that the operator By(a,) (for open
+
+tx;,)) annihilates the function Vx. Taking into account that the operator By(u) (closed
+N-1
+
+chain) is a polynomial of degree N — 1 in wu and the coefficient of the senior power u* is simply
+
+gs +e. gO) one can write it in the form
+
+N N-1
+-( 3") [[@-« ay II- By(2j)- (4.5)
+k=1
+
+k=l jal \eeg “9 VR
+
+From this representation using Eq. (3.21) it follows whe bala). that Wx for closed chain is an
+eigenfunction of the operator By(u) with an eigenvalue by(u) = —p Te 1 ‘(u — xp). Similarly,
+the operator By(u) for open chain is a polynomial of degree N — 1 in u? and the representation
+
+analogous to (4.5) holds, with obvious substitutions u > u?, aj; > a. It follows that Vx for open
+chain is an eigenfunction of By(u) with an eigenvalue by(u) = —p a L(u? — x).
+
+Since By(u) (closed chain) and By(u) (open chain) are self-adjoint operators for real u, their
+eigenfunctions are orthogonal for different sets X,X’ of separated variables. One obtains [35, 42]
+
+(Wx, Ux) = (22)! a(p—p') (sere »( s#)) Ter 7)
+
+4.6
+k=1 (r (a, )T (Bx,)|”
+
+16
+/n/nFigure 4. Diagrammatic representation for an eigenfunction of the operator By for an inhomogeneous
+
+open spin chain for N = 5. The modified propagators are shown by fat lines with arrows. The corresponding
+
+modified indices are ae = sy tw-—iz, and Be = syn tw+izx,x. The conformal spin in the integration
+
+measure in the vertices is always given by the half sum of the indices of the outgoing lines. The dashed lines
+separate different layers.
+
+and
+
+for closed and open chain, respectively. In these expressions a, = s — ix, 8, = s +ia, the sum }° 5
+
+goes over all possible permutations of separated variables £” =
+
+v\,...,v_,}, and for the open
+spin chain it is assumed that all x, € Ry.
+
+In the applications to operator renormalization in HQET [18, 19] one encounters an inhomo-
+geneous open spin chain with impurities and the above construction of the eigenfunctions of By
+operator for homogeneous spin chain has to be modified. In practice one needs a special case
+where all spins except for the last one are equal, s, = s for k < N while sy # s, and the impurity
+parameter €y = iw #0.
+
+Note that the operator BY” (u) depends only on w?, as can easily be seen from Eq. (3.47), and
+
+as a consequence Bw (u) is a self-adjoint operator for both real and imaginary w. One can show
+hat the corresponding eigenfunction has the form (4.1) with modified layer operators that still
+obey the relations in (4.4). The necessary changes are summarized in Fig. 4 where the modified
+propagators are shown by fat lines. Note that also the integration measure for the vertices involving
+
+hese lines is affected. Using the technique developed in [35, 42] it is easy to check that the modified
+
+ayer operators have the required properties.
+As mentioned above, the operator Bw) depends on w? only so that one expects w©) (2) ~
+
+wo (2). This symmetry is, however, not manifest as the diagram for the eigenfunction in Fig. 4
+
+17
+/n/ndoes not go into itself for w > —w. For N = 2 going over to the momentum representation one
+
+can find explicit expression for the eigenfunction that is an even function of w. For a general
+
+case, taking into account that the Gependence on. w comes only from the Ly(u + iw) operator, cf.
+Eq. (3.47), one can argue that ue (2) and wor (2) have to be proportional to one another and,
+comparing the asymptotics in the region z1 >> z2 >>... >> zy, find that indeed yz) = vo (2).
+A manifestly symmetric representation for N > 2 is not known.
+
+Assuming that w is either small and positive, 0 < w < sy, or imaginary, one gets for the
+
+scalar product
+
+N-1
+(oO WL”) = (2r)*—! 5(p—p') (cane N-1)( a) II T(2ix,)I(—2ix,)
+
+n=1
+Tjek D(i(wy £ xj) )P(—i(xy + 25)
+
+x= : . (4.8)
+Tika! [C'(sy + w+ iag)E (sy — w+ ixg)|? Pan, V(Bx,) POP
+In this case the set of functions uw for real separated coordinates x, form a complete system
+
+; . Rw
+and the operator By
+
+If w is real and w + sy, the [-functions in the denominator, I'(sy — w + ix,), develop
+
+has only continuous spectrum.
+
+singularities that signal the formation of discrete states for w > sy corresponding to imaginary
+
+values of separated variables +
+
+SN —W— ix” =-—n, where neN, O0<n<w-—sy. (4.9)
+
+The complete description of the discrete eigenstates goes beyond the scope of this paper. As an
+illustration we consider the N = 2 case [18, 19], s+4 81, sy=9 +> 89. To this end it is convenient
+to go over to the momentum space. We define the momentum-space eigenfunction Wn, p2) by
+
+2
+Waa) =f an pe [* dps pa?! e~irii—ip22 GW) (ppp) ,
+0 0
+
+V6) (m, mo) — 1 —ipy 21 —ipez2 yyw)
+ex (PL-P2) = TEST (Os2) (e Px )) (410)
+where we have used
+(e7'P* |e?) , =T(2s) p'~*8 6(p— p’). (4.11)
+
+Using (4.1) and evaluating the scalar product one obtains after a short calculation (here we put
+the normalization constant b2(p) + 1)
+
+T(s1 + $2 +w)T'(s1 + $2 -—w
+G(r, p2) = pd(p — pr — p2) (si + $2 + w)T'(s1 + $2 — w)
+
+T(2s9)P'(s2 + ix)P'(s2 — ix)
+pp \ a 82-w—iat,sy-wtir| po
+x 2Fi | -=). (4.12)
+
+Pit pe 289 Pi
+
+4Note that yo is symmetric to x, ++ —z, and therefore it suffices to consider S(x,) > 0.
+
+18
+/n/nThe scalar product (4.8) in the momentum space takes the form
+
+foe)
+wwe, gy) = res)res) [ dpi dp2 per ple) (p,, po) (0) * (pr, po) ; (4.13)
+
+and using the explicit expression in (4.12) one obtains
+
+1 . te en bo =
+(Hw, UO) ~stp—p) [ au tere) ( Ww — 12, 82 ere - =)
+
+289 U
+of 4 _
+82 —W— 1%, 82 -—W+ix U
+XoF\ 2 82 | ——). (4.14)
+289 U
+If x = 2’ the u-integral is finite only if sy — w — ix n and w—s2 > n> 0. In this case
+
+the hypergeometric function reduces to a polynomial of degree n in (u/w) and the condition
+w— 82 >n> 0 guarantees that the integrand has no pole at u = 0.
+
+The spin chains which are relevant for the heavy hadron phenomenology correspond to the
+s = 1, N =2 closed spin chain [17] and s; = 3, sg=lw= 3 open spin chain [18].
+5 Light-to-heavy reduction
+
+Physics behind the construction of the HQET is that one restricts oneself to the situations where
+the heavy quark interacts with light particles (quarks and gluons) with momenta that are much
+smaller than the quark mass mg . In this case the heavy quark becomes almost stationary in its
+rest frame, with its wave function oscillating rapidly with time V(t) ~ e~’"¢* so that the generator
+of translations reduces to sg) ~ —img. Physical intuition suggests that this limit can be studied
+starting from usual s/(2) algebra and rescaling the symmetry generators acting on the heavy quark
+
+5) 38) gp tg 4 00, (5.1)
+
+In this Section we investigate this possibility.
+Consider a system consisting of one heavy quark (h) and one light quark (q). The two-particle
+generators are
+
+Se) 25 455 5M 41s = 9 FOI),
+sm = 5 +54 8 +8 = v8 + 011),
+
+sia) = 5 a. 5) =O(1). 5.2
+
+The two-particle quadratic Casimir operator becomes
+3, = Ss + sia" si — 1) ass + O(1) 5.3
+
+and the two-particle Hamiltonian (3.6) simplifies to
+
+Han = 2{W(Jan) - (| Sln (as??s®) +074). 5.4
+
+19
+/n/nSince the “heavy” and “light” generators act on different spaces we can write, omitting the
+inessential constant
+
+Hn > In (ius{?) +In ( - ips) (5.5)
+
+where yw is an arbitrary parameter with dimension of mass. Thus the heavy and light degrees
+of freedom decouple from one another which is the statement of factorization, with being the
+factorization scale. In HQET only light degrees of freedom remain so that the second part of the
+Hamiltonian in (5.5) is dropped and the remaining part
+
+HEOET _ yy (ius?) (5.6)
+
+coincides with the heavy-light Hamiltonian (2.11) (up to the scheme-dependent constant) found in
+[25-27] by explicit calculation of one-loop diagrams.
+
+Next consider the eigenfunctions. Let z, and zp, be the positions of light and heavy quarks,
+respectively. For light quark systems, eigenfunctions of the Hamiltonian are usually sought on
+the space of polynomials that can be mapped to local composite operators, see. e.g. [44]. For the
+two-particle Hamiltonian in (5.4) the eigenfunctions on this space are well known
+
+Wre(Zqs2n) = (St) (zq — zn)”, $2 Urge = (2 + 2)(N+ YU np, (5.7)
+
+where k is a non-negative integer. For our purposes we need eigenfunctions analytic in the lower
+half of the complex plane that can be constructed as follows:
+
+1 -is, n_wrlfig\* n (2q = Zn)”
+
+UW") (zq, 2) =e 1°*(zq— zp) » i ( “s,) (zq — Zn)" ~ (aq min), iy (5.8)
+where 7 is a parameter. For Re(7) > 0 they have a finite norm with respect to the scalar
+product (2.21).
+
+The scaling in (5.1) corresponds to z, + A~!z_, so that zp < zq and also n = O(at/2),
+Extracting the leading behavior at \ + oo one breaks the conformal symmetry so that the states
+(5.8) with different 7 are no longer degenerate and the system “chooses” a particular solution tha
+
+satisfies the residual symmetry to the special conformal transformations,
+
+UW (24,24) 4 Veay(zq), SP Wig) (zq) = ts Wee) (24) - (5.9
+Using
+2 . .
+(ah) y(n) _ *q Zr _ 4) | (»)
+Uv 2 + Uv 5.1
+SU (ey) = {A [nD — 221] + (en oo ad buen en) (610
+
+it is easy to convince oneself that the expression in the braces reduces in the A — oo limit anc
+n= O(A!/?) to a finite constant, {...} 4 inn = is, if and only if 7 = O(A7!/2) so that z, <n K 2%.
+The eigenfunction then becomes
+
+in
+
+7 1 1 " 1 1 1 is/zq 1 —1/2
+Ws) (24) = DN? (2a 78) |) 400 = (in)? 222 (: ") (1+0(n)) (in? 2° / (1 roan! )),
+(5.11)
+
+20
+/n/nreproducing the result in (2.13) [28] up to a different normalization.
+
+It is easy to convince oneself that the same reduction procedure applies to the conserved
+charges for both closed and open spin chains. For this discussion it is convenient to enumerate sites
+of the chain by i = 0,1,...,.N and associate the “heavy quark” with the site i = 0, zy 4 A7!zp.
+
+For a closed spin chain one can start from the monodromy matrix (3.2) for the system of N
+
+light and one heavy quark,
+
+Uf (ys Ay(u) By(u)
+Ty+i(u) = fue (% “wf (ort Dy(u))? (5.12)
+
+so that rescaling the heavy quark generators (5.1) one obtains the transfer matrix (3.5)
+tyya(u) 4 MS CN(u) + O(A°) (5.13)
+
+assuming u < A. Dismissing the prefactor rvs” that acts on the heavy degrees of freedom we are
+thus left with a family of conserved charges C'y acting on the light quarks. For the simplest case
+
+of leading-twist distribution amplitudes of heavy baryons considered in [17] one obtains
+
+Co(u) =u +@, Q=i(sP+s?), Q=sis?) — 5P)5. (5.14)
+Exactly in the same way one finds that the transfer matrix for the open spin chain thrown) (u),
+
+see Eq. (3.63), takes the form
+
+tron) (u) — d2i(u - 5) scl (uw) + O(\°). (5.15)
+
+zo b A>0Oo
+
+For the simplest case N = 2 we get
+
+Co(u) = 2% (« + 5) (wQ, + Q2), (5.16)
+where
+
+Qi=sY+s0,
+Qe = [w} — jalja — HIS? — SO (SPs + sp?sy?) — sy? (SPs — ss). (6.17)
+
+For the twist-four heavy-light operators considered in [19] there is additional complication. In
+his situation several operators exist which mix together by the RG equations. i.e. the relevant
+Hamiltonians have matrix structure. This case is considered in the Appendix.
+
+Thus we see that conserved charges and Hamiltonians of the spin chain models which describe
+he scale dependence of the light quark-gluon operators in the “heavy-quark” limit zp, — zp,/A,
+zp0n ~ O(A°), A > co go over to the conserved charges and Hamiltonians of the spin chains
+hat arise in studies of the scale dependence of heavy-light operators. This observation alone is,
+however, not sufficient to guarantee equivalence of the spectra of these models; it is only true if
+
+he correspondence can be extended to their eigenfunctions. As shown above, this correspondence
+indeed holds for the eigenfunctions of the two-particle Hamiltonian, Eq. (5.11), i.e. for N = 1.
+The general case N > 1 (we remind that N refers to the number of the remaining light degrees of
+
+21
+/n/nfreedom) is more complicated. From the general concept behind effective field theories it is natural
+to expect that such correspondence exists for the lowest part of the spectrum and, indeed, we
+are able to verify its existence for all cases of physical relevance that have been considered so far.
+Whether this conclusion can be extended beyond these examples, is not obvious.
+
+Consider closed spin chains first. To this end we start from the “light” chain with N + 1 sites,
+i=0,1,...,N. The corresponding eigenstates diagonalize the transfer matrix ty41(u) which is a
+polynomial of degree N +1 in u, ty41(u) = 2uN+h + ve qu’+!-*, The eigenstates can be
+labeled by eigenvalues of the conserved charges qx, or, alternatively, by roots of the transfer matrix
+up, k=1,...,N +41, tw4i(up) = 0. Note that 7, uz = 0, since the subleading in u term ~ u% in
+the transfer matrix is absent.
+
+We found that in the limit (5.1) the transfer matrix for u < \ takes the form ty4i1(u) ~
+ACn (uw) (5.13), where Cyy(u) is a polynomial of degree N — 1. This means that some of the roots
+of the transfer matrix must become large in this limit, and the simplest way how Eq. (5.13) may
+hold is when a pair of roots move to infinity with opposite sign, say, uv41 ~ —UuNn ~ VX. This
+asymptotic behavior corresponds to the situation when all conserved charges are large and of the
+same order, qx ~ A. Eigenstates for which the conserved charges satisfy this relation are close to
+the lower boundary of the energy spectrum, see e.g. [45, 46].
+
+Our conjecture is that for such eigenstates the correspondence between the large-spin limit
+nw~ VX — oo of the “light” spin chain and the “heavy-light” chain holds, of the form
+
+WY, (215222 20 = 2h/X) > WEN uy 9 (2s 2H): (5.18)
+
+where Wey uy a (Zs ...,2N) is the eigenstate of the “heavy-light” spin chain.
+This correspondence can be illustrated by the following example. The lowest-energy eigenfunc-
+tions for the closed spin chain with three sites (spin s = 1) correspond to the solutions with q3 = 0
+
+and are known explicitly for even n [5]
+
+nt+3 n+3 n+3
+z + z + 2s
+im 12 20
+Wnqs=0(20; 21, 22) = ; ik = 2% — Z- (5.19)
+201212220
+
+Mapping these polynomial solutions to analytic functions of the coordinates in the lower half-plane,
+cf. (5.8), one obtains
+
+1 1 n+3 ; 1 1 n+3 ; 1 1 nt+3
+- - t - - } - -
+Zzo—in z1—in 21—-in z2—-in 22—in 29—in
+yp”) (z0, 21, 22) ~ .
+
+= 5.20
+mag 201212220 (5.20)
+In the limit z9 ~ 1/A, 7 ~ 1/VA, nwoVi, s= nn, this expression goes over to
+1 is/z1 _ pis/z2
+Wn,q3=0(20, 21, 22) + ——— [e e ; (5.21)
+. A+oo 2122212
+
+which coincides with the solution ¢s,2-9 obtained in [17]. For higher-lying states, expressions
+for the eigenfunctions of three light quarks are not known in explicit form so that verifying this
+correspondence is less straightforward. However, it is possible to check that the energies expressed
+
+in terms of the roots uz indeed coincide in this limit.
+
+22
+/n/nThe corresponding construction for open spin chains is analogous. In this case we also can
+abel the eigenfunctions of the original “light” model with N + 1 sites by the roots of the transfer
+
+matrix, which come in pairs tu,, k = 1,...,.N +1. We consider the limit when one root is large,
+un41 ~ VA, and all others are finite, O(A°). Similar to closed chains such a hierarchy corresponds
+o the situation when all charges are large and of the same order. We notice also that one of the
+roots in this limit is purely kinematical, uy = i/2. Thus the limiting eigenfunction is labeled by
+he remaining N — 1 roots of the transfer matrix and depends also on the parameter 7 related to
+he residual symmetry transformation. We, therefore, expect that the conjecture (5.18) may hold
+or the lowest eigenstates of open spin chains as well.
+
+As an example, consider the open spin chain with three sites that arises in the description of
+
+she evolution of quark-antiquark-gluon operators of twist three in the large N¢ limit [4, 43, 47]. This
+is a model with spins (so, $1, 82) = (1, 3, 1) and impurities (wo, wi, w2) = (3, 0, 3). Its eigenstates
+satisfy the equation QyV, = qs(n)V, where
+
+Qu = {$2,, $2} — 2wS3, — 2wo Se. (5.22)
+
+Here {.,.} stands for the anticommutator and 5. are the two-particle quadratic Casimir operators.
+The lowest-energy eigenstate corresponds to the eigenvalue gs(n) = n(n +6) + se [43] and can
+be found in explicit form,®
+
+9 nt+4 nt+4 n+4 nt+4
+1 bes n43 4 nt3 1 (* 7 a1 )3 2 (= “10 )
+
+Wn(20, 21, 22)
+
+2125 n+ 710 r #20 n+4 Z01 z\n+4 n+5
+2 gntd _ gntd
+; — “20 21 (5.23)
+(n+4)(n+5) — z01212
+
+Mapping this polynomial solution to an analytic function in the lower half-plane
+
+i 2 1 4 z z
+Vn 3 WO) = e+ Wy (20, 21, 22) © v ° 1 2 5.24
+mR = En 205 21,72) U (2 — in)?8e "29 — in? 1 — i’ 22 — in 6.24)
+
+and taking the limit \ > oo with 29 ~ 1/A, n~ 1/VA, n~ VX, s = 1, one easily finds
+W (2, 21, 22) ! els/1 4 @l8/72 4 22172 (ens els) . (5.25)
+n uo A00 2225 isZz12
+
+This expression coincides with the discrete state solution YO(x, z2) for the heavy quark — light
+antiquark — gluon RG equation found in [18].
+
+A word of caution has to be added. Although the given examples support the conjecture in
+Eq. (5.18), we do not claim that there exists a one-to-one correspondence between the eigenfunctions
+of generic light models in the large spin limit and heavy-light models. A counterexample can easily
+be found. Indeed, in the same open chain model considered above one can try to make the particle
+with i = 2 heavy instead of i = 0, ie. consider the limit zp = z,/ > 0 instead of z — 0. It turns
+out that the eigenfunction in this limit becomes non-normalizable. Thus the lowest energy discrete
+state of the “light” chain disappears from the spectrum and is not present in the corresponding
+
+“heavy-light” chain. A detailed study of this phenomenon goes beyond the tasks of this work.
+
+°’This is a new result.
+
+23
+/n/nAnother issue is that beyond leading order the identification of the effective theory acting
+on light degrees of freedom as HQET is expected to break down because of contributions of
+hard-collinear gluon emission and a more general, e.g. soft-collinear effective theory, may arise.
+This is one more topic for future study.
+
+6 Summary
+
+Evolution equations for many physically relevant heavy-light operators in QCD turn out to be
+integrable in the multi-color limit. The novelty of these systems is that the corresponding conserved
+charges are generated by the off-diagonal element of the monodromy matrix C(u) instead of the
+race of monodromy matrix as it happens for the light quark-gluon operators. These evolution
+equations can be solved with the help of QISM, resulting in a better understanding of the structure
+of the B-meson distribution amplitudes of leading and subleading twists [18, 19]. The aim of this
+paper is to present a more detailed mathematical treatment of such spin chain models in QISM
+ormalism and explain details of the derivation omitted in [18, 19]. This is done in Sects. 3-4.
+Another aim is to explore the observation made in [17, 18] that a certain similarity exists
+etween the spectrum of the heavy-light spin chains and ordinary SL(2,R)-invariant spin chains in
+
+she large spin limit [45, 46]. One finds on several examples that the expressions for the ground state
+
+wave functions, mass gaps, etc. in both models coincide. In Sec. 5 we suggest an explicit mapping
+
+yehind this correspondence. It turns out that that sending zp, — 0, where zp is a coordinate
+associated with the “heavy quark”, the Hamiltonian and conserved charges of the “light” spin
+
+chain models factorize and go over to the Hamiltonian and conserved charges of the “heavy-light”
+models.
+
+We further argue that such correspondence extends to the low-lying states at the eigenfunction
+level in a certain scaling limit, which means that such states can be studied using effective theory
+methods. In particular, eigenfunctions of the lowest energy states with large spin in the “light”
+sector can be approximated by the eigenfunctions of the conserved charge C(u), which can be
+constructed with the help of Sklyanin’s method of Separation of Variables (SoV). We have checked
+that this conjecture indeed works in several cases where analytic expressions for the eigenstates are
+known. Alternative method for the analysis of low-lying states for the “light” spin chain models
+in the large spin limit is based on the the semiclassical expansion of the solution of the Baxter
+equation, see e.g. [45, 46]. In this approach the wave functions of “light” models can be obtained
+
+as a convolution of the corresponding Baxter functions with the transition kernel to the SoV
+representation which is nothing but an eigenstate of the “heavy-light” spin chain, inviting for an
+effective theory interpretation of this method. One can hope that using QISM technique it will be
+possible to give this interpretation a more precise meaning.
+
+Acknowledgments
+
+We are grateful to S. Derkachov and G. Korchemsky for useful discussions. The work was supported
+by the DFG grants BR 2021/7-1 (YJ), MO 1801/1-3 (AM) and by RSF project 14-11-00598 (AM).
+
+24
+/n/nAppendix
+1 Twist-four operators
+
+In this section we explain the method which was used in [19] to construct the conserved charges
+for the Hamiltonians describing the scale-dependence of higher-twist heavy-light operators. To
+this end we consider a particular example of an operator doublet
+
+5? _ ( v- (21). fe+(@) hv (0)
+Qn = (are : (A.1)
+
+The evolution kernel (Hamiltonian) for the operators Q), is given by a 2 x 2 matrix
+
+Ai Hie
+Hp = . A.2
+n (ii in) (A2)
+
+Explicit expressions for the kernels Hj, can be found, e.g., in [14, 48, 49]. Our aim is to find the
+conserved charges Q; that commute with the Hamiltonian H;,. This can be done using standard
+techniques starting from the spin chain with complete conformal SO(4,2) symmetry. The method
+described below allows one to stay with the SL(2) subgroup and achieve the same result in a more
+straightforward way.
+
+To start with, consider the twist-three light quark-antiquark-gluon operator,
+
+Qagq = V+ (21) f+ (22)h4 (20) - (A.3)
+
+The corresponding evolution equation is well-studied. The evolution kernel in the large N, limit
+commutes with the (three-particle) quadratic Casimir operator S* and with an additional conserved
+charge, Qy (5.22) with impurity parameters, w) = w2 = 3. Note that Qy is written in terms of the
+two-particle quadratic Casimir operators of the SL(2,R) group.
+
+The trick is to use this result to construct the conserved charges for the twist-four operator,
+
+w_(21) faa (22) 04 (20)
+B= | ven) fr—(e2)04 (0) | - (Aa)
+
+04 (a) fr+ (22) (20)
+
+The operators (A.3) and (A.4) do not mix under the collinear conformal SL(2,R) transformation,
+but they are related by a transformation involving the full conformal group. As a consequence, the
+conserved charge Qy for the twist-four operators (A.4) can be found by promoting the SL(2, R)
+two-particle Casimir operators in Eq. (5.22) to the two-particle Casimir operators of the full
+conformal group SO(4, 2), $2, + S,
+
+on = {S?,, So} _ 2w38?, — 2w 1 S3o (A.5)
+
+and projecting the SO(4, 2) operators onto the twist-four subspace (A.4). Explicit expressions for
+the generators of the full conformal group in the so-called light-ray operator representation are
+
+25
+/n/ngiven in [50]. The corresponding two-particle Casimir operators can be written as [14]°
+2 _ Jix(Jiz—1) 0 3, -_( ~1/2 2rd +2
+2 0 Se , 2 21201 +1 1/2 ,
+“A S2 0 > —1/2 20209 + 1
+gz, [P20 , Jo =— ; A6
+0 ( 0 Jao (Joo — 1) z9902 +2 1/2 (A6)
+
+where Se, 53 are the corresponding SL(2, R) Casimir operators:
+2 2 3 2 ‘ 2 3
+Sig = —01 02245 + O22 + 7h S59 = —09022 99 + Oo202 + 1 (A.7)
+
+Using these expressions in (A.5) one obtains the conserved charge Qy as a 3 x 3 matrix with
+operator entries.
+
+Finally, we perform the ”light-to-heavy” reduction for this charge, zo > z,/A, \ > co. The
+Casimir operator S, factorizes in this limit:
+
+83, = 5S + 000°), (A.8)
+where
+2510223 0 0
+S =| 0 &8 o |, (A.9)
+0 0 25123
+
+and as the result the charge Oy takes the form
+Q =asO!? + 000°), (A.10)
+
+where ow is a two-particle operator acting on the remaining light degrees of freedom,
+
+. ok _ (9)
+Q = (E12, G4} — 2w7E = (S49), (A.11)
+0 Qe
+
+Here Q\) is a 2 x 2 matrix, which commutes with the evolution kernel (A.2) for the operator
+doublet (A.1) and the remaining entry Q is the conserved charge (5.17). The conserved charges
+for all other twist-four heavy-light operators considered in Ref. [19] can be obtained in this manner.
+
+References
+
+[1] M. Neubert, Heavy quark symmetry, Phys. Rept. 245 (1994) 259-396, [hep-ph/9306320].
+
+[2] L. N. Lipatov, Asymptotic behavior of multicolor QCD at high energies in connection with exactly
+solvable spin models, JETP Lett. 59 (1994) 596-599, [hep-th/9311037].
+
+1
+°T the corresponding expressions in [14], Eq. (5.24), there is a misprint: I should be o3 = (; 0 ) :
+
+26
+/n/n21
+22
+
+L. D. Faddeev and G. P. Korchemsky, High-energy QCD as a completely integrable model, Phys. Lett.
+B342 (1995) 311-322, [hep-th/9404173].
+
+V. M. Braun, S. E. Derkachov and A. N. Manashov, Integrability of three particle evolution equations
+in QCD, Phys. Rev. Lett. 81 (1998) 2020-2023, [hep-ph/9805225].
+
+V. M. Braun, S. E. Derkachov, G. P. Korchemsky and A. N. Manashoy, Baryon distribution
+amplitudes in QCD, Nucl. Phys. B553 (1999) 355-426, [hep-ph/9902375].
+
+A. V. Belitsky, Renormalization of twist - three operators and integrable lattice models, Nucl. Phys.
+B574 (2000) 407-447, [hep-ph/9907420].
+
+L. D. Faddeev, E. K. Sklyanin and L. A. Takhtajan, The Quantum Inverse Problem Method. 1, Theor.
+Math. Phys. 40 (1980) 688-706.
+
+L. A. Takhtajan and L. D. Faddeev, The Quantum method of the inverse problem and the Heisenberg
+XYZ model, Russ. Math. Surveys 34 (1979) 11-68.
+
+P. P. Kulish, N. Yu. Reshetikhin and E. K. Sklyanin, Yang-Bazxter Equation and Representation
+Theory. 1., Lett. Math. Phys. 5 (1981) 393-403.
+
+E. K. Sklyanin, Separation of variables - new trends, Prog. Theor. Phys. Suppl. 118 (1995) 35-60,
+solv-int/9504001].
+
+V. M. Braun, G. P. Korchemsky and A. N. Manashov, Evolution of twist - three parton distributions
+in QCD beyond the large N(c) limit, Phys. Lett. B476 (2000) 455-464, [nep-ph/0001130].
+
+H. J. De Vega and L. N. Lipatov, Interaction of reggeized gluons in the Baxter-Sklyanin representation,
+Phys. Rev. D64 (2001) 114019, [hep-ph/0107225].
+
+S. E. Derkachov, G. P. Korchemsky and A. N. Manashov, Noncompact Heisenberg spin magnets from
+high-energy QCD: 1. Baater Q operator and separation of variables, Nucl. Phys. B617 (2001) 375-440,
+hep-th/0107193].
+
+V. M. Braun, A. N. Manashov and J. Rohrwild, Renormalization of Twist-Four Operators in QCD,
+Nucl. Phys. B826 (2010) 235-293, [0908. 1684].
+
+J. A. Minahan and K. Zarembo, The Bethe ansatz for N=4 super Yang-Mills, JHEP 03 (2003) 013,
+[hep-th/0212208].
+
+N. Beisert et al., Review of AdS/CFT Integrability: An Overview, Lett. Math. Phys. 99 (2012) 3-32,
+[1012. 3989].
+
+V. M. Braun, S. E. Derkachov and A. N. Manashov, Integrability of the evolution equations for
+heavylight baryon distribution amplitudes, Phys. Lett. B738 (2014) 334-340, [1406 .0664].
+
+V. M. Braun, A. N. Manashov and N. Offen, Evolution equation for the higher-twist B-meson
+distribution amplitude, Phys. Rev. D92 (2015) 074044, [1507 .03445].
+
+V. M. Braun, Y. Ji and A. N. Manashov, Higher-twist B-meson Distribution Amplitudes in HQET,
+1703 .02446.
+
+L. N. Lipatov, Integrability of scattering amplitudes in N=4 SUSY, J. Phys. A42 (2009) 304020,
+[o902. 1444].
+
+B. Basso, Exciting the GKP string at any coupling, Nucl. Phys. B857 (2012) 254-334, [1010.5237].
+
+J. Bartels, L. N. Lipatov and A. Prygarin, Integrable spin chains and scattering amplitudes, J. Phys.
+A44 (2011) 454013, [1104. 0816].
+
+27
+/n/n23
+
+24
+
+25
+
+26
+
+27
+
+28
+
+29
+
+30
+
+31
+
+32
+
+33
+
+34
+35
+
+36
+37
+
+38
+
+39
+40
+
+41
+42
+
+43
+
+A. V. Belitsky, OPE for null Wilson loops and open spin chains, Phys. Lett. B709 (2012) 280-284,
+[1110. 1063].
+
+G. P. Korchemsky and A. V. Radyushkin, Infrared factorization, Wilson lines and the heavy quark
+limit, Phys. Lett. B279 (1992) 359-366, [hep-ph/9203222].
+
+B. O. Lange and M. Neubert, Renormalization group evolution of the B meson light cone distribution
+amplitude, Phys. Rev. Lett. 91 (2003) 102001, [hep-ph/0303082].
+
+V. M. Braun, D. Yu. Ivanov and G. P. Korchemsky, The B meson distribution amplitude in QCD,
+Phys. Rev. D69 (2004) 034014, [hep-ph/0309330].
+
+M. Knodlseder and N. Offen, Renormalisation of heavy-light light ray operators, JHEP 10 (2011) 069,
+[1105 . 4569].
+
+V. M. Braun and A. N. Manashov, Conformal symmetry of the Lange-Neubert evolution equation,
+Phys. Lett. B731 (2014) 316-319, [1402.5829].
+
+A. P. Bukhvostov, G. V. Frolov, L. N. Lipatov and E. A. Kuraev, Evolution Equations for
+Quasi-Partonic Operators, Nucl. Phys. B258 (1985) 601-646.
+
+I. M. Gelfand, M. I. Graev and N. Y. Vilenkin, Generalized functions. Vol. 5. AMS Chelsea
+Publishing, Providence, RI, 2016.
+
+P. Ball, V. M. Braun and E. Gardi, Distribution Amplitudes of the Lambda(b) Baryon in QCD, Phys.
+Lett. B665 (2008) 197-204, (0804. 2424].
+
+W. Wang, Factorization of Heavy-to-Light Baryonic Transitions in SCET, Phys. Lett. B708 (2012)
+119-126, [1112.0237].
+
+A. Ali, C. Hambrock, A. Ya. Parkhomenko and W. Wang, Light-Cone Distribution Amplitudes of the
+Ground State Bottom Baryons in HQET, Eur. Phys. J. C73 (2013) 2302, [1212.3280].
+
+E. K. Sklyanin, Quantum inverse scattering method. Selected topics, hep-th/9211111.
+
+S. E. Derkachov, G. P. Korchemsky and A. N. Manashov, Separation of variables for the quantum
+SL(2,R) spin chain, JHEP O7 (2003) 047, [hep-th/0210216].
+
+S. E. Derkachov and A. N. Manashov, Spin Chains and Gustafson’s Integrals, 1611.09593.
+
+S. E. Derkachov, Bazter’s Q-operator for the homogeneous XXX spin chain, J. Phys. A32 (1999)
+5299-5316, [solv-int/9902015].
+
+A. V. Belitsky, S. E. Derkachov and A. N. Manashov, Quantum mechanics of null polygonal Wilson
+loops, Nucl. Phys. B882 (2014) 303-351, [1401.7307].
+
+S. E. Derkachov, Factorization of the R-matriz. [., math/0503396.
+
+S. E. Derkachov, Factorization of R-matrix and Baxter’s Q-operator, J. Math. Sci. 151 (2008)
+2848-2858, [math/0507252].
+
+E. K. Sklyanin, Boundary Conditions for Integrable Quantum Systems, J. Phys. A21 (1988) 2375-289.
+
+S. E. Derkachov, G. P. Korchemsky and A. N. Manashov, Baxter Q operator and separation of
+variables for the open SL(2,R) spin chain, JHEP 10 (2003) 053, [hep-th/0309144].
+
+S. E. Derkachov, G. P. Korchemsky and A. N. Manashovy, Evolution equations for quark gluon
+distributions in multicolor QCD and open spin chains, Nucl. Phys. B566 (2000) 203-251,
+[hep-ph/9909539].
+
+28
+/n/nV. M. Braun, G. P. Korchemsky and D. Mueller, The Uses of conformal symmetry in QCD, Prog.
+Part. Nucl. Phys. 51 (2003) 311-398, [hep-ph/0306057].
+
+A. V. Belitsky, A. S. Gorsky and G. P. Korchemsky, Logarithmic scaling in gauge/string
+correspondence, Nucl. Phys. B748 (2006) 24-59, [hep-th/0601112].
+
+M. Beccaria and F. Catino, Large spin expansion of the long-range Baxter equation in the sl(2) sector
+of N=4 SYM, JHEP 01 (2008) 067, [0710.1991].
+
+A. V. Belitsky, Integrability and WKB solution of twist - three evolution equations, Nucl. Phys. B558
+(1999) 259-284, [hep-ph/9903512].
+
+V. M. Braun, A. N. Manashov and B. Pirnay, Scale dependence of twist-three contributions to single
+spin asymmetries, Phys. Rev. D80 (2009) 114002, [0909 . 3410].
+
+Y. Ji and A. V. Belitsky, Renormalization of twist-four operators in light-cone gauge, Nucl. Phys.
+B894 (2015) 161-222, [1405.2828].
+
+V. M. Braun, A. N. Manashov and J. Rohrwild, Baryon Operators of Higher Twist in QCD and
+Nucleon Distribution Amplitudes, Nucl. Phys. B807 (2009) 89-137, [0806 . 2531].
+
+— 29 —

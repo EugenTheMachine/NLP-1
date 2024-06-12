@@ -1,0 +1,939 @@
+1606.03245v1 [stat.CO] 10 Jun 2016
+
+‘acXiv
+
+Omission and Commission Errors in Network Cognition
+
+and Network Estimation using ROC Curve
+
+Deniz Yenigiin Giines Ertan
+Istanbul Bilgi University Kog University
+Istanbul, Turkey Istanbul, Turkey
+deniz.yenigun@bilgi.edu.tr gunesertan@ku.edu.tr
+
+Michael Siciliano
+University of Illinois
+Chicago, IL, USA
+
+sicilian@®uic.edu
+
+June 13, 2016
+
+Abstract
+
+Cognitive Social Structure (CSS) network studies collect relational data on re-
+spondents’ direct ties and their perception of ties among all other individuals in
+the network. When reporting their perception networks, respondents commit two
+types of errors, namely, omission (false negatives) and commission (false positives)
+errors. We first assess the relationship between these two error types, and their
+contributions on the overall respondent accuracy. Next we propose a method for
+estimating networks based on perceptions of a random sample of respondents from
+a bounded social network, which utilizes the Receiving Operator Characteristic
+(ROC) curve for balancing the tradeoffs between omission and commission errors.
+A comparative numerical study shows that the proposed estimation method per-
+
+forms well. This new method can be easily integrated to organization studies that
+
+use randomized surveys to study multiple organizations. The burgeoning field of
+multilevel analysis of inter-organizational networks can also immensely benefit from
+
+this approach.
+
+Keywords: Network estimation, cognitive social structures, network sampling
+/n/n1 Introduction
+
+Most individual level network oriented studies ask respondents to recall their own direct
+social ties. Cognitive Social Structure (CSS) based studies on the other hand, collect
+data not only on the actor’s own relations, but also his/her perception of social ties
+among all other actors in the network. In complete CSS designs for networks of size
+N, each respondent is required to answer questions about N? — N possible relations
+in the network. Formalized by David Krackhardt (1987), CSS scholarship mostly cen-
+ters around determinants of accuracy of network cognition such as personality traits,
+(Casciaro, 1998; Casciaro et al. 1999), power (Krackhardt, 1990; Simpson et al. 2011),
+need for closure and homophily (Flyn et al, 2010), social exclusion (O’Connor and Glad-
+stone, 2015), network centrality (Krackhardt, 1987; Grippa and Gloor, 2009; Simpson
+and Borch, 2005), and egocentric biases (Kumbasar et al., 1994; Johnson and Orbach,
+2002).
+This paper deviates from traditional CSS studies and aims at (1) presenting a tool for
+CSS researchers to classify and analyze different errors of perception, and (2) providing
+
+a new network estimation method that is designed to minimize overall errors while
+
+controlling for different error types. The method is based on randomly selected CSS
+slices (actors’ perception matrices) and therefore does not require high response rates
+to estimate the network structure. The proposed density weighted Receiving Operator
+Characteristic (ROC) curve based method is shown to produce network estimates with
+relatively low errors. Moreover, this new method provides a decision tool for researchers
+for determining the threshold k (the minimum required number of actors claiming the
+presence of a tie to assign a tie between two actors in the estimated network) that
+enables them to visually inspect the distribution of errors at every level of k. The
+recognition of error variation in data collection is likely to benefit network scholars in
+areas in which costs of making an error of omission or commission may be significantly
+different.
+
+The rest of this paper is organized as follows: In Section[2]we introduce the five data sets
+we consider and present summaries of different error types in individuals’ perceptions.
+In Section B] we propose a network estimation method controlling these error types.
+Section 4]reports the results of a numerical study for evaluating the performance of the
+proposed estimation methodology, and Section 5] concludes. The paper is accompanied
+by an R package, cssTools (Yenigiin et al. 2016), that allows users to manage and
+
+dissect CSS data and to estimate networks based on random samples of CSS slices.
+/n/n2 Error Types in CSS
+
+To date most CSS based studies conceptualized errors as absent or present, only very
+few studies looked at the specific type of perception errors, and to our knowledge none
+compared the relationship between error types. For example, based on an experimental
+study O’Connor and Gladstone (2015) found that experience of social exclusion leads
+o false positives, in other words, errors of commission. Flyn et al. (2010) showed that
+need for closure is also associated with false positives due to respondents’ tendency to
+perceive transitive ties. In another experimental study Dessi et al. (2016) showed that
+
+individuals tended to underestimate mean degree of the networks that they were asked
+
+o recall during the experiments.
+
+Unlike this line of research, we first conceptualize and assess cognitive errors as Type
+1 (errors of commission, or false positives) and Type 2 (errors of omission, or false
+negatives), and examine the relationship between the two types of cognitive inaccuracy
+and their association with overall respondent reliability. To be more specific, we define
+Type 1 error as an instance of error when an individual perceives there to be a tie
+between two actors when in fact there is no tie, and Type 2 error as an instance when
+perception says there is no tie when in fact there is a tie.
+
+We use the following five data sets to analyze the errors and test our estimation tech-
+nique: (1) High Tech Managers: 21 managers in a machinery firm (Krackhardt, 1987);
+(2) Silicon Systems: 36 semiskilled production and service workers from a small en-
+trepreneurial firm (Krackhardt, 1990); (3) Pacific Distributers: 33 key personnel from
+the headquarters of a logistics company (Krackhardt and Kilduff, 1990); (4) Govern-
+
+ment Office: 36 government employees at the federal level (Krackhardt and Kilduff,
+
+1999); and (5) Italian University: 25 researchers across partner research centers at a
+university (Casciaro, 1998).
+
+All five data sets are collected according to the CSS method, where each actor not
+only reports his or her self-ties, but also answers questions on all possible dyads in
+the network. A CSS for a network involving N individuals is usually represented by
+a three dimensional array Rjj,m (i,j,m = 1,...,N), where i is the sender, j is the
+receiver, and m is the perceiver of the relationship (Krackhardt, 1987). As mentioned
+avbove, an actor’s network perception matrix is referred to as a CSS slice. Based on
+the work of Krackhardt (1990), for a given CSS array we construct the true network
+using the locally aggregate structures (LAS) intersection rule, according to which a tie
+
+is considered to be present in the true network if and only if both parties in a dyad
+
+report the tie. Note that these ties considered in the networks are directional, and thus
+/n/nfor the i-j tie to exist, 7 must claim to send a tie to j, and 7 must claim to receive a
+
+tie from 7. After constructing the true network in this fashion, we explore the different
+
+types of errors in perceptions.
+
+Type I Error Rate Type II Error Rate
+
+Data Set N Mean St. Dev. Mean St. Dev. Type I & II Correlation
+Italian University 24 0.087 0.090 0.539 0.179 -0.68
+High Tech Managers 21 0.052 0.049 0.636 0.174 -0.77
+Silicon Systems 36 0.136 0.140 0.641 0.204 -0.82
+Government Office 36 0.052 0.073 0.723 0.243 -0.94
+Pacific Distributers 48 0.028 0.029 0.701 0.176 -0.86
+
+Table 1: Summary statistics for error rates across five data sets.
+
+For all five data sets, Table [I] displays the mean and standard deviation of both error
+
+rates, as well as the correlation between them. Error rates are calculated based on the
+
+ratio of the frequency of the particular error type for each actor to the possible number
+
+of each error type. Type 1 error rates are considerably low in comparison to Type
+
+2 rates. Average Type 1 error rates range between 0.028 and 0.136
+
+with standard
+
+deviations ranging between 0.029 and 0.140) while average Type 2 error rates range
+
+yetween 0.539 and 0.723 (with standard deviations ranging between 0.
+This difference can be explained by the low true network densities, all o
+
+han 0.2. In a sparse network even a small number of omission errors
+
+rate of Type 2 error since overall number of “1’s”
+
+small. However, committing errors of commission in similar amounts wi
+
+ower Type 1 error rates since there is a large number of “0’s”
+
+patterns are likely to be observed in many other contexts as well.
+
+74 and 0.243).
+which are less
+
+lead to a large
+
+in the true adjacency matrix is very
+
+1 translate into
+
+in the adj
+
+acency matrix.
+
+Since majority of social networks tend to have low density (Anderson et al. 1999), these
+
+The two error types have strong negative correlations in all five data sets, which is also
+
+visible from Figure[I] In this scatter plot, each actor in each data set is
+
+represented by
+
+a single point, and a good mix of colors indicating data sets reveal that the five sets
+
+investigated share common characteristics in terms of error types. The strong negative
+
+correlations suggest that for most individuals, their overall errors are dominated by
+
+either Type 1 or Type 2 error.
+
+Figure 2] exhibits the breakdown of Type 1 and Type 2 error counts for
+
+overall percep-
+
+tion error of each individual actor. Each vertical bar represents the total error count of
+
+an individual in the network, and colors indicate error types. For each
+
+data set, when
+
+we classify individuals as low error and high error in terms of total error count, we see
+
+a similar pattern. In the low error group Type 2 errors dominate the overall error, with
+/n/n1.00- ¢
+ce
+Se
+0.75 - * Data Set
+° © Government Office
+6
+& e Hightech Managers
+2 ove © Italian University
+.
+Pe . e Pacific Distributers
+° te
+e Silicon Systems
+0.25 = ce
+.
+° .
+.°
+0.00 -
+T T T T T
+0.00 0.25 0.50 0.75 1.00
+Type | Error
+
+Figure 1: Type 1 and Type 2 error rates across five data sets.
+
+only a few Type 1 errors. In the high error group both error types are observed, and
+the ratio of Type 1 errors to Type 2 errors significantly increase as the total error count
+increases. These plots suggest that the low error group consists of more conservative
+individuals who do not report a tie unless they are confident (or aware), which creates
+many Type 2 errors. However, since they do not have the tendency to report a non
+existing tie, they commit very few Type 1 errors. The high error group consists of
+more “liberal” individuals who have the tendency to report many ties without being
+picky, producing many Type 1 errors. On the other hand, since they do not have the
+endency to reject ties, their Type 2 errors decrease. This interpretation of high and
+ow error groups also explains the negative correlations between error types. We also
+note that the prominence of Type 1 errors in the high error group can also be explained
+
+”
+
+oy the low density prevalence. Since there is only limited number of “1’s” in the true
+
+network, individuals with extreme levels of errors need to perceive many “0’s” as “1’s”,
+
+1ence commit large numbers of Type 1 error.
+
+n sum, scholarly studies on network cognition so far mostly focused on determinants of
+cognitive accuracy and ignored different types of cognitive errors. A closer inspection of
+
+errors across five commonly used CSS data sets reveals that there is a strong negative
+
+relationship between errors of omission and commission, and the probability of making
+these errors may be associated with the density of the true network. Investigation of
+
+the determinants of heterogeneity of perception errors may be beneficial for advancing
+/n/nHigh Tech Managers Italian University
+
+60 150
+
+will 0 in
+
+Government Office Silicon Systems
+
+8
+
+a
+
+8
+
+2
+
+Total Error Count
+Total Error Count
+
+300 200
+; Bos
+Y 200 y
+E E100
+100
+mM : |
+0 0
+Pacific Distributers
+#3
+3
+iv]
+5 200 Type 1 Error
+4 Type 2 Error
+B00
+ry
+0
+
+Figure 2: Individuals’ Type 1 and Type 2 error counts across five data sets. Each bar
+
+represents an individual.
+
+CSS studies. In the next section we build on divergence of errors in cognition of social
+relations and introduce a network estimation technique that enables researchers to
+assess the differential costs of Type 1 and Type 2 errors using a ROC curve based
+
+approach.
+
+3 Network Estimation with CSS
+
+The value of being able to estimate the structure of a complete network from a subset
+of respondents’ cognitive social structures is two-fold. First, researchers engaged in
+a study may not be able to produce a response rate sufficient for network analysis.
+
+Unexpected low response rates can result in a failed project or a change in research
+/n/nquestion. While complete or near complete response rates are typically required for
+network analysis (Wasserman and Faust, 1994), recent meta-analyses of organizational
+research found an average response rate of just over 50% (Baruch and Holtom, 2008;
+Anseel et al., 2010). Second, for researchers interested in cross-organizational research,
+where the goal is to model both individual and organizational attributes, gathering
+complete network data from large number of organizations may be impractical and
+inefficient. Thus, collecting CSS data and using aggregation techniques hold promise for
+recreating accurate representations of networks when only a sample of data is available.
+n this section, given a random sample of CSS slices, our goal is to estimate the whole
+network by properly aggregating the observed slices. A straightforward approach for
+his aggregation is to set a threshold, say k, add the matrices representing the CSS
+slices, and if k perceptions have accumulated for a possible tie classify it as an existing
+ie, otherwise classify as a non-existing tie. Although this seems to be a simple anc
+intuitive approach, there are two important issues. The first issue is the origin of a
+
+reported tie, in other words, whether it is a self report or it is a perception on others
+
+ies. The second issue is the proper choice of threshold k. In this section we firs
+
+give some details from Siciliano et al. (2012) which considers network estimation by
+aggregating the randomly selected CSS slices, controlling the Type 1 error rate. We then
+
+discuss the main contribution of this paper which is a similar estimation procedure, bu
+
+controls both Type 1 and Type 2 error rates, therefore considered to be more powerfw
+
+as well as more flexible.
+
+3.1 Network Estimation Controlling Type 1 Error
+
+The first study considering the estimation of a network from randomly sampled indi-
+viduals’ perceptions is Siciliano et al. (2012), where an aggregation method for the
+observed CSS slices is proposed, so that the Type 1 error rate in the estimated network
+is kept below a pre-defined tolerable level. This method is shown to have a good esti-
+mation power and it forms a basis of our current work, therefore we present the main
+ideas here. As we have noted above, the first issue regarding the aggregation method
+is the origin of a reported tie. This is particularly important because as described
+in Section [2] the true network is derived through intersection of all CSS slices, and
+an estimation procedure is expected to converge to this true network as the sample
+
+size increases. Recall that by intersection we mean that a tie between two actors is
+
+considered to exist if and only if both actors agree on its existence. Given this, there
+are three main scenarios that can arise when estimating a certain tie from an observed
+
+sample. In the first scenario, both actors of the tie are sampled, therefore existence or
+/n/nnonexistence of this tie will be estimated by the intersection of the self reports from
+both actors. No perception information will change this. These type of ties will consti-
+tute a region in the estimated network matrix referred to as the knowledge region. In
+the second scenario, none of the actors of the tie are sampled, therefore, the estimation
+of this tie only relies on others perceptions. If k perceptions have accumulated in the
+sample regarding this tie, it is estimated to exist, otherwise, not to exist. In the thirc
+scenario, only one of the actors of the tie are sampled, therefore the intersection methoc
+cannot be used for estimation. In this scenario, we treat the data from the samplec
+actor as a perception, and estimate this tie to exist only if k — 1 additional perception
+ties are reported by others. Then the estimated ties coming from scenarios 2 and 3
+compliment the knowledge region in the estimated network matrix, which is referrec
+to as the perception region. Now suppose the CSS slices of a random sample of size n
+
+are observed from an unknown network. For a given k, this aggregation method can be
+
+summarized in the following algorithm. In what follows, we will refer to this methoc
+
+as the fired threshold method (FTM).
+
+FTM Algorithm: CSS Aggregation for a Fixed k
+
+1. Estimate the knowledge region of the network using the intersection of self reports
+
+(Scenario 1).
+
+2. Estimate the perception region of the network by adding the perceptions and
+unverified self reports (Scenarios 2 and 3). If there are k reports on a tie, it is
+
+estimated to exist.
+
+3. Combine the knowledge and perception parts of the network to get the final
+
+estimate.
+
+The second issue regarding the aggregation of CSS slices for network estimation is the
+selection of a proper threshold k. Siciliano et al. (2012) set k such that the estimated
+Type 1 error rate is controlled below a pre-defined tolerable level a. For a given k
+and an observed sample of CSS slices, one may estimate the Type 1 error rate in the
+
+network by
+
+Number of Type 1 errors committed over
+the knowledge region with threshold k
+
+(1)
+{ Number of possible Type 1 errors
+(
+
+or the number of zeroes in the knowledge region)
+/n/nNote that this is the same method as we calculate the Type 1 error rate in a complete
+CSS structure (n = NV), where the knowledge region is the whole true network observed
+by intersection method. Since k is inversely proportional to d;, the smallest k satisfying
+Gz <a can be used as a proper threshold value for aggregating CSS slices. Combining
+this approach with FTM Algorithm, the network estimation method of Siciliano et al.
+(2012) can be summarized in the following algorithm. As in the original paper, we will
+
+refer to this method as the adaptive threshold method (ATM).
+
+ATM Algorithm: Network Estimation from CSS Slices, Controlling Type 1 Error
+
+1. Set a tolerable Type 1 error rate a. Typical values are 0.05, 0.10, 0.15.
+2. Draw a random sample of size n and observe the CSS slices.
+3. Find the smallest k such that a, < a, and denote it by k*.
+
+4. Compute the estimated network by aggregating the CSS slices using FTM with
+threshold k*.
+
+3.2. Network Estimation Controlling Both Type 1 and Type 2 Errors:
+The ROC Approach
+
+The estimation methodology described above is somewhat limited in that, it only con-
+trols for the Type 1 error rate. As described in Section 2] another important error type
+is the Type 2 error, and it is of interest to control both errors when estimating a net-
+work from a random sample of CSS slices. Therefore, in this section we propose a new
+estimation methodology which seeks a balance between Type 1 and Type 2 errors. We
+base our methodology on a commonly used tool in classification, the receiver operating
+characteristic (ROC) curve. We first give a brief insight on ROC curves, then we give
+the specifics of our methodology. We begin by noting that for a given k, similar to
+estimating the Type 1 error rate in the network, it is possible to estimate the Type 2
+
+error rate by
+
+Number of Type 2 errors committed over
+the knowledge region with threshold k
+
+(or the number of ones in the knowledge region)
+
+;- i —rrer'’mmmr®®?*®e ae. (2)
+{ Number of possible Type 2 errors \
+/n/n3.2.1 ROC Curves
+
+A ROC curve is a graphical plot illustrating the performance of a binary classifier for
+its varying discrimination threshold parameter. It plots the true positive rate (TPR
+= Positives correctly classified / Total positives) against the false positive rate (FPR
+= Negatives incorrectly classified / Total negatives) for various levels of the threshold
+parameter. In classical ROC analysis, typically TPR is plotted on the vertical axis
+and FPR on the horizontal axis, therefore, the threshold value closest to the top left
+
+corner of the plot is said to produce the best classification as it is the value that seeks
+
+for larger TPR and smaller FPR. For a detailed treatment of ROC analysis, see, for
+example, Fawcett (2004).
+
+3.2.2. ROC Approach for Network Estimation
+
+Estimating a network with FTM Algorithm is essentially a binary classification prob-
+lem, where each entry of the network matrix is classified as an existing or non-existing
+tie, based on the threshold parameter k. Here, a Type 1 error instance corresponds to
+a false positive, and a Type 2 error instance corresponds to a false negative. Similarly,
+Type 1 error rate corresponds to FPR, and 1 - Type 2 error rate corresponds to TPR.
+Then following the classical ROC approach, the threshold value k closest to the top
+left corner of the ROC plot should be the optimal threshold. In other words, when
+
+employed along with FTM, the threshold k minimizing the distance
+
+= az+B (3)
+
+gives a network estimate which seeks a balance between Type 1 and Type 2 errors.
+Note that the threshold value & obtained by minimizing 6 in (8) treats both error types
+as equally important. However, in practice, one error type may be more crucial than
+he other, and it is of interest to minimize a weighted distance measure in order to
+1andle these unbalanced cases. In the remaining of this section we first illustrate the
+ROC based network estimation using the unweighted distance 6 on a real data set and
+
+point out potential problems. We then discuss how these problems can be addressed
+
+xy a ROC approach employing a weighted distance dw.
+
+Numerical Illustration
+
+Consider the High Tech Managers data set introduced in Section [2] which contains the
+CSS slices of N = 21 managers of a machinery firm. Suppose that a random sample of
+size n = 10 is drawn and the network is to be estimated from the sampled CSS slices.
+
+For this illustration, suppose the individuals 2, 4, 5, 8, 9, 10, 11, 14, 18 and 19 are
+
+10
+/n/nsampled. We consider FTM for aggregating the slices, and k will be determined by the
+ROC approach described above, which minimizes the distance 6 in (3). For a given
+k, the true positive rate and the false positive rate in the network may be estimated
+over the exact region of the network estimate by 1 — Be and Ax, respectively. For the
+observed sample, estimated true positive rates and false positive rates for all possible k
+are given in Table [2] along with the calculated distance 6. Note that 6 is minimized for
+
+= 1, therefore FTM with k = 1 is considered to give a good estimate of the network.
+
+However, taking a closer look at the actual numbers of committed Type 1 and Type 2
+
+errors reveal a potential flaw of this approach.
+
+k TPR (1—6,) FPR (ax) 6 bw
+0 1.000 1.000 1.000 10.606
+1 0.917 0.295 0.807 3.135
+2 0.667 0.148 0.365 1.602
+3 0.583 0.080 0.424 0.941
+4 0.333 0.034 0.668 (0.758
+5 0.250 0.011 0.750 0.760
+6 0.083 0.011 0.917 0.925
+7 0.083 0.000 0.917 0.917
+0.000 0.000 1.000 1.000
+
+Table 2: TPR, FPR, and two distances considered for the numerical illustration.
+
+Figure Bla illustrates the classical ROC curve produced by varying k from 0 to 8, along
+
+with the value of k at each step. We may see that when k = 1, the curve is closest to top
+
+left corner, i.e., 6 is minimized at this point. Figure Bb indicates the actual number of
+Type 1 and Type 2 errors committed for each k. We may see that when k = 1 we commit
+26 Type 1 errors out of 88 possible instances (@, = 26/88 = 0.295), and one Type 2
+error out of 12 possible instances (Br = 1/12 = 0.083). The potential drawback here is
+that the classical ROC approach minimizing 6 assigns equal importance to both error
+types, and it gives the optimal & based on error rates, not the actual counts. However,
+in low density networks reducing Type 1 error may be more critical compared to Type
+2 error rate since the true network contains much more zeroes than ones, creating much
+more potential Type 1 error instances. This can be easily seen in Figure Bkb, where
+increasing k from one to two reduces the Type 1 error count by 13 at the expense of
+only three Type 2 error counts, and similarly for the next increment of k. Therefore,
+
+we consider a weighted distance 6, to be minimized in the ROC analysis,
+
+Sw = \/ (wax)? + B?, (4)
+
+11
+/n/nwhere a choice of w > 1 gives more emphasis on Type 1 error, a choice of w < 1
+gives more emphasis on Type 2 error, and the choice of w = 1 corresponds to classical
+ROC distance 5. Based on our observation on the effect of network density on the
+potential error rates, we propose that w = 1/d is a reasonable choice of w for the
+low density networks, where d is the average density of all CSS slices in the random
+sample. In the illustrative example d = 0.094, so we set w = 1/0.094 = 10.606. As
+marked in Figure [3}a (as well as in Table [2) , when w = 10.606 the minimum 6,, is
+attained for k = 4, which produces a Type 1 error rate of @ = 3/88 = 0.034 and Type
+2 error rate of Br = 8/12 = 0.667. Then employing FTM with k = 4 is considered
+0 give a better estimate of the unknown network based on the sample information.
+As an evidence of the improvement in estimation, we note that when 6 is minimized
+(k = 1) the correlation between the estimated network and the true network is 0.644,
+1owever, when 6, is minimized (k = 4) the correlation is 0.749. Here we also note that
+he correlation measure we use in this study is the similarity index S 4 suggested by
+
+Krackhardt (1990).
+
+Proposed Estimation Method
+
+Based on our observations on the above illustrative example, as well as our investigation
+on other data sets, we observed that the ROC approach is a powerful one for estimating
+networks from a random sample of CSS slices since it seeks for a balance between the
+committed Type 1 and Type 2 errors. We also observed that giving more emphasis on
+Type 1 error rate improves the estimation in sparse networks. Therefore, we control the
+level of this emphasis to be inversely proportional to the average density of the observed
+CSS slices. Our estimation method is summarized in the following algorithm. In what
+
+follows, we will refer to this method as the ROC based threshold method (RTM).
+
+RTM Algorithm: Network Estimation form CSS Slices, Controlling both Type 1 and
+Type 2 Error Rates
+
+1. Draw a random sample of size n and observe the CSS slices.
+2. Calculate the average density d of all CSS slices in the sample, and set w = 1/d.
+
+3. Perform the weighted ROC analysis to find the k such that 6,, is minimized, and
+
+denote it by k*.
+
+4. Compute the estimated network by aggregating the CSS slices using FTM with
+threshold k*.
+
+12
+/n/nTrue Positive Rate
+
+(a) ROC Curve
+
+(b) Type | and Type Il Errors
+
+False Positive Rate
+
+g 4 88 k=l k=4 2
+qe -- 1"
+© ’
+8 i“
+9
+ar
+2 /
+2° /
+3 / — Type 1 Error
+2 / == Type 2 Error
+eos a
+3
+min 6,
+26
+8
+é ’
+, we
+% Y 7
+| ° a 3
+8 8 - 1—— 1—~0—-0
+TJ T T T T T T T T T T
+0.0 0.2 04 0.6 08 10 0 2 4 6 8
+
+Figure 3: Plots for the numerical illustration.
+
+As will be illustrated in the following section, our numerical study across five data
+
+sets indicate that setting the weight to w = 1/d is a reasonable choice. However,
+
+for various reasons, a researcher might want to use a different weight, and our ROC
+
+based methodo
+
+certain socia!
+
+ogy may be employed for any choice of w. This may be needed for
+
+networks such as terrorist networks in which costs of Type 2 errors may
+
+be considered to be significantly larger than Type 1 errors. We finalize this section by
+
+noting that FTM, ATM, and RTM algorithms may be implemented by the functions
+
+ftm, atm anc
+The illustrative
+with functions
+
+some useful
+
+4 Numerical Study
+
+ools for the analysis of CSS data.
+
+rtm, respectively, in the cssTools package for the statistical software R.
+High Tech Managers data set is also included in the package, along
+
+‘or producing tables and figures similar to Table 2] and Figure B] and
+
+In this section we present the results of a numerical study aiming to illustrate the
+
+performance of the proposed estimation methodology.
+
+Since the adaptive threshold
+
+method (ATM) of Siciliano et al. (2012) for estimating networks from a random sample
+
+of CSS slices is known to outperform traditional roster anc
+
+only compare the proposed ROC based adaptive threshold
+
+ego network methods, we
+
+methodology (RTM) with
+
+ATM. For each data set introduced in Section 2] we generate random samples of sizes
+
+4 to N, estimate the network based on the sample informa
+
+ion only, and compute the
+
+correlation (S14) between the estimated network and the true network obtained by
+
+13
+/n/nthe intersection method. Our results across five data sets are displayed in Figures
+to [8} which display the boxplots of the observed correlations for different estimation
+methods. In each plot, the horizontal axis represents the sample size, the vertical axis
+represents the correlation, and the boxplots illustrate the distribution of the observed
+correlations based on 1000 simulations. In other words, for each sample size the vertical
+boxes represent the middle 50%, and the vertical lines represent the lower and upper
+25% of the distribution of the observed correlations between the true and estimated
+
+networks. The colors indicate the method used for estimation.
+
+Italian University
+
+4 0.8
+oO
+
+3 ig ATM (a=0.05)
+g oe ig ATM (a=0.10)
+S$. Wig A™ (a=0.15)
+
+meem™
+0.4-
+5 10 15 20
+Sample Size
+
+Figure 4: Italian University data. Correlations between true and estimated networks.
+
+High Tech Managers
+
+1.04
+i method
+Om ATM (a=0.01)
+
+a
+
+5 08-
+
+2 i ATM (0-0.05)
+
+@ a ATM (a=0.10)
+
+& oe! Wig A™ (a=0.15)
+. meem™
+
+Sample Size
+
+Figure 5: High Tech Managers data. Correlations between true and estimated networks.
+
+We may see from the figures that the overall performances of both methods considered
+seem to be satisfactory. As expected, for all data sets and methods, the correlation
+between the estimated and true networks increase as the sample size increases, and when
+all individuals are included in the sample the correlation equals one. The performances
+
+of the two methods considered seem to be comparable, however, ATM turns out to be
+
+14
+/n/nSilicon Systems
+
+1.0- “ _
+
+| ye method
+208 | Om ATM (a=0.01)
+2 fi AT (o-0.05)
+2 a ATM (a=0.10)
+6 06- Wig A™ (a=0.15)
+
+meem™
+
+0.4-
+5 10 15 20 25 30
+Sample Size
+
+Figure 6: Silicon Systems data. Correlations between true and estimated networks.
+
+Government Office
+
+. yi ee
+i
+
+Sample Size
+
+Correlations
+
+Figure 7: Government Office data. Correlations between true and estimated networks.
+
+sensitive to the selection of tolerable Type 1 error rate a. When using ATM, setting a to
+a larger value such as 0.15 generally seem to be a poor selection, which is most visible for
+Silicon Systems and Pacific Distributers data sets (Figures [6] and [8] respectively). This
+is an expected result as too much Type 1 error is allowed in the estimation procedure.
+On the other extreme, setting a to a smaller value such as 0.01 seems to produce better
+results across most data sets, however, as we see in Pacific Distributers data for small
+to moderate sample sizes, choice of 0.15 may outperform choice of 0.01. This may be
+because of the fact that forcing to reduce Type 1 error to a great extent may trigger
+more Type 2 errors and thus result in a larger overall error rate. Across the five data
+sets considered, setting a to 0.05 or 0.10 seem to be safer, but this feature cannot be
+generalized to any data set. In short, a researcher to employ ATM may be advised to
+set a to 0.05 or 0.10, but, they must also be advised that these are the preferable levels
+for the five data sets investigated, and it is not guaranteed that they will be the best
+
+choices for any data set.
+
+15
+/n/nPacific Distributers
+
+| ee
+
+£ 08- fi ATM (a=0.01)
+3 ig ATM (a=0.05)
+g a ATM (a=0.10)
+0 06- Wig A™ (a=0.15)
+meem™
+5 10 15 20 25 30 35 40 45
+Sample Size
+
+Figure 8: Pacific Distributers data. Correlations between true and estimated networks.
+
+On the other hand, the proposed RTM performs as good as ATM with a good choice
+of a, and it provides consistent results across all data sets. In this sense it is a robust
+method for estimating networks, and the fact that it doesn’t require a pre-determined
+decision threshold such as a is appealing. RTM has an automatic way of balancing Type
+1 and Type 2 errors, and our numerical study shows that its estimation performance is
+
+comparable with ATM, even when the ATM user is assumed to choose the best a level.
+
+5 Conclusion
+
+We first presented the common patterns of errors across five CSS data sets. Consistent
+in all data sets is the strong negative association between Type 1 and Type 2 errors.
+For the individuals with lower overall errors, most of the errors are of Type 2, whereas
+for the individuals with higher overall errors most of the errors are of Type 1. Due to
+low density of the true networks considered, a common feature in many social networks,
+the uninformed perceivers tend to make much more Type 1 errors. These findings have
+especially important implications for measurement of network data, hence investigation
+of the determinants of tendency for different error types may be a useful next step in
+CSS research.
+
+Next, we presented a novel estimation method, RTM, which requires a sample of CSS
+
+slices from the network of interest, and returns an estimate of the network while con-
+trolling for both Type 1 and Type 2 errors. RTM utilizes the ROC curve for balancing
+two error types, and it does not require a user decision on any cut-off values (such as
+a of ATM). Our comparative numerical study shows that the proposed method per-
+forms well. RTM gives weights to error types based on the network density, however,
+
+researchers may also choose to set their preferred weights depending on the emphasis
+
+16
+/n/nthey need to give to error types depending on their consequences.
+
+Using RTM, it is possible to incorporate network data collection to random survey
+studies covering multiple organizations. Likewise more scholars are recognizing the
+need to study organization networks at multiple levels (Brass et al. 2004; Zappa and
+Lomi, 2015; Tranmer et al., 2016), however, data collection requirements are extremely
+demanding for studying inter-organizational and intra-organization networks simulta-
+neously. RIM provides a convenient approach to meet data requirements for multi
+evel organization research as well. One limitation of RTM is the network size. Due to
+obvious individual cognitive limitations, it may not be wise to apply RTM to networks
+involving more than 70 individuals. For large networks, a clustered version of RTM
+
+hat is based on major departments or units in organizations can be considered.
+
+Despite the promise of random sampling, gathering complete network data on the actors
+under study remains the best and recommended approach for collecting network data.
+We see these methods as useful when a researcher expects or obtains a low response
+rate or when the scope of the study prohibits the collection of network data from all
+
+participants, such as one looking at networks in a large number of organizations.
+
+References
+
+Anseel, F., Lievens, F., Schollaert, E., Choragwicka, B. (2010). Response Rates
+in Organizational Science, 1995-2008: A Meta-analytic Review and Guidelines
+
+for Survey Researchers. Journal of Business and Psychology, 25, 335-349.
+
+Baruch, Y., Holtom, B.C. (2008). Survey response rate levels and trends in orga-
+
+nizational research. Human Relations, 61, 1139-1160.
+
+Brass, D. J., Galaskiewicz, J., Greve, H. R., Tsai, W. (2004). Taking stock of
+networks and organizations: A multilevel perspective. Academy of management
+
+journal, 47(6), 795-817.
+
+Casciaro, T. (1998). Seeing things clearly: Social structure, personality, and ac-
+
+curacy in social network perception. Social Networks, 20(4), 331-351.
+
+Casciaro, T., Carley, K. M., Krackhardt, D. (1999). Positive affectivity and ac-
+
+curacy in social network perception. Motivation and Emotion, 23(4), 285-306.
+
+Dessi, R., Gallo, E., Goyal, S. (2016). Network cognition. Journal of Economic
+Behavior and Organization, 123, 78-96.
+
+17
+/n/nFawcett, T. (2004). ROC graphs: Notes and practical considerations for re-
+searchers. Machine Learning, 31(1), 1-38.
+
+Flynn, F. J., Reagans, R. E., Guillory, L. (2010). Do you two know each other?
+Transitivity, homophily, and the need for (network) closure. Journal of Person-
+
+ality and Social Psychology, 99(5), 855.
+
+Grippa, F., Gloor, P. A. (2009). You are who remembers you. Detecting leadership
+through accuracy of recall. Social Networks, 31(4), 255-261.
+
+Johnson, J. C., Orbach, M. K. (2002). Perceiving the political landscape: ego
+biases in cognitive political networks. Social Networks, 24(3), 291-310.
+
+Krackhardt, D. (1987). Cognitive social structures. Social Networks, 9(2), 109-
+134.
+
+Krackhardt, D. (1990). Assessing the political landscape: Structure, cognition,
+
+and power in organizations. Administrative Science Quarterly, 35, 342-369.
+
+Krackhardt, D.,Kilduff, M. (1990). Friendship patterns and culture: The control
+of organizational diversity. American Anthropologist, 92(1), 142-154.
+
+Krackhardt, D., Kilduff, M. (1999). Whether close or far: Social distance effects
+on perceived balance in friendship networks. Journal of Personality and Social
+
+Psychology, 76(5), 770.
+
+Kumbasar, E., Rommey, A. K., Batchelder, W. H. (1994). Systematic biases in
+social perception. American Journal of Sociology, 100, 477-505.
+
+O’Connor, K. M., Gladstone, E. (2015). How social exclusion distorts social net-
+
+work perceptions. Social Networks, 40, 123-128.
+
+Simpson, B., Borch, C. (2005). Does power affect perception in social networks?
+Two arguments and an experimental test. Social Psychology Quarterly, 68(3),
+278-287.
+
+Simpson, B., Markovsky, B., Steketee, M. (2011). Network knowledge and the
+use of power. Social Networks, 33(2), 172-176.
+
+Siciliano, M. D., Yenigun, D., Ertan, G. (2012). Estimating network structure via
+random sampling: Cognitive social structures and the adaptive threshold method.
+
+Social Networks, 34(4), 585-600.
+
+18
+/n/nTranmer, M., Pallotti, F., Lomi, A. (2016). The embeddedness of organizational
+performance: Multiple Membership Multiple Classification Models for the anal-
+
+ysis of multilevel networks. Social Networks, 44, 269-280.
+
+Wasserman, S., Faust, K. (1994). Social Network Analysis: Methods and Appli-
+
+cations. Cambridge University Press, Cambridge.
+
+Zappa, P., and Lomi, A. (2015). The Analysis of Multilevel Networks in Or-
+ganizations Models and Empirical Tests. Organizational Research Methods, doi
+10.1177/1094428115579225
+
+19

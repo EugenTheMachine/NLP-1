@@ -1,0 +1,1965 @@
+Non-Malleable Extractors and Codes for Composition
+
+of Tampering, Interleaved Tampering and More
+
+Eshan Chattopadhyay*
+
+Cornell University
+
+eshancQ@cornell.edu
+
+Xin Lit
+
+John Hopkins University
+lixints@cs.jhu.edu
+
+November 5, 2018
+
+Ab
+
+stract
+
+Department of Computer Science,
+
+Non-malleable codes were introduced by Dziembowski, Pietrzak, and Wichs (JACM 2018)
+as a generalization of standard error correcting codes to handle severe forms of tampering
+on codewords. This notion has attracted a lot of recent research, resulting in various explicit
+constructions, which have found applications in tamper-resilient cryptography and connections
+to other pseudorandom objects in theoretical computer science.
+
+We continue the line of investigation on explicit constructions of non-malleable codes in the
+
+information theore
+
+ic setting, and give explicit constructions for several new classes of tampering
+
+3 of
+
+ses strictly generalize several previously studied class ampering func-
+udied split-state model which is a “compartmentalized”
+
+functions. These c
+
+tions, and in particular extend the well s
+
+1804,05228v2 [cs.CR] 2 Nov 2018
+
+‘arXiv
+
+model in the sense
+
+that the codeword is
+
+partitioned a prior into disjoint interval:
+
+Specifically, we give explicit non-malleable cod
+
+Interleaved spli
+by an adversary, and
+
+Linear function
+
+ampered with
+
+-state tampering:
+
+composed with sp
+ampered with by a sp.
+by a li
+
+Here
+hen tampered wit.
+it-sta'
+it-state adversary,
+near function. In
+
+h by a split-state tampering func
+
+and then the whole tampered co
+
+fact our results are stronger, and
+inear function composed with interleaved split-state tampering.
+
+s for tampering.
+
+es for the following classes of tampering functions.
+
+the codeword is partitioned in an unknown way
+
+ion.
+
+e tampering: In this model, the codeword is first
+
+eword is further
+
+we can handle
+
+e Bounded communication split-state tampering: In this model, the two split-state tamper-
+ing adversaries are allowed to participate in a communication protocol with a bounded
+communication budget.
+
+Our results are the first explicit constructions of non-malleable codes in any of these tamper-
+ing models. We derive all these results from explicit constructions of seedless non-malleable
+extractors, which we believe are of independent interest.
+
+Using our techniques, we also give an improved seedless extractor for an unknown interleaving
+of two independent sources.
+
+*Part of this work was done when the author was a postdoctoral researcher at the Institute for Advanced Study,
+Princeton, partially supported by NSF Grant CCF-1412958 and the Simons Foundation.
+‘Partially supported by NSF Grant CCF-1617713.
+/n/n1 Introduction
+
+1.1 Non-malleable Codes
+
+Non-malleable codes were introduced by Dziembowski, Pietrzak, and Wichs [DPW 18] as an elegant
+relaxation and generalization of standard error correcting codes, where the motivation is to handle
+much larger classes of tampering functions on the codeword. Traditionally, error correcting codes
+only provide meaningful guarantees (e.g., unique decoding or list-decoding) when part of the code-
+word is modified (i.e., the modified codeword is close in Hamming distance to an actual codeword),
+whereas in practice an adversary can possibly use much more complicated functions to modify the
+entire codeword. In the latter case, it is easy to see that error correction or even error detection
+xecomes generally impossible, for example an adversary can simply change all codewords into a
+fixed string. On the other hand, non-malleable codes can still provide useful guarantees here, and
+hus partially bridge this gap. Informally, a non-malleable code guarantees that after tampering,
+he decoding either correctly gives the original message or gives a message that is completely unre-
+ated and independent of the original message. This captures the notion of non-malleability: that
+an adversary cannot modify the codeword in a way such that the tampered codeword decodes back
+o a related but different message.
+
+The original intended application of non-malleable codes is in tamper-resilient cryptography
+DPW18], where they can be used generally to prevent an adversary from learning secret informa-
+ion by observing the input/output behavior of modified ciphertexts. Subsequently, non-malleable
+codes have found applications in non-malleable commitments [GPR16], public-key encryptions
+CMTV15], non-malleable secret sharing schemes [GK 18a,GK18b], and privacy amplification pro-
+ocols [CKOS18]. Furthermore, interesting connections were found to non-malleable extractors
+CG14b], and very recently to spectral expanders [RS18]. Along the way, the constructions of
+non-malleable codes used various components and sophisticated ideas from additive combinatorics
+ADL14,CZ14] and randomness extraction [CGL16], and some of these techniques have also found
+applications in constructing extractors for independent sources [Lil7]. Until today, non-malleable
+codes have become fundamental objects at the intersection of coding theory and cryptography.
+They are well deserved to be studied in more depth in their own right, as well as to find more
+connections to other well studied objects in theoretical computer science.
+
+We first introduce some notation before formally defining non-malleable codes.
+Definition 1.1. For any function f : S > S, f has a fixed point ats € S if f(s) = s. We say
+f has no fixed points inT CS, if f(t) #t for allt ET. f has no fixed points if f(s) 4 s for all
+ses.
+
+Definition 1.2 (Tampering functions). For any n > 0, let F, denote the set of all functions
+f :{0,1}" > {0,1}". Any subset of Fn is a family of tampering functions.
+
+We use the statistical distance to measure the distance between distributions.
+
+Definition 1.3. The statistical distance between two distributions D, and D2 over some universal
+set Q is defined as |D; — Do| = 4 aca |Pr[D, = d] — Pr[D2 = d]|. We say D, is e-close to D2 if
+|D; — Dg| < € and denote it by Di +. Da.
+
+To handle fixed points, we need to define the following function.
+
+a if « 4 same*
+copy(x,y) =
+
+y if « = same*
+/n/nFollowing the treatment in [DPW 18], we first define coding schemes.
+
+Definition 1.4 (Coding schemes). Let Enc : {0,1}* — {0,1}” and Dec : {0,1}” — {0,1}* U{L}
+be functions such that Enc is a randomized function (i.e., it has access to private randomness) and
+Dec is a deterministic function. We say that (Enc, Dec) is a coding scheme with block length n and
+message length k if for all s € {0,1}*, Pr[Dec(Enc(s)) = s] = 1, where the probability is taken over
+the randomness in Enc.
+
+We can now define non-malleable codes.
+
+Definition 1.5 (Non-malleable codes). A coding scheme C = (Enc, Dec) with block length n and
+message length k is a non-malleable code with respect to a family of tampering functions F C Fy
+and error € if for every f € F there exists a random variable Dy on {0, ye U {same*} which is
+independent of the randomness in Enc such that for all messages s € {0, ys, it holds that
+
+|Dec(f (Enc(s))) — copy(Dy, s)| < €.
+
+We say the code is explicit if both the encoding and decoding can be done in polynomial time. The
+rate of C is given by k/n.
+
+Relevant prior work on non-malleable codes. There has been a lot of exciting research on
+non-malleable codes, and we do not even attempt to provide a comprehensive survey of them.
+Instead we focus on relevant explicit constructions in the information theoretic setting, which is
+also the focus of this paper. One of the most studied classes of tampering functions is the so called
+split-state tampering, where the codeword is divided into (at least two) disjoint intervals and the
+adversary can tamper with each interval arbitrarily but independently. This model arises naturally
+in situations where the codeword may be stored in different parts of memory or different devices.
+Following a very successful line of work [DKO13,ADL14,CG14b,CZ14, ADKO15,CGL16,Li17, Lil],
+we now have explicit constructions of non-malleable codes in the 2-split state model with constant
+rate and constant error, or rate 2(log log n/ log n) with exponentially small error [Lil8]. For larger
+, recent work of Kanukurthi, Obbattu, and Sruthi [KOS17], and that of Gupta,
+Maji and Wang [GMW18] gave explicit constructions in the 4-split-state model and 3-split-state
+model respectively, with constant rate and negligible error.
+
+number of states
+
+The split state model is a “compartmentalized” model, where the codeword is partitioned a
+prior into disjoint intervals for tampering. Recently, there has been progress towards handling
+non-compartmentalized tampering functions. A work of Agrawal, Gupta, Maji, Pandey and Prab-
+hakaran [AGM*15] gave explicit constructions of non-malleable codes with respect to tampering
+functions that permute or flip the bits of the codeword. Ball, Dachman-Soled, Kulkarni and Malkin
+[BDKM16] gave explicit constructions of non-malleable codes against t-local functions for t < nim,
+However in all these models, each bit of the tampering function only depends on part of the
+codeword. A recent work of Chattopadhyay and Li [CL17] gave the first explicit constructions
+of non-malleable codes where each bit of the tampering function may depend on all bits of the
+codeword. Specifically, they gave constructions for the classes of linear functions and small-depth
+(unbounded fain-in) circuits. The rate of the non-malleable code with respect to small-depth cir-
+cuits was exponentially improved by a subsequent work of Ball, Dachman-Soled, Guo, Malkin, and
+Tan [BDG? 18}.
+Given all these exciting results, a major goal of the research on non-malleable codes remains to
+give explicit constructions for broader classes of tampering functions, as one can use the probabilistic
+method to show the existence of non-malleable codes with rate close to 1 — 6 for any class F of
+tampering functions with |F| < 2" [CG14a].
+
+/n/nOur results. We continue the line of investigation on explicit constructions of non-malleable
+codes, and give explicit constructions for several new classes of non-compartmentalized tampering
+functions, where in some classes each bit of the tampering function can depend on all the bits of
+the codeword. The new classes strictly generalize several previous studied classes of tampering
+functions. In particular, we consider the following three classes.
+
+1. Interleaved 2-split-state tampering, where the adversary can divide the codeword into two
+arbitrary disjoint intervals and tamper with each interval arbitrarily but independently. This
+model generalizes the split-state model and captures the situation where the codeword is
+
+partitioned into two halves in an unknown way by the adversary before applying a 2-split-state
+
+ampering function. Constructing non-malleable codes for this class of tampering functions
+was left as an open problem by Cheraghchi and Guruswami [CG14b].
+
+2. Composition of tampering, where the adversary takes two tampering functions and compose
+hem together to get a new tampering function. We note that function composition is a natural
+strategy for an adversary to achieve more powerful tampering, and it has been studied widely
+in other fields (e.g., computational complexity and communication complexity). Thus we
+delieve that studying non-malleable codes for the composition of known classes of tampering
+functions is also a natural and important direction.
+
+3. Bounded communication 2-split-state tampering, where the two tampering functions in a 2-
+split state model are allowed to have some bounded communication.
+
+We now formally define these classes and some related classes below. We use the notation that for
+any permutation 7 : [n] > [n] and any string x € [r]", y = x, denotes the length n string such that
+
+Yai) = Vi-
+
+e The family of 2-split-state functions 25S C Fon: Any f € 25S comprises of two functions
+fi: {0,1}” — {0,1}" and fy : {0,1}” — {0,1}”, and for any x,y € {0,1}", f(x,y) = (fi(z),
+fo(z)). This family of tampering functions has been extensively studied, with a long line of
+work achieving near optimal explicit constructions of non-malleable codes.
+
+e The family of linear functions Lin C F,: Any f € Lin is a linear function from {0,1}" to
+{0,1}" (viewing {0,1}" as F9).
+
+e The family of interleaved 2-split-state functions 2ISS C Fo,: Any f € 2ISS comprises of two
+functions f; : {0,1}" > {0,1}", fo : {0,1}" — {0,1}”, and a permutation 7 : [2n] — [2n].
+For any z = (a oy), € {0,1}2", where x,y € {0,1}", let f(z) = (fi(x) © fo(y))a (where o
+denotes the string concatenation operation).
+
+e The family of bounded communication 2-split-state functions (2,t) — CSS: Consider the fol-
+owing natural extension of the 2-split-state model. Let ¢ = (a,y) be a codeword in {0,1}?",
+where x is the first n bits of c and y is the remaining n bits of c. Let Alice and Bob be two
+ampering adversaries, where Alice has access to x and Bob has access to y. Alice and Bob
+run a (deterministic) communication protocol based on x and y respectively, which can last
+for an arbitrary number of rounds but each party sends at most t bits in total. Finally, based
+on the transcript and x Alice outputs x’ € {0,1}", similarly based on the transcript and y
+Bob outputs y’ € {0,1}". The tampered codeword is c = (2’, y’).
+
+e For any tampering function families F,G C F,, define the family FoG C F,, to be the set of
+all functions of the form f og, where f € F, g € G and o denotes function composition.
+/n/nWe now formally state our results. Our main result is an explicit non-malleable code with
+respect to the tampering class of Lin o 2ISS, i.e, linear function composed with interleaved 2-split-
+state tampering. Specifically, we have the following theorem.
+
+Theorem 1. There exists a constant 6 > 0 such that for all integers n > 0 there exists an explicit
+non-malleable code with respect to Lin o 2ISS with rate 1/n> and error 2” .
+
+This immediately gives the following corollaries, which give explicit non-malleable codes for
+interleaved 2-split-state tampering, and linear function composed with 2-split-state tampering.
+
+Corollary 2. There exists a constant 6 > 0 such that for all integers n > 0 there exists an explicit
+non-malleable code with respect to 21SS with rate 1/n® and error Qn
+
+Corollary 3. There exists a constant 6 > 0 such that for all integers n > 0 there exists an explicit
+non-malleable code with respect to Lino 25S with rate 1/n> and error 2-°
+
+Next we give an explicit non-malleable code with respect to bounded communication 2-split-
+state tampering.
+
+Theorem 4. There exists a constant 6 > 0 such that for all integers n,t > 0 with t < bn, there
+
+exists an explicit non-malleable code with respect to (2,t) — CSS with rate Q(loglogn/logn) and
+error Q-Q(n log log n/ logn)
+
+Prior to our work, no explicit non-malleable code of any rate was known for these tampering classes.
+
+1.2 Seedless non-malleable extractors
+
+Our results on non-malleable codes are based on new constructions of seedless non-malleable extrac-
+tors, which we believe are of independent interest. Before defining seedless non-malleable extractors
+formally, we first recall some basic notation from the area of randomness extraction.
+
+Randomness extraction is motivated by the problem of purifying imperfect (or defective) sources
+of randomness. The concern stems from the fact that natural random sources often have poor qual-
+ity, while most applications require high quality (e.g., uniform) random bits. We use the standard
+notion of min-entropy to measure the amount of randomness in a distribution.
+
+Definition 1.6. The min-entropy Hx(X) of a probability distribution X is defined to be
+min,(—log(Pr[X = 2])). We say a probability distribution X on {0,1}" is an (n, H..(X))-source
+and the min-entropy rate is H.(X)/n.
+
+It turns out that it is impossible to extract from a single general weak random source even for
+min-entropy n — 1. There are two possible ways to bypass this barrier. The first one is to relax
+1e extractor to be a seeded extractor, which takes an additional independent short random seec
+o extract from a weak random source. The second one is to construct deterministic extractors for
+special classes of weak random sources.
+
+Both kinds of extractors have been studied extensively. Recently, they have also been generalizec
+o stronger notions where the inputs to the extractor can be tampered with by an adversary.
+Specifically, Dodis and Wichs [DW09] introduced the notion of seeded non-malleable extractor in
+1e context of privacy amplification against an active adversary. Informally, such an extractor
+satisfies the stronger property that the output of the extractor is independent of the output of
+1e extractor on a tampered seed. Similarly, and more relevant to this paper, a seedless varian'
+
+/n/nof non-malleable extractors was introduced by Cheraghchi and Guruswami [CG14b] as a way to
+construct non-malleable codes. Apart from their original applications, both kinds of non-malleable
+extractors are of independent interest. They are also related to each other and have applications
+in constructions of extractors for independent sources [Lil7].
+
+We now define seedless non-malleable extractors. For simplicity, the definition here assumes
+that the tampering function has no fixed points. See Section 3 for a more formal definition.
+
+Definition 1.7 (Seedless non-malleable extractors). Let F C Fp be a family of tampering functions
+such that no function in F has any fixed points. A function nmExt : {0,1}" > {0,1}™ is a seedless
+(n,m, €)-non-malleable extractor with respect to F and a class of sources X if for every distribution
+X € X and every tampering function f € F,
+
+jnmExt(X),nmExt(f(X)) — U,,nmExt(f(X))| <e.
+
+Further, we say that nmExt is ¢'-invertible, if there exists a polynomial time sampling algorithm
+A that takes as input y € {0,1}, and outputs a sample from a distribution that is é'-close to the
+uniform distribution on the set nmExt7"(y).
+
+In the above definition, when the class of sources ¥ is the distribution U,,, we simply say that
+nmExt is a seedless (n,m, €)-non-malleable extractor with respect to F.
+
+Relevant prior work on seedless non-malleable extractors. The first construction of seed-
+less non-malleable extractors was given by Chattopadhyay and Zuckerman [CZ14] with respect to
+the class of 10-split-state tampering. Subsequently, a series of works starting with the work of Chat-
+topadhyay, Goyal and Li [CGL16] gave explicit seedless non-malleable extractors for 2-split-state
+tampering. The only known construction with respect to a class of tampering functions different
+from split state tampering is the work of Chattopadhyay and Li [CL17], which gave explicit seedless
+non-malleable extractors with respect to the tampering class Lin and small depth circuits. We note
+that constructing explicit seedless non-malleable extractors with respect to 2ISS was also posed as
+an open problem in [CG14b].
+
+Our results. We give the first explicit constructions of seedless non-malleable extractors with
+respect to the tampering classes Lin o 2ISS and (2,t) — CSS. Note that the first construction
+also directly implies non-malleable extractors with respect to the classes 2ISS and Lin o 25S. The
+non-malleable extractors with respect to Lino 2I1SS is a fundamentally new construction. The non-
+malleable extractor with respect to (2,t) — CSS is obtained by showing a reduction to seedless non-
+malleable extractors for 25S, where excellent constructions are known (e.g., a recent construction
+of Li [Lil8]).
+We now formally state our main results.
+
+Q(1)_g—n?) )
+
+Theorem 5. For all n > 0 there exists an efficiently computable seedless (n,n' -non-
+malleable extractor with respect to Lin o 21SS, that is gr invertible.
+
+This immediately gives the following two corollaries.
+Corollary 6. For all n > 0 there exists an efficiently computable seedless (n,n2Q), 2-9 ) non
+malleable extractor with respect to 21SS, that is 2 invertible.
+Corollary 7. For alln > 0 there exists an efficiently computable seedless (n,n2Q), 2-9 ) non
+
+malleable extractor with respect to Lin o 28S, that is 2 invertible.
+/n/nNext we give the non-malleable extractor with respect to (2,t) — CSS.
+
+Theorem 8. There exists a constant 6 > 0 such for all integers n,t > 0 witht < én, there exi
+
+efficiently computable seedless (n,Q (aeen)) 5 272m log logn/log”)) non-malleable extractor with
+gn
+
+respect to (2,t) — CSS, that is 2-0” leglogn/log”) invertible.
+
+San
+
+We derive our results on non-malleable codes using the above explicit constructions of non-
+malleable extractors. In particular we use the following theorem proved by Cheraghchi and Gu-
+ruswami [CG14b] that connects non-malleable extractors and codes.
+
+Theorem 1.8 ({CG14b]). Let nmExt : {0,1}" — {0,1}” be an efficient seedless (n,m, €)-non-
+malleable extractor with respect to a class of tampering functions F acting on {0,1}". Further
+suppose nmExt is ¢'-invertible.
+
+Then there exists an efficient construction of a non-malleable code with respect to the tampering
+family F with block length =n, relative rate ™ and error 2™¢ + é.
+
+1.3 Extractors for interleaved sources
+
+Our techniques also yield improved explicit constructions of extractors for interleaved sources, which
+generalize extractors for independent sources in the following way: the inputs to the extractor are
+samples from a few independent sources mixed (interleaved) in an unknown (but fixed) way. Raz
+and Yehudayoff [RY11] showed that such extractors have applications in communication complex-
+ity and proving lower bounds for arithmetic circuits. In a subsequent work, Chattopadhyay and
+Zuckerman [CZ16b] showed that such extractors can also be used to construct extractors for certain
+samplable sources, extending a line of work initiated by Trevisan and Vadhan [TV00]. We now
+define interleaved sources formally.
+
+Definition 1.9 (Interleaved Sources). Let X1,...,X, be arbitrary independent sources on {0,1}"
+and let x : [rn] — [rn] be any permutation. Then Z = (KX, 0...0 X,)q is an r-interleaved source.
+
+Relevant prior work on interleaved extractors. Raz and Yehudayoff [RY11] gave explicit
+extractors for 2-interleaved sources when both the sources have min-entropy at least (1 — 6)n for
+a tiny constant 6 > 0. Their construction is based on techniques from additive combinatorics and
+can output Q(n) bits with exponentially small error. Subsequently, Chattopadhyay and Zuckerman
+[CZ16b] constructed extractors for 2-interleaved sources where one source has entropy (1 — )n for
+a small constant y > 0 and the other source has entropy Q(logn). They achieve output length
+O(log n) bits with error n~2(),
+
+A much better result (in terms of the min-entropy) is known if the extractor has access to an
+interleaving of more sources. For a large enough constant C’, Chattopadhyay and Li [CL16] gave an
+explicit extractor for C-interleaved sources where each source has entropy k > poly(logn). They
+achieve output length k2@ and error n-2Q),
+
+Our results. Our main result is an explicit extractor for 2-interleaved sources where each source
+i . . —n 2
+has min-entropy at least 2n/3. The extractor outputs Q(n) bits with error 2~” ©
+
+Theorem 9. For any constant 6 > 0 and all integers n > 0, there exists an efficiently computable
+function i€Ext : {0,1}?" > {0,1}", m = Q(n), such that for any two independent sources X and
+Y, each on n bits with min-entropy at least (2/3 + 6)n, and any permutation m : [2n| > [2n],
+
+2Q(1)
+
+liExt((Xo Y)z) —Um| < 27”
+/n/n1.4 Open questions
+
+Non-malleable codes for composition of function classes We gave efficient constructions
+of non-malleable codes for the tampering class Lin o 2SS (and more generally Lin o ISS). Many
+natural questions remain to be answered. For instance, one open problem is to efficiently construct
+non-malleable codes for the tampering class 255 o Lin. It looks like one needs substantially new
+ideas to give such constructions. More generally, for what other interesting classes of functins F and
+G can we construct non-malleable codes for the composed class F 0 G? Is it possible to efficiently
+construct non-malleable codes for the tampering class F 0G if we have efficient non-malleable codes
+for the classes F and G?
+
+Other applications for seedless non-malleable extractors The explicit seedless non-malleable
+extractors that we construct satisfy strong pseudorandom properties. A natural question is to find
+more applications of these non-malleable extractors in explicit constructions of other interesting
+objects.
+
+Improved seedless extractors We construct an extractor for 2-interleaved sources that works
+for min-entropy rate 2/3. It is easy to verify that there exists extractors for sources with min-entropy
+as low as C logn, and a natural question here is to come up with such explicit constructions. Given
+the success in constructing 2-source extractors for low min-entropy [CZ16a, Lil8], we are hopeful
+that more progress can be made on this problem.
+
+1.5 Organization
+
+The rest of the paper is organized as follows. We use Section 2 to present an overview of our
+results and techniques. We use Section 3 to introduce some background and notation. We present
+our seedless non-malleable extractor construction with respect to Lin o 2ISS in Section 4. We
+use Section 5 to present our non-malleable extractor construction with respect to (2,t) — CSS.
+We present efficient sampling algorithms for our seedless non-malleable extractor constructions in
+Section 6. We use Section 7 to present an explicit construction of an extractor for interleaved
+sources.
+
+2 Overview of constructions and techniques
+
+Our results on non-malleable codes are derived from explicit constructions of invertible seedless
+non-malleable extractors (see Theorem 1.8). In this section, we focus on explicit constructions of
+seedless non-malleable extractors with respect to the relevant classes of tampering functions, and
+explicit extractors for interleaved sources.
+
+Seedless non-malleable extractors with respect to Lino2ISS. We construct a seedless non-
+malleable extractor nmExt : {0,1}" x {0,1}" > {0,1}, m = n®® such that the following hold:
+Let X and Y be two independent uniform sources, each on n bits. Let h : {0,1}?” + {0,1}°" be
+an arbitrary linear function, f : {0,1}” — {0,1}", g: {0,1}" > {0,1}” be two arbitrary functions,
+and 7 : [2n] + [2n] be an arbitrary permutation. Then,
+
+nmExt((X, Y),,), nmExt(h((f(X) o g(Y)).)) %. Um, nmExt(h((f(X) o g(Y))z)),
+/n/nwhere e = 2-"° | Notice that such an extractor is not possible to construct in general, for example
+when all f,g,h are the identify function. However, such an extractor exists when the composed
+function does not have fixed points. For simplicity, we ignore this issue related to fixed points
+in the proof sketch, and just mention that we have a reduction from the problem of constructing
+non-malleable codes to the problem of constructing a non-malleable extractor with no fixed points.
+The argument is similar to the argument in [CG14b] but more complicated since here we are dealing
+with more powerful adversaries. We refer the reader to Section 4 for more details.
+
+Our first step is to reduce the problem of constructing non-malleable codes with respect to
+Lin o 2ISS to constructing non-malleable extractors with the following guarantee. For strings x,
+y € {0,1}", we use x + y (or equivalently x — y) to denote the bit-wise xor of the two strings. Let
+X and Y to be two independent (n,n — nd )-sources and fi, f2, 91,92 € Fn be four functions that
+satisfy the following condition:
+
+e Vx € support(X) and y € support(Y), fi(x) + gi(y) 4 x or
+
+e Vx € support(X) and y € support(Y), fo(x) + go(y) # y-
+Then,
+
+JnmExt((X, Y),), nmExt((fi(X) + 91 (¥), fo(X) + 92(¥))x)—
+Un, nmExt((fi (X) + 91(¥), fo(X) + 92(¥))x)| <2
+
+2Q(1)
+
+The reduction can be seen in the following way: Define 7 = (x,0"), and 7 = (0",y)z. Similarly
+define f(x) = h((f(x),0)x) and g(y) = h((0", g(y))x)- Thus, (x,y) =F+9 and h((f(x), g(y))x) =
+f(x) +g(y). Define functions hy : {0,1}?” > {0,1}" and hg : {0,1}2" > {0,1}" such that h((f (2),
+g(y))r) = (ha (#,y), hola, y))x- Since h((f(x),9(y))r) = Fe) + gly), it follows that there exists
+functions f, 91, f2,92 € Fn such that for all x,y € {0,1}", the following hold:
+
+© ha(z,y) = file) +91(y), and
+
+© ho(x,y) = fo(x) + ga(y).
+
+Thus, h((f(x), 9(y))x) = ((f1(x) + gi(y)), (f2(x) + g2(y)))x- The loss of entropy in X and Y in the
+reduction (from n to n — n°) is due to the fact that we have to handle issues related to fixed points
+of the tampering functions, and we ignore it for the proof sketch here.
+
+The idea now is to use the framework of advice generators and correlation breakers with advice
+to construct the non-malleable extractor [Coh15,CGL16]. We informally define these objects below
+as we describe our explicit constructions.
+
+We start with the construction of the advice generator advGen : {0,1}?" — {0,1}*. Informally,
+advGen is a weaker object than a non-malleable extractor, and we only need that advGen((X,
+Y),) 4 advGen((fi(X) + 9 (Y), fo(X) + go(Y)).) (with high probability). Further, it is crucial
+that a < n, and in particular think of a = n7 for a small constant 7 > 0. Without loss of generality,
+suppose that Vx € support(X) and y € support(Y), fi(x) + gi(y) # x.
+
+Let Z = (X,Y)z. Let no =n® for some small constant 6’ > 0. We take two slices from Z, say
+Z, and Zg of lengths ny = ny and nz = 10no, for some constant cg > 1. Next, we use a good linear
+error correcting code (let the encoder of this code be E) to encode Z and sample n7 coordinates (let
+S denote this set) from this encoding using Z; (the sampler is based on seeded extractors [Zuc97]).
+Let W, = E(Z)s. Next, using Z2, we sample a random set of indices T C [2n], and let Z3 = Zr.
+
+/n/nWe now use an extractor for interleaved sources, i.e., an extractor that takes as input an unknown
+interleaving of two independent sources and outputs uniform bits (see Section 1.3). Let ifExt be
+this extractor (say from Theorem 9), and we apply it to Z3 to get R = ifExt(Zs3). Finally, let W2
+be the output of a linear seeded extractor! LExt on Z with R as the seed. The output of the advice
+generator is Z1 0 Zz 0 Z3 0 W, 0 Wo.
+
+The intuition that this works is as follows. We use the notation that if W = h((X,Y),) (for
+some function h), then W’ or (W)’ stands for the corresponding random variable after tampering,
+ie, A(((f1(X) + gi (Y)), (fo(X) + ge(Y)))x). Further, let X; be the bits of X in Z; for i = 1,2,3
+and Xy be the remaining bits of X. Similarly define Y,’s, i = 1,2,3,4. Without loss of generality
+suppose that |X| > |Y |, (where |a| denotes the length of the string a).
+
+The correctness of advGen is direct if Z; A Zi for some i € {1,2,3}. Thus, assume Z; = Zi for
+i = 1,2,3. It follows that hence S = S’,T = T’ and R= R’. Recall that (X,Y); =X + and
+h((f(X), 9(Y))x) = F(X) + g(Y). Since E is a linear code and LExt is a linear seeded extractor,
+the following hold:
+
+W,- Wi = (B(X + ¥ - F(X) —9(Y)))s,
+W2 — W = LExt(X + Y — f(X) — g(¥),R).
+
+Now the idea is the following: Either (i) we can fix K — f(X) and claim that X, still has enough
+min-entropy, or (ii) we can claim that K — F(®) has enough min-entropy conditioned on the fixing
+of (X2, X3). Let us first discuss why this is enough. Suppose we are in the first case. Then, we can
+fix X— f(X) and Y and argue that Z; is a deterministic function of X and contains enough entropy.
+Note that X + Y — f(X) — g(Y) is now fixed, and in fact it is fixed to a non-zero string (using the
+assumption that fi(x) + gi(y) # x). Thus, E(X + Y— F(X) — g(¥)) is a string with a constant
+fraction of the coordinates set to 1 (since E is an encoder of a linear error correcting code with
+constant relative distance), and it follows that with high probability (E(X + Y — f(X) — g(Y)))s
+contains a non-zero entry (using the fact that S is sampled using Zi, which has enough entropy).
+This finishes the proof in this case since it implies W; # W‘, with high probability.
+
+Now suppose we are in case (ii). We use the fact that Zo contains entropy to conclude that
+the sampled bits Z3 contain almost equal number of bits from X and Y (with high probability
+over Zo). Now we can fix Z2 without loosing too much entropy from Z3 (by making the size of
+Z3 to be significantly larger than Zz). Next, we observe that Zs is an interleaved source, and
+hence R is close to uniform. We now fix X3, and argue that R continues to be uniform. This
+follows roughly from the fact that any 2-source extractor is strong [Rao07], which easily extends
+to extractors for 2 interleaved sources. Thus, R now becomes a deterministic function of Y while
+at the same time, X — f(X) still has enough min-entropy. Hence, LExt(K — f(X),R) is close to
+uniform even conditioned on R. We can now fix R and LExt(Y — g(¥Y),R) without affecting the
+distribution LExt(K — f(X),R), since LExt(¥ — g(¥),R) is a deterministic function of Y while
+LExt(X — f(X),R) is a deterministic function of X conditioned on the previous fixing of R. It
+follows that after these fixings, W2 — W5% is close to a uniform string and hence W2 — W5 4 0
+
+gre)
+
+with probability 1 — , which completes the proof.
+
+The fact that we can only consider case (i) and case (ii) relies on a careful convex combination
+argument, which is in turn based on the pre-image size of the function 7 : {0,1}" — {0,1}?” defined
+as T(x) = (2,0"), — h((f(z),0"),) = %— f(x). The intuition is as follows. If conditioned on the
+
+TA linear seeded extractor is a seeded extractor where for any fixing of the seed, the output is a linear function of
+the source.
+/n/nfixing of r(X) = K — F(K) we have that X still has very high min-entropy, then we can take the
+slice Z, such that Xj still has enough entropy conditioned on the fixing of 7(X). On the other
+hand, if conditioned on the fixing of 7(X) we have that X does not have high min-entropy, then
+7(X) itself must have a large support size (or relatively high entropy). Therefore we can take the
+slice Zz and sample a short string Z3 such that conditioned on the fixing of (X2, X3), T(X) still
+has enough min-entropy. To make the whole argument work, we need to carefully choose the sizes
+of the three slices Z1,Z,Z3. In particular, we need to ensure that the size of (Z2,Z3) is much
+smaller than that of Zy.
+
+We now discuss the other crucial component in the construction, the advice correlation breaker
+ACB : {0,1}?” x {0,1}* > {0,1}. Informally, ACB takes 2 inputs, a source Z (that contains
+some min-entropy) and an advice string s € {0,1}*, and outputs a distribution on {0,1} with the
+following guarantee. If Z’ is the distribution of Z after tampering, and s’ € {0, 1}“ is another advice
+such that s 4 s’, then ACB(Z, s), ACB(Z’, s’) = Um, ACB(Z’, s’). Typically, we also assume some
+structures in Z (e.g., it consists of two independent sources or an interleaving of two independent
+sources). Our main result is an advice correlation breaker that satisfies
+
+ACB(X + Y, s), ACB(F(X) + g(¥), 8") &e Um, ACB(F(X) + g(¥), 8’),
+
+or any fixed strings s,s’ € {0,1}* where s # s’. We note that correlation breakers have found
+important applications in explicit constructions of seedless extractors [Coh15, Lil6, Lil8], thus we
+delieve the above correlation breaker can be of independent interest and potentially find other
+applications. By composing the advice generator advGen and the correlation breaker ACB in the
+natural way, we get the non-malleable extractor. Here we only briefly mention that the above advice
+correlation breaker crucially exploits the “sum-structure” of the source and the tampering function,
+he fact that extractors are samplers [Zuc97], and previous constructions of correlation breakers
+using linear seeded extractors [CL17]. We refer the reader to Section 4.2 for more details.
+
+Finally, it is far from obvious how to efficiently invert the extractor, or in other words, sample
+rom the pre-image of this non-malleable extractor. This is important since the encoder of the
+corresponding non-malleable code is doing exactly the sampling and thus we need it to be efficient.
+We use Section 6 to suitably modify our extractor to support efficient sampling. Here we briefly
+sketch some high level ideas involved. Recall Z = (Xo Y),. The first modification is that in all
+applications of seeded extractors in our construction, we specifically use linear seeded extractors.
+This allows us to argue that the pre-image we are trying to sample from is in fact a convex
+combination of distributions supported on subspaces. The next crucial observation is the fact that
+we can use smaller disjoint slices of Z to carry out various steps outlined in the construction. This
+is to ensure that the dimensions of the subspaces that we need to sample from, do not depend on
+the values of random variables that we fix. For the steps where we use the entire source Z (in the
+construction of the advice correlation breaker), we replace Z by a large enough slice of Z. However
+this is problematic if we choose the slice deterministically, since in an arbitrary interleaving of two
+sources, a slice of length less than n might have bits only from one source. We get around this by
+pseudorandomly sampling enough coordinates from Z (by first taking a small slice of Z and using
+a sampler that works for weak sources [Zuc97]).
+
+We now use an elegant trick introduced by Li [Lil7] where the output of the non-malleable
+extractor described above (with the modifications that we have specified) is now used as a seed to
+a linear seeded extractor applied on an even larger pseudorandom slice of Z. The linear seeded
+extractor that we use has the property that for any fixing of the seed, the rank of the linear map
+corresponding to the extractor is the same, and furthermore one can efficiently sample from the
+pre-image of any output of the extractor. The final modification needed is a careful choice of the
+
+10
+/n/nerror correcting code used in the advice generator. For this we use a dual BCH code, which allows
+us to argue that we can discard some output bits of the advice generator without affecting its
+correctness (based on the dual distance of the code). This is crucial in order to argue that the rank
+of the linear restriction imposed on the free variables of Z does not depend on the values of the
+bits fixed so far. We refer the reader to Section 6 for more details.
+
+Non-malleable extractors for (2,t)—CSS. We show that any 2-source non-malleable extractor
+that works for min-entropy n — 26n can be used as non-malleable extractor with respect to (2,
+t) — CSS for t < én. The tampering function h that is based on the communication protocol can
+be rephrased in terms of functions in the following way. Suppose the protocol lasts for @ rounds,
+there exist deterministic functions f; and g; for i = 1,...,¢, and f : {0,1}" x {0,1}** > {0,1}”
+and g : {0,1}" x {0,1}?! + {0,1}” such that the communication protocol between Alice and Bob
+corresponds to computing the following random variables: S; = fi(X),Ri = gi(Y,81),S2 = fo(X,
+$1,R1),...,S; = fi(X,S$1,...,Si-1,Ri,...,Ri-1), Ri = gi(Y¥,S1,...,8i,Ri,,...,Ri-1),...,Re =
+ge(Y,Si,...,8e,Ri,...,Re-1).
+
+Finally, X’ = f(X,Ri,...,Re,S1,...,S¢) and Y’ = g(Y,Ri,...,Rv,$i,...,8¢) correspond to
+
+the output of Alice and the output of Bob respectively. Thus, h(X, Y) = (X’, Y’).
+
+Similar to the way we argue about alternating extraction protocols, we fix random variables in
+the following order: Fix S,, and it follows that R; is now a deterministic function of Y. We fix
+Ri, and thus Sg is now a deterministic function of X. Thus, continuing in this way, we can fix all
+the random variables S1,...,S¢ and Ri,...,R¢ while maintaining that X and Y are independent.
+Further, invoking Lemma 3.1, with probability at least 1—27-°(™, both K and Y have min-entropy
+at least n —t — 6n > n — 26n since both parties send at most t bits.
+
+Note that now, X’ is a deterministic function of X and Y’ is a deterministic function of Y.
+Thus, any invertible 2-source non-malleable extractor for min-entropy n — 26n can be used. Our
+result follows by using such a construction from a recent work of Li [Lil8].
+
+Extractors for interleaved sources. We construct an explicit extractor ifExt : {0,1}2" >
+{0,1}, m = Q(n) that satisfies the following: Let X and Y be independent (n, k)-sources with
+k > (2/3 + 6)n, for any constant 6 > 0. Let 7 : [2n] — [2n] be any permutation. Then,
+
+|iExt((Xo Y),) —Um| <e.
+
+We present our construction and also explain the proof along the way, as this gives more intuition
+to the different steps of the construction. Let Z = (Xo Y),. We start by taking a large enough
+slice Z; from Z (say, of length (2/3 + 6/2)n). Let X have more bits in this slice than Y. Let X1 be
+the bits of X in Z; and X2 be the remaining bits of X. Similarly define Y; and Y2. Notice that
+X, has linear entropy and also that Xz has linear entropy conditioned on X,. We fix Y, and use
+a condenser (from works of Barak et al. [BRSW12] and Zuckerman [Zuc07]) to condense Z into
+a matrix with a constant number such that at least one of the row has entropy rate at least 0.9.
+Notice that this matrix is a deterministic function of X. The next step is to use Z and each row of
+the matrix as a seed to a linear seeded extractor get longer rows. This requires some care for the
+choice of the linear seeded extractor since the seed has some deficiency in entropy. After this step,
+we use the advice correlation breaker from [CL16] on Z and each row of the somewhere random
+source with the row number as the advice (similar to as done before in the construction of seedless
+non-malleable extractors for 2ISS), and compute the bit-wise XOR of the different outputs that we
+produce. Let V denote this random variable. Finally, to output Q(n) bits we use a linear seeded
+
+11
+/n/nextractor on Z with V as the seed. The correctness of various steps in the proof exploit the fact
+that Z can be written as the bit-wise sum of two independent sources, and the fact that we use
+linear seeded extractors. We refer the reader to Section 7 for more details.
+
+3 Background and notation
+
+We use U,, to denote the uniform distribution on {0,1}’.
+
+For any integer ¢ > 0, [¢] denotes the set {1,...,t}.
+
+For a string y of length n, and any subset S C [n], we use ys to denote the projection of y to the
+coordinates indexed by S.
+
+We use bold capital letters for random variables and samples as the corresponding small letter,
+e.g., X is a random variable, with « being a sample of X.
+
+For strings x,y € {0,1}", we use x+y (or equivalently x — y) to denote the bit-wise xor of the two
+strings.
+
+3.1 A probability lemma
+
+The following result on min-entropy was proved by Maurer and Wolf [MW97].
+
+Lemma 3.1. Let X,Y be random variables such that the random variable Y takes at € values.
+Then
+
+Pryvy[Hoo(X|Y = y) > Hoo(X) — log é— log(1/e)] > 1-e.
+
+3.2 Conditional min-entropy
+
+Definition 3.2. The average conditional min-entropy of a source X given a random variable W
+is defined as
+
+H..(X|W) = — log (Eww [max Pr[X = 2|W = wl) = —log (E [2M iw=))
+
+We recall some results on conditional min-entropy from the work of Dodis et al. [DORS08}].
+Lemma 3.3 ([DORS08]). For any € > 0,
+Pr,..w | Hoo(X|W =w) > Hy(X|W) — log(1/e)| >l-e.
+Lemma 3.4 ({[DORSO08]). If a random variable Y has support of size 2°, then Hoo(X/¥) >
+Hyo(X) — €.
+
+Definition 3.5. A function Ext : {0,1}" x {0,1}4 > {0,1}™ is a (k,€)-seeded extractor if for
+any source X of min-entropy k, |Ext(X,Ua) — Um| < €. Ext is called a strong seeded extractor if
+|(Ext(X, Ug), Ua) — (Um, Ua)| < €, where Um and Ug are independent.
+
+Further, if for each s € Ua, Ext(-,s) : {0,1}" > {0,1} is a linear function, then Ext is called
+a linear seeded extractor.
+
+We require extractors that can extract uniform bits when the source only has sufficient condi-
+tional min-entropy.
+
+12
+/n/nDefinition 3.6. A (k,)-seeded average case seeded extractor Ext : {0,1}" x {0,1}4 > {0,1}™
+for min-entropy k and error € satisfies the following property: For any source X and any arbitrary
+
+random variable Z with H..(X|Z) > k,
+
+Ext(X, Ug), Ze Um, Z.
+
+It was shown in [DORS08] that any seeded extractor is also an average case extractor.
+
+Lemma 3.7 ([DORSO08]). For any 6 > 0, if Ext is a (k,e)-seeded extractor, then it is also a
+(k + log(1/6),€ + 6)-seeded average case extractor.
+
+3.3. Samplers and extractors
+
+Zuckerman [Zuc97] showed that seeded extractors can be used as samplers given access to weak
+sources. This connection is best presented by a graph theoretic representation of seeded extractors.
+A seeded extractor Ext : {0,1}” x {0,1} — {0,1}™ can be viewed as an unbalanced bipartite
+graph Gxt with 2” left vertices (each of degree 2%) and 2” right vertices. Let N(x) denote the set
+of neighbors of x in Gxt.
+
+Theorem 3.8 ([Zuc97]). Let Ext : {0,1}" x {0,1}4 — {0,1}™ be a seeded extractor for min-entropy
+k and error «. Let D = 2¢. Then for any set RC {0,1}™,
+
+[a € {0,1}" : ||M(x) 0 R| — prD| > D}| < 2",
+where up = |R|/2™.
+
+Theorem 3.9 ([Zuc97]). Let Ext : {0,1}" x {0,1}4 — {0,1}™ be a seeded extractor for min-entropy
+k and error ¢. Let {0,1}4 = {m,...,rp}, D = 24. Define Samp(a) = {Ext(z,7r1),...,Ext(x,rp)}.
+Let X be an (n,2k)-source. Then for any set RC {0,1}”,
+
+Prx~x{||Samp(x) N R| — prD| > eD] < 2~*,
+
+where ur = |R|/2”.
+
+3.4 Explicit extractors from prior work
+We recall an optimal construction of strong-seeded extractors.
+
+Theorem 3.10 ({GUV09]). For any constant a > 0, and all integers n,k > 0 there exists a
+polynomial time computable strong-seeded extractor Ext : {0,1}" x {0,1}4 + {0,1}™ with d =
+O(log n + log(1/e)) and m = (1—a)k.
+
+The following are explicit constructions of linear seeded extractors.
+
+Theorem 3.11 ([Ire01, RRV02]). For every n,k,m € N and ec > 0, with m<k <n, there exists
+an explicit strong linear seeded extractor LExt : {0,1}" x {0,1}4 > {0,1}™ for min-entropy k and
+error €, where d =O (log?(n/e)/log(k/m)).
+
+A drawback of the above construction is that the seeded length is w(logn) for sub-linear min-
+
+entropy. A construction of Li [Lil5] achieves O(logn) seed length for even polylogarithmic min-
+entropy.
+
+13
+/n/nTheorem 3.12 ({Lil5]). There exists a constant c > 1 such that for every n,k € N with clog’ n <
+
+k <n and anye > 1/n?, there a polynomial time computable linear seeded extractor LExt : {0,
+1}" x {0,1}4 {0,1} for min-entropy k and error €, where d = O(logn) and m< Vk.
+
+A different construction achieves seed length O(log(n/e)) for high entropy sources.
+
+Theorem 3.13 ({CGL16, Lil7]). For all 6 > 0 there exist a,y > 0 such that for all integers
+n> 0, € > 2-7, there exists an efficiently computable linear strong seeded extractor LExt :
+{0,1}" x {0, 1}4 > {0,1} °4, d= O(log(n/e)) for min-entropy én. Further, for any y € {0,1}4, the
+linear map LExt(-,y) has rank ad.
+
+The above theorem is stated in [Lil7] for 6 = 0.9, but it is straightforward to see that the proof
+extends for any constant 6 > 0.
+
+We use a property of linear seeded extractors proved by Rao [Rao09].
+
+Lemma 3.14 ([Rao09]). Let Ext : {0,1}" x {0,1}4 > {0,1}™ be a linear seeded extractor for
+min-entropy k with error € < 3 Let X be an affine (n,k)-source. Then
+
+Pr {|Ext(X,u) —Um| > 0] < 2e.
+
+unUg
+
+We recall a two-source extractor construction for high entropy sources based on the inner
+product function.
+
+Theorem 3.15 ([CG88] ). For all m,r > 0, with ¢ = 2,n=rm, let X,Y be independent sources
+on Fi with min-entropy k1,k2 respectively. Let IP be the inner product function over the field Fg.
+Then, we have:
+
+IP(X,Y),X —Um,X| <6, |IP(X,Y),¥ — Un, | <e
+
+where € = Q7(kitke—n—m)/2_
+
+3.5 Advice correlation breakers
+
+We use a primitive called ‘correlation breaker’ in our construction. Consider a situation where
+we have arbitrarily correlated random variables Y',...,Y", where each Y* is on £ bits. Further
+suppose Y! is a ‘good’ random variable (typically, we assume Y! is uniform or has almost full min-
+entropy). A correlation breaker CB is an explicit function that takes some additional resource X,
+where X is typically additional randomness (an (n,k)-source) that is independent of {Y!,...,Y"}.
+Thus using X, the task is to break the correlation between Y! and the random variables Y?,...,
+Y", ie., CB(Y1, X) is independent of {CB(Y?,X),...,CB(¥", X)}. A weaker notion is that of an
+advice correlation breaker that takes in some advice for each of the Y’’s as an additional resource
+in breaking the correlations. This primitive was implicitly constructed in [CGL16] and used in
+explicit constructions of non-malleable extractors, and has subsequently found many applications
+in explicit constructions of extractors for independent sources and non-malleable extractors.
+
+We recall an explicit advice correlation breaker constructed in [CL16]. This correlation breaker
+works even with the weaker guarantee that the ‘helper source’ X is now allowed to be correlated
+to the sources random variables Y!,...,Y” in a structured way. Concretely, we assume the source
+to be of the form X + Z, where X is assumed to be an (n,k)-source that is uncorrelated with
+Y!,...,Y¥",Z. We now state the result more precisely.
+
+14
+/n/nTheorem 3.16 ([CL16]). For all integers n,n1,n2,k,ki,ko,t,d,h,A and any € > 0, such that
+d = O(log?(n/e)), kr > 2d + 8tdh + log(1/e), ni > 2d + 10tdh + (4ht + 1)n3 + log(1/e), and
+ng > 2d + 3td + log(1/e), let
+
+e X be an (n,ky)-source, X’ ar.v on n bits, Y! be an (n1,n1 — )-source, Z,Z' are r.v’s on n
+bits, and Y?,...,¥' be r.v’s on n1 bits each, such that {X,X'} is independent of {Z,Z',Y?,
+oy Xp
+
+: ;
+
+e id',..., id’ be bit-strings of length h such that for each i € {2,t}, id! 4 id’.
+Then there exists an efficient algorithm ACB : {0,1}™ x {0,1}” x {0,1} — {0,1}” which satisfies
+the following: let
+
+e Y} = ACB(Y!,X + Z, id’),
+
+e Y! = ACB(Y’,X! + Z' id’), i € [2,4]
+
+Then,
+Yue Yho ¥h XX! Honss)e) Ung, Ys. Yh, XX’.
+
+4 NM extractors for linear composed with interleaved split-state
+adversaries
+
+The main result of this section is an explicit non-malleable extractor against the tampering family
+Lin 0 21SS C Fan.
+
+Theorem 4.1. For all integers n > 0 there exists an explicit function nmExt : {0,1}?” — {0,1}”,
+m= n2Q) , such that the following holds: For any linear function h : {0, yen — {0, 1}?", arbitrary
+tampering functions f,g € Fn, any permutation m : [2n] > [2n] and independent uniform sources
+X and Y each on n bits, there exists a distribution Dp, pg. on {0,1}™ U {same*}, such that
+
+Qa)
+
+InmExt ((X o ¥),), nmExt(h((f(X) 0 g(Y))x)) — Um, copy(Dr,j.n-Um)| <2"
+
+Our first step is to show that in order to prove Theorem 4.1 it is enough to construct a non-
+malleable extractor satisfying Theorem 4.2.
+
+Theorem 4.2. There exists a5 > 0 such that for all integers n,k > 0 withn > k>n—n°, there
+exists an explicit function nmExt : {0, 1}?" => {0,1}", m= n2Q) such that the following holds:
+Let X and Y be independent (n,n — n®)-sources, am: [2n] — [2n] any arbitrary permutation and
+arbitrary tampering functions fi, fo,91,92 € Fn that satisfy the following condition:
+
+e Vx € support(X) and y € support(Y), fi(x) + gi(y) 4x or
+
+e Vx € support(X) and y € support(Y), fo(x) + ga(y) #y-
+Then,
+
+|nmExt((X o Y),-),nmExt(((fi(X) + g1(¥)) © (fo(X) + g2(¥)))x)—
+Um, nmExt(((fi(X) + 91(¥)) © (fo(X%) + g2(¥)))x)] <2
+
+21)
+
+15
+/n/nProof of Theorem 4.1 assuming Theorem 4.2. Define f(x) = h((f(x)o0”),) and g(y) = h((O"oy),x)-
+Thus, h((f(x) 0 g(y))x) = f(x) + gly). Define functions hy : {0,1}?” — {0,1}" and hg : {0,1}?? =
+{0,1}”" such that h((f(x) 0 g(y))r) = (hi(a,y) © ho(x,y))x- Since h( f(x), 9(y)) = f(x) + gy), it
+follows that there exists functions f, 91, f2,g2 € Fn such that for all x,y € {0,1}”, the following
+hold:
+
+e hi(x,y) = fil) + gi(y), and
+© ho(x,y) = fo(x) + galy).
+
+Thus, h((f(x) o 9(y))x) = ((fil@) + gi(y)) © (fa(x) + g2(y))) x
+
+Now, the idea is to show that ((K o Y),, ((f1(X) + gi(¥)) © (fo(X) + go(¥)))x) is 27"
+close to a convex combination of ((X o Y),,(Xo Y),) and distributions of the form ((X’o Y’),,
+((m(X) + 1(Y)) © (n2(X) + v2(¥)))x), where X’ and Y’ are independent (n,n — n°)-sources and
+™m, 2,11, V2 are deterministic functions in F,, satisfying the conditions that:
+
+21)
+
+e Vx € support(X’) and y € support(Y’), m(x) + ™(y) 4 x or
+
+e Vx € support(X’) and y € support(Y’), no(x) + ve(y) # y.
+
+Theorem 4.1 is then direct from from Theorem 4.2.
+Let no = n°. For any y € {0,1} and any function 7 : {0,1}” + {0,1}”, let n~!(y) denote the
+set {z € {0,1}" : n(z) = y}. We partition {0,1}” into the following two sets:
+
+Ty = {y € {0,1}" : |g '(ai(y))| = 2"-™}. Py = {0,1}"\T.
+
+Let Y; be uniform on Ty and Y2 be uniform on T'2. Clearly, Y is a convex combination of Y; and
+Y>2 with weights w; = |[1|/2", i = 1,2. If wie < 2-0/2 we ignore the corresponding source and
+add an error of 2~"°/2 to the extractor. Thus, suppose w; > Q-no/2 for j= 1,2. Thus, Y; and Y2
+each have min-entropy at least n — n9/2.
+
+We claim that gi(Y2) has min-entropy at least no/2. This can be seen in the following way.
+For any y € Ts, |g; ‘(gi(y))| < 2"-"°, and hence it follows gi(Y2) has min-entropy at least (n —
+no/2) — (n — no) = no/2. Thus, clearly for any x € {0,1}", «+ g1(Y2) # x with probability at
+least 1 — 2-0/2, We add a term of 2-"°” to the error and assume that X + gi(Y2) # X. Thus,
+(Xo Ya)x, ((fi(X) + gi(¥2)) 0 (fi(%) + gi (Y2)))x is indeed 2-7 close to a convex combination
+of distributions of the required form.
+
+Next, we claim that for any fixing of g;(Yj), the random variable Y; has min-entropy at least
+n— no. This is direct from the fact that for any y € Ts, gp 1(gi(y))| > 2"-"°. We fix gi (¥1) = 9,
+and let fig(a) = fi(z) +g. Thus, fig(X) = fi(X) + g1(¥1). We now partition {0,1}”" according
+to the fixed points of f,,. Let
+
+Ai = {a: fi(x) =z}, Ao = {0,1}" \ Ai.
+
+Let Xj be a flat distribution on A; and X2 be a flat distribution on Ag. If |Ai| < gn—no/2
+we ignore the distribution X, and add an error of gn—no/2 to the analyis of the non-malleable
+extractor. Further, it is direct from definition that f;(X2) +g 4 X». We now handle to case when
+A, > 2"-"0/2_ Note that in this case, Ay(X1) > n—1no/2. The idea is now to partition Aj into
+two sets based on the pre-image size of f2 similar to the way we partioned the support of Y based
+on the pre-image size of g;. Define the sets
+
+Au ={x€ Ar: |fy"(fa(a)) Ai] > 277}, Aw =Ai\An.
+
+16
+/n/nLet X1, be flat on Ay, and Xj2 be flat on Ajo. Clearly, X, is a convex combination of
+the sources X11 and Xj. If Ay or Ajo is smaller than 2”~3"0/ 4 we ignore the corresponding
+distribution and add an error of 2~”°/4 to the error analysis of the non-malleable extractor. Thus
+suppose Aj; > gn—3no/4 for j= 1,2. Thus, Xj; and X12 both have min-entropy at least n— 3no/4.
+
+We claim that f2(Xi2) has min-entropy at least no/4. This can be seen in the following way.
+For any x € Ajo, fs (fo(x)) NAy| < 2"-"°, and hence it follows f2(X12) has min-entropy at least
+(n — 3no/4) — (n — n9) = 9/4. Thus, clearly fo(Xi2) + g2(¥i1) # Yi with probability at least
+1—2-"0/4, As before, we add an error of 2- to the error, and assume that f2(X12)+92(Y1) 4
+Yi. Thus, (X12 © Yi)x,((fi(X12) + m(¥2)) © (fi(Xia) + 91(¥2)))q is indeed 2-0
+convex combination of distributions of the required form.
+
+-close to a
+
+Next, we claim that for any fixing of f2(Xi1), the random variable X;; has min-entropy at
+least n — no. This is direct from the fact that for any a € Aq, | fy '(fi(w)) Ai| > 2"7°. We fix
+fo(X11) = A, and let go,(y) = A + go(y). Thus, go,(¥) = fi(X) + gi(¥1). We now partition T)
+according to the fixed points of fi,,. Let
+
+Tu = {y: g2,a(y) = y}, Ty = {0,1}"\Tu.-
+
+Let Y,; be a flat distribution on Ij; and Yj be a flat distribution on Tyg. It follows from
+
+definition that (fi (X11) + 91(Y11), fo(X11) + 92(¥i1)) = (Ka, Yur). Further, fx(%ur) + 92(Yi2) #
+e . 1
+
+Yi2, and hence (Xu ° Yue), ((fi (X11) + gi(Y12)) ° (fi (X11) + gi(Y12)))x is 27” ( > close toa
+
+convex combination of distributions of the required form. This completes the proof. Oo
+
+In the rest of the section, we prove Theorem 4.2. We assume the setup given from Theorem 4.2.
+Thus, X and Y are independent (n,n — n°)-sources, 7 : [2n] > [2n] is an arbitrary permutation
+and f1, fo,91,92 € Fn satisfy the following conditions:
+
+e Vx € support(X) and y € support(Y), fi(a) + gi(y) 4 x or
+e Vx € support(X) and y € support(Y), fo(a) + go(y) Z y-
+
+We use the following notation: if W = h((Xo Y),) (for some function h), then we use to W’
+or (W)’ to denote the random variable h(((f1(X) + gi(Y)) © (fo(X) + ge(Y))),). Further, define
+X= (K00")q, ¥ = (0"0Y)e, A(X) = (fi(X) 00"), fo(X) = (0" 0 fo(X) ns m(¥) = ((¥)00") x
+and g2(Y) = (0" 0 go(Y))zx. It follows that Z = X+Y and Z’ = fi(X) + gi(Y) + fo(X) + g2(Y).
+
+We use Section 4.1 to construct an advice generator and Section 4.2 to construct an advice
+correlation breaker. Finally, we present the non-malleable extractor construction in Section 4.3.
+
+4.1 An advice generator
+
+Lemma 4.3. There exists an efficiently computable function advGen : {0, 1}" x {0,1}" > {0,1}™,
+
+n4 = n°, such that with probability at least 1 — 2 over the fixing of the random variables
+{advGen((X o Y),), advGen(((f1(X) + g1(¥)) © (fo(X) + g2(Y)))x)}, the following hold:
+
+e {advGen((X o Y),) # advGen(((fi(X) + m(¥)) o (fo(X) + g2(¥)))x)},
+
+e X and Y are independent,
+
+e Hx(X) > k—2n°, Hx(Y) > k—2n’.
+
+17
+/n/nWe prove the above lemma in the rest of this subsection. We claim that the function advGen
+computed by Algorithm 1 satisfies the above lemma. We first set up some parameters and ingre-
+dients.
+
+e Let C be a large enough constant and 6’ = 6/C.
+e Let no = ne, n= no’, ng = 10no, for some constant co that we set below.
+
+e Let E: {0,1}°" > {0,1}” be the encoding function of a linear error correcting code C with
+constant rate a and constant distance 6.
+
+e Let Exty : {0,1}™ x {0,1}% — {0,1}'83) be a (n1/20, 8/10)-seeded extractor instantiated
+using Theorem 3.10. Thus d, = c; log nj, for some constant c;. Let D, = 2% = ni.
+
+e Let Samp, : {0,1}! > [ng]? be the sampler obtained from Theorem 3.9 using Ext.
+
+e Let Exty : {0,1} x {0,1}@ — {0, 1}!°8@") be a (m2/20, 1/ng)-seeded extractor instantiated
+using Theorem 3.10. Thus dz = c2logn2, for some constant c2. Let Dg = 2d. Thus Dg =
+2% = nf.
+
+e Let Samp, : {0,1}"2 — [2n]?2 be the sampler obtained from Theorem 3.9 using Ex’
+
+ie
+
+e Set co = 2c2.
+
+e Let ifExt : {0,1}?2 > {0,1}”"° be the extractor from Theorem 7.1.
+
+e Let LExt : {0,1}?" x {0,1}"° + {0,1}"° be a linear seeded extractor instantiated from
+Theorem 3.15 set to extract from min-entropy 71/100 and error 2-270)
+
+Algorithm 1: advGen(z)
+
+Input: Bit-string z = (x0 y)q of length 2n, where x and y are each n bit-strings and
+m : [2n] > [2n] is a permutation.
+Output: Bit string v of length nq.
+
+Let 21 = Slice(z,n1), z2 = Slice(z, ng).
+Let S = Samp, (21).
+
+Let T = Samp(z2) and z3 = zr.
+
+Let r = i€Ext(zs3).
+
+Let w) = (E(z))s.
+
+Let w2 = LExt(z,r).
+
+Output v = 21 0 20 230 W1 0 We.
+
+Noor wner
+
+2(1)
+
+Lemma 4.4. With probability at least 1-27" ©, VA V'.
+
+Proof. We prove the lemma assuming fi(X) + gi(¥Y) # X. The proof in the other case (ie.,
+fo(X) + 92(Y) 4 Y) is similar and we skip it.
+First observe that the lemma is direct if Z; 4 Zor Zp 4 Z or Zz A Z4. Thus, we can assume
+i = Zi for i= 1,2,3. It is easy to see that S = 8’, T = T’, and Zy = Z}.
+
+Now observe that
+
+Z-Z=X+Y — fi(X) — n(¥) — fo(X) — mY).
+
+18
+/n/nNote that Z— Z’ 4 0 which follows from our assumption that f)(X) + 9(Y) # X.
+
+Now define the function hy : {0,1}2" > {0,1}?” as hi(z) = 2— fi(z)— fo(z) and he : {0,1}?" =
+{0,1}? as ho(z) = 2 — gi(z) — go(z).
+
+Thus,
+
+Z—Z' =hy(X) + ho(¥).
+
+Let X; be the bits of X in Z; for i = 1,2,3 and Xy be the remaining bit of X. Similarly define
+Yj’s, i = 1,2,3,4. Without loss of generality suppose that |Xi| > |Yi|, (where |a| denotes the
+length of the string a).
+
+Let Tc {0, 1yer denote the support of the source X. We partition I into two sets T, and Ty
+according to the pre-image size of the function h, in the following way. For any z € {0, 1}?", let
+h,(z) denote the set {y € {0,1}2” : hi(y) = 2}.
+
+Let np, = 71/50. Define
+
+Ta={zeT: lay (hi(z)) aT] >2"-"}, T,=P\Th.
+
+Let pa = Pr[X € T,] and p, = Pr[X € IT]. Let X, be the source supported on I, with the
+probability law Pr[Xq =2z)= a . Pr[xX = z]. Also define X; supported on Ty with the probability
+law Pr[X_ = 2] = 2 -Pr[X = 2].
+
+Clearly X is a convex combination of the distributions X, and Xj), with weights p, and pp,
+respectively. If any of pq or py is less that 2~"°, we ignore the corresponding source and add it to
+the error. Thus suppose both p, and py are at least 2-"°. This implies that both K, and X, have
+min-entropy at least n — 2ng. We record the following two bounds that are direct from the above
+definitions.
+
+e For any fixing of hi (Xa) = %q, Xq has min-entropy at least n — Np.
+e The distribution h,(X,) has min-entropy at least np, — 2no.
+
+We introduce some notation. For any random variable v = n(X,Y) (where 77 is an arbitrary
+deterministic function), we add an extra a or b to the subscript and use vq to denote the random
+variable 7(Xq,Y) and 1% to denote the random variables (X,,Y) respectively. For example,
+
+‘a = fi(Xa) + 91(Y) + fo(Xa) + 92(¥). Further we use X, to denote the distribution on n bits
+such that X_ = (X,00"),. We similarly define the distribution X).
+
+We prove the following two statements:
+
+2Q(1)
+
+1. Wia — Wi, 4 0 with probability 1— 2-”
+
+aa)
+
+2. Wo, — W5, 40 with probability 1— 2-”
+It is direct that the lemma follows from the above two inequalities.
+We begin with the proof of (1). Since E is a linear code, we have
+Wa Wie = (E(Za — Zi))s.-
+= (E(hi (Xa) + heo(¥)))s..-
+Now fix the random h1(Xq), and it follows that X, has min-entropy at least n—mnp. Recall that we
+
+assumed |X1| > /¥i|. Thus, X1,q has min-entropy at least n1/2— ny —1no > ni/10 with probability
+
+19
+/n/nat least 1 —- 27"°. Further fix Y, and note that this does not affect the distribution of X,,. This
+fixes E(Z_—Zi,). Further Z, 4 Z/,, the E(Z,—Z/,) contains 1’s at least 8 fraction of its coordinates.
+Recalling that S, = Samp,(Zj,<), it now follows from Theorem 3.9 that with probability at least
+pager (E(Zq — Zi))s is a non-zero string (and hence Wi, — W},, #0). This completes the
+proof of this case.
+
+We now proceed to prove (2). Using the fact that LExt is a linear seeded extractor, it follows
+that
+
+Wo» — Wy, = LExt(Z, — Zj, Ro)
+= LEx (hi(Xp), R») + LExt(h2(Yp), R,).
+
+Without loss of generality, suppose X has more bits in Z2 (the argument is identical in the other
+case). Since Xj» has min-entropy at least n — 2ng, it follows that Xz») has min-entropy at least
+} — 3no > 39 with probability at least 1 —27"°. Fix the bits of Y in Zo, and thus Zo, is a
+deterministic function of X2». Recall that T, = Samp (Zz). It is now straightforward to see that
+with probability 1-2-”" over the fixing of Xoo, |Tp|-(1/2—0(1)) < |T,A7({n])| < |Tp]-(1/2+0(1).
+Recall |7}| = Dz. We fix X24 such that (1/2 —o(1))D2 < |T,Nx([n])| < (1/2+ 0(1))D2. Thus, Zs
+contains at least (1/2 — o(1))D2 bits from both X, and Y. It follows that both X3, and Y both
+have min-entropy at least (1/2 — 0(1))D2 — 2ng — ng = (1/2 — 0(1))Dy2 (even with the conditionings
+
+so far), and hence Ry is 2-7") Close to uniform. We argue this this hold even conditioned on
+X3,. This follows roughly from the fact that any 2-source extractor is strong [Rao07] which easily
+extends to interleaved extractors. We fix X3,, and thus Ry is now a deterministic function of Y.
+
+Next, we note that hj(X»,) has min-entropy at least (n — 2ng) — (n — np) — ne — Dz — 19
+Np — 8n9 — Dz — nz > Npy/2 (with probability 1 — gon). Thus, LExt(h;(X,), Re) is gone)
+to uniform. We fix Rp and LExt(hi(X,), Rp) continues to be close to uniform using the fact that
+LExt is a strong-seeded extractor. Further, LExt(hi(X»,), Ry) is now a deterministic function of
+X, and we can fix LExt(he(Y,),R,) which is a deterministic function of Y. It thus follows that
+W2, — Ws, # 0 with probability 1 — gone) using the fact that LExt(h;(X,), Ry) is close to
+
+uniform. This completes the proof of (2). The fact that V and V’ can be fixed such that XK and
+a)
+)
+
+-close
+
+Y remain independent with min-entropy at least k — 2n° (with probability 1— 27” is easy to
+verify from the construction. This completes the proof of Lemma 4.4. oO
+
+4.2 An Advice Correlation Breaker
+
+We recall the setup of Theorem 4.2. X and Y are independent (n,k)-sources, k > n — no, ©:
+[2n] + [2n] is an arbitrary permutation and f1, f2, 91,92 € Fn satisfy the following conditions:
+
+e Vx € support(X) and y € support(Y), fi(x) + gi(y) 4 x or
+
+e Vx € support(X) and y € support(Y), fo(x) + go(y) # y-
+
+Further, we defined the following: K = (Ko 0")z, Y = (00 Y)a, fi(X) = (fi(X) 0 0%,
+fo(X) = (00 fo(K))a, (VY) = (gi (¥)00"), and go(Y) = (0 0g2(Y)),. It follows that Z = K+YV
+and Z! = fi(X) + g1(Y) + fo(X) + 92(¥). Thus, for some functions f,g € Fon, Z’ = f(K)+9(Y).
+
+Let X’ = f(X) and Y’ = g(Y).
+The following is the main result of this section. Assume that we have some random variables
+such that X and Y continue to be independent, and H.(X), Ho(Y) > k—2n°.
+
+20
+/n/nLemma 4.5. There exists an efficiently computable function ACB : {0,1}2” x {0,1}™ — {0,1}”,
+
+ny =n? and m=n2Q, such that
+
+ACB(X + Y,w), ACB(f(X) + g(Y), w’) &. Um, ACB(f(X) + g(Y), w’),
+
+for any fixed strings w,w' € {0,1}™ with w Aw".
+
+We use the rest of the section to prove the above lemma. In particular, we prove that the
+function ACB computed by Algorithm 2 satisfies the conclusion of Lemma 4.5.
+
+We start by setting up some ingredients and parameters.
+e Let 6 > 0 be a small enough constant.
+e Let ng = n°, where 6, = 26.
+
+e Let LExt; : {0,1}"2 x {0,1}4 > {0,1}”, d; = mg, be a linear-seeded extractor instantiated
+from Theorem 3.11 set to extract from entropy k; = n2/10 with error e¢; = 1/10. Thus
+d= Clog ng, for some constant C,. Let D = 24 = n®, 5) = 2C}6.
+
+e Set 5’ = 200} 6.
+
+e Let LExty : {0,1}?” x {0,1}4 > {0,1}™, ng = n®* be a linear-seeded extractor instantiated
+from Theorem 3.11 set to extract from entropy ko = 0.9k with error €2 = 2-UVh) = gone)
+such that the seed length of the extractor LExt2 (by Theorem 3.11) is dj.
+
+e Let ACB’ : {0,1}"4e" x {0,1}Mact’ x {0,1}Maco” — {0,1}"2«0h, be the advice correlation
+breaker from Theorem 3.16 set with the following parameters: nay = 2n,N1,ackh = Na,
+N2,acbhh = ™M = O(n), tach’ = 2D haw = m1 + d,€acy = a doch! = O(log? (n/eact’));
+ach’ = 0. It can be checked that by our choice of parameters, the conditions required for
+Theorem 3.16 indeed hold for ky acy = ne,
+
+Algorithm 2: ACB(z)
+Input: Bit-strings z = (wo y), of length 2n and bit string w of length n1, where x and y are
+each n bit-strings and 7 : [2n] — [2n] is a permutation.
+
+Output: Bit string of length m.
+
+1 Let z = Slice(z, ng).
+
+2 Let v bea D x n3 matrix, with its i’th row v; = LExti(z1, i).
+
+3 Let r bea D Xx ng matrix, with its ?’th row r; = LExto(z, v;).
+
+4 Let s bea D x m matrix, with its 7’th row s; = ACB'(r;, z,w 074).
+5 Output OP si.
+
+Let X, be the bits of X in Z, and X» be the remaining bit of X. Define Y; and Y9 similarly.
+
+Without loss of generality suppose that |Xj| > /Y¥i|. Let X; = Slice(X,nz) and Y; = Slice(Y,
+ng). Define X, = Slice(f(X),n2) and ¥7 = Slice(g(¥), nz). It follows that Z, = Ky + ¥, and
+(=X),+Y}.
+
+Claim 4.6. Conditioned on the random variables Y.Vi, {LExto(X, LExt;(Ky + Yi,1))}2,,
+{LExts(X , LExt:(X} +Yi.i)}iewy X1 and Xj, the following hold:
+
+21
+/n/n. . nfl
+e the matric R is 2-7°
+
+-close to a somewhere random source,
+e R andR' are deterministic functions of Y,
+
+a a
+e Hy(X)>n-n®?, Hx(Y)>n—n°.
+
+Proof. By construction, we have that for any j € [D],
+
+R; = LExte(Z, LExti (Zi, 7))
+= LExto(X + Y, LExt:(Xi + Yi, /))
+= = LExto(X, LExt;(X1 +¥Vij i)) + LExto(Y, LExt;(X1 + Y1,7))
+
+Similarly,
+
+Ri, = LExt,(X’, LExt) (Xj + Yj, j)) + LExto(¥’, LExt; (Xj + Yj, j)).
+
+Fix the random variables Y.,Y}. Note that after these fixings, Y has min-entropy at least k —
+2n,—nz > 0.9k. Now, since LExtz is a strong seeded extractor for entropy 0.9k, it follows that there
+exists a set TC {0,1}, |T| > (1— ez)2”, such that for any j € [7], |LExte(Y, 7) —Un,| < fe.
+
+Now viewing LExt, as a sampler (see Section 3.3) using the weak source Xi, = =X, +77, it
+follows by Theorem 3.9 that
+
+Pr(|{LExt (Xi y,,é) 2 € (0, 4} NT| > (1— Ve — a:)D] > 1 — 2022 = 1-2
+We fix Xj, and it follows that with probability at least 1 — gore {LExti( (X1 aot) i te
+{0,1}40T #0, and thus there exists a j € [D] such that LExte(Y, LExt;(Xq + Yi, j)) is gn
+close to U,, and is a deterministic function of Y.
+
+We now fix the random variables Xi, {LExto(X, LExt;(X+Y7,i))}2y, {LExt(X’, LExt;(X7 +
+Vi, i))}2.,, and note that LExto(¥, LExt;(Xi + Yj,7)) continues to be 2-7 close to U,,,. It
+follows that R,; is 2-n close to U,,. Further, for any i € [D], the random variables R; and Rj
+are deterministic functions of Y. Finally, note that X and Y remain independent after these condi-
+tionings, and H,.(X) > n—3n,—2ng—2Dn4 > n—n0%2 and Hy(Y) > n-3n1—n2 > n—n®, O
+
+Lemma 4.5 is now direct from the next claim.
+
+Claim 4.7. There exists 7 € [D| such that
+
+Sj, {Sihiepy\y ©y-n20) Um, {Si}iepnj\j-
+
+Proof. Fix the random variables: WW. Y,,Y1, {LExt2(X, LExt;(X) + Yi, 1))}2,, {LExta( (x,
+LExt;(X, + Yj, ‘))}ie(pj, Xi and X|. By Lemma 4.3, we have that with otis at least
+1- gone) W 4W’. Further, by Claim 4.6 we have that R and R’ are deterministic functions
+of Y, and with probability at least 1 — ane there exists j € [D] such that R,; is ge) close
+to uniform, and H.(X) > Nach —n* > n?, Recall that Z =X + Y and Z' =X’ +’. It now
+follows by Theorem 3.16 that
+
+2a)
+
+ACB'(R;,Z, Wo j), {ACB'(R;,X + ¥, W 01) }ieip\j, {ACB (Ri, X’ + VW! 01) frei) ns
+>
+
+Um, {ACB(R;, X + ¥, W 0 i) }iepp\j, {ACB (Ri, X + YW’ ot) ein]
+
+This completes the proof of the claim. oO
+
+22
+/n/n4.3. The non-malleable extractor
+
+We are now ready to present the construction of i(NM that satisfies the requirements of Theorem 4.2.
+
+6 Ql)
+
+e Let 6 > 0 be a small enough constant, ny = n° and m =n"),
+e Let advGen : {0,1}2" — {0,1}, nj =n, be the advice generator from Lemma 4.3.
+
+e Let ACB : {0,1}?” x {0,1}™ — {0,1}™ be the advice correlation breaker from Lemma 4.5.
+
+Algorithm 3: i/NM(z)
+
+Input: Bit-string z = (xo y), of length 2n, where x and y are each n bit-strings, and
+m : [2n] > [2n] is a permutation.
+
+Output: Bit string of length m.
+
+1 Let w = advGen(z).
+
+2 Output ACB(z, w)
+
+We prove that the function i(NM computed by Algorithm 3 satisfies the conclusion of Theorem 4.2
+as follows. Fix the random variables W, W’. By Lemma 4.3, it follows that X remains independent
+of Y, and with probability at least 1 — 2-"° , H.(X) > k — 2n, and H,(Y) > k — 2n, (recall
+k>n-—n*). Theorem 4.2 is now direct using Lemma 4.5.
+
+5 Non-malleable extractors for split-state adversaries with bounded
+communication
+
+Let Fn C Fan be the set of all functions that can be computed in the following way. Let c = (x,y)
+be the input in {0, 1}, where w is the first n bits of c and y is the remaining n bits of c. Let Alice
+and Bob be two tampering adversaries, where Alice has access to x and Bob has access to y. Alice
+and Bob run a (deterministic) communication protocol based on x and y respectively, which can
+last for an arbitrary number of rounds but each party sends at most t bits. Finally, based on the
+transcript and x Alice outputs 2’ € {0,1}", similarly based on the transcript and y Bob outputs
+y’ € {0,1}”. The function outputs c’ = (2’,y’). The following is our main result.
+
+Theorem 5.1. There exists a constant 6 > 0 such that for all integers n,t > 0 with t < dn, there
+exists an efficiently computable function nmExt : {0,1}” x {0,1}” > {0,1}, m = Q(n), such that
+the following holds: let X and Y be uniform independent sources each on n bits, and let h be an
+arbitrary tampering function in Fr4. Then, there exists a distribution Dp, on {0,1} U {same*}
+that is independent of X and Y such that
+
+jnmExt(X, Y),nmExt(h(X, Y)) — Um, copy(Dp, Um) | < 272 estos n/ len),
+Further, nmExt is 2-2 leslogn/logn) invertible.
+
+Proof. We show that any 2-source non-malleable extractor that works for min-entropy n — 26n can
+be used as the required non-malleable extractor in the above theorem. The tampering function
+h that is based on the communication protocol can be rephrased in terms of functions in the
+following way. Suppose the protocol lasts for ¢ rounds, there exist deterministic functions f; and
+
+23
+/n/ng: fori =1,...,0, and f : {0,1}" x {0,1}?! > {0,1}" and g : {0,1}”" x {0,1}?! > {0,1}" such
+1at the communication protocol between Alice and Bob corresponds to computing the following
+random variables: Ss; = fi(X), Ri = any, $1), S> = fo(X, S,,R1), aes Si = fi(X, S| peeey Sj-1,
+
+R,,.--,Ri-1),Ri = 9 (¥,S1,---,8;,Ry,,.--,Ri-1),-.-,Re = ge(¥,S1,..-,S¢,Ri,..-,Re-1).
+
+Finally, X’ = f(X,Rui,...,Re,Si,...,S¢) and Y’ = g(Y,Rui,..., Re, Si,...,S¢) correspond to
+
+1e output of Alice and the output of Bob respectively. Thus, h(X, Y) = (X’, Y’).
+
+Similar to the way we argue about alternating extraction protocols, we fix random variables in
+1e following order: Fix $1, and it follows that R, is now a deterministic function of Y. We fix
+Rj}, and thus Sg is now a deterministic function of X. Thus, continuing in this way, we can fix all
+1e random variables S;,..., S; and R;,...,R¢ while maintaining that X and Y are independent.
+
+Further, invoking Lemma 3.1, with probability at least 1—27—°(™, both K and Y have min-entropy
+at least n —t — 6n > n — 26n since both parties send at most t bits.
+
+Note that now, X’ = 7(X) for some deterministic function 7 and Y’ = v(X) for some determin-
+istic function v. Thus, for any 2-source non-malleable extractor nmExt that works for min-entropy
+n — 26n with error €, we have that there exists a distribution D,,, over {0,1}” U {same*} that is
+independent of X and Y such that
+
+jnmExt(X, Y),nmExt(7(X),v(Y)) — Um, copy(Dnv,Um)| < e+ 2-2”)
+
+The theorem now follows by plugging in such a construction from a recent work of Li ({Lil8], Theo-
+rem 1.12). We note the non-malleable extractor in [Lil8] is indeed 2-908 68"/l08”) invertible. O
+
+6 Efficient sampling algorithms
+
+In this section, we provide efficient sampling algorithms for the seedless non-malleable extractor
+construction presented in Section 4. This is crucial to get efficient encoding algorithms for the
+corresponding non-malleable codes. We do not know how to invert the non-malleable extractor
+constructions in Theorem 4.1, but we show that the constructions can suitably modified in a way
+that admits efficient sampling from the pre-image of the extractor.
+
+6.1 An invertible non-malleable extractor with respect to linear composed with
+interleaved adversaries
+
+The main idea is to ensure that on fixing appropriate random variables that are generated in
+computing the non-malleable extractor, the source is now restricted onto a known subspace of fixed
+dimension (i.e., the dimension does not depend on value of the fixed random variables). Once we
+can ensure this, sampling from the pre-image can simply be done by first uniformly sampling the
+fixed random variables, and then sampling the other variables uniformly from the known subspace.
+To carry this out, we need an efficient construction of a linear seeded extractor that has the property
+that for any fixing of the seed the linear map corresponding linear seeded extractor has the same
+rank. Such a linear seeded extractor was constructed in prior works [CGL16, Lil7] (see Theorem
+3.13).
+
+One additional care we need to take is the choice of the error correcting code we use in the
+advice generator construction. We ensure that the linear constraints imposed by fixing the advice
+string does not depend on the value of the advice string. This is subtle since the advice generator
+comprises of a sample from an error correction of the sources as well as the output of a linear
+
+24
+/n/nseeded extractor on the source. The basic idea is to remove a few sampled coordinates of the error
+corrected sources and show that this suffices to remove any linear dependencies.
+
+We use the following notation: For any linear map L : {0,1}" > {0,1}* given by L(a) = Ma
+for some matrix M, we use con, to denote a maximal set of linearly independent rows of M.
+
+We now set up some parameters and ingredients for our construction of an invertible non-
+malleable extractor.
+
+e Let 6 > 0 be a small enough constant and C a large constant.
+e Let 5’ = 6/C.
+
+e Let C be a BCH code with parameters: [ny, ny — ty log ng, 2tyl2, tp = /7/100, where we fix ny
+in the following way. Let dBCH be the dual code. From standard literature, it follows that
+dBCH is a [ng, ty log ng,  — ty,/Mp]o-code. Set np such that ty - log ny = /M log ny = 2n. Let
+E be the encoder of dBCH. Note that by our choice of parameters, the relative minimum
+distance of dBCH is at least 1/3.
+
+/
+e Let no =n ,n = ng’, nz = 10no, for some constant co that we set below.
+
+2 3, 5 r
+e Let ng =n, ng = nO 9/5, ns = nO, ng =n — Y>?_, n;. We ensure that ng = n(2 — o(1)).
+
+e Let Ext; : {0,1} x {0,1}% — {0,1}!8(») be a (n1/20, 1/10)-seeded extractor instantiated
+using Theorem 3.10. Thus d; = c; log nj, for some constant c;. Let D, = 2% = ni.
+
+e Let Samp, : {0,1}"! > [n,]?! be the sampler obtained from Theorem 3.9 using Ext.
+
+e Let Extg : {0,1} x {0,1} > {0, 1}!8("*) be a (n2/20, 1/no)-seeded extractor instantiated
+using Theorem 3.10. Thus dz = c2logn2, for some constant c2. Let Dg = 2d. Thus Dg =
+Qe — ns.
+
+e Let Samp, : {0,1}"2 — [ng]?2 be the sampler obtained from Theorem 3.9 using Ext.
+e Set co = 2c2.
+e Let i€Ext : {0,1}2 > {0,1}"° be the extractor from Theorem 7.1.
+
+e Let LExto : {0,1}°" x {0,1}"° — {0,1}V™ be a linear seeded extractor instantiated from
+Theorem 3.15 set to extract from min-entropy 71/100 and error 2-270),
+
+e Let Extg : {0,1}"8 x {0,1}4 — {0, 1}!°8("5—P2) be a (n3/8, 1/100)-seeded extractor instanti-
+ated using Theorem 3.10. Thus d3 = C) log ng, for some constant C1.
+
+e Let Samp; : {0,1}"8 — [ng — D2]”" be the sampler obtained from Theorem 3.9 using Ext3.
+Thus n7 = 28 = ng.
+
+e Let Exta : {0,1}™ x {0,1} > {0,1}"°-"7-P2 be a (n4/8,1/100)-seeded extractor instanti-
+ated using Theorem 3.10. Thus d3 = Cj log n4.
+
+e Let Samp, : {0,1} — [ns — nz — D2]"8 be the sampler obtained from Theorem 3.9 using
+Ext,. Thus ng = 28 = nf,
+
+e Let LExt, : {0,1}"5 x {0,1}4 > {0,1}%, ds = \/75, be a linear-seeded extractor instantiated
+'rom Theorem 3.11 set to extract from entropy ki = n2/10 with error e; = 1/10. Thus
+d = C2 log ns, for some constant Cy. Let D = 24
+
+25
+/n/ne Let LExts : {0,1}"7 x {0,1} — {0,1}™, m; = \/77 be a linear-seeded extractor instantiated
+rom. Theorem 3.11 set to extract from entropy kg = n7/100 with error eg = Q- UVa) =
+gone) such that the seed length of the extractor LExtz (by Theorem 3.11) is ds.
+
+e Let ACB : {0, 1}"2 x {0,1} x {0, L}ecb — {0,1}"20°, be the advice correlation breaker
+rom Theorem 3.16 set with the following parameters: nach = 27, N1,ach = ™M1,N2,ach = N9 =
+D?, tach = 2D, Nach = n> + d, €ach 2” | dach = O(log?(n/éacb)); Aacb = 0. It can be checked
+hat by our choice of parameters, the conditions required for Theorem 3.16 indeed hold for
+kiach > 2.
+
+e Let LExt3 : {0,1}"8 x {0,1}"° — {0,1}™ be the linear seeded extractor from Theorem 3.13
+set to extract from min-entropy rate 1/10 and error ¢ = gone (such that the seed-length is
+indeed ng). Thus, m = ang, for some small contant a that arises out of Theorem 3.13.
+
+Algorithm 4: i/NM(z)
+
+Input: Bit-string z = (xo y)z of length 2n, where x and y are each n bit-strings, and
+m : [2n] > [2n] is a permutation.
+
+Output: Bit string of length m.
+
+1 Let 2 = 21 0 22 0 23 0 24 0 25 0 2, where 2; is of length n;.
+
+2 Let T; = Samp,(z;), i = 1,2,3,4.
+
+3 Let Z = (26) 1:
+
+4 Let 25 = iExt(Z,).
+
+5 Let 24 = LExto(z, 25).
+
+6 For any set Q C [2n], define the linear function E : {0,1}2" + {0, }}!@l as Eg(x) = (E(x))a.
+7 Pick a subset Ty C T; of size Dy — no such that CONE is linearly independent of
+
+CONT Exto(-,24)° If there is no such set 71, then output 0.
+
+ie)
+
+Let w = 21 0 220220 (El) © 2.
+
+9 Let v bea D x dy matrix, with its i’th row v; = LExty(zs, i).
+
+10 Let % be the bits in zg outside Ty. Let % = (2) 2,-
+
+11 Let r bea D x n4 matrix, with its i’th row r; = LExte(%, vi).
+
+12 Let s bea D x m matrix, with its i’th row s; = ACB(r;, %, w 0 7).
+
+13 Let §= @245;.
+
+14 Let 27 be the bits in zg outside the coordinates T> U T3.
+
+Let 27 = (27)r,. Let zg be the bits in zg outside the coordinates Ty U T3 U T4.
+Output g = LExt3(27, §).
+
+Theorem 6.1. For all integers n > 0 there exists an explicit function nmExt : {0,1}?” — {0,1}”,
+m =n), such that the following holds: For any linear function h : {0,1}? + {0,1}?”, arbitrary
+tampering functions f,g € Fn, any permutation 7 : [2n] > [2n] and independent uniform sources
+X and Y each on n bits, there exists a distribution Dp, pg. on {0,1}™ U {same*}, such that
+
+aa)
+
+InmExt ((X o ¥),), nmExt(h((f(X) 0 g(Y))x)) — Um, copy(Dr,jg.n-Um)| <2"
+The proof that iCNM computed by Algorithm 4 satisfies Theorem 4.1 is very similar, and we
+
+omit the details. We include a discussion of the key differences and subtleties that arise from the
+modifications done in the above construction as compared to Algorithm 2.
+
+26
+/n/nThe first key difference is Step 7, where we discard some bits from the advice generator’s output.
+The existence of the subset T, is guaranteed by the fact that E has dual distance ty = Q(n /logn).
+Thus, for any T, it must be that Cong,y, is a set of size |T,| = D,. Further, CONT Fato(-,25) is a set
+with cardinality at most ,/no. Thus, indeed there exists such a set T,. An important detail to
+notice is that |T, \ T| = o(D,) and the distance of the code computed by E is (1). Thus, the
+fact that we discard the bits indexed by the set T; \ 7 from the string E(Z)r, (and thus from the
+output of the advice generator) does not affect the correctness of the advice generator.
+
+Another difference is that in the steps where we transform the somewhere random matrix v
+into a matrix with longer rows, and the subsequent step where the advice correlation breaker is
+applied is now done using a pseudorandomly sampled subset of coordinates from Z (as opposed to
+the entire Z which we did before). It is not hard to prove that this does not make a difference as
+long as we sample enough bits. Finally, another difference is the final step where we use a linear
+seeded extractor, with Zg as the seed. As done many times in the paper, we use the sum structure
+of Z7 (into a source that depends on X and a source that depends on Y) along with the fact that
+LExts is linear seeded to show that the output is close to uniform.
+
+We now focus on the problem of efficiently sampling from the pre-image of this extractor. The
+following lemma almost immediately implies a simple sampling algorithm.
+
+Lemma 6.2. With probability 1-2-7 over the fixing of the variables 2, 22, 2, 25, 23, 24, 25, 2, W;
+and any g € {0,1}, the set i(NM~1(g) is a linear subspace of fixed dimension.
+
+Proof. Consider any fixing of 21, 22, 23,24. Clearly, these fix the sets T;, i = 1,2,3,4. Next,
+note that given Z2, we have the value of 24. We note that by Lemma 3.14 that with probability
+1- gon) the linear map LExto(, 24) has full rank. Using Algorithm 2, determine the set Ty (if it
+exists). Fix E(z)z, and zj, noting that the value of w is now determined. Now given 25, 2%, we can
+compute r,s, 5. Next observe that given g and 8, Theorem 3.13 implies the value of 27 belongs to
+a subspace whose dimension does not depend on the values of g and §. Finally, we are left to see
+how to compute zg. Note that the constraints on zg are imposed by the fixings of 24’ and E(C)y,-
+However, by construction (Step 7 of our algorithm), the number of independent linear constraints
+on 2g is exactly equal to D; as long as LExto(, z4) has full rank (which as noted before occurs with
+
+probability at least 1 — gon) This completes the proof. Oo
+
+Given Lemma 6.2, the sampling algorithm is now straightforward:
+Input g € {0,1}; Output z that is uniform on the set iNM71(g).
+
+1. Sample z;, i = 1,2,3,4,5 uniformly at random. Compute T;, To, 73,7, following Algorithm 2.
+2. Sample Zz uniformly, and compute z5. Further, sample z) uniformly.
+
+3. Compute Ty, and sample (E(2) a, uniformly at random.
+
+4. Compute w,v,r,s,§ using Algorithm 2.
+
+5. Sample 27 from (LExt3(-,3))~!(g) efficiently using Theorem 3.13.
+
+6. Sample zg as described in Lemma 6.2. Compute the string z¢.
+
+7. Output z = 27 o 220 730 240250 %.
+
+27
+/n/n7 Extractors for interleaved sources
+
+Our techniques yield improved explicit constructions of extractors for interleaved sources. Our
+extractor works when both sources have entropy at least 2n/3, and outputs Q(n) bits that are
+2-n° close to uniform.
+
+The following is our main result.
+
+Theorem 7.1. For any constant 6 > 0 and all integers n > 0, there exists an efficiently computable
+function i€Ext : {0,1}?" > {0,1}", m = Q(n), such that for any two independent sources X and
+Y, each on n bits with min-entropy at least (2/3 + 6)n, and any permutation 7 : [2n] > [2n], we
+have
+
+20)
+
+liExt((Xo Y)z) —Um| < 27”
+
+We use the rest of the section to prove Theorem 7.1. An important ingredient in our construction
+is an explicit somewhere condenser for high-entropy sources constructed in the works of Barak et
+al. [BRSW12] and Zuckerman [Zuc07].
+
+Theorem 7.2. For all constants 8,5 and all integers n > 0, there exists an efficiently computable
+function Con : {0,1}” x {0,1}4 — {0,1}£, d = 0(1) and = Q(n) such that the following holds: for
+any (n,6n)-source X there exists a y € {0,1}4 such that Con(X, y) is 2-2) -close to a source with
+min-entropy (1 — B)é.
+
+We call such a function Con to be a (6,1 — B)-condenser.
+
+We prove that Algorithm 5 computes the required extractor. We begin by setting up some
+ingredients and parameters.
+
+e Let & > 0 be a small enough constant.
+e Let ny = (2/3 + 6/2)n and ng = n°".
+
+e Let 6 be a parameter which we fix later. Let Con : {0,1}™ x {0,1}4 > {0,1} be a (6/4,
+1 — 8)-condenser instantiated from Theorem 7.2. Thus ¢ = n/C’, for some constant C’ that
+depends on 6, 8. Let D = 2¢. Note that D = O(1).
+
+e Let LExty : {0,1}?” x {0,1}£ — {0,1}” be the linear seeded extractor from Theorem 3.13 set
+o extract from min-entropy rate 1/12 and error €, = 2-28", The seed-length is at most 3C'B2,
+some constant C' that arises out of Theorem 3.13. We choose 6 = min{1/3C,7}, where 7 is
+he constant in Theorem 3.13. Note that the seed-length of LExt, is indeed at most @.
+
+e Let ACB : {0, 1}"2b x {0,1} x {0, L}eeb — {0,1}"2«°, be the advice correlation breaker
+irom Theorem 3.16 set with the following parameters: Nach = 2, N1,ach = N2,N2,ach = 13 =
+n* tach = Dy hach = d,€ach = 27°", dach = O(log?(n/e€ach)); Ach = 0. It can be checked
+hat by our choice of parameters, the conditions required for Theorem 3.16 indeed hold for
+Kiach > n?*.
+
+e Let LExts : {0,1}?”" x {0,1}"8 > {0,1}, m = Q(n), be a linear-seeded extractor instantiated
+rom Theorem 3.11 set to extract from entropy ky = n/10 with error €, = Q-avyns for an
+appropriately picked small constant a.
+
+28
+/n/nAlgorithm 5: ifExt(z)
+
+Input: Bit-string z = (xo y)z of length 2n, where x and y are each n bit-strings, and
+m : [2n] > [2n] is a permutation.
+Output: Bit string of length m.
+
+1 Let z = Slice(z, nz).
+
+2 Let v bea D Xx ng matrix, with its i’th row v; = Con(z1, i).
+
+3 Let r bea D x ng matrix, with its i’th row rj = LExti(z, vi).
+4 Let s bea D x m matrix, with its 7’th row s; = ACB(rj, z, i).
+5 Let $= O24 5;.
+
+6 Output LExte(z, §).
+
+We use the following notation: Let X, be the bits of X in Z; and Xz be the remaining bit of
+X. Let Yi be the bits of Y in Z; and Y2 be the remaining bits of Y. Without loss of generality
+assume |X1| > [Yi]. Define K = (X 00"), and Y = (Yo0"),. Further, let KX; = Slice(X,n1) and
+Y= Slice(Y, 71). It follows that Z = K+Y, and Z; =X 1+ Yj. Further, let ky = ky = (2/3+6)n.
+We begin by proving the following claim.
+
+Claim 7.3. Conditioned on the random variables X,,¥ 1, {LExt;(X,Con(X, + Y7,7))}2,, the
+following hold:
+
+e the matrix R is 2-2 -close to a somewhere random source,
+e R its a deterministic functions of Y,
+e H(X) > 6n/4, Ho(Y) > n/6.
+
+Proof. By construction, we have that for any j € [D],
+
+R; = LExt)(Z, Con(Zz, j))
+= LExt;(K + Y, Con(X; + Yj, /))
+= LExte(X, Con(X1 + Yi, j)) + LExt2(Y, Con(Xi + Yi, j))
+
+Fix the random variables Y,, and Y has min-entropy at least ky — n1 /2>n/6 + 36n/4. Further,
+note that X, has min-entropy at least n1/2— (n— ky) > 6n/4. Now, by Theorem 7.2, we know
+hat there exists a j € [D] such that Con(X, + Yi, J) is 2-2") close to a source with min-entropy
+at least (1 — 6)é. Further, note that V is a deterministic function of X.
+Now, since LExt; is a strong seeded extractor set to extract from min-entropy n/6, it follows
+hat
+|LExt; (¥, Con(K, + Yi, 7)) — Ung] < 27%e, + 272) << 2-81,
+
+We now fix the random variables XK, and note that LExt;(Y,Con(X, + Yj, j)) continues to
+ye 2-2) _close to Un,. This follows from the fact that LExt; is a strong seeded extractor. Note
+hat the random variables {Con(X, + Yj,7)) : 7 € [D]} are now fixed. Next, fix the random
+variables {LExt,(X, Con(X; + Yj,i))}2, noting that they are deterministic functions of X. Thus
+R; is 2-°(")-close to Un, and for any i € [D], the random variables R; are deterministic functions
+of Y. Finally, note that X and Y remain independent after these conditionings, and Hx(X) >
+ky — ny — Dng and H.(Y¥) > ky — n4/2. oO
+
+29
+/n/nThe next claim almost gets us to Theorem 7.1.
+
+Claim 7.4. There exists 7 € [D| such that
+83, {Si}iepy\y,X ©5024) Uns, {Sihie\y, X-
+
+Proof. Fix the random variables: X1, Y1, {LExt1(X, Con(X1 + Yi, i))} 2). By Claim 7.3 we have
+that R is a deterministic function of Y, and with probability at least 1-2-2), there exists j € [D]
+such that R; is 2-"""-close to uniform, and H,(X) > 6n/4. Recall that Z = K+. It now
+follows by Theorem 3.16 that
+
+ACB(R;, Z, W 0°), {ACB(Ri, X+ Y, Wo i) }ie(D)\y> x Ryn
+Uns, {ACB(Ri, X + Y, W ot) ficinyj,X-
+
+foreD)
+
+oO
+
+It follows by Claim 7.4 that S is 2-7" close to uniform even conditioned on X. Thus, noting
+that LExt)(Z,S) = LExt)(X,8) + LExt2(¥,§), it follows that we can fix S and LExt2(X,§)
+remains 2-"° close to uniform and is a deterministic function of X. Next, we fix LExt2(Y, S)
+without affecting the distribution of LExt2(X,§). It follows that LExts(Z, 8) is 2-n° close to
+uniform. This completes the proof of Theorem 7.1.
+
+References
+
+[ADKO15] D. Aggarwal, Y. Dodis, T. Kazana, and M. Obremski. Non-malleable reductions and
+applications. To appear in STOC, 2015.
+
+[ADL14] _ Divesh Aggarwal, Yevgeniy Dodis, and Shachar Lovett. Non-malleable codes from
+additive combinatorics. In STOC, 2014.
+
+[AGM*15] Shashank Agrawal, Divya Gupta, Hemanta K. Maji, Omkant Pandey, and Manoj Prab-
+hakaran. A rate-optimizing compiler for non-malleable codes against bit-wise tampering
+and permutations. In Theory of Cryptography - 12th Theory of Cryptography Confer-
+ence, TCC 2015, Warsaw, Poland, March 23-25, 2015, Proceedings, Part I, pages
+375-397, 2015.
+
+BDG*18] Marshall Ball, Dana Dachman-Soled, Siyao Guo, Tal Malkin, and Li-Yang Tan. Non-
+malleable codes for small-depth circuits. Electronic Colloquium on Computational Com-
+
+plexity (ECCC), 2018.
+
+BDKM16] Marshall Ball, Dana Dachman-Soled, Mukul Kulkarni, and Tal Malkin. Non-malleable
+codes for bounded depth, bounded fan-in circuits. In TCC, 2016.
+
+BRSW12] Boaz Barak, Anup Rao, Ronen Shaltiel, and Avi Wigderson. 2-source dispersers for
+n°) entropy, and Ramsey graphs beating the Frankl-Wilson construction. Annals of
+Mathematics, 176(3):1483-1543, 2012. Preliminary version in STOC ’06.
+
+CG88} Benny Chor and Oded Goldreich. Unbiased bits from sources of weak randomness and
+probabilistic communication complexity. SIAM Journal on Computing, 17(2):230-261,
+1988.
+
+30
+/n/nCG 14a]
+
+CG14b]
+
+CGL16]
+
+CKOS18]
+
+CLI16]
+CLI17]
+
+CMTV15
+
+Coh15]
+
+CZ14]
+
+CZ16a]
+
+CZ16b]
+
+DKO13]
+
+DORS08]
+
+DPWI18]
+
+DW09]
+
+GK 18a]
+
+Mahdi Cheraghchi and Venkatesan Guruswami. Capacity of non-malleable codes. In
+ITCS, pages 155-168, 2014.
+
+Mahdi Cheraghchi and Venkatesan Guruswami. Non-malleable coding against bit-wise
+and split-state tampering. In TCC, pages 440-464, 2014.
+
+Eshan Chattopadhyay, Vipul Goyal, and Xin Li. Non-malleable extractors and codes,
+with their many tampered extensions. In STOC, 2016.
+
+Eshan Chattopadhyay, Bhavana Kanukurthi, Sai Lakshmi Bhavana Obbattu, and
+Sruthi Sekar. Privacy amplification from non-malleable codes. [ACR Cryptology ePrint
+Archive, 2018:293, 2018.
+
+Eshan Chattopadhyay and Xin Li. Extractors for sumset sources. In STOC, 2016.
+
+Eshan Chattopadhyay and Xin Li. Non-malleable codes and extractors for small-depth
+circuits, and affine functions. In Proceedings of the 49th Annual ACM SIGACT Sym-
+posium on Theory of Computing, pages 1171-1184. ACM, 2017.
+
+Sandro Coretti, Ueli Maurer, Bjorn Tackmann, and Daniele Venturi. From single-bit
+to multi-bit public-key encryption via non-malleable codes. In Theory of Cryptography
+Conference, pages 532-560. Springer, 2015.
+
+Gil Cohen. Local correlation breakers and applications to three-source extractors and
+mergers. In Proceedings of the 56th Annual IEEE Symposium on Foundations of Com-
+puter Science, 2015.
+
+Eshan Chattopadhyay and David Zuckerman. Non-malleable codes against constant
+split-state tampering. In Proceedings of the 55th Annual IEEE Symposium on Founda-
+tions of Computer Science, pages 306-315, 2014.
+
+Eshan Chattopadhyay and David Zuckerman. Explicit two-source extractors and re-
+silient functions. In STOC, 2016.
+
+Eshan Chattopadhyay and David Zuckerman. New extractors for interleaved sources.
+In CCC, 2016.
+
+Stefan Dziembowski, Tomasz Kazana, and Maciej Obremski. Non-malleable codes from
+two-source extractors. In CRYPTO (2), pages 239-257, 2013.
+
+Y. Dodis, R. Ostrovsky, L. Reyzin, and A. Smith. Fuzzy extractors: How to generate
+strong keys from biometrics and other noisy data. SIAM Journal on Computing, 38:97
+139, 2008.
+
+Stefan Dziembowski, Krzysztof Pietrzak, and Daniel Wichs. Non-malleable codes. J.
+ACM, 65(4):20:1-20:32, April 2018.
+
+Yevgeniy Dodis and Daniel Wichs. Non-malleable extractors and symmetric key cryp-
+tography from weak secrets. In STOC, pages 601-610, 2009.
+
+Vipul Goyal and Ashutosh Kumar. Non-malleable secret sharing. In Proceedings of
+the 50th Annual ACM SIGACT Symposium on Theory of Computing, pages 685-698.
+ACM, 2018.
+
+31
+/n/n[GK18b]
+
+GMW18]
+
+GPR16]
+
+GUV09]
+
+KOS17]
+
+Lild
+
+Lil6
+
+Lil7
+
+Lil8
+
+MWw97|
+
+Rao07]
+
+Rao09]
+
+RRV02|
+
+RS13]
+
+RY11
+
+Vipul Goyal and Ashutosh Kumar. Non-malleable secret sharing for general access
+structures. In Advances in Cryptology - CRYPTO 2018 - 38th Annual International
+Cryptology Conference, Santa Barbara, CA, USA, August 19-23, 2018, Proceedings,
+Part I, pages 501-530, 2018.
+
+Divya Gupta, Hemanta K Maji, and Mingyuan Wang. Constant-rate non-malleable
+codes in the split-state model. Technical report, Technical Report Report 2017/1048,
+Cryptology ePrint Archive, 2018.
+
+Vipul Goyal, Omkant Pandey, and Silas Richelson. Textbook non-malleable commit-
+ments. In Proceedings of the forty-eighth annual ACM symposium on Theory of Com-
+puting, pages 1128-1141. ACM, 2016.
+
+Venkatesan Guruswami, Christopher Umans, and Salil P. Vadhan. Unbalanced ex-
+panders and randomness extractors from Parvaresh-Vardy codes. J. ACM, 56(4), 2009.
+
+Bhavana Kanukurthi, Sai Lakshmi Bhavana Obbattu, and Sruthi Sekar. Four-state
+non-malleable codes with explicit constant rate. In Theory of Cryptography Conference,
+pages 344-375. Springer, 2017.
+
+Xin Li. Improved two-source extractors, and affine extractors for polylogarithmic en-
+tropy. Technical Report TR15-125, ECCC, 2015.
+
+Xin Li. Improved two-source extractors, and affine extractors for polylogarithmic en-
+tropy. In Foundations of Computer Science (FOCS), 2016 IEEE 57th Annual Sympo-
+sium on, pages 168-177. IEEE, 2016.
+
+Xin Li. Improved non-malleable extractors, non-malleable codes and independent source
+extractors. In Proceedings of the 49th Annual ACM SIGACT Symposium on Theory of
+Computing, STOC 2017, pages 1144-1156, 2017.
+
+Xin Li. Non-malleable extractors and non-malleable codes: Partially optimal construc-
+tions. Electronic Colloquium on Computational Complexity (ECCC), 2018.
+
+Ueli Maurer and Stefan Wolf. Privacy amplification secure against active adversaries.
+In Advances in Cryptology — CRYPTO ’97, volume 1294, pages 307-321, August 1997.
+
+Anup Rao. An exposition of bourgains 2-source extractor. In Electronic Colloquium on
+Computational Complexity (ECCC), volume 14, 2007.
+
+Anup Rao. Extractors for low-weight affine sources. In Proceedings of the 24th Annual
+IEEE Conference on Computational Complexity, 2009.
+
+Ran Raz, Omer Reingold, and Salil Vadhan. Extracting all the randomness and reducing
+the error in Trevisan’s extractors. JOSS, 65(1):97-128, 2002.
+
+Peter M. R. Rasmussen and Amit Sahai. Expander graphs are non-malleable codes.
+CoRR, 2018.
+
+Ran Raz and Amir Yehudayoff. Multilinear formulas, maximal-partition discrepancy
+and mixed-sources extractors. Journal of Computer and System Sciences, 77:167-190,
+2011.
+
+32
+/n/nTre01]
+
+TVO00]
+
+Zuc97|
+
+Zuc07]
+
+Luca Trevisan. Extractors and pseudorandom generators. Journal of the ACM, pages
+860-879, 2001.
+
+Luca Trevisan and Salil P. Vadhan. Extracting Randomness from Samplable Distribu-
+tions. In IEEE Symposium on Foundations of Computer Science, pages 32-42, 2000.
+
+David Zuckerman. Randomness-optimal oblivious sampling. Random Structures and
+Algorithms, 11:345-367, 1997.
+
+David Zuckerman. Linear degree extractors and the inapproximability of max clique
+and chromatic number. Theory of Computing, pages 103-128, 2007.
+
+33

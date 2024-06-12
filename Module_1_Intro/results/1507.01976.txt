@@ -1,0 +1,2051 @@
+1507.01976v4. [math AT] 20 Nov 2017
+
+‘acXiv
+
+Stratified
+
+categories, geometric fixed points and a
+
+generalized Arone-Ching theorem
+
+Saul Glasman
+
+November 22, 2017
+
+Abstract
+
+We develop a theory of Mackey functors on epiorbital categories which
+simultaneously generalizes the theory of genuine G-spectra for a finite
+group G and the theory of n-excisive functors on the category of spectra.
+Using a new theory of stratifications of a stable oo-category along a finite
+
+poset, we p
+rems: one
+
+rove a simultaneous generalization of two reconstruction theo-
+y Abram and Kriz on recovering G-spectra from structure on
+
+their geometric fixed point spectra for abelian G, and one by Arone and
+
+Ching that
+tives. We
+reprove a t.
+
+recovers an n-excisive functor from structure on its deriva-
+educe a strong splitting theorem for K(n)-local G-spectra and
+heorem of Kuhn on the K(n)-local splitting of Taylor towers.
+
+1 Introduction
+
+Equivariant stable homotopy theory has become notorious for its profusion of
+
+fixed point func
+
+ors. The most superficially arcane of these, the geometric fixed
+
+points first defined in [LMS86] 811.9], also have the best formal properties. Let
+G be a finite group and H a subgroup; let Sp© be the oo-category of genuine
+G-spectra. Then the geometric H-fixed point spectrum, which we will regard
+
+as a functor
+
+6" : Sp° = Sp,
+
+is uniquely determined by the following properties:
+
+1. 6” commutes with all homotopy colimits, and
+
+2. 6" is compatible with the suspension spectrum functor in that the dia-
+gram of functors
+
+commutes.
+/n/nThe following additional pleasant properties follow:
+3. &” has a natural enhancement to a symmetric monoidal functor.
+
+4. (Geometric fixed point Whitehead theorem) If E is a G-spectrum such that
+©" F is contractible for all subgroups H of G, then E itself is contractible.
+
+This last property strongly suggests that it might be possible to present G-
+spectra as diagrams of their geometric fixed point spectra, much as the spectral
+Mackey functor approach of and employs the genuine fixed point
+spectra E”, Such a presentation would obviously be desirable, since there are
+many spectra - for example, those arising as norms in the sense of §B.5]
+- whose geometric fixed points are much more accessible than their genuine fixed
+points. Some subtlety turns out to be required in this. For example, already
+for G = C, it’s easy to see that the spaces of natural transformations in both
+irections between 6° and the underlying spectrum, or identity fixed point,
+functor 6‘ are contractible. Nevertheless, it can be done, and in this paper,
+we give a construction that accomplishes this and significantly more, drawing
+together work of Abram and Kriz and Arone and Ching [AC15], which
+itself generalizes previous work of Bauer and McCarthy [BM03]. We stress
+that this presentation gives a completely new model of G-spectra in which the
+fundamental data are geometric fixed point spectra, their homotopical actions
+by groups derived from G, and gluing data relating these. To motivate this
+generalization, we'll draw attention to an analogy between equivariant stable
+homotopy theory and functor calculus, which was first pointed out to us by
+Mike Hopkins. For G = C2 and a G-spectrum E, we have a natural cofiber
+sequence, the norm cofibration sequence
+
+Eng > EG > ®°E.
+
+On the other hand, suppose that F’ : Sp > Sp is a reduced 2-excisive functor in
+the sense of Goodwillie [Goo91]. Then the Taylor tower of F is simply a cofiber
+sequence of functors
+
+D.F > F > PF
+
+where D2F is the 2-homogeneous part of F and P,F is the 1-excisive approxi-
+mation. Fixing a spectrum X, let’s specialize further to the case where EF is the
+indexed smash product X©? and F is the functor
+
+W:Sp—Sp, W(T) = (T*™)@,
+
+evaluated on X. Then the norm cofibration sequence and the Taylor tower
+become equivalent cofiber sequences
+
+(X°)nc, > (XAC2)C2 o> xX.
+This equivalence can be made into the basis for an equivalence of co-categories
+
+Sp ~ Fun?°** (Sp, Sp)
+/n/nbetween Sp and the category of reduced 2-excisive functors Sp + Sp under
+which the identity fixed points correspond to the second derivative and the
+geometric C'-fixed points correspond to the first derivative.
+
+This coincidence suggests the existence of a systematic analogy between
+Goodwillie derivatives and geometric fixed points. This paper develops a com-
+mon context for the Goodwillie calculus of functors between stable oo-categories
+and equivariant stable homotopy theory - that of Mackey functors on epiorbital
+categories - which makes this analogy precise. In brief, n-excisive functors are
+governed by the category FS” of finite sets of cardinality at most n and surjec-
+tive maps in precisely the same way as G-spectra are governed by the category
+Og of transitive G-sets, and the visible equivalence of categories between FS?
+and Og, accounts for the equivalence between Sp© and Fun? °*“(Sp, Sp).
+
+A beautiful presentation of n-excisive functors on spectra via structure on
+their derivatives has been constructed by Arone and Ching in [AC15], and we
+extend their result to our more general context, where it provides the desired
+presentation of the oo-category of G-spectra. Along the way, we develop a
+formalism of stratified stable oo-categories that encompasses, on the one hand,
+the category of Mackey functors on a epiorbital category, and on the other
+hand, monoidal stable oo-categories equipped with a family of homological lo-
+calizations, such as the category of p-local spectra with its chromatic filtration.
+Our theorem will be a special case of a general reconstruction theorem for ob-
+jects of stratified stable oo-categories. In the context of families of homologi-
+cal localizations, similar results have been obtained by Antolin-Camarena and
+Barthel [ACB14]. In upcoming work, we plan to use this presentation to give an
+explicit and homotopy-invariant description of the Hill-Hopkins-Ravenel norm.
+
+The structure of the paper is as follows. In Section [2] we develop the theory
+of epiorbital categories and their Mackey functors, culminating in the statement
+and proof of our version, Theorem[2.38] of the Arone-Ching comonadicity theo-
+rem Theorem 3.13]. In Section[3] we define stratified stable oo-categories
+(Definition ) and give several examples, then state and prove the classifica-
+tion of objects of a stratified stable oo-category (Theorem [3.21), in effect giving
+a description of the category of coalgebras for the comonad of Section] We un-
+pack the implications of our theorem for Cp-spectra in detail in Examples[3.29]
+obtaining the classical description of C,-spectra via the Tate fracture square.
+Finally, in the short Section [4] we prove a strong and general splitting theorem
+reminiscent of the tom Dieck splitting, Theorem[4.2] for Mackey functors valued
+in K(n)-local spectra, recovering a result of Kuhn on functor calculus.
+We believe the G-spectrum case of this theorem to be new.
+
+This project has benefited from conversations with Greg Arone, Clark Bar-
+wick, Michael Ching, Jacob Lurie, Randy McCarthy and Tomer Schlank. A
+significant part of the impetus for the paper came from a question posed by
+Mike Hopkins to Clark Barwick. We thank Clark Barwick for emphasizing the
+importance of the nonabelian derived category and describing how to deduce
+Theorem[2.32] from Lemma[2.36] We thank David Ayala, Aaron Mazel-Gee and
+Nick Rozenblyum for pointing out an erroneous hypothesis in Definition [3.5]
+Finally, we wish to thank all of the participants of the Bourbon Seminar for
+
+/n/ngenerating and sustaining an environment of such productivity week after week.
+
+2 Epiorbital categories and Mackey functors
+
+Our Arone-Ching theorem will be applicable to a certain class of “generalized
+equivariant homotopy theories” that encompasses the usual theory of genuine G-
+spectra and the theory of n-excisive functors on spectra. Such a theory springs
+from a “epiorbital category” with properties similar to the category of orbits
+for a finite group G.
+
+Definition 2.1. A epiorbital category or EOC is an essentially finite category
+M satisfying the following condtions:
+
+e Every morphism in M is an epimorphism.
+
+e M admits pushouts and coequalizers; equivalently, M admits colimits
+over finite connected diagrams.
+
+Epiorbital categories have a strong directionality.
+
+Definition 2.2. It follows immediately from Yoneda’s lemma that any endo-
+morphism in a epiorbital category is an isomorphism, and so the set of isomor-
+phism classes of objects of M carries a natural partial order wherein [X] > [Y]
+if and only if the morphism set M(X,Y) is nonempty. We'll call this poset Py.
+
+Example 2.3. Let G be a finite group. Then the orbit category Og, which is
+
+defined as the category of sets with transitive G-action, is a EOC.
+
+Example 2.4. If G is a finite group and H a subgroup, then the full subcategory
+Oaju © OG
+
+spanned by those orbits on which H acts trivially is again a EOC. There’s no
+clash of notation here, for if H happens to be normal, then Og,y is clearly just
+the orbit category of the group G/H.
+
+Example 2.5. Let F, be the category of finite sets and surjective maps and let
+FS" be the full subcategory of F, spanned by the sets of cardinality at most n.
+Then FS" is a EOC.
+
+The following properties of epiorbital categories will be useful:
+
+Lemma 2.6. Let M be a EOC, let K be any finite category and let p: K > M
+be a functor. Then the overcategory M7, is a EOC.
+
+Proof. Immediate. Oo
+
+Lemma 2.7. Let M be a EOC. Then any connected component of M has a
+final object.
+/n/nProof. We'll show that any object of M whose isomorphism class is minimal
+with respect to the natural partial order is final in its connected component.
+Indeed, let T be such an object and let X an object in its connected component.
+Then there’s a zigzag of morphisms
+
+Thy Sy &...& x.
+
+By taking iterated pushouts, we can inductively replace this zigzag with a dia-
+gram
+
+TSYEX.
+Moreover, by the choice of T, f must be an isomorphism, so there is a morphism
+from X to T. Now suppose we have a pair of morphisms
+
+fig: X aT.
+
+Then h, the coequalizer of f and g, is a morphism with source T, and therefore
+an isomorphism. By composing with h~!, we see that f = g. oO
+
+If C is any category, we'll denote by C" the closure of C under formal finite
+coproducts. By definition, C™ is the full subcategory of Fun(C°?, Set) spanned
+by the finite coproducts of representable functors. This is an operation we’ll
+frequently want to perform on EOCs.
+
+Example 2.8. O} is equivalent to F@, the category of all finite G-sets, since
+any finite G-set decomposes uniquely into orbits.
+
+One very relevant property of F° is that it’s meaningful to take Mackey
+functors over it: F© is disjunctive in the sense of [Barl4], so its effective Burn-
+side oo-category A°/!(F) can be formed and admits direct sums. We’ll quickly
+recall these ideas.
+
+Definition 2.9. Let C be an oo-category which admits finite products and
+coproducts and a zero object. We’ll say that C admits direct sums, or is semi-
+additive, if for every pair of objects X,Y € C, the natural map
+
+XUY>XxKY
+
+provided by the zero object is an equivalence.
+
+Remark 2.10. It’s not hard to see that each mapping space of a semiadditive
+oo-category naturally carries the structure of a commutative monoid space; the
+term additive co-category is traditionally reserved for categories whose mapping
+spaces are grouplike.
+
+Definition 2.11. An oo-category C is called disjunctive if
+
+e C admits pullbacks and finite coproducts,
+/n/ne for each finite set J and for each J-tuple (X;)icr of objects of C, the
+
+natural functor
+TI ox. > Cru. x.
+i
+
+is an equivalence of categories.
+
+Let C be an oo-category which admits pullbacks. Then one can construct
+3.6] an oo-category A*ff(C), called the effective Burnside category of
+C, whose objects are those of C, whose morphisms are spans
+
+YL”,
+
+in C, and where composition is performed by forming pullbacks.
+
+Proposition 2.12. 4.3] If C is disjunctive, then A°/S(C) is semiaddi-
+tive.
+
+oO
+
+Example 2.13. A functor from A°/!(F°) to Ab which preserves direct sums
+is precisely a Mackey functor in the sense of [tD73].
+
+The content of the next lemma is that it’s meaningful to talk about Mackey
+functors over arbitrary epiorbital categories:
+
+Lemma 2.14. Let M be a epiorbital category. Then M" is disjunctive.
+
+Proof. The condition that
+
+[lox > Sux:
+
+is an equivalence is satisfied for any C of the form D™, so we only need to show
+that M"™ admits pullbacks.
+Let p: A3 = M" be a diagram
+
+Ni— &
+
+Y —>
+
+in M"™. If any of X, Y or Z are empty then the pullback exists and is empty,
+so let’s assume all are nonempty.
+
+If Z decomposes nontrivially as a coproduct Z1 [| Z2, we get a decomposition
+of diagrams p = p1 J] p2, and if each p; admits a limit W;, then W, [| W2 is a
+limit of p. Thus it suffices to assume Z is representable.
+/n/nOn the other hand, if X decomposes nontrivially as X; [| Xo, and if
+
+Ww, — XxX Wz ——> Xo
+i ee
+Y — > Z, Y —>Z
+
+are pullback diagrams, then
+
+Wil[W2 —> x
+
+| |
+
+Y ——> Z
+
+is a pullback diagram. After carrying out the same argument for Y, it’s enough
+to assume that X, Y and Z are all representable - in other words, that p may
+be lifted to a diagram p: A3 > M.
+
+But it now follows from Lemma [2.6] and Lemma [2.7] that p admits a limit,
+since to give a limit of p in M4 is, tautologically, to give a final object in each
+connected component of the EOC Mz. im]
+
+Definition 2.15. There is a more general notion of orbital co-category which
+features centrally in the upcoming work (BDG* 16]. An orbital oo-category
+is simply any oo-category M for which M"™ admits pullbacks, from which it
+follows that M4" is disjunctive. By Lemma[2.14] epiorbital categories are orbital.
+Epiorbital categories are the focus of this paper, but some results will be stated
+for general orbital co-categories.
+
+Definition 2.16. If M is an orbital oo-category, we'll write A°//(M) for the
+effective Burnside category A°//(M"); we don’t expect this notation to cause
+confusion. A°/!(M) is semiadditive, and if C is a semiadditive presentable oo-
+category, then we’ll denote by Mack(M, C) the category of C-valued Mackey
+functors on M: the category of additive (ie. direct-sum-preserving) functors
+from M to C. If C = Sp, then we’ll usually omit C and refer to the category
+simply as Mack(M).
+
+Example 2.17. When M is the orbit category Og, Mack(M) is the category
+of spectral Mackey functors for G [Barl4], which is a model for the homotopy
+theory of genuine G-spectra.
+
+Example 2.18. The natural target of both the genuine fixed point functor (—)”
+and the geometric fixed point functor @” (of which more anon) on Mack(Oq)
+is Mack(Og/1) (Example [2.4), even when H is not normal in G.
+
+Theorem 2.19. When M is the category FS" of Example [2.5] Mack(M, C)
+is equivalent to the category of (reduced, filtered-colimit-preserving) n-excisive
+functors from Sp to C. This equivalence has the property that if F: Sp > C
+is n-excisive, if E is the corresponding Mackey functor and if S is a set, then
+/n/nE(S) is equivalent to the S-indexed cross-effect of F evaluated on an S-indexed
+set of spheres. In particular, if S has n-elements, then E(S') is equivalent to the
+nth derivative D,,F as spectra with },,-action.
+
+This equivalence is the subject of the separate paper :
+
+The following is a significant technical lemma that provides control over the
+values of many universally defined Mackey functors, including the fixed points
+of the free genuine equivariant G-spectrum on a spectrum with G-action.
+
+Lemma 2.20. Suppose that A, B, C are semiadditive co-categories and ¢ :
+A > B, F: A > C are additive functors. Suppose the left Kan extension
+oF :B- C exists. Then @)F is additive.
+
+Proof. We must verify that ¢:F preserves zero objects and direct sums of pairs
+of objects. The first is obvious, so let X,Y be objects of B. Then
+
+OF(X @Y) x colim F(Z).
+(6(Z)>X®Y )EAXBB;xey
+
+Let
+a:(A xp Bx) x (A xB By) > A XB Byxoy
+
+be the functor with
+
+a(¢(Z1) > X, 6(Z2) + Y) = (¢(Z1 @ Zz) ~ O(Z1) © b(Z2) 2 X BY).
+
+Then we claim that a is cofinal. Thus we must verify that for each object
+k:0(Z) + X ®Y of A xp B;xoy, the overcategory
+
+O:= (A Xp B/x) x (A XB Byy) XaxpByxay (A XB B/xe@y)/k
+is weakly contractible. Indeed, we claim that O has an initial object. An object
+of O is a pair (Z1, Z2) of objects of A together with a morphism 6: Z > Z;@Z
+
+and a commutative diagram
+
+o(Z) —*-+ x@Y
+
+|o
+
+o(Z, ® Za).
+
+Then the initial object of O is evidently the diagonal map A: Z > Z@Z
+together with the commutative diagram
+
+)_*.xey
+
+“a
+
+o(Z ® Z).
+/n/nNow there is a commutative diagram
+
+(A xp Byx) x (A xp By) “882 c
+|: '
+A xp Bxoy,
+allowing us, by our cofinality result, to rewrite
+OF(X ®Y)~ colim F(Z) ® F(Z2).
+
+(0(21) 4 X,6(Z2) 3Y)€(AxBB;x)x(AxBByy)
+Now for any pair of functors b1,b2 : K — C, we have the commutation of
+colimits
+
+colim (b; @ bz) ~ colim (b;) @ colim (b2).
+
+In particular, if b is the constant functor valued at some object P, then
+
+colim (b; ® bz) ~ colim (bi) @(P @ K),
+and if K is weakly contractible, then
+colim (b; @ bz) & colim (b)) @ P.
+
+Note that A xp B,;x is weakly contractible for every X € B: indeed, the
+essentially unique object
+
+(04, ¢(04) ~ Op > X)
+is an initial object of A xp B;x. Hence
+
+F(X @Y)~ F(Z,) ® F(Z2)
+
+colim
+(¢(Z1) 3X, ¢(Z2)4Y)€(AX BB; x)x(AxBB;y)
+
+x colim colim F(Z,) ® F(Z2)
+(¢(Z1)>X)EAXBB;x (¢(Z2) 9Y)EAxBBy
+
+x colim F(Z1) ® @F(Y)
+(¢(Z41)3X)EAxBB;x
+
+~ F(X) © OF (Y).
+o
+
+If I and J are disjunctive oo-categories and F : I + J is a functor which
+preserves pullbacks and finite coproducts, then F' clearly induces an additive
+functor
+
+ASSP): AFD) > ALS),
+
+So if C admits limits and colimits, we get functors
+
+ASIF), AF (F), : Mack(I,C) — Mack(J,C).
+/n/nIf M is an orbital oo-category, we'll call a full subcategory N of M downwardly-
+closed if whenever X € N and Y € M with Map(X, Y) nonempty, we also have
+Y EN. Equivalently, V = ¢~1({1}) for some functor ¢: M > At. Upwardly-
+closed subcategories are defined dually.
+
+There are plenty of examples of these: if M is epiorbital, then for any
+X € M, the full subcategory of M<x C M spanned by those objects Y
+with [Y] < [X] is downwardly-closed. Note also that any downwardly-closed
+subcategory of an orbital oo-category is itself orbital, and any downwardly-
+closed subcategory of an EOC is itself a EOC.
+
+For the following few lemmas, we'll let M be orbital, let NV be a downwardly-
+closed subcategory of M and let T be its upwardly-closed complement.
+
+Lemma 2.21. The inclusion iy : Mi 3 My admits a canonical retraction jy
+which is right adjoint to iy.
+
+Proof. By definition, My is the full subcategory of Fun(M°?, Top) spanned by
+coproducts of representables, and iy; is given by left Kan extension. But since
+the value of the functor represented by an object of T on any object of NV is
+empty, the restriction Fun(M°P, Set) to Fun(N°?, Set) preserves coproducts of
+representables. This is the desired retraction. (Note that orbitality of M is not
+required for this lemma to hold.) oO
+
+We should think of jv as “formally set all objects of T to 0”. We note that
+JN preserves coproducts.
+
+Definition 2.22. We define the geometric value at N functor
+®* : Mack(M,C) + Mack(N,C)
+
+by the left Kan extension (A°!S (jy;))1.
+
+The right adjoint of VY, the extension by zero from N functor, will be
+denoted =. For an object X of M, we'll denote 6“<* by &*. If E is an
+object of Mack(M,C), then we'll write E?* for the value of 6* E on X, the
+“geometric fixed point spectrum at X”.
+
+Example 2.23. Let G be a finite group and let H < G be a subgroup. If M =
+Og, then ®¢/# is the classical functor of geometric fixed points Example
+B.6]. Here the usual notation would be ®”, not 6¢/" | and we apologize for
+the clash.
+
+We have an equivalence
+
+(Oa)<ajn = Oa/n
+
+and so ®¢/' naturally takes values in Mack(Qq/1), as previously claimed.
+
+Example 2.24. If M = FS", and k < n, then =FS" is the functor which
+regards a k-excisive functor as an n-excisive functor, and its left adjoint 67: =
+is the k-excisive approximation functor.
+
+10
+/n/nDefinition 2.25. Using the notation of Lemma[2.2]] let A°/!(T) be the effec-
+tive Burnside category of (T)", or equivalently, the full subcategory of Aff (M)
+spanned by the objects of (T)"4. Let A°/f (iz) be the inclusion of this full sub-
+category.
+
+Remark 2.26. Let G be a groupoid. We can form the effective Burnside cate-
+gory A°ff(G), since any commutative square in a groupoid is a pullback square.
+Moreover, there’s a natural equivalence of oo-categories
+
+cg : AFF(G) SG
+
+which maps the span
+& h
+areyoez
+
+to the morphism hg~!
+
+lence.
+
+: a — z. We'll sometimes implicitly invoke this equiva-
+
+If X is an object of M, let Gx be the groupoid spanned by the isomor-
+phism class of X. Form the effective Burnside category A°//(G¥) and let
+ix : AtI(Gx) + Af(Mex) be the inclusion. It follows from the direc-
+tionality of M<x that ix is fully faithful.
+
+Since there’s no room for meaningful transfer maps, we might guess that a
+Mackey functor on a group G contains no more information than an object with
+G-action. This is indeed the case, but the proof is technical and so we defer the
+bulk of it to Appendix [A]
+
+Theorem 2.27. Let G be a groupoid. Then Actighy is the free semiadditive
+oo-category on G: for any semiadditive co-category C, the natural inclusion
+induces an equivalence of categories
+
+Fun®(A°/(G"), C) > Fun(G, C).
+
+We'll use this equivalence implicitly from now on.
+
+The class of Mackey functors left or right Kan extended from groupoids
+is an interesting one. For instance, let G be a finite group and let X be a
+spectrum with G-action, which by Theorem we may regard as an object
+of Mack(Gc/e). Denote by i: Gye < Fg the inclusion. Then the left Kan
+extension of X along A‘// (i) is the free genuine G-spectrum on X,, often denoted
+by
+
+EG: AX.
+
+Similarly, the right Kan extension is the cofree genuine G-spectrum on X, also
+known as
+
+F(EG4,X).
+We know from other models of G-spectra that for any subgroup H < G,
+
+(BG, AX)" ~ Xiu, F(EG,,X)¥ ~ Xn,
+
+It would be desirable, however, to have a proof of these facts internal to our
+framework. The following lemma is a more general version of this result:
+
+11
+/n/nLemma 2.28. Suppose M is an orbital oo-category and i: T @ M is the in-
+clusion of an upwardly closed subcategory. Let C be a semiadditive oo-category
+with all colimits, and let B € Mack(7,C) be a Mackey functor. Then for any
+Yem,
+iuB(Y)~ colim  B.
+Mi x yuTt
+
+Proof. For now, we content ourselves with a sketched proof and leave the details
+as an exercise. This result will be assumed in some examples in Section B] but
+will not feature integrally in the results of the paper.
+
+For the sake of avoiding the ambiguity that can precipitate from the use of
+overcategory notation, we clarify our notation. Write
+
+Thy = My x mu qT
+
+and
+
+(AVF (T) jy = (ATF(M))y x zesty AY (T).
+
+Then we have
+
+uB(Y)~ colim B.
+(AFT) /y
+
+The objects of (ALL(T)) yy are of the form
+T’
+ZN
+T Y.
+We can define a functor V : Thy = (AST(T))y by
+
+T
+VT AY)= J.
+T Y
+
+The essential image of V comprises those diagrams for which f : T’ > T is an
+equivalence, and it can be shown that V is homotopic to the inclusion of the full
+subcategory (A°/S(M))/y spanned by such diagrams. Moreover, the inclusion
+of (AefF(M))/y has a left adjoint ¢ with
+
+T! T!
+o) ~
+T Y T’ Y
+Thus this inclusion is cofinal, which yields the result. Oo
+
+12
+/n/nCorollary 2.29. Suppose M is an epiorbital category and X € M is a maximal
+object. Let
+ix : AST (Gx) a ASS(M)
+
+be the inclusion, let C be a semiadditive oo-category with all colimits, and let
+B € Mack(Gx,C) be a Mackey functor, which by Theorem [2:27] is uniquely
+determined by B(X) regarded as an object of C with Aut(X)-action. Then for
+any Y eM,
+
+(ix) BY) ~ (B(X) x Homa (X,Y ))naut(x)-
+In particular, if Y is a final object,
+(ix) B(Y) ~ B(X)naut(x):
+Oo
+
+Definition 2.30. Let M be an EOC and X € M an object. The Taylor
+coefficient at X functor is the functor DX : Mack(M,C) > Fun(Gx,C) given
+by i, 0 ®*,
+
+Definition 2.31. Let M~ be the maximal subgroupoid of M and define the
+Taylor sequence functor
+
+D : Mack(M,C) > Fun(M~,C)
+
+by
+
+\ DX.
+
+[Xx]
+
+We'll now enforce the hypothesis that C is stable for the remainder of the
+section. This allows us to state the following important proposition, which
+is a generalization of the “norm cofibration sequence” from equivariant stable
+homotopy theory:
+
+Theorem 2.32. Let NV’ be a downwardly closed subcategory of an orbital oo-
+category M and T its upwardly closed complement. Denote the restriction
+Acff(it)* and the left Kan extension A‘! (iy), respectively by II7 and I7.
+There’s a cofiber sequence of functors Mack(M,C) + Mack(M, C)
+
+In’ Sia 4 evo,
+
+where € and 7) are the counit and unit of their respective adjunctions.
+
+Theorem [2.32] has the following important equivalent form, whose theme is
+that a Mackey functor contains no secret data not detected by its values:
+
+Corollary 2.33. = is fully faithful, and its essential image is the category
+Macky (M,C) of Mackey functors on M supported on NV.
+
+13
+/n/nProof. If M € Macky(M,C), then evidently II7 M is zero, and so the cofiber
+sequence of Theorem [22.32] collapses to an equivalence
+
+M ~ENONM,
+
+which establishes the essential image of =.
+Since 2% is visibly conservative, it follows for N € Mack(N,C), setting
+M ==NN, that
+Nx @VeNN,
+and the full faithfulness of 2 follows by adjunction. Oo
+
+Remark 2.34. Observe that Corollary
+it follows abstractly that the functor
+
+lso implies Theorem
+
+M +> cof(ew)
+
+is the localization into Macky(M,C). On the other hand, assuming that av
+is fully faithful, 2V is the localization into its essential image. By Corollary
+[2.33] these two localizations coincide, yielding [2.32]
+
+Definition 2.35. Let DA(M) denote the nonabelian derived category of A°Sf(M):
+the category of product-preserving functors A°/!(M) > Top Definition
+5.5.8.8]. Equivalently, DA(M) is the category of Mackey functors on M valued
+in the category CMon of commutative monoid spaces (see, for instance,
+Remark 2.7]).
+Let C and D be presentable oo-categories. Recall that the category of
+coproduct-preserving functors from C to D is denoted Fin"(C, D), and that
+the category of functors from C to D that preserve all colimits is denoted
+Fun’(C,D). Now for presentable C, by Proposition 5.5.8.15], there’s
+an equivalence of categories
+
+Fun’ (DA(M), C) ~ Fun (A°(M), C).
+If C is, in addition, semiadditive, this can be written as an equivalence
+Fun’ (DA(M), C) ~ Mack(M, C). (x)
+
+Lemma 2.36. Theorem holds when C = CMon.
+
+Before proving Lemma let’s deduce Theorem from Lemma
+We know
+
+®Y : DA(M) + DAW)
+is a localization. Under the equivalence of (*), =“ corresponds to
+(O%)* : Fin’ (DA(N), C) > Fun’ (DA(M),C),
+and by the universal property of a localization, (®)* is fully faithful, and
+
+objects of its essential image are functors which map ® equivalences to equiv-
+alences.
+
+14
+/n/nNow here’s where we use the stability of C: since a morphism in a stable
+oo-category is an equivalence if and only if its fiber is zero, the objects of the
+essential image of (®“)* are equivalently those functors which map objects in
+the essential image of
+
+7 : DA(T) > DA(M)
+to 0 € C. But since the equivalence (*) is given by the Yoneda embedding, and
+since the diagram
+
+ATE(T) + DA(T)
+
+Avi tn) [rr
+
+Actl(M) + DA(M)
+
+commutes, these correspond under (*) to the objects of Macky (M,C). This
+proves Corollary 2.33] and therefore Theorem 22.32}
+
+Proof of Lemma[2.36, The proof of this lynchpin lemma is very technical, and
+so we’ve relegated it to Appendix It’s not required reading for those who
+don’t care to learn to make a very specific kind of sausage, but we note that
+it’s our main point of contact with the combinatorics of the effective Burnside
+category. Oo
+
+Let M be a EOC. For each X € M, we may define functors
+
+and
+LX = 8% o (ix),
+
+where (ix)! and (ix). are left and right Kan extension respectively. Observe
+that (ix): and (ix), are fully faithful, since they’re Kan extensions along a fully
+faithful functor. Since we've already seen that =* is fully faithful, we conclude
+that both L* and R* are fully faithful. Moreover, R* is right adjoint to the
+Taylor coefficient functor D*.
+Similarly, we can define
+R=\/ R*
+
+[Xx]
+
+L=\/1*
+
+[Xx]
+
+and
+
+and R is right adjoint to the Taylor sequence functor D.
+
+Proposition 2.37. L is a section of D; that is, Do L is homotopic to the
+identity.
+/n/nProof. We'll use induction on the number of isomorphism classes of objects in
+M. If M is a groupoid, both L and D are already the identity. In general, let
+X be a maximal object of M. It’s clear that Do L is homotopic to the identity
+when restricted to Gx.
+Then the morphism
+(ix)i(ix)*L > L
+
+is equivalent to the summand inclusion
+LX 4\/ LY
+[Y]
+and therefore by Theorem [2.32] we have a cofiber sequence
+LX 5 Lb OM«xE
+
+which shows that the left square in the diagram
+
+Fun(M~, C) —4—> Mack(M,C) —2-> Fun(M~,C)
+
+| Jens |
+
+Fun(Mzy,C) ++ Mack(Mzx,C) 24 Fun(Mzy,C)
+
+commutes. The right square commutes by construction, and the bottom com-
+posite is homotopic to the identity by the induction hypothesis. By circumnay-
+igating the diagram, we conclude that Do L is homotopic to the identity when
+restricted to Gy for any Y A X. Oo
+
+The following is our Arone-Ching theorem in its general form.
+
+Theorem 2.38. Let M be an epiorbital category. Then the adjunction (D, R)
+is comonadic.
+
+Proof. (D, R) is comonadic if and only if the natural transformation
+t : Id + Tot(Cobar(R, DR, D))
+
+is an equvalence. We’ll closely follow Arone and Ching’s proof in [AC15]. This
+involves showing, for each downwardly-closed subcategory NV of M, that the
+natural map
+
+wt NON — Tot(=’ GO Cobar(R, DR, D))
+is an equivalence, by induction on the number of isomorphism classes of objects
+in N. Since 2@6™ is the identity functor, this will give the result.
+
+So assume that t? is an equivalence for all P with at most k isomorphism
+classes of objects, and suppose V has k + 1 isomorphism classes of objects. Let
+X be a maximal object of NV and let N’ =.N\ Gx be the result of removing the
+isomorphism class of X. The cofiber sequence of Theorem gives a cofiber
+sequence of functors
+
+L* DX 4 ENON 5 ENON",
+
+16
+/n/nwhich in turn gives a map of cofiber sequences
+
+LX DX —“_, Tot(L¥ DX Cobar(R, DR, D))
+
+|
+
+avov —", Tot(EV@" Cobar(R, DR, D))
+
+i
+
+ENON’  . Tot (2 6 Cobar(R, DR, D)).
+
+By the induction hypothesis, i” is an equivalence, so it’ll suffice to show that
+t* is an equivalence. This also starts the induction, since tY = t* if N = Gx
+is a connected groupoid. But now we observe that
+
+D* = evxD
+and so
+Tot(L* D* Cobar(R, DR, D)) ~ Tot(L* evx DCobar(R, DR, D))
+~ Tot(L* evy Cobar(DR, DR, D))
+~ L*evxD
+~ LX D*
+by the usual extra codegeneracy argument. This completes the proof. Oo
+
+The next section aims to characterize the comonad DR.
+
+3 Categories stratified along a poset
+
+The categories Mack(M) for M a EOC, along with many other categories oc-
+curing in nature, share a significant structural property: any object of Mack(M)
+can be torn open by a series of fracture squares. More precisely, suppose that VV
+is a downwardly-closed subcategory, T is its upwardly-closed complement and
+X € Mack(M). Then we'll see that there’s a pullback square
+
+ON X —> ON (iz), (it )*X
+To build a theory of how X might be recovered from such data, itll be helpful to
+
+widen our scope. First it’s important to advertise a potential point of significant
+notational confusion.
+
+17
+/n/nWarning 3.1. When we regard a poset as a category in this paper, we will use
+the opposite of the usual convention that there is a morphism from x to y if
+a <y. For us, the space of morphisms from x to y will be contractible if x > y
+and empty otherwise. We adopt this strange convention in order to preserve
+intuitions about size of objects in our chief motivating examples of posets: the
+posets of isomorphism classes of objects of the EOCs Og and FS".
+
+Definition 3.2. Let P be a poset. An interval in P is a subset I C P such
+that whenever x,y € I and x < z < y, we have z € J. If P is any poset, then
+we denote by Zp be the poset of intervals in P ordered by inclusion. If J and
+J are a pair of intervals, we'll write J < J if 19 J = 0 and there is no pair
+(@€1,j € J) with i> j.
+
+Note that the relation < is not a partial order: for example, if p,q € P are
+incomparable, then both {p} ~ {q} and {q} ~ {p}.
+
+Definition 3.3. Suppose C is a stable co-category. Let Ec be the poset of
+stable reflective subcategories of C, ordered by inclusion; equivalently, Ec is the
+opposite of the poset of exact localizations of C. Let P be a poset. Then a
+pre-stratification of C along P is a map of posets
+
+6: Ip Ec.
+
+Before we give the criteria that will qualify a pre-stratification as a stratifi-
+cation, it’ll be useful to record an elementary fact about localizations.
+
+Lemma 3.4. Given two localizations £; and £2 on a stable co-category C such
+that £1L2 = 0, the following conditions are equivalent:
+
+(1) The natural diagram
+
+id ——> L,
+
+to
+
+Ly —> Loki
+is a pullback square.
+(2) The containment £L2C C ker(L;) is an equality.
+(3) £1 and L are jointly conservative.
+Proof. The implication (1) = (3) is obvious. We’ll prove (3) > (2) => (1).
+Suppose that £1 and £2 are jointly conservative; then if some
+
+X €ker(L)) \ LoC,
+
+the localization map X + £2X is a non-equivalence which becomes an equiv-
+alence after applying either £; or Lo, establishing (2). If we now denote by C
+the fiber of id > £), then
+
+im C C LC
+
+18
+/n/n(in fact, C is the coreflection into £L2C). Now taking horizontal fibers in the
+square diagram gives the morphism
+
+C > LoC
+which is an equivalence, establishing (1). Oo
+Definition 3.5. In the notation of Definition B.3} let
+Lr:C+C
+
+be the localization functor corresponding to G(I). Then we call G a stratification
+of C along P if the following conditions hold:
+
+(2) if Ip < I, then £L;,L7, = 0,
+
+(3) and if I = L,[] Io, then L;, and L;,, viewed as localization functors on
+G(1), satisfy the equivalent conditions of Lemma [3.4]
+
+Remark 3.6. Since @ < 0, axiom (2) implies that S(0) = {0}.
+
+Remark 3.7. It follows from the latter two axioms that if J = [ [[ 2 and
+Iz =< I,, then G(J) is a recollement of G(Iz) and G(J;) in the sense of
+Definition A.8.1].
+
+Remark 3.8. For most of this section we’ll assume that P is finite, but our main
+result generalizes easily to certain infinite posets (Definition[3.30). n will usually
+denote the cardinality of P. We’ll also assume that P is connected; it’s easy to
+see that a category stratified along a disconnected poset decomposes naturally
+as a direct sum of categories stratified along the connected components.
+
+Next we’ll see some examples of stratifications. Suppose C is a presentable
+symmetric monoidal stable oo-category whose tensor product preserves colimits
+in each variable, so that we can talk about the homological localization with
+respect to an object E € C [Bou79]:
+
+Recollection 3.9. An object F € C is called E-acyclic if E ® F is zero. An
+object G € C is called E-local if Map(F,G) is contractible for any E-acyclic
+F. The E-local objects of C form a reflective subcategory Lz, with associated
+localization functor Le.
+
+Let P be a poset and suppose we have an object K, for each p € P such that
+any K-local object is Ky-acyclic unless p > q. We can define a pre-stratification
+Gx, of C along P by var to I the category of objects which are local with
+
+respect to the object Vj<; K,
+
+Proposition 3.10. Gx, is a stratification of 6«,(P) = Ly _, x,
+P
+Proof. The proof will consist of two lemmas, and will use induction on the
+
+cardinality of P.
+
+19
+/n/nLemma 3.11. Suppose FE and F are such that any E-local object is F-acyclic.
+Then the square of functors
+
+is a pullback square.
+
+Proof. This fact is folklore, and cases of it go back to Bousfield and further.
+The proof, which we now give, is simple.
+
+g and h are both E-localizations, and therefore E-equivalences, and so the
+total fiber of the square is E-acyclic. On the other hand, f is an F-equivalence,
+and so is 7 because its source and target are both F-acyclic. Thus the total fiber
+of the square is F-acyclic, and so E V F-acyclic. But everything in the square
+is EV F-local, so the total fiber must also be EV F-local, and hence zero. O
+
+Lemma 3.12. Suppose Z C P is a proper interval and p € P is such that
+I = {p}. Then any object E € Gx, (Z) is K,-acyclic.
+
+Proof. The proof will use Theorem (spoilers). By the induction hypothesis,
+Gx, restricts to a stratification of 6 x, (Z) along Z. Then the proof of Theorem
+[3.21] expresses EF as a finite limit of objects which are K;-local for some i € T,
+and thus K,-acyclic. Therefore E is K,-acyclic. Oo
+
+Oo
+
+Remark 3.13. For this class of stratifications, in the case where P is totally
+ordered, a theorem similar to Theorem[3.2]has appeared previously in [ACB14].
+
+We'll now give a pair of quick applications of Proposition [3.10]
+
+Example 3.14. Fix a prime p. Then the Morava K-theory spectra K(0),--- , K(n)
+give rise to a stratification of the category of \/j_9 K(i)-local spectra along
+(D”)°?. (Recall that a spectrum is \/j!_9 K (i)-local if and only if it’s local with
+respect to the Morava E-theory E,,.) The pullback squares in this stratification
+include the famous chromatic fracture squares
+
+Lr, —_—> Lr,
+
+| |
+
+Ly,» —> Le, Lk,
+
+m1
+
+which are the subject of Hopkins’ chromatic splitting conjecture [Hov93].
+
+20
+/n/nExample 3.15. Let X be a scheme; let (Ui)o<i<n be locally closed subschemes
+of X such Up = X, Uj is an open subscheme of X, and for 7 > 2, U; is an open
+subscheme of U;_, \ Uj_2. We say that the U; form a stratification of X.
+
+Let QC(X) be the stable co-category of quasicoherent complexes on X.
+Then the structure sheaves Oy, € QC(X), 1 <i <n, satisfy the hypotheses of
+Proposition and so form a stratification of La» | Ou, QC(X) along A"-}.
+In the case where hn
+
+Uu=x,
+i=1
+
+this is a stratification of QC(X) itself.
+
+Our other main source of examples of stratifications comes from the the-
+ory developed in Section We'll be able to say something about orbital oo-
+categories and substantially more about epiorbital categories.
+
+Let M be an orbital oo-category, let NV be a downwardly-closed subcate-
+gory of M, and let T be its upwardly-closed complement. If C is a stable
+oo-category with all limits and colimits, let Mack(M;C) be the category of C-
+valued Mackey functors on M (Definition . We define a pre-stratification
+6m of Mack(M,C) along A! as follows:
+
+¢ 6(A!) = Mack(M,C),
+
+© Gu({1}) is the category Mack’ (M,C) of Mackey functors in the essen-
+tial image of the right Kan extension from Mack(T, C),
+
+e Gxu({0}) is the category Macky(M,C) of Mackey functors supported
+on N (see Corollary 2:33).
+
+Proposition 3.16. Gy, is a stratification.
+
+Proof. We must show that the square
+
+iduack(m,c) ——> £1
+
+| |
+
+Ly ——— > Loli
+
+is a pullback square of endofunctors. But by taking vertical fibers and applying
+Theorem [2.32] we’re reduced to showing that the natural map
+
+P70 SPT Ly
+is an equivalence, which is obvious. im]
+
+Now suppose M is epiorbital, and let Py, be the poset of isomorphism
+classes in M (Definition 2.2).
+
+21
+/n/nDefinition 3.17. We define a pre-stratification Gj, on Mack(M;C) as fol-
+lows. If I C Py is any interval, let Z be the corresponding full subcategory of
+M. If I is downwardly-closed, then we define
+
+6m (1) = Mackz(M; C) (Corollary 2.33)
+If J C Py is upwardly closed, then let Mack? (M,C) be the essential image
+of the right Kan extension
+AT (iz), : Mack(J,C) > Mack(M,C).
+We define
+6m(J) = Mack? (M,C).
+If J C Pw is any interval, then we can write
+
+T=L.01
+
+where J, is the smallest upwardly-closed set containing J and J_ is, likewise,
+the smallest downwardly-closed set containing J. Then we define
+
+6mi(I) = Mack** (M,C) Mackz_ (M,C).
+Proposition 3.18. Gy, is a stratification of Mack(M,C) along Py.
+
+Proof. Clearly
+6m (Pm) = Mack(M,C).
+
+We must verify (3) in Definition[3.5] Let Z,Z),Z2, be the full subcategories of M
+corresponding respectively to I, 1), J2, and let D be the smallest downwardly-
+closed subcategory of M containing Z. Then by passing to Mackp(M,C) if
+necessarily, we may assume that J; is upwardly-closed.
+
+Assume for a moment that J = Pyy. Then, as in the proof of Proposition
+[3.16] we conclude by taking fibers vertically and invoking Theorem In
+general, we note that
+
+In =IN (Pm \ hh).
+
+We know that the natural diagram
+
+id —————_» Li,
+
+|
+
+Leu\n —> Lpu\n£n
+
+is a pullback square, and applying £, to the entire square gives the result. O
+
+We'll now start setting up for our main result on the reconstruction of objects
+in a stratified category from their atomic localizations.
+
+Definition 3.19. Let P be a finite poset. Define P(P) to be the poset of
+nonempty subsets T’ = {i1,i2,+-- ,i,} of P, ordered by reverse inclusion.
+
+22
+/n/nDefinition 3.20. Let (C,G) be a stable oo-category stratified along P. We
+define an oo-category C® as the full subcategory of Fun(P(P),C) spanned by
+those functors
+
+F:P(P) 3C
+such that
+e for each T € P(P) and for each minimal element t € T, F(T) is in G({t});
+
+e if e is an edge of P(P) of the form T + TU {p} where {p} < T, then F(e)
+exhibits F(T U {p}) as the G({p})-localization of F(T).
+
+The following, describing how objects of a stratified category can be assem-
+bled using higher fracture squares, is the main theorem of this section.
+
+Theorem 3.21. There’s an equivalence of categories
+a:C>C%.
+
+This equivalence will be constructed as an explicit zigzag in the course of the
+proof.
+
+The first step is to realize that we don’t have enough posets, and define some
+more posets.
+
+Definition 3.22. Let P’(P) be the set whose elements are nonempty sets
+{I,,-++ ,J,} of nonempty, disjoint intervals in P such that for each pair of
+indices i,j, either I; < I; or Ij; < I;. We'll put a partial order on P’(P) by
+letting
+
+{Li Tk} > {Tuy Tat
+
+if there exist distinct indices (i1,--- ,i,) such that Ji, C Jj for each j.
+
+If T € P'(P) and I € T, then we'll call I <-minimal if for each J € T with
+J #1, I < J. This doesn’t necessarily imply that there is no J € T such
+that J < I. However, since ~ is transitive, each T € P/(P) has at least one
+~<-minimal element.
+
+Here’s a way of “coordinatizing” a poset.
+
+Definition 3.23. A threading of a finite poset P is a filtration
+0= Peo © Per C++: Pen =P
+such that for each i, P<; is downwardly closed, and
+|P<i| =i.
+
+We'll fix, once and for all, a threading on P.
+
+23
+/n/nDefinition 3.24. Let P™(P) be the subset of P’(P) containing those sets
+T={h,--- In}
+such that for each Jj, either |J;| = 1 or
+I, = P<; for some i < m.
+
+In particular, at most one of the J; may have cardinality > 1, and if this occurs
+then J; must be a <-minimal element of T.
+
+There’s an obvious isomorphism P!(P) & P(P).
+
+Definition 3.25. Let CS
+
+© be the full subcategory of Fun(P’"(P)) spanned by
+those functors
+
+F:P"™(P)3C
+such that
+
+e for each T = {I,,-+- ,J,} € P'™(P) and for each J; that is <-minimal in
+T, F(L) € G(Li);
+
+e ife:T, + Ty is an edge of P”(P) of the form
+{hl Le} > (hb, Je}
+
+with J, <-minimal in T; and J, C Iz, then F(e) exhibits F(T>) as the
+6(J;,.)-localization of F(T;);
+
+e ife: T; > Ty is an edge of P™(P) of the form
+{li Io,-++ Ik} > {hi La,- ++ Te Thi}
+
+with I,41 <-minimal, then F(e) exhibits F(T2) as the 6 (I,+41)-localization
+of F(T}).
+
+Proposition 3.26. If P has cardinality at most m, then the functor
+
+S
+m 2
+
+ep:C
+given by evaluation at {P} is an equivalence of categories.
+
+Proof. We'll prove this by induction on m. If m = 1, there’s nothing to do.
+If m = 2, then P & A! and we'll label its elements 0 and 1, with 0 > 1 (this
+is unfortunately necessitated by our conventions). Then C& is the category of
+squares of the form
+
+E »>—+ Eo
+
+[J
+
+E, —> Eo
+
+24
+/n/nin which Ey € G(0), £1, E19 € G(1) and the tailed arrows are localizations.
+By the stratification axioms, all such squares are cartesian. Then the fact that
+ea : CS > C is an equivalence is discussed, in almost exactly these terms, in
+the proof of Proposition A.8.11].
+
+In general, let x € P be the unique element of P\Pe<n-13 then x is a maximal
+element. For convenience, we'll write Q for P<n—1. Observe that we have an
+isomorphism of posets
+
+nh: At x ((P™(Q))*) > P"(P)
+
+given by
+h(0,¢) = {P},
+(le) = {{x}},
+h(0,T) = T,
+ACL, T) = {{2}} UT,
+
+where c is the cone point.
+
+Now C admits a stratification G’ along A! wherein
+
+6'(1) = G({x}), 6'(0) = 6(Q),
+so that
+ga1:C8 =C
+is an equivalence. On the other hand, G(Q) obviously inherits a stratification
+6” along Q, and the functor
+$0: G(Q)m + 6(2)
+
+is an equivalence.
+Here’s what we deduce by combining these two equivalences. Let
+
+K = P™(A!) Ia: (P™(Q) x At)
+
+where we’ve glued the edge {0} — {0,1} of P™(A!) to the edge {Q} x A? of
+P(Q) x Al. Let € be the full subcategory Fun(K, C) spanned by those F for
+which ,
+
+Flpmary € Cy,
+
+and
+
+F lpm (Q)x{o} Flem(@)x (a3 © 6(Q)m «
+
+Then evaluation on {A} € P(A?) induces an equivalence of categories
+ea :63C.
+
+But
+pm(A!) = Al x Al,
+/n/nand so
+
+K & (At I} P™(Q)) x Al.
+For any simplicial set S, the inclusion
+Ally so $4
+is inner anodyne, and so we get an inner anodyne composite
+K > At x ((P"(Q))9) 4 PMP),
+
+giving an equivalence of categories Fun(P” (P), C) ~ Fun(K, C), which restricts
+to an equivalence of categories CS + C. Composing with ea: completes the
+proof. im]
+
+Proposition 3.27. For any P and any C stratified along P, the restriction
+functor
+Tm: CS 4Co_,
+is an equivalence.
+Proof. Let
+km : C8_, > Fun(P™(P), C)
+
+be the right Kan extension functor. We claim that C® is equal to the essential
+image of Kim.
+Indeed, let g be the unique element of P<m \P<m-—1. Suppose
+
+TeEP™(P)\P™l(P).
+
+Then T is of the form
+{{p1}.--+ {pe}, PS}.
+
+Let a: A3 + P™-!(P) be the functor with
+
+ovr (0) = {{pi},-+> {pe}. {ab},
+ar (1) = {{pr},-+> {pe}, P<m—1},
+or (2) = {{pr},-+> {pe} fa}, P<m-—i}-
+
+Then a is coinitial in P™~'(P)r,. Moreover, F : P™(P) > C is an object of
+C§ if and only if
+© Flpm—1(p) € CS_,, and
+¢ for each T € P™(P)\P™-1(P), F(L) € G(P<m) and the maps
+F(P) ~+ F(or(0)), F(®) + Flar(t))
+
+are localizations.
+
+26
+/n/nBut by the stratification axiom, the latter condition is equivalent to the condi-
+tion that the square
+
+F(T) ——> Flar(0))
+
+| |
+
+F(ar(1)) —> F(ar(2))
+
+be a pullback. This completes the proof. im
+
+If n = |P|, we now have equivalences of categories CS 4 C (Proposition
+
+3.26) and CS + CE & CS (inductively, using Proposition 8.27). This consi-
+tutes a proof of Theorem
+
+Example 3.28. When C is the category Sp° for a finite abelian group G, we
+recover the statement of Theorem 3], though in substantially different
+language.
+
+Example 3.29. Suppose p is a prime and M = Oc,, so that P = Al. Then
+Theorem 3.21] states, after unwinding the definition, that an object E of of
+Mack(M) ~ Sp? is given by the following data:
+
+e A spectrum with C,-action
+E, € Gu ({{1}}) ~ Fun(BC,, Sp),
+the underlying spectrum of E;
+
+e a spectrum
+
+Eo € Ga({{0}}) ~ Sp,
+
+the Cp-geometric fixed point spectrum of E;
+
+e and a map
+Eq > Lo} Ei & Ey?
+
+where (—)’@ is the Tate spectrum, defined by the cofiber sequence
+(-)ne > (-)"6 > (J,
+The epiorbital category F<? is visibly equivalent to Oc,, so an object
+F € Mack(FS?) ~ Fun?°*“(Sp, Sp)
+is given by the same data as an object of Sp, but in this case, E, and Ep are
+
+interpreted as the second and first derivatives of F’, respectively. This classifi-
+cation of 2-excisive functors was first carried out in §5].
+
+27
+/n/nWe'll close this section by saying a few words about what happens for infinite
+posets. Let P be an infinite poset equipped with a system of finite subposets
+
+0= Peo © Per +++ C Pen G++: CP
+
+which is a threading in the sense that for each i, P<; is downwardly closed and
+has cardinality 7, and
+
+UP<n =P.
+
+n
+
+Definition 3.30. Suppose
+0=CoCC1C---CO,C--:
+
+is a sequence of stable oo-categories such that C,,_1 is a reflective stable sub-
+category of C,, for all n. Suppose we have, for each n, a stratification G,, of C,,
+along P<n, and that all of these are compatible in the sense that
+
+Cr—1 = Gn(P<n-1)
+and G,,_ is the induced stratification. Let
+Cy := lim C,,
+n
+
+be the limit over the localization maps. We call this data a pro-stratification of
+Cx along P.
+
+Then it follows from the proof of Theorem that the diagram
+
+Cn ae (Cn) —~—> Chr
+
+of | |
+
+commutes up to homotopy for every n. Taking the limit as n — oo gives an
+equivalence
+Cx > lim CS =: CS.
+n
+The limit C& can be described explicitly as follows. Let
+P* = colim P(Pn).
+n
+and
+C®™ := colim C,
+n
+
+(which differs from C., in that we have taken the colimit over the inclusions
+rather than the limit over the localizations). Then C§& is the full subcategory
+of Fun(P®, C~) spanned by those functors F' for which
+
+Flecp,) © Cy".
+Thus we have a description of C., in terms of (infinite) diagrams of maximally
+
+local objects.
+
+28
+/n/nExample 3.31. With P as above, let C be a symmetric monoidal presentable
+stable oo-category and let (Kp)pep be a collection of objects of C such that any
+K,y-local object is Ky-acyclic unless p > q. Then letting
+
+Cr = Ly K,C
+
+PEP cy *P
+gives a pro-stratification of
+Co = Ly -p K,C
+along P. In the case where P = N°P and K,, is the Morava K-theory K(n),
+
+we have expressed the category of harmonic spectra in terms of diagrams of
+K(n)-local spectra.
+
+Example 3.32. Let
+= Mo CM C++) CMn C+» CM = colim Mn
+be a sequence of inclusions of EOCs giving rise to the threading
+Po S Pi S++ OC Pa Sos:
+
+on posets of isomorphism classes. Then M! is disjunctive and we may speak
+of the category Mack(M,C) of additive functors from A*//(M") into some
+stable target category C. Letting
+
+C, = Mack(M,,, C)
+gives a pro-stratification of Mack(M, C) along P.
+Example has a couple of interesting special cases:
+
+Example 3.33. Let M, = FS". Then M is the category F, of all finite sets
+and surjective maps, and Mack(M, C) is equivalent to the category of functors
+F : Sp > C which are weakly analytic in the sense that
+
+F ~ lim P,F.
+n
+
+Example 3.34. Let G be a profinite group and let M be the category of finite
+G-orbits. Then any threading of the poset P of isomorphism classes in M
+gives a pro-stratification of Mack(M,C), which should be thought of a kind
+of category of genuine G-objects in which only the fixed points under cofinite
+subgroups are salient.
+
+It’s worth noting that given a cofinal system of finite quotients (Hm)men of
+G, we could choose our threading so that for each m, there is some nm such
+that
+
+Mam = OHm-:
+
+Thus
+
+Mack(M,C) ~ lim Mack(Oy,C).
+GH, finite
+
+29
+/n/n4 K(n)-local theory
+
+In this brief section, we’ll see that symmetry properties which emerge when one
+works locally with respect to the Morava K-theories k(n) cause large chunks
+of this theory to collapse. We'll reprove a result of Kuhn on the K(n)-local
+splitting of Taylor towers, and give a new tom Dieck-like splitting result for
+K(n)-local G-spectra.
+
+The following “chromatic blueshift” theorem is a consequence of the results
+of and [HS96); it appears in roughly this form in [HE13}, and as we shall
+see, is also highly relevant.
+
+Theorem 4.1. Let G be a finite group and let E be a K(n)-local spectrum
+with G-action. Then the transfer map
+
+N: Eyg 3 ES
+
+is a K(n)-local equivalence. Thus the Tate spectrum E'¢ is K(n)-acyclic.
+
+Theorem 4.2. If M is a epiorbital category and C is a stable oo-category such
+that all Tate spectra are zero - for instance, the category of K(n)-local spectra
+- then the comonad DR of Theorem [2.38] is the identity comonad, and so the
+Taylor sequence functor
+
+D : Mack(M,C) > Fun(M~,C)
+is an equivalence.
+Having got this far, the proof is fairly simple.
+
+Proof. Let X be an object of M and let ix once again denote the full inclusion
+ASS (Gx)  ASF(Mex), where Gx is the full subcategory of M spanned by
+X. Let E € Fun(Gx,C). Then for any Y € Mex, the natural map
+
+(ix) (EVV) > (ix) (EVV)
+
+takes the form
+
+ram) Enauts(x) ram) baat ;(X)
+
+f€Map y4(X,Y)/isomorphism f€Map y4(X,Y)/isomorphism
+and is thus an equivalence, by our hypothesis. We deduce that for each X € M,
+LX ~ R*,
+
+and so
+L~R.
+
+But DL ~ id (Proposition[2.37) and so DR ~ id. This completes the proof. O
+
+30
+/n/nCorollary 4.3. Any K(n)-local G-spectrum E (by which we mean a Mackey
+functor valued in the K(n)-local category) satisfies a very strong tom Dieck
+splitting property: we have an equivalence
+
+BLY V LO/F pen,
+H<G/conjugacy
+In particular, for each H < G, we have a canonical decomposition
+Bus V ((B°*)awunK)
+(K<H)/conjugacy in G
+where W(H, Kx) is the relative Weyl group, defined as
+W(H,K) := (Ne(K)N H)/K.
+
+Corollary 4.4 (Kuhn). Let F : Sp — Sp be an m-excisive functor taking
+values in A(n)-local spectra. Then the Taylor tower for F splits: we have an
+
+equivalence
+m
+
+F(X) ~ \/ DiF(X).
+i=0
+
+A The free semiadditive oo-category on a group
+
+This appendix is devoted to proving Theorem[2.27] which we restate here (with
+slightly different notation) for convenience:
+
+Theorem A.1. Let G be an (ordinary) groupoid. Then A°//(G") is the free
+semiadditive oo-category on G: for any semiadditive oo-category C, the natural
+inclusion induces an equivalence of categories
+
+Fun® (A°/(G"), C) > Fun(G, C).
+First, we note that we may assume G is connected. Indeed, having proved
+
+this, the general case will follow from the fact that if (M,)iey is an I-indexed
+family of orbital categories, then
+
+i
+At (U1 m) ~@Batt(mM?).
+I I
+
+We will further assume that our connected groupoid has only one object, and
+denote the corresponding group, too, by G.
+
+Now let’s get some notation out of the way. Let F, be the category of finite
+pointed sets. If S € F,, denote by S° the finite set S \ {*}. If s € S°, denote
+by xs : S > {s}, the characteristic map at s:
+
+vlio={? t=s
+
+* otherwise.
+
+31
+/n/nDefinition A.2. Remark 2.4.2.2] Let C be an oo-category which
+admits finite products. Recall that by definition, the category CMon(C) of
+commutative monoids in C is the full subcategory of Fun(F,,C) spanned by
+those functors F’ satisfying the Segal condition: for each S € F,, the edges
+F(S) > F({s}4) determine an equivalence
+
+F(8)~ J] F({s}4).
+ses?
+
+We'll abbreviate CMon(Top) to CMon.
+
+Now let’s begin the proof. First we note that G™ is equivalent to the category
+Fr of finite sets with free G-action.
+
+Definition A.3. Let L(G) be the Lawvere theory of commutative monoids
+with G-action: the full subcategory of Fun(G,CMon), which is equivalent to
+CMon(Fun(G, Top)), spanned by the the essential image of F C Top under
+the left adjoint of the forgetful functor Fun(G,CMon) > Top.
+
+Theorem A.4. There is an equivalence of categories between A°!S(Fr©) and
+
+L(G).
+
+Proof. First let’s construct the functor. Fun(G,CMon) is a certain full subcat-
+egory of Fun(G x F,, Top), so we can do this by constructing a functor
+
+ASS (Fr?) x Gx F, + Top
+
+adjointing over, and checking it makes sense on objects.
+We'll do the construction in two stages. First, note that we have a functor
+
+ATF Fr®) x ALT (F) + AST (Fr?)
+
+simply by taking objectwise products of staircase diagrams. We also have an
+inclusion 7: F,. > Aclf(F) as follows: an n-simplex of F,, given by a chain of
+pointed maps
+
+X 4x, 8...5x,
+maps to the staircase diagram (Aj; )o<i<j<n with
+Au = X? i<j
+Aij = (fifj-ace fig) 1X? 1 Fj.
+
+Functoriality is easily checked, as is the fact that all squares which ought to be
+pullbacks are pullbacks. Composing these two and multiplying by G, we get a
+map
+
+pw: ATT (Fr?) x Gx Fy + AS (Fr®) x G.
+Next, we'll define a functor A°!(Fr°) xG — Top by defining a left fibration
+
+Kt ASS (Fro) xG> Acll (Fr?) xG.
+
+32
+/n/nHere A°!S(Fr@),. x G is itself the total space of a cocartesian fibration over G.
+A vertex of A°ff(Fr°), x G is a free G-set U together with a finite set S and
+a map of sets S > U. An edge of A°//(Fr@), «x G with source a, : $; > Ui
+and target a2 : Sy — U2 is an element g € G together with a diagram
+
+S, —— So
+
+[oom 1 I
+
+U, <— W]e
+
+U2
+
+with higher simplices defined analogously. We define « to be the map that
+forgets S. To prove that x is a left fibration, define A°‘!(Fr@), to be the fiber
+of Acff(Fr°), « G over the vertex of G. « restricts to a map
+
+ASS (Fro), + AS (Fr?)
+which is actually isomorphic to the target map
+t: AST (Fr Gy > AclS (Fr@)
+
+which is definitely a left fibration. Together with the fact that the preimage
+under « of an edge of G is an equivalence, this implies that x itself is a left
+fibration.
+
+Let K be a functor A°f!(Fr°) x G + Top that classifies k. We now have
+a well-defined functor
+
+ao : ASS (Fr) > Fun(G x F,, Top)
+
+defined by composing ys with K and then taking adjoints. For each free finite
+G-set U, we must show that the functor
+
+F, x {U} 4 Al! (Fr?) — Fun(G, Top)
+
+is a commutative monoid. Unwinding the definitions shows that this is a con-
+sequence of the fact that K preserves products. Moreover, one identifies o(U)
+with
+
+mr",
+where © = [],,59 2n and G acts by permutation on the factors. This is equiv-
+alent to the free commutative monoid in Fun(G, Top) on the set U/G. So o
+factors through a functor
+
+a: ASI(Fr?) > L(G).
+
+From here, showing that a is an equivalence is the easy part. Essential
+surjectivity is obvious. For full faithfulness, it suffices to show that a induces
+an equivalence
+
+a9 : Mapgers(pre)(G, G) > Mapyiq)(=*9,5*9)
+
+33
+/n/nsince all of the other relevant maps are products of some copies of this one.
+
+Since G is a commutative monoid in A°/!(Fr¢) and D* is a commutative
+monoid in £(G), ao underlies a map of commutative monoids, both of which are
+easily seen to be equivalent as commutative monoids to ©*°. Thus it’s enough
+to check that ag takes a set of free generators to a set of free generators. On
+the left, we may take this set to be
+
+/X,
+
+where ry is right multiplication by g. On the other hand, we may take our set
+of generators on the right to be those automorphisms of ©*© induced by right
+multiplication by elements of g. Tracing through the definitions a final time,
+we see that ao maps the one set of generators to the other. This completes the
+proof. im]
+
+g€G
+
+We have the functor G > ASS (Fr) that takes, for example, a 2-simplex
+(g,h) to the diagram
+
+/<,
+RA NZ NG
+
+We have the composite
+igi Gx Fe 3 ALS (Fr®) x ALS (F) 4 AST (Fr),
+
+Proposition A.5. ig is the universal commutative monoid with G-action,
+which is to say the initial functor satisfying the Segal condition from G' x F, to
+a category with finite products.
+
+Proof. First we must show that ig is indeed a commutative monoid. G doesn’t
+make any difference here; we just need to show that i: F, > A°!(F) satisfies
+the Segal condition. This follows from the fact that the image of the inert map
+xj : (n) > (1) is the span
+
+a
+“iN
+i i
+
+Now let U(G) be the universal category supporting a commutative monoid
+with G-action. Since U(G) is the initial category under G x F,, that takes certain
+
+34
+/n/ndiagrams to limit diagrams, Proposition 5.3.6.2 of gives a prescription
+for building it as the opposite of a full subcategory of a certain localization
+S~1Psh((G x F.)°?) of the presheaf category Psh((G x F,)°P). Since we’re in
+this business, let’s let Y : (G x F,)°? > Psh((G x F,)°?) denote the Yoneda
+embedding.
+
+In this case, the localization S is generated by the morphisms
+
+TI ¥()) + Vin)
+(nye
+
+given by precomposition with the inert maps, and so localization is “Segalifi-
+cation” and the local objects are exactly the commutative monoid spaces with
+G-action. Thus U(G)°? is the full subcategory of Fun(F, x G, Top) spanned by
+the Segalifications of
+
+IT ¥c)
+
+(nye
+
+as n varies. But Y((1)) is, by definition, left Kan extended along the inclusion
+(l):* 9 F.xG
+
+and so its Segalification is the free commutative monoid with G-action on one
+generator. Since Segalification preserves coproducts, the other objects follow.
+Now we've given an equivalence between U(G)°? and L(G), and therefore
+Acff(Fr¢). We know that this category is canonically self-opposite, so we might
+as well forget the op on U(G). Let’s show that this equivalence comes from ig.
+Since A°Sf(Fr@) is semiadditive, specifying a commutative monoid with G-
+action BG x F, + A°s(Fr) is equivalent to specifying it on G x (1) (see
+Corollary 2.4.3.10 of [Lur12]). Both ig and the universal commutative monoid
+in U(G) take Gx (1) to the G-set G with its right action on itself. This completes
+the proof. im]
+
+Corollary A.6. Let C be an oo-category with finite products. Then pullback
+along ig gives an equivalence
+
+Fun™ (A°/ (Fr@), C) + CMon(Fun(G, C)).
+Proof. This is just a restatement of [A.5] o
+We deduce TheoremP.27Jas the special case of [A.6]where C is semiadditive.
+
+B_ The proof of Lemma 2.36]
+
+Lemma B.1. Let C be an oo-category, z : D — C the inclusion of a full
+subcategory and X € C an object. Let « denote the join of simplicial sets, and
+/n/nlet
+ig : A° > Ax (A" x At)
+i, : A" x {0} > A°* (A" x AY)
+in: A" x {1} > AP x (A" x Al)
+
+be the natural inclusions. We define a simplicial set Cx/p,/ whose n-simplices
+are maps a: A° x (A" x A!) > C with
+
+aoip =X, aot, € Fun(A",D).
+
+Then the map p2 : Cx/p/; — C coming from precomposition with iz is cocarte-
+sian, and its cocartesian edges are those a for which the image of ao 7 is an
+equivalence. Moreover, the inclusion
+
+A: Cx; xcD@ Cx /p;
+
+formed by precomposition with the collapse map A° x (A" x At) + A° x A” is
+coinitial, and therefore left anodyne Proposition 4.1.1.3].
+
+Proof. First we show that any edge a for which a o 7; is an equivalence is
+cocartesian. This is the claim that any commutative diagram of the form
+
+T2
+7
+T; —— > T;
+
+/ W:
+\IZ7\
+
+WwW, ———> W3
+
+X
+
+with T; + T> an equivalence can be completed to a diagram from A° x (A? x
+A’), which is clear by inspection. Since there are plenty of these edges, po is
+cocartesian.
+
+Now we tackle the coinitiality claim. In fact, we’ll show that \ admits a
+right adjoint, which suffices. Let A + A! be the cocartesian fibration classified
+by A; an n-simplex of A is a map 7: A” > A! together with a map
+
+a: (A° x {(i,j) € A” x Al |j =Oorier '(1)}) 9C
+We wish to show that a is also cartesian. In fact, we claim that an edge
+
+To — Ts
+
+/
+
+W3
+
+36
+/n/nof A over the nondegenerate edge of A? is cartesian if Tz > T3 is an equivalence.
+This is the claim that any commuting diagram of the form
+
+W3
+
+can be extended to a commuting diagram of the form
+
+Ws,
+which, again, is clear. Oo
+We list some formal consequences of Lemma
+Corollary B.2. Let CU, bea fibrant replacement for Cx/p, in the covariant
+model structure over C, so that C
+object W € C, the map
+
+Top
+
+x/D/ > C is a left fibration and for each
+
+(CYB )w > (Cx/p/)w
+
+is a Kan-Quillen weak equivalence. Then the functor classified by Cu / is
+equivalent to the restriction and left Kan extension z1z*Map(X, —) of the functor
+corepresented by X.
+
+Now let 8: Cx/p; — Cx, be given on n-simplices by precomposition with
+
+ig * ig : AO x A" > AP x (A” x A),
+
+Since Cx, is a left fibration, we have a commutative diagram
+
+B
+Cx; xe D ——_—___> Cx,
+
+bo
+/n/nIt follows that the counit map cx : z1z*Map(X,—) > Map(X, —) is given, after
+unstraightening, by 6’.
+
+Lemma B.3. Let W € C and let f : X — W be a morphism in C. Then the
+homotopy fiber of
+
+ex,w : (212z*Map(X, —))w + Map(X, W)
+
+over f is given, up to weak equivalence, by the simplicial set Ow,¢ whose n-
+simplices are maps Z : A"+? — C such that
+
+© Zl atont2) = f, and
+e for each i with 0 <i<n+2, Z(i)€D.
+
+Proof. We know that the Joyal model structure is self-enriched, by using
+Corollary 2.2.5.4] to deduce that the pushout-product of a trivial cofibration
+with a cofibration is a trivial cofibration, and it follows that if K — L is any cofi-
+bration of simplicial sets and E is a quasicategory, then Fun(L, E) > Fun(K, E)
+is a categorical fibration. Since § is formed from such a fibration by pullback,
+6 is also a categorical fibration.
+
+The value of cx on W is given, up to weak equivalence, by the map
+
+Bw : (Cxp/)w > (Cx/)w = Hom" (X,W).
+
+Since the target of Bw is a Kan complex and fw is a categorical fibration, it is a
+cocartesian fibration Proposition 3.3.18], and since a fibrant replacement
+for By in the covariant model structure over Hom’(X,W) is automatically a
+Kan fibration, the fibers of Sw are its homotopy fibers.
+
+By definition, the fiber Bw,f over f € Hom*(X, W) is the simplicial set
+whose n-simplices are maps Z’ : (A° * (A" x A!))/(A" x {1}) > C such that
+
+e Zoi, CD, and
+
+e the (n + 1)-simplex Z’ o (ip * iz) is the image of f under the rightmost
+degeneracy; that is, it is the totally degenerate n-simplex of Cx, at f.
+
+In other words, an n-simplex of Gy, is a map
+
+Z" : A x ((A" x Al)/(A” x {1}))
+with Z’(A" x {0}) € D, and Z”(A° *((A” x {1})/(A” x {1})) = f. From here,
+the proof that bw, ~ Ow, is a minor variant of the proof of Proposition
+4.2.1.5]. Oo
+
+We now immerse ourselves in the notation of Lemma[2.36] which we restate
+here for convenience.
+
+38
+/n/nLemma B.4. Let M be an epiorbital category, NV a downwardly closed sub-
+category of M and T its upwardly closed complement. Denote the restriction
+AcfF(ir)* and the left Kan extension A‘! (iz); respectively by II7 and 7, and
+similarly denote A°f!(jy7)* and AY! (jy): by BY and &¥ respectively. Then
+there’s a cofiber sequence of functors Mack(M,CMon) - Mack(M,CMon)
+
+ri’ 41a Vor,
+where € and 7) are the counit and unit of their respective adjunctions.
+
+Proof. Since all of the functors in this sequence are colimit-preserving, it suffices
+to check that its value on each corepresentable Mackey functor is a cofiber
+sequence. Let X € A*ff(M) be an object and let f : X — Y > W bea
+morphism in A°/‘(M). We'll analyze the fiber Uw,y of Lemma B.3]
+
+For C an co-category, let Oc be the twisted arrow category of C (see
+§2]) and let OF := O8 be its opposite. Then an n-simplex of Uw.s is by
+definition a functor ania
+
+0:0 > ME
+
+such the span
+0(0, 0) — 0(0,n + 2) > o(n + 2,n +2)
+
+coincides with f and g(i,i) € T™ for all i with 0 <i<n+2. By the upward
+closedness of T, the latter condition implices that o(i,j7) € T™ for all (i,j) 4
+(0,0), (n+ 2,n+ 2), and in particular Uw,p is empty unless Y € J". We claim
+that if Y € T", then Uy, is contractible. In fact, let Tw, be the subsimplicial
+set of Ow, whose n-simplices are those which factor through the morphism
+
+(0,0) if (i, 7) = (0,0)
+7:04" -, 6a"? Vi, j) = 4 (n$2,n 42) if (i,j) =(n+2,n +42)
+(0,n + 2) otherwise.
+
+If Y € T", then clearly Tw.s = *, and we claim that Ty,, is a simplicial
+deformation retract of Ow,s. We'll do this in two stages as follows. For each
+a*? _, 04" be defined by
+
+integer k, let yf : O
+vk (3) = (main(i — k, 0), 3)
+and dually, define yf : oa" 5 oar? by
+re (i, 3) = (i, max(j + k,n +2).
+Let ly. f be the subsimplicial set of Ow, whose n-simplices factor through
+ea and define Tier similarly; we will show that each of Twp and Tip isa
+simplicial deformation retract of Uw,r, and since
+
+Dwr =P OTs
+
+39
+/n/nthis will complete the proof of the claim. We will prove the result for Ting the
+result for Tw is, of course, entirely dual.
+For each n,l with 0 <1 <n+1, let tr. : A" + A! be the unique map with
+
+7,1 (0) = [0,--+,n—J),
+
+nl
+
+where we interpret [0,—1] as the empty interval. Then we define a map
+
+0: Uw, x Al > Uws
+
+on n-simplices by
+
+Then ©, is a retraction onto ry.
+What we have proved so far is that
+
+(0,7nu) > 007%.
+
+; so we have the required simplicial homotopy.
+
+€cy ? TTI cx > cx,
+
+after evaluation on an object W, is homotopic to the inclusion of the connected
+components of Map(X,W) comprising those maps f : X « Y > W with
+Y € A*ff(T). What’s left is easy: n-,(W) is the natural map
+
+Map gers uy (X,W) > Mapgers yy (J(X), 3(W)),
+
+which is just the projection away from the image of €.,(W). This concludes
+
+the proof of Lemma [2.36] Oo
+
+References
+
+AC15] Gregory Arone and Michael Ching. A classification of Taylor tow-
+ers of functors of spaces and spectra. Advances in Mathematics,
+272:471-552, 2015.
+
+ACB14] Omar Antolin-Camarena and Tobias Barthel. Chromatic fracture
+cubes. arXiv preprint arXiv:1410.7271, 2014.
+
+AK13] William Abram and Igor Kriz. The equivariant complex cobordism
+ring of a finite abelian group. preprint, 2013.
+
+Bar14] Clark Barwick. Spectral Mackey functors and equivariant algebraic K-theory (I).
+arXiv preprint arXiv:1404.0108, 2014.
+
+BDG*16] Clark Barwick, Emanuele Dotto, Saul Glasman, Denis Nardin, and
+Jay Shah. Parametrized higher categories and parametrized higher
+algebra. In progress, 2016.
+
+BMO03] Kristine Bauer and Randy McCarthy. On vanishing Tate cohomol-
+
+ogy and decompositions in Goodwillie calculus. Preprint, 2003.
+
+40
+/n/nBou79]
+
+Gla16]
+
+GMI]
+
+Goo91]
+
+GS96]
+
+HHRO09]
+
+HL13]
+
+Hov93]
+
+HS96]
+
+Kuh04]
+
+LMS86]
+
+Lur09]
+Lur12|
+tD73]
+
+Aldridge K Bousfield. The localization of spectra with respect to
+homology. Topology, 18(4):257-281, 1979.
+
+Saul Glasman. Goodwillie calculus and mackey functors. arXiv
+preprint arXiv:1610.03127, 2016.
+
+Bertrand Guillou and JP May. Models of G-spectra as presheaves
+of spectra. arXiv preprint arXiv:1110.3571, 2011.
+
+Thomas G Goodwillie. Calculus II: analytic functors. K-theory,
+5(4):295-332, 1991.
+
+J PC Greenlees and Hal Sadofsky. The Tate spectrum of v,,-periodic
+complex oriented theories. Mathematische Zeitschrift, 222(3):391—
+405, 1996.
+
+Michael A. Hill, Michael J. Hopkins, and Douglas C. Ravenel.
+On the non-existence of elements of Kervaire invariant one.
+http://araiv.org/abs/0908.3724, 2009.
+
+Michael Hopkins and Jacob Lurie. Ambidexterity in K(n)-local sta-
+ble homotopy theory. 2013.
+
+Mark Hovey. Bousfield localization functors and Hopkins’ chromatic
+splitting conjecture. In Proceedings of the Cech Centennial Confer-
+ence on Homotopy Theory, 1993.
+
+Mark Hovey and Hal Sadofsky. Tate cohomology lowers chromatic
+Bousfield classes. Proceedings of the American Mathematical Society,
+124(11):3579-3585, 1996.
+
+Nicholas J Kuhn. Tate cohomology and periodic localization of poly-
+nomial functors. Inventiones mathematicae, 157(2):345-370, 2004.
+
+L Gaunce Lewis, J Peter May, and Mark Steinberger. Equivariant
+stable homotopy theory. Springer, 1986.
+
+Jacob Lurie. Higher Topos Theory. Princeton University Press, 2009.
+Jacob Lurie. Higher Algebra. 2012.
+
+Tammo tom Dieck. Equivariant homology and Mackey functors.
+Mathematische Annalen, 206(1):67-78, 1973.
+
+41

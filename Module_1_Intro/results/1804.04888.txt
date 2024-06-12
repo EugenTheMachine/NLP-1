@@ -1,0 +1,1158 @@
+Scalable and Interpretable One-class SVMs with
+Deep Learning and Random Fourier Features
+
+Minh-Nghia Nguyen and Ngo Anh Vien
+
+School of Electronics, Electrical Engineering and Computer Science,
+
+Queen’s University Belfast, UK,
+
+mnguyen04@qub.ac.uk, v.ngo@qub.ac.uk
+
+Abstract. One-class support vector machine (OC-SVM) for a long time
+has been one of the most effective anomaly detection methods and ex-
+
+tensively adopted in both research as well as industrial applications. The
+biggest issue for OC-SVM is yet the capability to operate with large and
+high-dimensional datasets due to optimization complexity. Those prob-
+lems might be mitigated via dimensionality reduction techniques such as
+manifold learning or autoencoder. However, previous work often treats
+representation learning and anomaly prediction separately. In this paper,
+we propose autoencoder based one-class support vector machine (AE-
+1SVM) that brings OC-SVM, with the aid of random Fourier features to
+approximate the radial basis kernel, into deep learning context by com-
+bining it with a representation learning architecture and jointly exploit
+stochastic gradient descent to obtain end-to-end training. Interestingly,
+this also opens up the possible use of gradient-based attribution meth-
+
+ods to explain the decision making for anomaly detection, which has ever
+been challenging as a result of the implicit mappings between the input
+space and the kernel space. To the best of our knowledge, this is the first
+work to study the interpretability of deep learning in anomaly detection.
+We evaluate our method on a wide range of unsupervised anomaly de-
+tection tasks in which our end-to-end training architecture achieves a
+performance significantly better than the previous work using separate
+
+1804.04888v2 [cs.LG] 14 Oct 2018
+
+Iv
+
+arX
+
+training.
+
+1 Introduction
+
+Anomaly detection (AD), also known as outlier detection, is a unique class
+of machine learning that has a wide range of important applications, including
+
+intrusion detection in networks and control systems, fau
+
+t detection in indus-
+
+trial manufacturing procedures, diagnosis of certain diseases in medical areas by
+identifying outlying patterns in medical images or other health records, cyber-
+security, etc. AD algorithms are identification processes that are able to single
+
+out items or events that are different from an expected
+significantly lower frequencies compared to others in a da
+
+pattern, or that have
+
+aset [15]8].
+
+In the past, there has been substantial effort in using traditional machine
+
+learning techniques for both supervised and unsupervised
+
+AD such as principal
+
+component analysis (PCA) [I6]6[7], one-class support vector machine (OC-SVM)
+
+sed methods
+
+25]32]12], isolation forests [21], clustering b:
+
+Gaussian mixture model (GMM) [439[18]35], etc. Notwit:
+
+such as k-means, and
+hstanding, they often
+
+becomes inefficient when being used in high-dimensional problems because of
+/n/nhigh comp.
+duction ap
+techniques
+two-staged
+
+proach. There is
+
+tecture wit
+and separately applies the
+bust deep autoencoder (RD.
+
+exity and the absence of an int
+
+Minh-Nghia Nguyen and Ngo Anh Vien
+
+egrated efficient dimensionality re-
+recently a growing interest in using deep learning
+
+to tackle this issue. Nonetheless, most previous work still relies on
+or separate training in which a low-dimensional space is firstly learned
+via an autoencoder. For exany
+h a deep belief network to reduce
+eal
+
+ple, the work in simply proposes a hybrid archi-
+he dimensionality of the input space
+rned feature space to a conventional OC-SVM. Ro-
+A) [38] uses a structure that combines robust PCA
+
+and dimensionality reduction by autoencoder. However, this two-stage method
+
+is not able
+mensionality grows higher
+our approach, deep cluster
+rithm that integrates unsu
+
+Di
+p
+
+designed to jointly optimize
+learn a latent feature space
+
+End-to-end training of di
+much interest, such as the
+
+networks (GAN) [24]36].
+mation techniques to detec’
+herefore might not be effici
+are many proximate anoma
+or them), resulting in false
+
+One-class
+unsupervised
+he
+he dimensionality and com
+also heavily affected by the
+SVM may not be desirab
+
+ackle these i
+via
+dimensionality reduction mi
+consequentia’
+can be interpreted differen’
+best of our knowledge, stud
+stochastic gradient descent
+existing works only apply ra
+and treat the problem as a
+
+he application of kernel ap
+
+Another major issue in j
+
+he reasoning for why they
+
+input features. Very recent
+
+ion (attribution) methods
+
+to learn efficient
+ing embedding (DEC
+
+hough clustering is often considered as a possib’
+
+support vector machine is one of the most popul.
+AD. OC-SVM is known to be insensitive to noise and outliers in
+raining data. Still, the performance of OC-SVM in genera:
+
+AD, since important information useful for identifying ow
+
+have showcased the prospec
+
+is the interpretability of the trained models, that is, the capability to ex
+
+has been brought about and attrac
+he machine learning research community. Especially, gradient-based exp.
+
+his challenge. The aim of the ap
+
+features for AD problems, especially when the di-
+cause of decoupled learning stages. More similar to
+) is a state-of-the-art algo-
+ervised autoencoding network with clustering. Even
+e solution to AD tasks, DEC is
+he latent feature space and clustering, thus would
+that is more efficient to clustering rather than AD.
+
+mensionality reduction and AD has recently received
+
+frameworks using deep energy-based model [37], au-
+oencoder combined with Gaussian mixture model [40], generative adversarial
+Nonetheless, these me
+
+hods are based on density esti-
+anomalies as a by-product of unsupervised learning,
+ent for AD. They might assign high density if there
+lies (a new cluster or mixture might be established
+negative cas
+
+ar techniques for
+
+is susceptible to
+plexity of the data while their training speed is
+size of the datasets. As a result, conventional OC-
+
+e in big data and high-dimensional AD applications. To
+ssues, previous work has only performed dimensionality reduction
+eep learning and OC-SVM based AD separately. Notwiths
+
+anding, separate
+ght have a negative effect on the performance of the
+liers
+ly in the latent space. On the other hand, to the
+ies on the application of kernel approximation and
+(SGD) on OC-SVM have been lacking: most of the
+ndom Fourier features (RFF) to the input spa
+linear support vector machine (SVM); meanwhi
+of using SGD to optimize SVM, but witho
+proximation.
+
+nat
+
+AD
+lain
+detect the samples as outliers, with respect to the
+y, explanation for black-box deep learning models
+ed a respectable amount of attention from
+ana-
+BI29I2] are widely studied as protocols to address
+proach is to analyse the contribution of each
+
+oint training with dimensionality reduction an
+
+neuron in the input space o:
+
+a neural network to the neurons in its latent space
+
+/n/nScalable & Interpretable OC-SVMs with Deep learning and Random features 3
+
+by calculating the corresponding gradients. As we will demonstrate, this same
+concept can be applied to kernel-approximated SVMs to score the importance
+of each input feature to the margin that separates the decision hyperplane.
+Driven by those reasoning, in this paper we propose AE-1SVM that is an end-
+o-end autoencoder based OC-SVM model combining dimensionality reduction
+and OC-SVM for large-scale AD. RFFs are applied to approximate the RBF
+ernel, while the input of OC-SVM is fed directly from a deep autoencoder that
+shares the objective function with OC-SVM such that dimensionality reduction
+is forced to learn essential pattern assisting the anomaly detecting task. On top of
+hat, we also extend gradient-based attribution methods on the proposed kernel-
+approximate OC-SVM as well as the whole end-to-end architecture to analyse
+he contribution of the input features on the decision making of the OC-SVM.
+The remainder of the paper is organised as follows. Section [2] reviews the
+background on OC-SVM, kernel approximation, and gradient-based attribution
+methods. Section B] introduces the combined architecture that we have men-
+ioned. In Section[4] we derive expressions and methods to obtain the end-to-end
+gradient of the OC-SVM’s decision function with respect to the input features
+of the deep learning model. Experimental setups, results, and analyses are pre-
+sented in Section ] Finally, Section [6] draws the conclusions for the paper.
+
+2 Background
+
+In this section, we briefly describe the preliminary background knowledge
+that is referred to in the rest of the paper.
+
+2.1 One-class support vector machine
+
+OC-SVM for unsupervised anomaly detection extends the idea of support
+vector method that is regularly applied in classification. While classic SVM aims
+to find the hyperplane to maximize the margin separating the data points, in
+OC-SVM the hyperplane is learned to best separate the data points from the
+origin. SVMs in general have the ability to capture non-linearity thanks to the
+use of kernels. The kernel method maps the data points from the input feature
+space in R¢ to a higher-dimensional space in R? (where D is potentially infinite),
+where the data is linearly separable, by a transformation R4 + R?. The most
+commonly used kernel is the radial basis function (RBF) kernel defined by a
+
+similarity mapping between any two points x and 2’ in the input feature space,
+°
+
+formulated by K (2, x’) = exp(—le=a/Ir), with o being a kernel bandwidth
+
+Let w and p denote the vectors indicating the weights of all dimensions in the
+kernel space and the offset parameter determining the distance from the origin
+to the hyperplane, respectively. The objective of OC-SVM is to separate all data
+points from the origin by a maximum margin with respect to some constraint
+relaxation, and is written as a quadratic program as follows:
+
+a, 2
+= ||wl? -p+—o&, 1
+rnin 5 |wll? = p+ in 28 (1)
+
+subject to w’ @(x;) > p— &,€ > 0.
+/n/n4 Minh-Nghia Nguyen and Ngo Anh Vien
+
+where €; is a slack variable and v is the regularization parameter. Theoretically,
+y is the upper bound of the fraction of anomalies in the data, and also the main
+tuning parameter for OC-SVM. Additionally, by replacing €; with the hinge loss,
+we have the unconstrained objective function as
+
+: io
+min 5 ||w||> — p+ a 2g mex(OsP —w"4(zi)). (2)
+
+Let g(x) = w.@(x;) — p, the decision function of OC-SVM is
+
+: _ fil if g(x) >0 .
+fa) =sientate)) =F (3)
+The optimization problem of SVM in @) is usually solved as a convex op-
+timization problem in the dual space with the use of Lagrangian multipliers to
+reduce complexity while increasing solving feasibility. LIBSVM is the most
+popular library that provides efficient optimization algorithms to train SVMs,
+and has been widely adopted in the research community. Nevertheless, solving
+SVMs in the dual space can be susceptible to the data size, since the function
+K between each pair of points in the dataset has to be calculated and stored in
+a matrix, resulting in an O(n?) complexity, where n is the size of the dataset.
+
+2.2 Kernel approximation with random Fourier features
+
+To address the scalability problem of kernel machines, approximation algo-
+rithms have been introduced and widely applied, with the most two dominant
+being Nystré6em and random Fourier features (RFF) [23]. In this paper, we
+focus on RFF since it has lower complexity and does not require pre-training.
+The method is based on the Fourier transform of the kernel function, given by
+a Gaussian distribution:
+
+pw) = N (0,070) (4)
+
+where I is the identity matrix and o is an adjustable parameter representing the
+standard deviation of the Gaussian process.
+
+From the distribution p, D independent and identically distributed weights
+W1,W2,...,Wp are drawn. In the original work [23], two mappings are introduced,
+which are:
+
+— The combined cosine and sine mapping as 2.,() = [cos(w? x) sin(w?x)]”
+which leads to the complete mapping being defined as follows:
+
+T
+
+2(x) = i [cos(wf x) ... cos(whx) sin(wf 2) ... sin(whz)|
+
+— The offset cosine mapping as z,(x) = V2cos(wT x + b), where the offset
+parameter b ~ U(0, 27). Consequently, the complete mapping in this case is
+
+2(x) = iz [cos(wP x + b) ... cos(wha + b)|" . (6)
+/n/nScalable & Interpretable OC-SVMs with Deep learning and Random features
+
+ou
+
+It has been proven in that the former mapping outperforms the latter one
+in approximating RBF kernels due to the fact that no phase shift is introduced
+as a result of the offset variable. Therefore, in this paper, we only consider the
+combined sine and cosine mapping.
+
+Applying the kernel approximation mappings to
+SVM objective function with hinge loss becomes
+
+the unconstrained OC-
+
+1 i<
+min = ||w|? — p+ — S>max(0, p — w"z(2:)), (7)
+wip 2 un
+
+which is equivalent to a OC-SVM in the approximated kernel space R?, and
+thus the optimization problem is more trivial, despite the dimensionality of R?
+being higher than that of R¢.
+
+2.3. Gradient-based explanation methods
+
+Gradient-based methods exploit the gradient of the latent nodes in a neural
+network with respect to the input features to rate the attribution of each input to
+the output of the network. In the recent years, many research studies [29[30/22]2]
+have applied this approach to explain the classification decision and sensitivity
+of input features in deep neural networks and especially convolutional neural
+networks. Intuitively, an input dimension x; has larger contribution to a latent
+node y if the gradient of y with respect to x; is higher, and vice versa.
+
+Instead of using purely gradient as a quantitative factor, various extensions
+of the method has been developed, including Gradient*Input [28], Integrated
+gradients [30], or DeepLIFT [27]. The most recent work [2] showed that these
+methods are strongly related and proved conditions of equivalence or approxima-
+tion between them. In addition, other non gradient-based can be re-formulated
+to be implemented easily like gradient-based.
+
+3 Deep autoencoding one-class SVM
+
+Latent space O
+7
+
+to Reconstruction loss
+
+r Encoder Decoder i
+
+| Input space _ 2” hidden a
+
+: 1 | layer Q)
+
+; ‘| 1 hidden LIN.
+' it uy ) )
+
+it layer y
+
+: it 7
+
+Inputlayer (
+
+Fig. 1: (Left) Illustration of the Deep autoencoding One-class “SVM architecture.
+(Right) Connections between input layer and hidden layers of a neural network
+
+In this section, we present our combined model, namely Deep autoencoding
+One-class SVM (AE-1SVM), based on OC-SVM for anomaly detecting tasks in
+high-dimensional and big datasets. The model consists of two main components,
+as illustrated in Figure [I] (Left):
+
+/n/n6 Minh-Nghia Nguyen and Ngo Anh Vien
+
+— A deep autoencoder network for dimensionality reduction and feature rep-
+resentation of the input space.
+
+— An OC-SVM for anomaly prediction based on support vectors and margin.
+The RBF kernel is approximated using random Fourier features.
+
+The bottleneck layer of the deep autoencoder network is forwarded directly
+into the Random features mapper as the input of the OC-SVM. By doing this,
+the autoencoder network is pressed to optimize its variables to represent the
+input features in the direction that supports the OC-SVM in separating the
+anomalies from the normal class.
+
+Let us denote x as the input of the deep autoencoder, x’ as the reconstructed
+value of x, and x as the latent space of the autoencoder. In addition, @ is the
+set of parameters of the autoencoder. As such, the joint objective function of
+the model regarding the autoencoder parameters, the OC-SVM’s weights, and
+its offset is as follows:
+
+_ ny ty ye Lo _ oT
+Q(8,w, p) = aL(x,x') + 5 Ilwl P+ og Le man(Osp w'2(vi)) (8)
+
+The components and parameters in (8) are described below
+—L
+
+(x,x’) is the reconstruction loss of the autoencoder, which is normally
+chosen to be the L2-norm loss L(x, x’) = ||x — x! |[5.
+
+— Since SGD is applied, the variable n, which is formerly the number of training
+samples, becomes the batch size since the hinge loss is calculated using the
+data points in the batch.
+
+— z is the random Fourier mappings as defined in (). Due to the random
+features being data-independent, the standard deviation o of the Gaussian
+distribution has to be fine-tuned correlatively with the parameter v.
+
+— ais a hyperparameter controlling the trade-off between feature compression
+and SVM margin optimization.
+
+Overall, the objective function is optimized in conjunction using SGD with
+backpropagation. Furthermore, the autoencoder network can also be extended
+to a convolutional autoencoder, which is showcased in the experiment section.
+
+4 Interpretable autoencoding one-class SVM
+
+In this section, we outline the method for interpreting the results of AE-
+1SVM using gradients and present illustrative example to verify its validity.
+
+4.1 Derivations of end-to-end gradients
+Considering an input 2 of an RFF kernel-approximated OC-SVM with di-
+
+mensionality R?. In our model, x is the bottleneck representation of the latent
+space in the deep autoencoder. The expression of the margin g(x) with respect
+/n/nScalable & Interpretable OC-SVMs with Deep learning and Random features 7
+
+to the input 2 is as follows:
+
+D
+0) = Do mtes(e) r)- p= 4/— Bu w,cos(w) 2) +wp4;sin(w) x)| —
+=\/—= 5 w;cos( ene +wp4;sin enn - (9)
+
+As a result, the sradient of the margin function on each input dimension k =
+1,2,...,d can be calculated as
+
+a Te a d
+on =1/ py wy | — wjsin() Wiktk) + wj+pcos() Wyk&k)|- (10)
+j=l k=1 k=1
+
+Next, we can derive the gradient of the latent space nodes with respect to
+the deep autoencoder’s input layer (extension to convolutional autoencoder is
+straightforward). In general, considering a neural network with M input neu-
+rons %m,m = 1,2,...,M, and the first hidden layer having N neurons un,n =
+
+; ., N, as depicted in Figure [I] (Right). The gradient of un with respect to
+Xm can be derived as
+
+Germ; ty) = 2
+
+To = Wn! (LmWmn + Bnn)O(mWmn + bmn), (LL)
+vm
+where 0(%mWmn + bmn) = Un, o(.) is the activation function, Wmn and Bmn
+are the weight and bias connecting x, and uy. The derivative of ¢ is different for
+each activation function. For instance, with a sigmoid activation o, the gradient
+G(&m,Un) is computed a8 Wmntn(1 — Un), while G(am,Un) i8 Wnn(1 — u2) for
+tanh activation function.
+To calculate the gradient of neuron y; in the second hidden layer with respect
+to %m, we simply apply the chain rule and sum rule as follows:
+
+Oy OUn v
+Gams) = eu — Hey Fun Ona = De Glen WG (Om thn). (12)
+
+The gradient G(un, yi) can be obtained in a similar manner to (LJ). By main-
+taining the values of G' at each hidden layer, the gradient of any hidden or output
+layer with respect to the input layer can be calculated. Finally, combining this
+and (10), we can get the end-to-end gradient of the OC-SVM margin with re-
+spect to all input features. Besides, state-of-the-art machine learning frameworks
+like TensorF low also implements automatic differentiation [I] that simplifies the
+procedures for computing those gradient values.
+
+Using the obtained values, the decision making of the AD model can be
+interpreted as follows:
+
+— For an outlying sample, the dimension which has higher gradient indicates a
+higher contribution to the decision making of the ML model. In other words,
+the sample is further to the boundary in that particular dimension.
+
+— For each mentioned dimension, if the gradient is positive, the value of the
+feature in that dimension is lesser than the the lower limit of the boundary.
+In contrast, if the gradient holds a negative value, the feature exceeds the
+level of the normal class.
+
+/n/n8 Minh-Nghia Nguyen and Ngo Anh Vien
+
+4.2 Illustrative example
+
+Figure [2] presents an illustrative example of interpreting anomaly detecting
+results using gradients. We generate 1950 four-dimensional samples as normal
+instances, where the first two features are uniformly generated such that they
+are inside a circle with center C(0.5,0.5). The third and fourth dimensions are
+drawn uniformly in the range [—0.2,0.2] so that the contribution of them are
+significantly less than the other two dimensions. In contrast, 50 anomalies are
+created which have the first two dimensions being far from the mentioned circle,
+while the last two dimensions has a higher range of [—2, 2]. The whole dataset
+including both the normal and anomalous classes are trained with the proposed
+AE-1SVM model with a bottleneck layer of size 2 and sigmoid activation.
+
+to (0.9, 0.1) (0.9, 0.5) (0.9, 0.9)
+
+(0.9, 0.5) (0.9, 0.9)
+.
+
+°
+oo | (09,02) |
+
+(0.5, 0.1) (0.5, 0.5) (0.5, 0.9)
+
+(0.5, 0.9)
+°
+
+Encoded feature 2
+
+(0.5, 0.1)
+.
+
+(©, 0.1) (1,05) 1,09)
+0.2 (0.1, 0.5) (0-2, 0.9)
+(0.1, 0.1) °
+. oH |
+
+OB 10
+
+7
+
+0.0 02 oa 06
+Encoded feature 1
+
+Fig. 2: An illustrative example of gradient-based explanation methods. The left figure
+depicts the encoded 2-dimensional feature space from a 4-dimension dataset. The nine
+graphs on the right plot the gradient of the margin function with respect to the four
+original features for each testing point. Only the coordinates of first two dimensions
+are annotated.
+
+The figure on the left shows the representation of the 4D dataset on a 2-
+dimensional space. Expectedly, it captures most of the variability from only the
+first two dimensions. Furthermore, we plot the gradients of 9 different anomalous
+samples, with the two latter dimensions being randomized, and overall, the re-
+sults have proven the aforementioned interpreting rules. It can easily be observed
+that the contribution of the third and fourth dimensions to the decision mak-
+ing of the model is always negligible. Among the first two dimensions, the ones
+having the value of 0.1 or 0.9 has the corresponding gradients perceptibly higher
+than those being 0.5, as they are further from the boundary and the sample can
+be considered ”more anomalous” in that dimension. Besides, the gradient of the
+input 0.1 is always positive due to the fact that it is lower than the normal level.
+In contrast, the gradient of the input 0.9 is consistently negative.
+
+5 Experimental results
+
+We present qualitative empirical analysis to justify the effectiveness of the
+AE-1SVM model in terms of accuracy and improved training/testing time. The
+/n/nScalable & Interpretable OC-SVMs with Deep learning and Random features 9
+
+objective is to compare the proposed model with conventional and state-of-the-
+art AD methods over synthetic and well-known real world data[],
+
+5.1 Datasets
+
+We conduct experiments on one generated datasets and five real-world datasets
+(we assume all tasks are unsupervised AD) as listed below in Table [I] The de-
+scriptions of each individual dataset is as follows:
+
+— Gaussian: This dataset is taken into account to showcase the performance
+of the methods on high-dimensional and large data. The normal samples are
+drawn from a normal distribution with zero mean and standard deviation
+o =1, while o = 5 for the anomalous instances. Theoretically, since the two
+groups have different distributional attributes, the AD model should be able
+to separate them.
+
+— ForestCover: From the ForestCover/Covertype dataset [Il], the class 2 is
+extracted as the normal class, and class 4 is chosen as the anomaly class.
+
+— Shuttle: From the Shuttle dataset [I], we select the normal samples from
+classes 2, 3, 5, 6, 7, while the outlier group is made of class 1.
+
+— KDDCup99: The popular KDDCup99 dataset has approximately 80%
+proportion as anomalies. Therefore, from the 10-percent subset, we randomly
+select 5120 samples from the outlier classes to form the anomaly set such
+that the contamination ratio is 5%. The categorical features are extracted
+using one-hot encoding, making 118 features in the raw input space.
+
+— USPS: We select from the U.S Postal Service handwritten digits dataset:
+[17] 950 samples from digit 1 as normal data, and 50 samples from digit 7
+as anomalous data, as the appearance of the two digits are similar. The size
+of each image is 16 x 16, resulting in each sample being a flatten vector of
+256 features.
+
+— MNIST: From the MNIST dataset [20], 5842 samples of digit ’4’ are chosen
+as normal cl On the other hand, the set of outliers contains 100 digits
+from class ,’7, and ’9’. This task is challenging due to the fact that
+many digits ’9’ are remarkably similar to digit ’4’. Each input sample is a
+flatten vector with 784 dimensions.
+
+Dataset Dimensions Normal instances Anomalies rate (%)
+
+Gaussian 512 950 5.0
+ForestCover 54 581012 0.9
+Shuttle 9 49097 7.2
+KDDCup99 118 97278 5.0
+USPS 256 950 5.0
+MNIST 784 5842 L7
+
+Table 1: Summary of the datasets used for comparison in the experiments.
+
+All code for reproducibility is available at https://github.com/minh-nghia/AE-
+1SVM
+/n/n10
+
+5.2 Baseline methods
+
+Variants of OC-SVM and several st
+baselines to compare the performance wi
+
+fications of the conventional OC-SVM are considered. Firs
+
+Minh-Nghia Nguyen and Ngo Anh Vien
+
+ate-of-the-art methods are selected as
+h the AE-1LSVM model. Different modi-
+; we take into account
+
+the version where OC-SVM with RBF kernel is trained directly on the raw input.
+
+Additionally, to give more impartial jus
+coding network exactly identical to tha
+
+We use the same number of training epochs to AE-1SVM
+
+tifications, a version where an autoen-
+of the AE-1SVM model is considered.
+‘o investigate the abil-
+
+ity of AE-1SVM to force the dimensionality reduction network to learn better
+representation of the data. The OC-SVM is then trained on the encoded feature
+
+space, and this variant is also similar to
+The following methods are also consi
+
+detecting performance of the proposed model:
+
+— Isolation Forest [21]: This ensemb:
+
+the anomalies in the data have significantly lower fre
+
+ent from the normal points.
+
+into two components. The first com
+sentation of the input, while
+
+work
+from
+
+unsupervised autoencoding ne
+in sparser clusters or are far
+into AD and calculate the ano:
+distance to the centroid and the den
+
+5.3 Evaluation metrics
+
+In all experiments, the area un
+
+Robust Deep Autoencoder (RDA) [38]: In this
+toencoder is constructed and trained such that it can decompose the
+
+maly score of each sample as a product o:
+
+the approach given in [13].
+ered as baselines to examine the anomaly
+
+hat
+ffer-
+
+e method revolves around the idea
+
+uencies and are di
+algorithm, a deep au-
+ata
+pre-
+
+ponent contains the latent space re
+
+he second one is comprised of the noise and
+outliers that are difficult to reconstruct.
+Deep Clustering Embeddings (DEC) [34]: This algorithm combines
+
+with clustering. As outliers often locate
+their centroids, we apply this method
+Fits
+
+sity of the cluster it belongs to.
+
+ler receiver operating characteristic (AUROC)
+
+and area under the Precesion-Recall curve (AUPRC) are applied as metrics to
+evaluate and compare the performance of AD methods. Having a high AUROC is
+
+necessary for a competent model, wherea
+between the methods regarding imbalan
+‘ollows the unsupervised setup, where e:
+he entire training set including t
+The output of the models on the test se
+using the mentioned scoring metrics, w:
+
+5.4 Model configurations
+
+rithm of choice is Adam [19]. We also di
+
+ual dataset are as in Table 2] below.
+
+he anoma:
+
+raining and testing time of each algorithm after 20 runs being reported.
+
+In all experiments, we employ the sigmoi
+he architecture using TensorFlow [I]. The initial weights of the autoe
+networks are generated according to Xavier’s method [14]. The optimizing algo-
+
+ures, a standard deviation o = 3.0 produces
+For other parameters, the network configura
+
+s AUPRC often highlights the difference
+ce datasets [10]. The testing procedure
+ach dataset is split with 1:1 ratio, and
+ies is used for training the model.
+t is measured against the ground truth
+ith the average scores and approximal
+
+plement
+ncoding
+
+activation function and im
+
+scover that for the random Fourier fea-
+satisfactory results for all datasets.
+ions of AE-1SVM for each individ-
+
+/n/nScalable & Interpretable OC-SVMs with Deep learning and Random features 11
+
+Dataset Encoding layers v a RFF Batch size Learning rate
+Gaussian 128, 32 0.40 1000 500 32 0.01
+ForestCover {32, 16} 0.30 1000 200 1024 0.01
+Shuttle 6, 2 0.40 1000 50 16 0.001
+KDDCup99 {80, 40, 20} 0.30 10000 400 128 0.001
+USPS 128, 64, 32 0.28 1000 500 16 0.005
+MNIST {256, 128} 0.40 1000 1000 32 0.001
+
+Table 2: Summary of network configurations and training parameters of AE-1SVM
+used in the experiments.
+
+For the MNIST dataset, we additionally implement a convolutional autoen-
+coder with pooling and unpooling layers: conv1(5x5 x16), pooll (2x2), conv2(5x
+5 x 9), pool2(2 x 2) and a feed-forward layer afterward to continue compressing
+into 49 dimensions; the decoder: a feed-forward layer afterward of 49 x 9 dimen-
+sions, then deconv1(5 x5 x 9), unpooll (2 x 2), deconv2(5 x 5 x 16), unpool2(2 x 2),
+then a feed-forward layer of 784 dimensions. The dropout rate is set to 0.5 in
+this convolutional autoencoder network.
+
+For each baseline methods, the best set of parameters are selected. In par-
+ticular, for different variants of OC-SVM, the optimal values for parameter v
+and the RBF kernel width are exhaustively searched. Likewise, for Isolation for-
+est, the fraction ratio is tuned around the anomalies rate for each dataset. For
+RDA, DEC, as well as OC-SVM variants that involves auto-encoding network
+for dimensionality reduction, the autoencoder structures exactly identical to AE-
+1SVM are used, while the \ hyperparameter in RDA is also adjusted as it is the
+most important factor of the algorithm.
+
+5.5 Results
+
+Firstly, for the Gaussian dataset, the histograms of the decision scores ob-
+tained by different methods are presented in Figure B] It can clearly be seen
+that AE-1SVM is able to single out all anomalous samples, while giving the best
+separation between the two classes.
+
+For other datasets, the comprehensive results are given in Table[3] It is obvi-
+ous that AE-1SVM outperforms conventional OC-SVM as well as the two-staged
+structure with decoupled autoencoder and OC-SVM in terms of accuracy in all
+scenarios, and is always among the top performers. As we restrict the number of
+raining epochs for the detached autoencoder to be same as that for AE-1SVM,
+its performance declines significantly and in some cases its representation is even
+worse than the raw input. This proves that AE-1SVM can attain more efficient
+eatures to support AD task given the similar time.
+
+Other observations can also be made from the results. For ForestCover, only
+he AUROC score of Isolation Forest is close, but the AUPRC is significantly
+ower, with three time less than that of AE-1SVM, suggesting that it has to
+compensate a higher false alarm rate to identify anomalies correctly. Similarly,
+Isolation Forest slightly surpasses AE-1SVM in AUROC for Shuttle dataset,
+but is subpar in terms of AUPRC, thus can be considered less optimal choice.
+autoencoder network in image processing contexts. Analogous patterns can as
+well be noticed for other datasets. Especially, for MNIST, it is shown that the
+proposed method AE-1SVM can also operate under a convolutional autoencoder
+network in image processing contexts.
+
+/n/n12 Minh-Nghia Nguyen and Ngo Anh Vien
+
+Dataset Method AUROC AUPRC Train Test
+OC-SVM raw input 0.9295 0.0553 6x10? 2x10?
+OC-SVM encoded 0.7895 0.0689 25x10? 8x10!
+
+Forest Isolation Forest 0.9396 0.0705 3x 10! 1x10!
+
+Cover 0.8683 0.0353 1x10? 2x 10°
+
+0.9181 0.0421 2x10* 4x 10°
+0.9485 0.1976 2x10’ 7x10
+
+MI raw input 0.9338 0.4383 2x10! 5x 10!
+OC-SVM encoded 0.8501 0.4151 2x10! 2.5 x 10°
+Shuttle Isolation Forest 0.9816 0.7694 2.5 x 10" 1.5 x 10"
+
+0.8306 0.1872 3x10? 2x10?
+0.9010 0.3184 6x10° 1x 10°
+0.9747 0.9483 1x10! 1x10-+
+
+MI raw input 0.8881 0.3400 6x10 2x 10!
+encoded 0.9518 0.3876 5 x 10" 1x 10°
+Isolation Forest 0.9572 0.4148 2x10' 5x 10°
+KDDCup RDA 0.6320 0.4347 1x10?) 5 x107!
+DEC 0.9496 0.3688 1x10' 2x 10°
+AE-1SVM 0.9663 0.5115 3x10! 45x1077
+AE-1ISVM (Full dataset) 0.9701 0.4793 2x10? 4x 10°
+OC-SVM raw input 0.9747 0.5102 2x10°? 15x10?
+OC-SVM encoded 0.9536 0.4722 6x10° 4x 10-3
+USPS Isolation Forest 0.9863 0.6250 2.5 x 107! 6 x 107?
+RDA 0.9799 0.5681 15x 10° 15x10?
+DEC 0.9263 0.7506 4x10° 2.5 x 107?
+AE-1SVN 0.9926 0.8024 1x10' 5 x10°%
+OC-SVM raw input 0.8302 0.0819 2x10° 1x 10°
+OC-SVM encoded 0.7956 0.0584 1x10? 1x10!
+Isolation Forest 0.7574 0.0533 4.5x 10° 1.5 x 10°
+MNIST RDA 0.8464 0.0855 1x10? 2.5 x 107!
+DEC 0.5522 0.0289 3.5x10' 15x 1077
+AE-ISVM 0.8119 0.0864 15x10? 7x 107!
+CAE-1SVM 0.8564 0.0885 3.5 x 103 1.5 x 10°
+
+Table 3: Average AUROC, AUPRC, approximal train time and test time of the baseline
+methods and proposed method. Best results are displayed in boldface.
+
+Regarding training time, AE-1SVM outperforms other methods for Forest-
+Cover, which is the largest dataset. For other datasets that have high sample
+size, namely KDDCup99 and Shuttle, it is still one of the fastest candidates.
+Furthermore, we also extend the KDDCup99 experiment and train AE-1ISVM
+model on a full dataset, and acquire promising results in only about 200 seconds.
+This verifies the effectiveness and potential application of the model in big-data
+circumstances. On top of that, the testing time of AE-1SVM is a notable improve-
+ment over other methods, especially Isolation Forest and conventional OC-SVM,
+suggesting its feasibility in real-time environments.
+
+/n/nScalable & Interpretable OC-SVMs with Deep learning and Random features 13
+
+Oc SVM REF 0C-SvM Linear Isolation Forest
+2 Normal os 2s
+Anomaly °
+20 20 20
+4 as x
+wo wo 0
+of uuloslad oy \ ola ol cul
+Cr oo *ioa'=30 -200 1008160 01-010 005 00 obs 040 ois
+AE-ASVM RDA DEC
+0
+25 10? 20
+20
+as w 0
+wo
+‘La » meer
+ua ao a rr nr aC
+Fig. 3: Histograms of decision scores of AE-1SVM and other baseline methods.
+
+5.6 Gradient-based explanation in image datasets
+
+We also investigate the use of gradient-based explanation methods on the
+image datasets. Figure] and Figure BJillustrate the unsigned gradient maps of
+several anomalous digits in the USPS and MNIST datasets, respectively. The
+MNIST results are given by the version with convolutional autoencoder.
+
+Interesting patterns proving the correctness of gradient-based explanation
+approach can be observed from the Figure[4] The positive gradient maps revolve
+around the middle part of the images where the pixels in the normal class of
+digits ’1’ are normally bright (higher values), indicating the absence of those
+pixels contributes significantly to the reasoning that the samples ’7’ are detected
+as outliers. Likewise, the negative gradient maps are more intense on the pixels
+matching the bright pixels outside the center area of its corresponding image,
+meaning that the values of those pixels in the original image exceeds the range
+of the normal class, which is around the zero (black) level. Similar perception
+can be acquired from Figure [5] as it shows the difference between each samples
+of digits 0’, ’7’, and ’9’, to digit ’4’.
+
+6 Conclusion
+
+In this paper, we propose the end-to-end autoencoding One-class Support
+Vector Machine (AE-1SVM) model comprising of a deep autoencoder for di-
+mensionality reduction and a variant structure of OC-SVM using random Fourier
+features for anomaly detection. The model is jointly trained using SGD with a
+combined loss function to both lessen the complexity of solving support vector
+problems and force dimensionality reduction to learn better representation that
+is beneficial for the anomaly detecting task. We also investigate the application
+of applying gradient-based explanation methods to interpret the decision mak-
+ing of the proposed model, which is not feasible for most of the other anomaly
+detection algorithms. Extensive experiments have been conducted to verify the
+strengths of our approach. The results have demonstrated that AE-1SVM can
+be effective in detecting anomalies, while significantly enhance both training and
+response time for high-dimensional and large-scale data. Empirical evidence of
+interpreting the predictions of AE-1SVM using gradient-based methods has also
+been presented using illustrative examples and handwritten image datasets.
+
+/n/n14 Minh-Nghia Nguyen and Ngo Anh Vien
+
+Fig. 4: Examples of images and their corresponding gradient maps of digits ’7’ in the
+USPS experiment. From top to bottom rows: original image, positive gradient map,
+negative gradient map, and full gradient map.
+
+References
+
+1. Abadi, M., Agarwal, A., Barham, P., Brevdo, E., Chen, Z., Citro, C., Corrado,
+G.S., Davis, A., J., Devin, M., Ghemawat, S$., Goodfellow, I., Harp, A.,
+Irving, G., Isard, M., Jia, Y., Jozefowicz, R., Kaiser, L., Kudlur, M., Levenberg,
+J., Mané, D., Monga, R., Moore, S., Murray, D., Olah, C., Schuster, M., Shlens, J.,
+Steiner, B., Sutskever, I., Talwar, K., Tucker, P., Vanhoucke, V., Vasudevan, V.,
+Viégas, F., Vinyals, O., Warden, P., Wattenberg, M., Wicke, M., Yu, Y., Zheng,
+X.: TensorFlow: Large-scale machine learning on heterogeneous systems (2015).
+URL https: //www.tensorflow.org/| Software available from tensorflow.org
+
+2. Ancona, M., Ceolini, E., ztireli, C., Gross, M.: Towards better under-
+standing of gradient-based attribution methods for deep neural networks.
+In: International Conference on Learning Representations (2018). URL
+(https: //openreview.net/forum?id=Sy21R9JAW|
+
+3. Baehrens, D., Schroeter, T., Harmeling, S., Kawanabe, M., Hansen, K., Miiller,
+K.R.: How to explain individual classification decisions. J. Mach. Learn. Res. 11,
+1803-1831 (2010)
+
+4. Barnett, V., Lewis, T.: Outliers in statistical data. Wiley (1974)
+
+5. Bengio, Y., Lecun, Y.: Scaling learning algorithms towards AI. MIT Press (2007)
+
+6. Candeés, E.J., Li, X., Ma, Y., Wright, J.: Robust principal component analysis?
+Journal of the ACM (JACM) 58(3), 11 (2011)
+
+7. Chalapathy, R., Menon, A.K., Chawla, S.: Robust, deep and inductive anomaly
+detection. In: Machine Learning and Knowledge Discovery in Databases - Euro-
+
+pean Conference, ECML PKDD 2017, Skopje, Macedonia, September 18-22, 2017,
+
+Proceedings, Part I, pp. 36-51 (2017)
+
+8. Chandola, V., Banerjee, A., Kumar, V.: Anomaly detection: A survey. ACM com-
+
+puting surveys (CSUR) 41(3), 15 (2009)
+
+9. Chang, C.C., Lin, C.J.: LIBSVM: A library for support vector machines. ACM
+
+Trans. Intell. Syst. Technol. 2(3), 27:1-27:27 (2011)
+
+10. Davis, J., Goadrich, M.: The Relationship Between Precision-Recall and ROC
+
+Curves. In: Proceedings of the 23rd International Conference on Machine Learning,
+ICML 06, pp. 233-240. ACM, New York, NY, USA (2006)
+
+11. Dheeru, D., Karra Taniskidou, E.: UCI machine learning repository (2017). URL
+
+http://archive.ics.uci.edu/ml
+
+/n/nScalable & Interpretable OC-SVMs with Deep learning and Random features 15
+
+Fig. 5: Examples of images and their corresponding gradient maps of digits ’0’, ’7’, ’9’
+in the MNIST experiment with convolutional autoencoder. From top to bottom rows:
+original image, positive gradient map, negative gradient map, and full gradient map.
+
+12.
+
+13.
+
+5. Hotelling, H.: Analys
+
+. Montavon, G., Bach
+
+Erfani, S.M., Baktashmotlagh, M., Rajasegarar, S., Karunasekera, S., Leckie,
+C.: RISVM: A randomised nonlinear approach to large-scale anomaly detection.
+In: Proceedings of the Twenty-Ninth AAAI Conference on Artificial Intelligence,
+AAAT’15, pp. 432-438. AAAI Press (2015)
+Erfani, S.M., Rajasegarar, S., Karunasekera, S., Leckie, C.: High-dimensional and
+large-scale anomaly detection using a linear one-class SVM with deep learning.
+Pattern Recogn. 58(C), 121-134 (2016)
+
+. Glorot, X., Bengio, Y.: Understanding the difficulty of training deep feedforward
+
+neural networks. In: Proceedings of the Thirteenth International Conference on
+Artificial Intelligence and Statistics, Proceedings of Machine Learning Research,
+vol. 9, pp. 249-256. PMLR, Chia Laguna Resort, Sardinia, Italy (2010)
+
+. Grubbs, F.E.: Procedures for detecting outlying observations in samples. Techno-
+
+metrics 11(1), 1-21 (1969)
+of a complex of statistical variables into principal compo-
+
+nents. Journal of educational psychology 24(6), 417 (1933)
+
+. Hull, J.J.: A database for handwritten text recognition research. IEEE Transac-
+
+tions on Pattern Analysis and Machine Intelligence 16(5), 550-554 (1994)
+
+. Kim, J., Scott, C.D.: Robust kernel density estimation. Journal of Machine Learn-
+
+ing Research 13(Sep), 2529-2565 (2012)
+
+. Kingma, D.P., Ba, J.: Adam: A Method for Stochastic Optimization. ArXiv e-
+
+prints (2014)
+
+. LeCun, Y., Cortes, C.: MNIST handwritten digit database (2010). URL
+
+http://yann.1lecun.com/exdb/mnist/
+
+iu, FT’, ‘Ting, ., Zhou, «: Isolation forest. In: 2008 Eighth IEEE Interna-
+tional Conference on Data Mining, pp. 413-422 (2008)
+
+S., Binder, A., Samek, W., Miiller, K.: Explaining nonlinear
+classification decisions with deep taylor decomposition. CoRR abs/1512.02479
+(2015)
+
+. Rahimi, A., Recht, B.: Random features for large-scale kernel machines. In: Ad-
+
+vances in Neural Information Processing Systems 20, pp. 1177-1184. Curran As-
+sociates, Inc. (2008)
+
+. Schlegl, T., Seebéck, P., Waldstein, S.M., Schmidt-Erfurth, U., Langs, G.: Unsu-
+
+pervised anomaly detection with generative adversarial networks to guide marker
+discovery. In: International Conference on Information Processing in Medical Imag-
+ing, pp. 146-157. Springer (2017)
+/n/n33.
+
+34.
+
+38.
+
+39.
+
+40.
+
+Minh-Nghia Nguyen and Ngo Anh Vien
+
+. Schdlkopf, B., Williamson, R., Smola, A., Shawe-Taylor, J., Platt, J.: Support
+
+vector method for novelty detection. In: Proceedings of the 12th International
+Conference on Neural Information Processing Systems, NIPS’99, pp. 582-588. MIT
+Press, Cambridge, MA, USA (1999)
+
+. Shalev-Shwartz, S., Singer, Y., Srebro, N., Cotter, A.: Pegasos: Primal estimated
+
+sub-gradient solver for svm. Math. Program. 127(1), 3-30 (2011)
+
+. Shrikumar, A., Greenside, P., Kundaje, A.: Learning important features through
+
+propagating activation differences. CoRR abs/1704.02685 (2017)
+
+. Shrikumar, A., Greenside, P., Shcherbina, A., Kundaje, A.: Not just a black box:
+
+Learning important features through propagating activation differences. CoRR
+abs/1605.01713 (2016)
+
+. Simonyan, K., Vedaldi, A., Zisserman, A.: Deep Inside Convolutional Networks:
+
+Visualising Image Classification Models and Saliency Maps. ArXiv e-prints
+abs/1506.02785 (2013)
+
+. Sundararajan, M., Taly, A., Yan, Q.: Axiomatic attribution for deep networks.
+
+CoRR abs/1703.01365 (2017)
+
+. Sutherland, D.J., Schneider, J.G.: On the error of random fourier features. CoRR
+
+(2015)
+
+. Tax, D.M., Duin, R.P.: Support vector data description. Machine learning 54(1),
+
+45-66 (2004)
+Williams, C.K.I., Seeger, M.: Using the Nystr6m method to speed up kernel ma-
+chines. In: Proceedings of the 13th International Conference on Neural Informa-
+tion Processing Systems, NIPS’00, pp. 661-667. MIT Press, Cambridge, MA, USA
+(2000)
+Xie, J., Girshick, R., Farhadi, A.: Unsupervised deep embedding for clustering
+analysis. In: Proceedings of the 33rd International Conference on International
+Conference on Machine Learning - Volume 48, ICML’16, pp. 478-487. JMLR.org
+(2016). URL |http://dl.acm. org/citation. cfm?id=3045390 . 3045442
+
+5. Xiong, L., Péczos, B., Schneider, J.G.: Group anomaly detection using flexible
+
+genre models. In: Advances in neural information processing systems, pp. 1071—
+1079 (2011)
+
+. Zenati, H., Foo, C.S., Lecouat, B., Manek, G., Chandrasekhar, V.R.: Efficient gan-
+
+based anomaly detection. arXiv preprint arXiv:1802.06222 (2018)
+
+. Zhai, S., Cheng, Y., Lu, W., Zhang, Z.: Deep structured energy based models
+
+for anomaly detection. In: Proceedings of the 33nd International Conference on
+Machine Learning, ICML 2016, New York City, NY, USA, June 19-24, 2016, pp.
+1100-1109 (2016)
+
+Zhou, C., Paffenroth, R.C.: Anomaly detection with robust deep autoencoders. In:
+Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge
+Discovery and Data Mining, KDD ’17, pp. 665-674. ACM, New York, NY, USA
+(2017)
+
+Zimek, A., Schubert, E., Kriegel, H.P.: A survey on unsupervised outlier detection
+in high-dimensional numerical data. Statistical Analysis and Data Mining: The
+ASA Data Science Journal 5(5), 363-387 (2012)
+
+Zong, B., Song, Q., Min, M.R., Cheng, W., Lumezanu, C., Cho, D., Chen, H.:
+Deep autoencoding gaussian mixture model for unsupervised anomaly detec-
+tion. In: International Conference on Learning Representations (2018). URL
+
+https: //openreview.net/forum?id=BJJLHbb0-
+
