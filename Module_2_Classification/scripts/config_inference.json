@@ -1,0 +1,7 @@
+{
+    "artifacts_folder": "artifacts",
+    "model": "xgb",
+    "column_text": "text",
+    "column_label": "label",
+    "data_path": "../dataset_doc/text_classification_test.csv"
+}

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/lazos/Documents/EPAM/NLP/nlp-course-main/Module_2_Classification/mlruns/0/cd75951194604c18ab02935580dc730f/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cd75951194604c18ab02935580dc730f
+run_name: artifacts/bert_checkpoint
+run_uuid: cd75951194604c18ab02935580dc730f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1719138859486
+status: 1
+tags: []
+user_id: lazos

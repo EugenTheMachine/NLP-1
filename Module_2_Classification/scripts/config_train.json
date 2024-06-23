@@ -1,0 +1,35 @@
+{
+    "artifacts_folder": "artifacts",
+    "model": "xgb",
+    "column_text": "text",
+    "column_label": "label",
+    "data_path": "../dataset_doc/text_classification_train.csv",
+    "lr": {
+        "params": {
+            "cv": 3,
+            "random_state": 42
+        }
+    },
+    "xgb": {
+        "params": {
+            "learning_rate": 0.01,
+            "max_depth": 8,
+            "seed": 100,
+            "n_jobs": -1,
+            "num_class": 2,
+            "verbosity": 2
+        }
+    },
+    "bert": {
+        "params": {
+            "batch_size":64, 
+            "num_epochs":3
+            }
+        },
+    "transformer": {
+        "params": {
+            "batch_size":64, 
+            "num_epochs":3
+            }
+        }
+}
