@@ -134,7 +134,7 @@ dmypy.json
 .pyre/
 
 # Data files
-*.csv
+#*.csv
 *.db
 *.pickle
 *.sql
