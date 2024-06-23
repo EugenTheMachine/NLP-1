@@ -11,7 +11,7 @@ __pycache__
 **.pkl
 dataset_doc/**/*.json
 dataset_doc/**/*.jpg
-dataset_doc/**/*.csv
+#dataset_doc/**/*.csv
 *__pycache__*
 *.pytest_cache*
 **/artifacts/**
@@ -81,7 +81,7 @@ configs/**/*.cfg
 
 *notebooks_
 
-*dataset_doc
+#*dataset_doc
 # IPython
 profile_default/
 ipython_config.py
